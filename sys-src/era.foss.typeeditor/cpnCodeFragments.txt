@@ -1,0 +1,29 @@
+
+
+        // readme: http://www.ralfebert.de/rcpbuch/swt_layouts1/
+        GridLayout gridLayout = new GridLayout( 2, true );
+        this.setLayout( gridLayout );
+
+        propertySheetPage = new PropertySheetPage(); // create a composite for the PropertySheetPage Control
+        Composite propertySheetPageComposite = new Composite( this, SWT.BORDER );
+        propertySheetPageComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true, 2, 0 ) );
+        propertySheetPageComposite.setLayout( new FillLayout() );
+        propertySheetPage.setPropertySourceProvider( new AdapterFactoryContentProvider( adapterFactory ) );
+        propertySheetPage.createControl( propertySheetPageComposite );
+
+
+
+
+
+
+        /*
+         * HOWTO: set "Property Filter Flags" of Identifiable:[ID, desc, long name] or
+         * DatatypeDefinitionSimple:[ID, desc, long name] to "org.eclipse.ui.views.properties.expert"
+         */
+         Resource rifResource = null;
+         RIF rifModel = null;
+         rifResource = (XMIResource)editingDomain.getResourceSet()
+         .getResource( EditUIUtil.getURI( editor.getEditorInput() ), true );
+         rifModel = (RIF)(rifResource).getContents().get( 0 );
+         RifFactory.eINSTANCE.createDatatypeDefinitionInteger().eClass().eSet( "Property Filter Flags",
+         "org.eclipse.ui.views.properties.expert" );

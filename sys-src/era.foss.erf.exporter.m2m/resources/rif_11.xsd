@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio 1.0.8.0 (http://www.liquid-technologies.com) -->
+<xsd:schema xmlns:RIF="http://automotive-his.de/200706/rif" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://automotive-his.de/200706/rif" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="ACCESS-POLICY">
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="ACCESS-MODE" type="RIF:ACCESS-POLICY-ACCESS-MODE-ENUM" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ATTRIBUTE-DEFINITIONS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="ATTRIBUTE-DEFINITION-COMPLEX-REF" type="RIF:REF" />
+            <xsd:element name="ATTRIBUTE-DEFINITION-ENUMERATION-REF" type="RIF:REF" />
+            <xsd:element name="ATTRIBUTE-DEFINITION-SIMPLE-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="ATTRIBUTE-VALUES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT-REF" type="RIF:REF" />
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-FILE-REF" type="RIF:REF" />
+            <xsd:element name="ATTRIBUTE-VALUE-ENUMERATION-REF" type="RIF:REF" />
+            <xsd:element name="ATTRIBUTE-VALUE-FILE-REFERENCE-REF" type="RIF:REF" />
+            <xsd:element name="ATTRIBUTE-VALUE-SIMPLE-REF" type="RIF:REF" />
+            <xsd:element name="ATTRIBUTE-VALUE-XML-DATA-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DATATYPE-DEFINITIONS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="DATATYPE-DEFINITION-BINARY-FILE-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-BOOLEAN-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-DATE-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-DOCUMENT-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-ENUMERATION-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-INTEGER-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-REAL-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-STRING-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-XML-DATA-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="RELATION-GROUPS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="RELATION-GROUP-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-GROUPS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-GROUP-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-HIERARCHIES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-HIERARCHY-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-HIERARCHY-ROOTS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-HIERARCHY-ROOT-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-OBJECTS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-OBJECT-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-RELATIONS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-RELATION-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-TYPES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-TYPE-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ATTRIBUTE-DEFINITION-COMPLEX">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a requirement attribute that is based on a complex data type.
+
+In principle, this element constitutes an attribute column that can contain "complex" values of a certain complex data type.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="DEFAULT-VALUE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="1">
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT" type="RIF:ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT" />
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-FILE" type="RIF:ATTRIBUTE-VALUE-EMBEDDED-FILE" />
+            <xsd:element name="ATTRIBUTE-VALUE-FILE-REFERENCE" type="RIF:ATTRIBUTE-VALUE-FILE-REFERENCE" />
+            <xsd:element name="ATTRIBUTE-VALUE-XML-DATA" type="RIF:ATTRIBUTE-VALUE-XML-DATA" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="TYPE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="DATATYPE-DEFINITION-BINARY-FILE-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-DOCUMENT-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-XML-DATA-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ATTRIBUTE-DEFINITION-ENUMERATION">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a requirement attribute that is based on an "Enumeration" data type.
+
+In principle, this element constitutes an attribute column that can contain enumeration values of a certain enumeration data type.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="DEFAULT-VALUE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="1">
+            <xsd:element name="ATTRIBUTE-VALUE-ENUMERATION" type="RIF:ATTRIBUTE-VALUE-ENUMERATION" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="MULTI-VALUED" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TYPE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="DATATYPE-DEFINITION-ENUMERATION-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ATTRIBUTE-DEFINITION-SIMPLE">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a requirement attribute that is based on a simple data type.
+
+In principle, this element constitutes an attribute column that can contain values of one of the data types "Integer", "Boolean", "Real" or "String".</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="DEFAULT-VALUE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="1">
+            <xsd:element name="ATTRIBUTE-VALUE-SIMPLE" type="RIF:ATTRIBUTE-VALUE-SIMPLE" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="TYPE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="DATATYPE-DEFINITION-BOOLEAN-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-DATE-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-INTEGER-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-REAL-REF" type="RIF:REF" />
+            <xsd:element name="DATATYPE-DEFINITION-STRING-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT">
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="DEFINITION">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="ATTRIBUTE-DEFINITION-COMPLEX-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="XHTML-CONTENT" type="RIF:XHTML-CONTENT" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ATTRIBUTE-VALUE-EMBEDDED-FILE">
+    <xsd:annotation>
+      <xsd:documentation>The complex data that is encoded and embedded in the XML file.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="BINARY-CONTENT" type="RIF:BINARY-CONTENT" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="DEFINITION">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="ATTRIBUTE-DEFINITION-COMPLEX-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ATTRIBUTE-VALUE-ENUMERATION">
+    <xsd:annotation>
+      <xsd:documentation>Contains the concrete values of an "Enumeration" data type.
+
+Note that in case of "multi value enumerations", a set of different enumeration values can be specified.
+
+The value is thus indicated by multiple references ("values") to enumeration values that are contained in the associated enumeration data type.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="DEFINITION">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="ATTRIBUTE-DEFINITION-ENUMERATION-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="VALUES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="ENUM-VALUE-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ATTRIBUTE-VALUE-FILE-REFERENCE">
+    <xsd:annotation>
+      <xsd:documentation>Reference to the complex data that is stored in an external file.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="DEFINITION">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="ATTRIBUTE-DEFINITION-COMPLEX-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="PATH-TO-FILE" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ATTRIBUTE-VALUE-SIMPLE">
+    <xsd:annotation>
+      <xsd:documentation>Contains the concrete value of a simple data type.
+
+The value is encoded as a string in "theValue". No type checking is done by the resulting Schema. The importer of the tool has to verify the correct type of the value in "theValue".</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="DEFINITION">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="ATTRIBUTE-DEFINITION-SIMPLE-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="THE-VALUE" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ATTRIBUTE-VALUE-XML-DATA">
+    <xsd:annotation>
+      <xsd:documentation>Wrapper for a different namespace (e.g. for XHTML).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="DEFINITION">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="ATTRIBUTE-DEFINITION-COMPLEX-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="XML-CONTENT" type="RIF:XML-CONTENT" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DATATYPE-DEFINITION-BINARY-FILE">
+    <xsd:annotation>
+      <xsd:documentation>Defines a complex data type that is based on generic binary data.
+
+It contains further information on the file format, the associated application etc.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="EMBEDDED" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="APPLICATION" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="FILENAME-SUFFIX" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="FORMAT-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="MIME-TYPE" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DATATYPE-DEFINITION-BOOLEAN">
+    <xsd:annotation>
+      <xsd:documentation>Definition of the simple data type "Boolean".</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DATATYPE-DEFINITION-DATE">
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="FORMAT" type="RIF:DATATYPE-DEFINITION-DATE-FORMAT-ENUM" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DATATYPE-DEFINITION-DOCUMENT">
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="EMBEDDED" type="xsd:boolean" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DATATYPE-DEFINITION-ENUMERATION">
+    <xsd:annotation>
+      <xsd:documentation>Definition of an "Enumeration" data type.
+
+This definition is constituted by aggregating the possible enumeration values for the enumeration data type being defined.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPECIFIED-VALUES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="ENUM-VALUE" type="RIF:ENUM-VALUE" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DATATYPE-DEFINITION-INTEGER">
+    <xsd:annotation>
+      <xsd:documentation>Definition of the simple data type "Integer".</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="MAX" type="xsd:integer" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="MIN" type="xsd:integer" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DATATYPE-DEFINITION-REAL">
+    <xsd:annotation>
+      <xsd:documentation>Definition of the simple data type "Real".</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="ACCURACY" type="xsd:integer" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="MAX" type="xsd:double" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="MIN" type="xsd:double" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DATATYPE-DEFINITION-STRING">
+    <xsd:annotation>
+      <xsd:documentation>Definition of the simple data type "String".</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="MAX-LENGTH" type="xsd:integer" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="DATATYPE-DEFINITION-XML-DATA">
+    <xsd:annotation>
+      <xsd:documentation>Defines a complex data type that is based on an XML-Schema.
+
+It contains the reference to the XML-Schema on which the complex data is based.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="EMBEDDED" type="xsd:boolean" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="NAME-SPACE-URI" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="SCHEMA-LOCATION" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="EMBEDDED-VALUE">
+    <xsd:annotation>
+      <xsd:documentation>Contains additional data for an enumeration value.
+
+Possible data is e.g. a key, a color.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="1" maxOccurs="1" name="KEY" type="xsd:integer" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="OTHER-CONTENT" type="xsd:string" />
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="ENUM-VALUE">
+    <xsd:annotation>
+      <xsd:documentation>Definition of a possible enumeration value.
+
+An enumeration data type is constituted by a set of possible enumeration values.
+
+The enumeration value names are given in "longName" of the parent element "Identifiable".</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="PROPERTIES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="EMBEDDED-VALUE" type="RIF:EMBEDDED-VALUE" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="RELATION-GROUP">
+    <xsd:annotation>
+      <xsd:documentation>Specifies a relation type.
+
+Any relation between two SpecObjects must be of a certain type. I.e., any relation must belong to a RelationGroup which specifies the relation type.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="RELATION-TYPE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="1">
+            <xsd:element name="SPEC-TYPE-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-RELATIONS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-RELATION-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="TARGET-GROUP">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="SPEC-GROUP-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="RIF">
+    <xsd:annotation>
+      <xsd:documentation>This is the root element.
+
+Instances of concrete elements must directly or indirectly be aggregated by the root element.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="1" maxOccurs="1" name="AUTHOR" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="COMMENT" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="COUNTRY-CODE" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="CREATION-TIME" type="xsd:dateTime" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="SOURCE-TOOL-ID" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TITLE" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="VERSION" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="ACCESS-POLICIES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="ACCESS-POLICY" type="RIF:ACCESS-POLICY" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DATATYPES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="DATATYPE-DEFINITION-BINARY-FILE" type="RIF:DATATYPE-DEFINITION-BINARY-FILE" />
+            <xsd:element name="DATATYPE-DEFINITION-BOOLEAN" type="RIF:DATATYPE-DEFINITION-BOOLEAN" />
+            <xsd:element name="DATATYPE-DEFINITION-DATE" type="RIF:DATATYPE-DEFINITION-DATE" />
+            <xsd:element name="DATATYPE-DEFINITION-DOCUMENT" type="RIF:DATATYPE-DEFINITION-DOCUMENT" />
+            <xsd:element name="DATATYPE-DEFINITION-ENUMERATION" type="RIF:DATATYPE-DEFINITION-ENUMERATION" />
+            <xsd:element name="DATATYPE-DEFINITION-INTEGER" type="RIF:DATATYPE-DEFINITION-INTEGER" />
+            <xsd:element name="DATATYPE-DEFINITION-REAL" type="RIF:DATATYPE-DEFINITION-REAL" />
+            <xsd:element name="DATATYPE-DEFINITION-STRING" type="RIF:DATATYPE-DEFINITION-STRING" />
+            <xsd:element name="DATATYPE-DEFINITION-XML-DATA" type="RIF:DATATYPE-DEFINITION-XML-DATA" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-TYPES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-TYPE" type="RIF:SPEC-TYPE" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-OBJECTS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-OBJECT" type="RIF:SPEC-OBJECT" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-RELATIONS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-RELATION" type="RIF:SPEC-RELATION" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-GROUPS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-GROUP" type="RIF:SPEC-GROUP" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-HIERARCHY-ROOTS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-HIERARCHY-ROOT" type="RIF:SPEC-HIERARCHY-ROOT" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="RIF" type="RIF:RIF">
+    <xsd:annotation>
+      <xsd:documentation>This is the root element.
+
+Instances of concrete elements must directly or indirectly be aggregated by the root element.</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="SPEC-GROUP">
+    <xsd:annotation>
+      <xsd:documentation>Constitutes a group of SpecObjects that belong together.
+A group of SpecObjects is a simple set, i.e. no structure or order is implicited by SpecGroup.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TYPE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="SPEC-TYPE-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="VALUES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT" type="RIF:ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT" />
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-FILE" type="RIF:ATTRIBUTE-VALUE-EMBEDDED-FILE" />
+            <xsd:element name="ATTRIBUTE-VALUE-ENUMERATION" type="RIF:ATTRIBUTE-VALUE-ENUMERATION" />
+            <xsd:element name="ATTRIBUTE-VALUE-FILE-REFERENCE" type="RIF:ATTRIBUTE-VALUE-FILE-REFERENCE" />
+            <xsd:element name="ATTRIBUTE-VALUE-SIMPLE" type="RIF:ATTRIBUTE-VALUE-SIMPLE" />
+            <xsd:element name="ATTRIBUTE-VALUE-XML-DATA" type="RIF:ATTRIBUTE-VALUE-XML-DATA" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="RELATION-GROUPS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="RELATION-GROUP" type="RIF:RELATION-GROUP" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-OBJECTS">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-OBJECT-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="SPEC-HIERARCHY">
+    <xsd:annotation>
+      <xsd:documentation>The nodes of the tree that constitutes the structure of SpecObjects.
+
+The tree is created by references of SpecHierarchy instances to other SpecHierarchy instances. Each node has additionally a reference to a SpecObject resulting in a hierarchical structure of SpecObjects.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="CHILDREN">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-HIERARCHY" type="RIF:SPEC-HIERARCHY" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="OBJECT">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="SPEC-OBJECT-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="SPEC-HIERARCHY-ROOT">
+    <xsd:annotation>
+      <xsd:documentation>The root element of the tree that constitutes the structure of SpecObjects.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TYPE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="SPEC-TYPE-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="VALUES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT" type="RIF:ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT" />
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-FILE" type="RIF:ATTRIBUTE-VALUE-EMBEDDED-FILE" />
+            <xsd:element name="ATTRIBUTE-VALUE-ENUMERATION" type="RIF:ATTRIBUTE-VALUE-ENUMERATION" />
+            <xsd:element name="ATTRIBUTE-VALUE-FILE-REFERENCE" type="RIF:ATTRIBUTE-VALUE-FILE-REFERENCE" />
+            <xsd:element name="ATTRIBUTE-VALUE-SIMPLE" type="RIF:ATTRIBUTE-VALUE-SIMPLE" />
+            <xsd:element name="ATTRIBUTE-VALUE-XML-DATA" type="RIF:ATTRIBUTE-VALUE-XML-DATA" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="CHILDREN">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="SPEC-HIERARCHY" type="RIF:SPEC-HIERARCHY" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="SPEC-OBJECT">
+    <xsd:annotation>
+      <xsd:documentation>The atomic specification object.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TYPE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="SPEC-TYPE-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="VALUES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT" type="RIF:ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT" />
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-FILE" type="RIF:ATTRIBUTE-VALUE-EMBEDDED-FILE" />
+            <xsd:element name="ATTRIBUTE-VALUE-ENUMERATION" type="RIF:ATTRIBUTE-VALUE-ENUMERATION" />
+            <xsd:element name="ATTRIBUTE-VALUE-FILE-REFERENCE" type="RIF:ATTRIBUTE-VALUE-FILE-REFERENCE" />
+            <xsd:element name="ATTRIBUTE-VALUE-SIMPLE" type="RIF:ATTRIBUTE-VALUE-SIMPLE" />
+            <xsd:element name="ATTRIBUTE-VALUE-XML-DATA" type="RIF:ATTRIBUTE-VALUE-XML-DATA" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="SPEC-RELATION">
+    <xsd:annotation>
+      <xsd:documentation>Indicates a relation between two SpecObjects.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="TYPE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="SPEC-TYPE-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="1" name="VALUES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT" type="RIF:ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT" />
+            <xsd:element name="ATTRIBUTE-VALUE-EMBEDDED-FILE" type="RIF:ATTRIBUTE-VALUE-EMBEDDED-FILE" />
+            <xsd:element name="ATTRIBUTE-VALUE-ENUMERATION" type="RIF:ATTRIBUTE-VALUE-ENUMERATION" />
+            <xsd:element name="ATTRIBUTE-VALUE-FILE-REFERENCE" type="RIF:ATTRIBUTE-VALUE-FILE-REFERENCE" />
+            <xsd:element name="ATTRIBUTE-VALUE-SIMPLE" type="RIF:ATTRIBUTE-VALUE-SIMPLE" />
+            <xsd:element name="ATTRIBUTE-VALUE-XML-DATA" type="RIF:ATTRIBUTE-VALUE-XML-DATA" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="SOURCE">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="SPEC-OBJECT-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="1" maxOccurs="1" name="TARGET">
+        <xsd:complexType>
+          <xsd:choice minOccurs="1" maxOccurs="1">
+            <xsd:element name="SPEC-OBJECT-REF" type="RIF:REF" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="SPEC-TYPE">
+    <xsd:annotation>
+      <xsd:documentation>Contains the type of the specification.
+
+Here, the set of requirement attributes together with their data types makes up the "type of specification".</xsd:documentation>
+    </xsd:annotation>
+    <xsd:all>
+      <xsd:element minOccurs="0" maxOccurs="1" name="DESC" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="IDENTIFIER" type="xsd:string" />
+      <xsd:element minOccurs="1" maxOccurs="1" name="LAST-CHANGE" type="xsd:dateTime" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="LONG-NAME" type="xsd:string" />
+      <xsd:element minOccurs="0" maxOccurs="1" name="SPEC-ATTRIBUTES">
+        <xsd:complexType>
+          <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="ATTRIBUTE-DEFINITION-COMPLEX" type="RIF:ATTRIBUTE-DEFINITION-COMPLEX" />
+            <xsd:element name="ATTRIBUTE-DEFINITION-ENUMERATION" type="RIF:ATTRIBUTE-DEFINITION-ENUMERATION" />
+            <xsd:element name="ATTRIBUTE-DEFINITION-SIMPLE" type="RIF:ATTRIBUTE-DEFINITION-SIMPLE" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:simpleType name="ACCESS-POLICY-ACCESS-MODE-ENUM">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="EDIT" />
+      <xsd:enumeration value="DELETE" />
+      <xsd:enumeration value="CREATE" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DATATYPE-DEFINITION-DATE-FORMAT-ENUM">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="W-3-C" />
+      <xsd:enumeration value="CUSTOM" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="REF">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:complexType name="XHTML-CONTENT">
+    <xsd:sequence>
+      <xsd:any namespace="http://automotive-his.de/200706/rif-xhtml" processContents="strict" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="XML-CONTENT">
+    <xsd:sequence>
+      <xsd:any namespace="##other" processContents="lax" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="BINARY-CONTENT">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string" />
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<era.foss.erf:ERF xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:era.foss.erf="http://era/foss/erf">
+  <coreContent>
+    <specObjects iD="cb2207d5-a807-4b7f-a6ed-ee05bebb7113">
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="01700aab-6461-47d7-aade-e9e370a4695a" definition="//@coreContent/@specTypes.0/@specAttributes.0" theValue="BSW00405"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="acccf3ed-0d01-4e20-ba25-1e85d2852c8c" definition="//@coreContent/@specTypes.0/@specAttributes.1" theValue="Reference to multiple configuration sets"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="5815b705-449d-498f-82c3-76ab522da3b0" definition="//@coreContent/@specTypes.0/@specAttributes.2" theValue="Modules of the AUTOSAR Basic Software that operate on more than one post build time configurable data entity shall use a reference (pointer) to an external configuration instance."/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="ae57ce9f-1d95-4272-819b-439cb68c9214" definition="//@coreContent/@specTypes.0/@specAttributes.7" theValue="ACC"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="adbccc2d-059b-4a98-a92a-afe441fde403" definition="//@coreContent/@specTypes.0/@specAttributes.7" theValue="ACCEPTED"/>
+    </specObjects>
+    <specObjects iD="38c4c440-da5d-470d-8ee3-7ebda1a00596">
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="7cf923f7-c36a-424b-8253-60d9ee1fdbcb" definition="//@coreContent/@specTypes.0/@specAttributes.1" theValue="Separate C--Files for configuration parameters"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="78973807-5c1e-4bc3-9a3d-8c1fd6b0713d" definition="//@coreContent/@specTypes.0/@specAttributes.2" theValue="Configuration parameters being stored in memory shall be placed into separate c--files (effected parameters are those from link--time configuration as well as those from post--build time configuration)."/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="4be3e429-168a-4b4e-811c-aad9e0420fdf" definition="//@coreContent/@specTypes.0/@specAttributes.1" theValue="Separate C-Files for configuration parameters"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="f280362e-b03a-427c-b65b-b475a92ff084" definition="//@coreContent/@specTypes.0/@specAttributes.1" theValue="Separate C--Files for configuration parameters"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="a750159c-3d24-447b-9652-1bb08dc97d0b" definition="//@coreContent/@specTypes.0/@specAttributes.0" theValue="BSW00380"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="8249025a-06bd-4c04-8e5b-8479824f3be0" definition="//@coreContent/@specTypes.0/@specAttributes.7" theValue="REJECTED"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="a1d45bd9-27d0-441d-aa01-7d262cb2ebf4" definition="//@coreContent/@specTypes.0/@specAttributes.1" theValue="Separate C--Files for configuration parameters"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="77c7b165-3175-4c33-9087-78c1435bb380" definition="//@coreContent/@specTypes.0/@specAttributes.7" theValue="REJECTED"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="4ce51ee6-bd7f-464f-a017-ea538ee1985f" definition="//@coreContent/@specTypes.0/@specAttributes.2" theValue="Configuration parameters being stored in memory shall be placed into separate c--files (effected parameters are those from link--time configuration as well as those from post--build time configuration)."/>
+    </specObjects>
+    <specObjects iD="1f5568c8-c601-453b-868e-c8be76e7ad2f">
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="c77f8200-e074-4c5e-a0f2-80a5a7531d82" definition="//@coreContent/@specTypes.0/@specAttributes.1" theValue="Specify the configuration class of callback function"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="8156f199-bb53-4fd7-bef6-966c009a0be8" definition="//@coreContent/@specTypes.0/@specAttributes.0" theValue="BSW00387"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="9a0fe662-5396-4c8f-be10-939f173bc81f" definition="//@coreContent/@specTypes.0/@specAttributes.2" theValue="The Basic Software Module specifications shall specify how the callback function is to be implemented. (Pre--compile macro, pointer at link time, array of pointers at post--build time and pointer at post--build time)"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="2153dbd7-8285-47d1-aea0-3c00ee5f9199" definition="//@coreContent/@specTypes.0/@specAttributes.1" theValue="Specify the configuration class of callback function"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="6ded10f3-0197-4f25-96c2-d626e7af53fe" definition="//@coreContent/@specTypes.0/@specAttributes.2" theValue="The Basic Software Module specifications shall specify how the callback function is to be implemented. (Pre--compile macro, pointer at link time, array of pointers at post--build time and pointer at post--build time)"/>
+    </specObjects>
+    <specObjects iD="69c246fc-4693-488d-aee8-39f8057c528c">
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="b4ae3c84-1733-491c-861e-2b9ee0998924" definition="//@coreContent/@specTypes.0/@specAttributes.2" theValue="All Basic Software Modules that implement wake--up interrupts shall report the wake--up reason to the ECU State Manager via the IO Hardware Abstraction within the wake--up interrupt."/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="ce2b4b3a-d6f9-43a5-a690-3ecee6592b80" definition="//@coreContent/@specTypes.0/@specAttributes.1" theValue="Notification of wake--up reason"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="5ddba28e-671c-4924-bc5c-c00681531d5d" definition="//@coreContent/@specTypes.0/@specAttributes.0" theValue="BSW00375"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="a611f0cb-d423-4bbc-a596-8798d198129c" definition="//@coreContent/@specTypes.0/@specAttributes.7" theValue="ACCEPTED"/>
+      <values xsi:type="era.foss.erf:AttributeValueSimple" iD="5eb025bc-7115-439f-9515-774635c6c059" definition="//@coreContent/@specTypes.0/@specAttributes.7" theValue="ACCEPTED"/>
+    </specObjects>
+    <specTypes iD="129952ce-27ac-42ea-b2fc-a46cc5564a83" longName="TheOneAndOnly">
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="05c14764-cdb1-484f-b167-fe87c73a426d" longName="Req-ID" type="//@coreContent/@dataTypes.0"/>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="9b251d6c-00e7-45b3-8c2a-92db41eff9ab" longName="Name" type="//@coreContent/@dataTypes.2">
+        <defaultValue iD="64445269-589f-436c-906d-abce6fc1b1c4" definition="//@coreContent/@specTypes.0/@specAttributes.1" theValue="N/A"/>
+      </specAttributes>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="6c19539c-ef35-4ba4-9cd7-50602f19041c" longName="Description" type="//@coreContent/@dataTypes.3">
+        <defaultValue iD="7e79dad1-0a21-40c3-a126-4e7f9ecb4e89" definition="//@coreContent/@specTypes.0/@specAttributes.2" theValue="N/A"/>
+      </specAttributes>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="7b2df2be-0702-4a62-b3ca-0f8396fee9fe" longName="Availability" type="//@coreContent/@dataTypes.1">
+        <defaultValue iD="9f83ca15-7fa0-47d5-924f-7be4ee749d75" definition="//@coreContent/@specTypes.0/@specAttributes.3" theValue="0"/>
+      </specAttributes>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="4f70cd50-2cfb-4f82-95f6-600e13471ed7" longName="Reliability" type="//@coreContent/@dataTypes.1">
+        <defaultValue iD="4c900b5d-d101-4032-8f7e-f4158bebeaeb" definition="//@coreContent/@specTypes.0/@specAttributes.4" theValue="0"/>
+      </specAttributes>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="f7516de2-0e94-47dd-9d36-d57819cfe5c8" longName="Stability" type="//@coreContent/@dataTypes.1">
+        <defaultValue iD="d90fc4ab-bdf7-41f4-a4ce-fe446e166fda" definition="//@coreContent/@specTypes.0/@specAttributes.5" theValue="0"/>
+      </specAttributes>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="307ef6f9-081f-4b84-b6b3-6e6ba0a321be" longName="Accessibility" type="//@coreContent/@dataTypes.1">
+        <defaultValue iD="d35223cb-530d-4f79-b1e2-28929b2f86c3" definition="//@coreContent/@specTypes.0/@specAttributes.6" theValue="0"/>
+      </specAttributes>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="f5520dae-62c0-4619-b777-efa61e395271" longName="Req-Approval" type="//@coreContent/@dataTypes.2">
+        <defaultValue iD="7cfe22e2-e0cb-4a08-aad0-1a37d0547448" definition="//@coreContent/@specTypes.0/@specAttributes.7" theValue="UNDECIDED"/>
+      </specAttributes>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="116d8570-bff0-478e-802d-31e0896f222c" longName="Validation Criteria" type="//@coreContent/@dataTypes.3">
+        <defaultValue iD="e09b244b-c1b3-493f-b7fb-3fbff0357571" definition="//@coreContent/@specTypes.0/@specAttributes.8" theValue="undefined"/>
+      </specAttributes>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="e0ce46ea-8540-49dc-a7ab-f8786f610c43" longName="Comment" type="//@coreContent/@dataTypes.3">
+        <defaultValue iD="2701e417-f9e9-4356-af7a-fbb6146b1f59" definition="//@coreContent/@specTypes.0/@specAttributes.9" theValue="N/A"/>
+      </specAttributes>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="890a17c3-e461-4d48-98f0-d1ae0cd37d03" longName="Effort Points" type="//@coreContent/@dataTypes.1">
+        <defaultValue iD="2049dec5-35f3-4986-af50-37b4320da304" definition="//@coreContent/@specTypes.0/@specAttributes.10" theValue="0"/>
+      </specAttributes>
+      <specAttributes xsi:type="era.foss.erf:AttributeDefinitionSimple" iD="90d98189-ba61-454c-9693-8eba6c1e8b4d" longName="Risk Score" type="//@coreContent/@dataTypes.1">
+        <defaultValue iD="549cfe10-7166-4c3e-9ea1-9c311e97a43b" definition="//@coreContent/@specTypes.0/@specAttributes.11" theValue="0"/>
+      </specAttributes>
+    </specTypes>
+    <dataTypes xsi:type="era.foss.erf:DatatypeDefinitionString" iD="414b94a9-3d66-426d-9cc3-e82907f9f5d0" longName="ReqIdDT" attributeDefinitions="//@coreContent/@specTypes.0/@specAttributes.0"/>
+    <dataTypes xsi:type="era.foss.erf:DatatypeDefinitionInteger" iD="bbc74c49-1823-4b18-8eab-608276500fdc" longName="NaturalIntDT" attributeDefinitions="//@coreContent/@specTypes.0/@specAttributes.3 //@coreContent/@specTypes.0/@specAttributes.4 //@coreContent/@specTypes.0/@specAttributes.5 //@coreContent/@specTypes.0/@specAttributes.6 //@coreContent/@specTypes.0/@specAttributes.11 //@coreContent/@specTypes.0/@specAttributes.10" min="0"/>
+    <dataTypes xsi:type="era.foss.erf:DatatypeDefinitionString" iD="94c58396-16a5-40c5-90ce-e77e06c26602" longName="ShortStringDT" attributeDefinitions="//@coreContent/@specTypes.0/@specAttributes.1 //@coreContent/@specTypes.0/@specAttributes.7"/>
+    <dataTypes xsi:type="era.foss.erf:DatatypeDefinitionString" iD="8946f2cd-4731-429f-b106-11d737671f59" longName="LongStringDT" attributeDefinitions="//@coreContent/@specTypes.0/@specAttributes.2 //@coreContent/@specTypes.0/@specAttributes.8 //@coreContent/@specTypes.0/@specAttributes.9"/>
+  </coreContent>
+  <toolExtensions xsi:type="era.foss.erf:EraToolExtension">
+    <views iD="77ab2c95-963c-4673-a7ac-b9a4c1c76c2c" longName="Requirement Analyst">
+      <viewElements attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.0"/>
+      <viewElements editorColumnSpan="3" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.1"/>
+      <viewElements attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.7"/>
+      <viewElements editorRowNumber="2" editorColumnSpan="7" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.2"/>
+      <viewElements editorRowNumber="3" editorColumnSpan="7" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.8"/>
+      <viewElements editorRowNumber="4" editorColumnSpan="7" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.9"/>
+    </views>
+    <views iD="5e494886-549a-4193-835d-1f35c57d7eeb" longName="Systems Analyst">
+      <viewElements attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.0"/>
+      <viewElements editorColumnSpan="3" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.1"/>
+      <viewElements editorRowNumber="2" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.3"/>
+      <viewElements editorRowNumber="2" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.4"/>
+      <viewElements editorRowNumber="2" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.5"/>
+      <viewElements editorRowNumber="2" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.6"/>
+      <viewElements editorRowNumber="3" editorColumnSpan="7" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.9"/>
+    </views>
+    <views iD="b8d6e62d-12ec-4e95-834b-241be5978392" longName="Project Manager">
+      <viewElements attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.0"/>
+      <viewElements editorColumnSpan="3" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.1"/>
+      <viewElements attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.7"/>
+      <viewElements editorRowNumber="2" editorColumnSpan="7" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.2"/>
+      <viewElements editorRowNumber="3" editorColumnSpan="7" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.8"/>
+      <viewElements editorRowNumber="4" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.3"/>
+      <viewElements editorRowNumber="4" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.4"/>
+      <viewElements editorRowNumber="4" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.5"/>
+      <viewElements editorRowNumber="4" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.6"/>
+      <viewElements editorRowNumber="5" editorColumnSpan="7" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.9"/>
+      <viewElements editorRowNumber="6" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.10"/>
+      <viewElements editorRowNumber="6" attributeDefinition="//@coreContent/@specTypes.0/@specAttributes.11"/>
+    </views>
+  </toolExtensions>
+</era.foss.erf:ERF>

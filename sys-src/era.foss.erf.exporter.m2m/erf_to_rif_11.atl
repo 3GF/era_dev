@@ -1,0 +1,53 @@
+module erf_to_rif_11;
+
+-- @path erf=/era.foss.erf/model/erf.ecore
+-- @path rif11=/era.foss.erf.exporter.m2m/model/rif_11.ecore
+
+create OUT: rif11 from IN: erf;
+
+rule datatypeInt {
+	from
+		erfDT : erf!DatatypeDefinitionInteger
+	to
+		rifDT : rif11!DATATYPEDEFINITIONINTEGER 
+}
+
+rule datatypeString {
+	from
+		erfDT : erf!DatatypeDefinitionString
+	to
+		rifDT : rif11!DATATYPEDEFINITIONSTRING
+}
+
+
+rule spectypes {
+	from
+		erfST : erf!SpecType
+	to
+		rifST : rif11!SPECTYPE
+}
+
+rule erfroot2rifroot {
+	from
+		erfERF : erf!ERF
+    to
+        dataTypesType : rif11!DATATYPESType(
+            dATATYPEDEFINITIONINTEGER <- erfERF.coreContent.dataTypes->select(v | v.oclIsTypeOf(erf!DatatypeDefinitionInteger)),
+            dATATYPEDEFINITIONSTRING <- erfERF.coreContent.dataTypes->select(v | v.oclIsTypeOf(erf!DatatypeDefinitionString))
+        ),
+        specTypesType : rif11!SPECTYPESType(
+            sPECTYPE <- erfERF.coreContent.specTypes
+        ),
+	    rifRIF : rif11!RIF (
+			aUTHOR <- 'CPN',
+			cOMMENT <- 'no comment',
+			cOUNTRYCODE <- 'DE',
+			iDENTIFIER <- 'THEID',
+			sOURCETOOLID <- 'ERA RIF Editor',
+			tITLE <- 'no title',
+			vERSION <- '1',
+			dATATYPES <- dataTypesType,
+			sPECTYPES <- specTypesType
+		)
+}
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RIF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://automotive-his.de/200706/rif" xmlns:rif-xhtml="http://automotive-his.de/200706/rif-xhtml" xsi:schemaLocation="http://automotive-his.de/schema/rif rif.xsd http://automotive-his.de/schema/rif-xhtml rif-xhtml.xsd">
+	<TITLE>Test data RIF11</TITLE>
+	<COMMENT>Definition of an enumeration type</COMMENT>
+	<AUTHOR>Stefan Hendrata</AUTHOR>
+	<VERSION>0.1</VERSION>
+	<CREATION-TIME>2005-05-23T12:00:00+02:00</CREATION-TIME>
+	<COUNTRY-CODE>DE</COUNTRY-CODE>
+	<SOURCE-TOOL-ID>Manually written</SOURCE-TOOL-ID>
+	<IDENTIFIER>ID_RIF_File</IDENTIFIER>
+	<DATATYPES>
+		<DATATYPE-DEFINITION-ENUMERATION>
+			<IDENTIFIER>ID_DatatypeEnum_1</IDENTIFIER>
+			<LONG-NAME>Requirement status</LONG-NAME>
+			<DESC>This enumeration datatype contains the possible statuses for a requirement.</DESC>
+			<LAST-CHANGE>2005-05-27T14:34:51+02:00</LAST-CHANGE>
+			<SPECIFIED-VALUES>
+				<ENUM-VALUE>
+					<IDENTIFIER>ID_EnumValue_1</IDENTIFIER>
+					<LONG-NAME>New</LONG-NAME>
+					<DESC>Requirement is new and not yet approved.</DESC>
+				</ENUM-VALUE>
+				<ENUM-VALUE>
+					<IDENTIFIER>ID_EnumValue_2</IDENTIFIER>
+					<LONG-NAME>Approved</LONG-NAME>
+					<DESC>Requirement has been consolidated and is now approved.</DESC>
+				</ENUM-VALUE>
+				<ENUM-VALUE>
+					<IDENTIFIER>ID_EnumValue_3</IDENTIFIER>
+					<LONG-NAME>Rejected</LONG-NAME>
+					<DESC>Consolidation on requirement has not been successful, requirement is thus rejected.</DESC>
+				</ENUM-VALUE>
+				<ENUM-VALUE>
+					<IDENTIFIER>ID_EnumValue_4</IDENTIFIER>
+					<LONG-NAME>Postponed</LONG-NAME>
+					<DESC>Decision on whether to approve or reject the requirement is postponed to a later date.</DESC>
+				</ENUM-VALUE>
+			</SPECIFIED-VALUES>
+		</DATATYPE-DEFINITION-ENUMERATION>
+	</DATATYPES>
+</RIF>

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: era.foss.erf.contrib;singleton:=true
+Bundle-Version: 1.5.0
+Bundle-ClassPath: .
+Bundle-Activator: era.foss.erf.contrib.Activator$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: era.foss.erf.contrib
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.edit.ui
+Bundle-ActivationPolicy: lazy

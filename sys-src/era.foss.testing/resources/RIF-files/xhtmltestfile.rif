@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rif:RIF xmlns:rif="http://automotive-his.de/200706/rif" xmlns:rif-xhtml="http://automotive-his.de/200706/rif-xhtml">
+	<rif:TITLE>XHTML test file</rif:TITLE>
+	<rif:COMMENT>includes XHTML content</rif:COMMENT>
+	<rif:AUTHOR>CPN</rif:AUTHOR>
+	<rif:VERSION>0.1</rif:VERSION>
+	<rif:CREATION-TIME>2009-09-01</rif:CREATION-TIME>
+	<rif:COUNTRY-CODE>DE</rif:COUNTRY-CODE>
+	<rif:SOURCE-TOOL-ID>Manually written</rif:SOURCE-TOOL-ID>
+	<rif:IDENTIFIER>ID_RIF_File</rif:IDENTIFIER>
+  <rif:SPEC-OBJECTS>
+    <rif:SPEC-OBJECT>
+      <rif:TYPE/>
+      <rif:VALUES>
+        <rif:ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT>
+          <rif:XHTML-CONTENT>
+          	<rif-xhtml:p>Hello World</rif-xhtml:p>
+          </rif:XHTML-CONTENT>
+        </rif:ATTRIBUTE-VALUE-EMBEDDED-DOCUMENT>
+      </rif:VALUES>
+    </rif:SPEC-OBJECT>
+  </rif:SPEC-OBJECTS>
+</rif:RIF>

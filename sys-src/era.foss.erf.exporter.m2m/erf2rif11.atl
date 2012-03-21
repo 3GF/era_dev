@@ -1,0 +1,196 @@
+-- @path rif11=/era.foss.erf.exporter.m2m/model/rif_11.ecore
+-- @path erf=/era.foss.erf/model/erf.ecore
+module erf2rif11;
+create OUT: rif11 from IN: erf;
+
+-- ATL Language Spec
+-- http://wiki.eclipse.org/ATL/User_Guide_-_The_ATL_Language
+
+-- 
+-- HowTo: Use in EMF the Option OPTION_EXTENDED_META_DATA
+-- http://java.dzone.com/articles/emf-tips-accessing-model-meta
+--   Map<String, Object> saveOptions = new HashMap<String, Object>();
+--   saveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
+
+-- HowTo: Use in ATL the EMF-Option OPTION_EXTENDED_META_DATA
+-- http://dev.eclipse.org/newslists/news.eclipse.modeling.m2m/msg02937.html
+
+-- ATL Manual
+-- http://www.eclipse.org/m2m/atl/doc/ATL_User_Manual[v0.7].pdf
+
+-- ATL Basic Tutorials
+-- http://wiki.eclipse.org/ATL/Tutorials_-_Create_a_simple_ATL_transformation
+-- http://www.modelbased.net/mdi/transformations/tutorials.html
+
+-- ATL Slightly More Complex Tutorial
+-- http://www.eclipse.org/m2m/atl/basicExamples_Patterns/article.php?file=Port/index.html
+
+-- ATL Patterns
+-- http://www.eclipse.org/m2m/atl/basicExamples_Patterns/
+
+-- ATL Transformations Zoo
+-- http://www.eclipse.org/m2m/atl/atlTransformations/
+
+-- Start from Java
+-- http://dev.eclipse.org/viewcvs/viewvc.cgi/org.eclipse.m2m/org.eclipse.m2m.atl/plugins/org.eclipse.m2m.atl.engine/src/org/eclipse/m2m/atl/engine/AtlLauncher.java?root=Modeling_Project&view=markup
+
+rule erfso2rifso {
+	from
+		erfclass : erf!SpecObject
+    to
+	    rifelem : rif11!SPECOBJECT (
+	    	dESC <- erfclass.desc
+			,iDENTIFIER <- erfclass.iD
+			-- ,lASTCHANGE <- 'THEN'
+			,lONGNAME <- erfclass.longName
+			,tYPE <- rifspectyperef
+			,vALUES <- rifvalues
+	    )
+		,rifvalues : rif11!VALUESType2 (aTTRIBUTEVALUESIMPLE <- erfclass.values->select(v | v.oclIsTypeOf(erf!AttributeValueSimple)))
+		,rifspectyperef : rif11!TYPEType4 (
+			sPECTYPEREF <- erfclass.type.iD
+		)
+}
+
+rule erfsr2rifsr {
+	from 
+		erfclass : erf!SpecRelation
+	to
+		rifelem : rif11!SPECRELATION (
+	    	dESC <- erfclass.desc
+			,iDENTIFIER <- erfclass.iD
+			-- ,lASTCHANGE <- 'THEN'
+			,lONGNAME <- erfclass.longName
+			,tYPE <- rifspectyperef
+			,vALUES <- rifvalues
+			,sOURCE <- rifsource
+			,tARGET <- riftarget
+	    )
+		,rifvalues : rif11!VALUESType2 (aTTRIBUTEVALUESIMPLE <- erfclass.values->select(v | v.oclIsTypeOf(erf!AttributeValueSimple)))
+		,rifspectyperef : rif11!TYPEType4 ( sPECTYPEREF <- erfclass.type.iD )
+		,rifsource : rif11!SOURCEType ( sPECOBJECTREF <- erfclass.source.iD )
+		,riftarget : rif11!TARGETType ( sPECOBJECTREF <- erfclass.target.iD )
+}
+		
+rule erfavs2rifavs {
+	from
+		erfclass : erf!AttributeValueSimple
+    to
+	    rifelem : rif11!ATTRIBUTEVALUESIMPLE (
+	    	dESC <- erfclass.desc
+			,iDENTIFIER <- erfclass.iD
+			-- ,lASTCHANGE <- 'THEN'
+			,lONGNAME <- erfclass.longName
+			,dEFINITION <- rifattributedefinitionsimpleref
+			,tHEVALUE <- erfclass.theValue
+	    )
+		,rifattributedefinitionsimpleref : rif11!DEFINITIONType4 (
+			aTTRIBUTEDEFINITIONSIMPLEREF <- erfclass.definition.iD
+		)
+}
+
+abstract rule erfads2rifadsAbstract {
+    from 
+    	erfclass : erf!AttributeDefinitionSimple
+    to
+	    rifelem : rif11!ATTRIBUTEDEFINITIONSIMPLE (
+	    	dESC <- erfclass.desc
+			,iDENTIFIER <- erfclass.iD
+			-- ,lASTCHANGE <- 'THEN'
+			,lONGNAME <- erfclass.longName
+			,dEFAULTVALUE <- erfclass.defaultValue
+	    )
+}
+
+rule erfads2rifadsInt extends erfads2rifadsAbstract {
+	from
+		erfclass : erf!AttributeDefinitionSimple (
+		    erfclass.type->oclIsTypeOf( erf!DatatypeDefinitionInteger )
+    )
+	to 
+		rifelem : rif11!ATTRIBUTEDEFINITIONSIMPLE (
+			tYPE <- rifdatatypedefinitionref
+	    )    
+    	, rifdatatypedefinitionref : rif11!TYPEType3 (
+    	    dATATYPEDEFINITIONINTEGERREF<- erfclass.type.iD
+    	)    	    
+}
+
+rule erfads2rifadsString extends erfads2rifadsAbstract {
+	from
+		erfclass : erf!AttributeDefinitionSimple (
+		    erfclass.type->oclIsTypeOf( erf!DatatypeDefinitionString )
+    )
+    to
+	    rifelem : rif11!ATTRIBUTEDEFINITIONSIMPLE (
+			tYPE <- rifdatatypedefinitionref
+	    )
+    	, rifdatatypedefinitionref : rif11!TYPEType3 (
+    	    dATATYPEDEFINITIONSTRINGREF<- erfclass.type.iD
+    	)    	
+}
+
+rule erfst2rifst {
+	from
+		erfclass : erf!SpecType
+    to
+	    rifelem : rif11!SPECTYPE (
+	    	dESC <- erfclass.desc
+			,iDENTIFIER <- erfclass.iD
+			-- ,lASTCHANGE <- 'THEN'
+			,lONGNAME <- erfclass.longName
+			,sPECATTRIBUTES <- rifspecattributes
+	    ),
+		rifspecattributes : rif11!SPECATTRIBUTESType (
+			aTTRIBUTEDEFINITIONSIMPLE <- erfclass.specAttributes->select(v | v.oclIsTypeOf(erf!AttributeDefinitionSimple))
+		)
+}
+
+rule erfddi2rifddi {
+	from
+		erfclass : erf!DatatypeDefinitionInteger
+    to
+	    rifelem : rif11!DATATYPEDEFINITIONINTEGER (
+	        mIN <- erfclass.min,
+		    mAX <- erfclass.max
+        )	        
+}
+
+rule erfdds2rifdds {
+	from
+		erfclass : erf!DatatypeDefinitionString
+    to
+	    rifelem : rif11!DATATYPEDEFINITIONSTRING (
+	        mAXLENGTH <- erfclass.maxLength
+        )
+}
+
+rule erfroot2rifroot {
+	from
+		erfclass : erf!ERF
+    to
+	    rifelem : rif11!RIF (
+			-- whenever ERF supports the RifHeader then the rif11!RIF must be fill with the erf!RIF.RifHeader.* attributes
+			aUTHOR <- 'CPN'
+			,cOMMENT <- 'no comment'
+			,cOUNTRYCODE <- 'DE'
+			-- ,CREATIONTIME <- 'NOW'
+			,iDENTIFIER <- 'THE ID'
+			,sOURCETOOLID <- 'ERA RIF Editor'
+			,tITLE <- 'no title'
+			,vERSION <- '1'
+			,dATATYPES <- rifdatatypes
+			,sPECTYPES <- rifspectypes
+			,sPECOBJECTS <- rifspecobjects
+			,sPECRELATIONS <- rifspecrelations
+		)
+		,rifdatatypes : rif11!DATATYPESType(
+            dATATYPEDEFINITIONINTEGER <- erfclass.coreContent.dataTypes->select(v | v.oclIsTypeOf(erf!DatatypeDefinitionInteger))
+            ,dATATYPEDEFINITIONSTRING <- erfclass.coreContent.dataTypes->select(v | v.oclIsTypeOf(erf!DatatypeDefinitionString))
+        )
+		,rifspectypes : rif11!SPECTYPESType (sPECTYPE <- erfclass.coreContent.specTypes)
+		,rifspecobjects : rif11!SPECOBJECTSType1 (sPECOBJECT <- erfclass.coreContent.specObjects)
+		,rifspecrelations : rif11!SPECRELATIONSType1 (sPECRELATION <- erfclass.coreContent.specRelations)
+		
+}
+

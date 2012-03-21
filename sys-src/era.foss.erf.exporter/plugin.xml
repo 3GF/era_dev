@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.exportWizards">
+      <category
+            id="era.foss.erf.exporter.category.era"
+            name="ERA">
+      </category>
+      <wizard
+            category="era.foss.erf.exporter.category.era"
+            class="era.foss.erf.exporter.RifExportWizard"
+            id="era.foss.erf.exporter.wizard"
+            name="%export.wizard.rif.name">
+         <description>
+            %export.wizard.rif.description
+         </description>
+      </wizard>
+   </extension>
+
+</plugin>

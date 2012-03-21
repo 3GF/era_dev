@@ -1,0 +1,57 @@
+
+++ Data Types
+IdIntDT			 : INT, min="100"
+NaturalIntDT	 : INT, min="0"
+ShortStringDT	 : STRING, maxLength="100"
+LongStringDT	 : STRING, maxLength="5000"
+
+++ Attribute Definitions
+Req-ID			 : IdIntDT 
+Name 			 : ShortStringDT
+Req-Approval     : ShortStringDT, default:"UNDECIDED" (better: ValidityEnum:{UNDECIDED, ACCEPTED, REJECTED})
+Description		 : LongStringDT
+Validation Criteria : LongStringDT
+Comment			 : LongStringDT
+
+Availability	 : NaturalIntDT
+Reliability		 : NaturalIntDT
+Stability		 : NaturalIntDT
+Accessibility	 : NaturalIntDT
+
+Effort Points	 : NaturalIntDT
+Risk Score		 : NaturalIntDT
+
+
+++ Views
+Requirement Analyst := { 
+	Req-ID, Name, Req-Approval 
+	| Description 
+	| Validation Criteria 
+	| Comment 
+}
+Systems Analyst		:= { 
+	Req-ID, Name 
+	| Avail., Relia., Stab., Access. 
+	| Comment
+}
+Project Manager		:= { 
+	Req-ID, Name, Req-Approval 
+	| Description 
+	| Validation Criteria 
+	| Avail., Relia., Stab., Access. 
+	| Comment 
+	| Effort Points, Risk Score
+}
+
+++ Spec Objects
+
+Use Perspective: Project Manager
+Use Requirements examples from:
+* http://www.autosar.org/download/R3.2/AUTOSAR_BasicSoftwareModules.pdf
+* http://www.autosar.org/download/R3.2/AUTOSAR_SRS_General.pdf
+* http://www.autosar.org/download/R3.2/AUTOSAR_SRS_FlexRay.pdf
+* http://www.autosar.org/download/R3.2/AUTOSAR_SRS_OS.pdf
+According System Specification ("SWS implements SRS"):
+* http://www.autosar.org/download/R3.2/AUTOSAR_SWS_OS.pdf
+* http://www.autosar.org/download/R3.2/AUTOSAR_SWS_FlexrayNM.pdf
+

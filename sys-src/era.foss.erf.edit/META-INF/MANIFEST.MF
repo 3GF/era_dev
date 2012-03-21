@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: era.foss.erf.edit;singleton:=true
+Bundle-Version: 1.5.0
+Bundle-ClassPath: .
+Bundle-Activator: era.foss.erf.provider.ErfEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: era.foss.erf.provider
+Require-Bundle: org.eclipse.core.runtime,
+ era.foss.erf;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport
+Bundle-ActivationPolicy: lazy

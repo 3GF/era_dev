@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               id="era.menu"
+               label="ERA">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeEditorId">
+                  <equals
+                        value="era.editor.prim">
+                  </equals>
+               </with>
+            </visibleWhen>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu">
+         <menu
+               id="era.menu"
+               label="ERA">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeEditorId">
+                  <equals
+                        value="era.editor.sec">
+                  </equals>
+               </with>
+            </visibleWhen>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>

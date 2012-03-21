@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="era.foss.wizardcategory"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            canFinishEarly="true"
+            category="era.foss.objecteditor.category.ID"
+            class="era.foss.objecteditor.ErfModelWizard"
+            descriptionImage="icons/full/wizban/NewEraFile.gif"
+            hasPages="true"
+            icon="icons/full/obj16/EraFile.gif"
+            id="era.foss.objecteditor.ErfModelWizardID"
+            name="%_UI_ErfModelWizard_label">
+         <description>%_UI_ErfModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+<!-- 
+	CPN reminder: the whole file has only been checked in
+	by Georg and me, because the editor extension point id
+	has to be set to "era.editor"!
+ -->
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="era.editor.prim"
+            name="%_UI_ErfEditor_label"
+            icon="icons/full/obj16/EraFile.gif"
+            class="era.foss.objecteditor.ErfObjectEditor">
+         <contentTypeBinding contentTypeId="era.foss.erf.ErfContentType"/>
+      </editor>
+   </extension>
+
+</plugin>

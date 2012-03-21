@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+	<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+	<!--
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="menu:org.eclipse.ui.main.menu">
+			<menu id="era.foss.tracer.menu" label="ERA Tracer">
+			</menu>
+		</menuContribution>
+	</extension>
+
+
+	<extension point="org.eclipse.ui.commands">
+		<command id="era.foss.tracer.command" name="ERA Tracer Command"
+			description="Run the ERA Tracer">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler class="cpn.sandbox.CpnParserA" commandId="era.foss.tracer.command">
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="menu:era.foss.tracer.menu">
+			<command commandId="era.foss.tracer.command" label="Run: CpnParserA"
+				style="push">
+			</command>
+		</menuContribution>
+	</extension>
+	-->
+
+
+	<extension id="eratracerbuilder" name="Era Tracer Builder"
+		point="org.eclipse.core.resources.builders">
+		<builder> <!-- hasNature="true" -->
+			<run class="era.foss.tracer.EraTracerIncrementalProjectBuilder">
+				<parameter name="optimize" value="true" />
+				<parameter name="comment" value="Era Tracer Incremental Builder" />
+			</run>
+		</builder>
+	</extension>
+
+	<extension point="org.eclipse.core.resources.natures" id="eratracernature"
+		name="ERA Tracer Nature">
+		<runtime>
+			<run class="era.foss.tracer.EraTracerNature">
+			</run>
+		</runtime>
+		<requires-nature id="org.eclipse.jdt.core.javanature" />
+	</extension>
+
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="era.foss.wizardcategory" name="%_UI_Wizard_category" />
+		<wizard canFinishEarly="true" category="era.foss.wizardcategory"
+			class="era.foss.tracer.wizard.TracerNewProjectWizard" hasPages="true"
+			id="era.foss.tracerWizard" name="Add ERA Tracability to Project"
+			project="false">
+			<selection class="org.eclipse.core.resources.IProject">
+			</selection>
+		</wizard>
+		<primaryWizard id="era.foss.tracerWizard" />
+	</extension>
+
+	<!--
+		see:
+		http://source.jboss.org/browse/JBossTools/trunk/jsf/plugins/org.jboss.tools.jsf.ui/plugin.xml
+	-->
+	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution id="era.foss.tracer.ui.project.addnature"
+			objectClass="org.eclipse.core.resources.IProject" adaptable="true">
+			<visibility>
+					<not>
+						<objectState name="projectNature" value="era.foss.tracer.eratracernature" />
+					</not>
+			</visibility>
+			<action class="era.foss.tracer.AddEraTracerNatureActionDelegate"
+				enablesFor="1" id="era.foss.tracer.AddEraTracerNatureActionDelegate"
+				label="Add ERA Tracer Nature" menubarPath="org.eclipse.ui.projectConfigure/additions">
+			</action>
+		</objectContribution>
+	</extension>
+	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution id="era.foss.tracer.ui.project.delnature"
+			objectClass="org.eclipse.core.resources.IProject" adaptable="true">
+			<visibility>
+					<objectState name="projectNature" value="era.foss.tracer.eratracernature" />
+			</visibility>
+			<action class="era.foss.tracer.RemoveEraTracerNatureActionDelegate"
+				enablesFor="1" id="era.foss.tracer.RemoveEraTracerNatureActionDelegate"
+				label="Remove ERA Tracer Nature" menubarPath="org.eclipse.ui.projectConfigure/additions">
+			</action>
+		</objectContribution>
+	</extension>
+	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution id="era.foss.tracer.ui.project.configure"
+			objectClass="org.eclipse.core.resources.IProject" adaptable="true">
+			<action class="era.foss.tracer.WizardbasedEraTracerNatureActionDelegate"
+				enablesFor="1" id="era.foss.tracer.WizardbasedEraTracerNatureActionDelegate"
+				label="Wizard for ERA Tracer Nature" menubarPath="org.eclipse.ui.projectConfigure/additions">
+			</action>
+		</objectContribution>
+	</extension>
+
+   <extension point="org.eclipse.core.resources.markers" id="era.foss.tracer.reqmarker" name="ERA Requirement Marker"> 
+      <super type="org.eclipse.core.resources.bookmark"/> 
+      <super type="org.eclipse.core.resources.textmarker"/> 
+      <persistent value="true"/> 
+      <transient value="false"/> 
+      <attribute name="reqid"/>
+   </extension> 
+   
+  <extension point="org.eclipse.ui.editors.annotationTypes">
+     <type
+        super="org.eclipse.ui.workbench.texteditor.bookmark"
+        markerType="era.foss.tracer.reqmarker"
+        name="era.foss.tracer.reqannotation"
+     />
+  </extension>
+
+  <extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+     <specification
+        annotationType="era.foss.tracer.reqannotation"
+        label="ERA Requirement"
+        icon="icons/reqmarker.png"
+			overviewRulerPreferenceKey="clruler"
+			overviewRulerPreferenceValue="true"
+			colorPreferenceKey="clcolor"
+			colorPreferenceValue="255,255,0"
+			textPreferenceKey="cltext"
+			textPreferenceValue="true"
+			verticalRulerPreferenceKey="clvertical"
+			verticalRulerPreferenceValue="true"
+			textStylePreferenceKey="clstyle"
+			textStylePreferenceValue="BOX"/>
+  </extension>
+
+</plugin>

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: era.foss.erf;singleton:=true
+Bundle-Version: 1.5.0
+Bundle-ClassPath: .
+Bundle-Activator: era.foss.erf.util.Activator$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: era.foss.erf,
+ era.foss.erf.impl,
+ era.foss.erf.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore.xmi
+Bundle-ActivationPolicy: lazy

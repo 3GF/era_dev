@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/era.foss.erf/src"
+    modelPluginID="era.foss.erf" forceOverwrite="true" modelName="Erf" updateClasspath="false"
+    featureMapWrapperInternalInterface="" codeFormatting="true" importerID="org.eclipse.emf.importer.java"
+    complianceLevel="6.0" copyrightFields="false" editorPluginID="era.foss.erf.editor"
+    language="">
+  <foreignModel>@model</foreignModel>
+  <genPackages prefix="Erf" basePackage="era.foss" disposableProviderFactory="true"
+      ecorePackage="erf.ecore#/">
+    <genDataTypes ecoreDataType="erf.ecore#//DiagnosticChain"/>
+    <genClasses image="false" ecoreClass="erf.ecore#//AttributeDefinition">
+      <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//AttributeDefinition/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//AttributeDefinition/ident"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//AttributeDefinition/unique"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference erf.ecore#//AttributeDefinition/specType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="erf.ecore#//AttributeValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//AttributeValue/definition"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="erf.ecore#//DatatypeDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//DatatypeDefinition/attributeDefinitions"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="erf.ecore#//SpecElementWithUserDefinedAttributes">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//SpecElementWithUserDefinedAttributes/values"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//SpecElementWithUserDefinedAttributes/type"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//SpecObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//SpecObject/sources"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//SpecObject/targets"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//SpecType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//SpecType/specAttributes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="erf.ecore#//Map">
+      <genTypeParameters ecoreTypeParameter="erf.ecore#//Map/T"/>
+      <genTypeParameters ecoreTypeParameter="erf.ecore#//Map/T1"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//AttributeValueSimple">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//AttributeValueSimple/theValue"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//DatatypeDefinitionInteger">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//DatatypeDefinitionInteger/max"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//DatatypeDefinitionInteger/min"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="erf.ecore#//DatatypeDefinitionSimple"/>
+    <genClasses ecoreClass="erf.ecore#//DatatypeDefinitionString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//DatatypeDefinitionString/maxLength"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="erf.ecore#//Identifiable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//Identifiable/iD"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//Identifiable/desc"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//Identifiable/longName"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//AttributeDefinitionSimple">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//AttributeDefinitionSimple/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//ERF">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//ERF/coreContent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//ERF/toolExtensions"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//Content">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//Content/specObjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//Content/specTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//Content/dataTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//Content/specRelations"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//SpecRelation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//SpecRelation/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//SpecRelation/target"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//EmbeddedValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//EmbeddedValue/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//EmbeddedValue/otherContent"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//EnumValue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//EnumValue/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//DatatypeDefinitionEnumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//DatatypeDefinitionEnumeration/specifiedValues"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//AttributeDefinitionEnumeration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//AttributeDefinitionEnumeration/multiValued"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//AttributeDefinitionEnumeration/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//AttributeValueEnumeration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//AttributeValueEnumeration/values"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//DatatypeDefinitionBoolean"/>
+    <genClasses ecoreClass="erf.ecore#//AttributeDefinitionBoolean">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//AttributeDefinitionBoolean/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//AttributeValueBoolean">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//AttributeValueBoolean/theValue"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="erf.ecore#//ToolExtension"/>
+    <genClasses ecoreClass="erf.ecore#//View">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//View/viewElements"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//ViewElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//ViewElement/editorShowLabel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//ViewElement/editorRowNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//ViewElement/editorColumnSpan"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//ViewElement/attributeDefinition"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//EraToolExtension">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//EraToolExtension/views"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

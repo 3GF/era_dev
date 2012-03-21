@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<project name="Public2Private" default="run" basedir=".">
+	<property name="atl.launcher" value="EMF-specific VM" />
+	
+	<target name="run">
+		<atl.loadModel name="erf" modelHandler="EMF" metamodel="%EMF" path="../era.foss.erf/model/erf.ecore" />
+		<atl.loadModel name="rif11" modelHandler="EMF" metamodel="%EMF" path="model/rif_11.ecore" />
+		<atl.loadModel name="NewSpecification" modelHandler="EMF" metamodel="erf" path="testresources/NewSpecification.erf"/>		
+
+		<atl.launch path="erf2rif11.asm" refining="true">
+			<inmodel name="IN" model="NewSpecification" />
+			<outmodel name="OUT" model="test" path="testresources/test.rif" metamodel="rif11" />
+		</atl.launch>
+
+		<atl.saveModel model="test" path="testresources/test.rif">
+		</atl.saveModel>
+	</target>
+</project>

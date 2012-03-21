@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http:///era/foss/erf.ecore"
+            class="era.foss.erf.ErfPackage"
+            genModel="model/erf.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.content_parser">
+      <parser
+            contentTypeIdentifier="ErfContentType"
+            class="org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.emf.ecore.xmi"
+            file-extensions="erf"
+            id="ErfContentType"
+            name="%_UI_Erf_content_type"
+            priority="normal">
+         <describer class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+            <parameter name="namespace" value="http:///era/foss/erf.ecore"/>
+            <parameter name="kind" value="xmi"/>
+         </describer>
+      </content-type>
+   </extension>
+
+</plugin>
