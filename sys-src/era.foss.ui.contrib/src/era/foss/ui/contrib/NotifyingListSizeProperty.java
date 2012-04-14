@@ -11,7 +11,7 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 
 public class NotifyingListSizeProperty extends SimpleValueProperty {
     @Override
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({"rawtypes"})
     protected Object doGetValue( final Object source ) {
         return ((NotifyingList)source).size();
     }
@@ -33,14 +33,14 @@ public class NotifyingListSizeProperty extends SimpleValueProperty {
             this.delegate = delegate;
         }
 
-        @SuppressWarnings({"rawtypes", "unchecked"})
+        @SuppressWarnings({"rawtypes"})
         public void addTo( final Object source ) {
             if( source != null ) {
                 ((Notifier)((NotifyingList)source).getNotifier()).eAdapters().add( this );
             }
         }
 
-        @SuppressWarnings({"rawtypes", "unchecked"})
+        @SuppressWarnings({"rawtypes"})
         public void removeFrom( final Object source ) {
             if( source != null ) {
                 ((Notifier)((NotifyingList)source).getNotifier()).eAdapters().remove( this );

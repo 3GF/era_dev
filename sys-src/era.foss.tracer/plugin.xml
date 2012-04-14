@@ -113,7 +113,6 @@
       <super type="org.eclipse.core.resources.bookmark"/> 
       <super type="org.eclipse.core.resources.textmarker"/> 
       <persistent value="true"/> 
-      <transient value="false"/> 
       <attribute name="reqid"/>
    </extension> 
    

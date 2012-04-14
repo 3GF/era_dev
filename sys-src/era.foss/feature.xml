@@ -314,13 +314,6 @@ litigation.
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.nebula.widgets.compositetable"
-         download-size="0"
-         install-size="0"
-         version="1.5.0"
-         unpack="false"/>
-
-   <plugin
          id="era.foss.erf.exporter"
          download-size="0"
          install-size="0"

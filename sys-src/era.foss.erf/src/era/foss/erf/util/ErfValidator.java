@@ -265,6 +265,7 @@ public class ErfValidator extends EObjectValidator {
     public boolean validateAttributeValueSimple( AttributeValueSimple attributeValueSimple,
                                                  DiagnosticChain diagnostics,
                                                  Map<Object, Object> context ) {
+        if( !validate_NoCircularContainment( attributeValueSimple, diagnostics, context ) ) return false;
         boolean result = validate_EveryMultiplicityConforms( attributeValueSimple, diagnostics, context );
         if( result || diagnostics != null ) result &= validate_EveryDataValueConforms( attributeValueSimple,
                                                                                        diagnostics,
@@ -272,6 +273,9 @@ public class ErfValidator extends EObjectValidator {
         if( result || diagnostics != null ) result &= validate_EveryReferenceIsContained( attributeValueSimple,
                                                                                           diagnostics,
                                                                                           context );
+        if( result || diagnostics != null ) result &= validate_EveryBidirectionalReferenceIsPaired( attributeValueSimple,
+                                                                                                    diagnostics,
+                                                                                                    context );
         if( result || diagnostics != null ) result &= validate_EveryProxyResolves( attributeValueSimple,
                                                                                    diagnostics,
                                                                                    context );
@@ -358,6 +362,7 @@ public class ErfValidator extends EObjectValidator {
     public boolean validateDatatypeDefinitionInteger( DatatypeDefinitionInteger datatypeDefinitionInteger,
                                                       DiagnosticChain diagnostics,
                                                       Map<Object, Object> context ) {
+        if( !validate_NoCircularContainment( datatypeDefinitionInteger, diagnostics, context ) ) return false;
         boolean result = validate_EveryMultiplicityConforms( datatypeDefinitionInteger, diagnostics, context );
         if( result || diagnostics != null ) result &= validate_EveryDataValueConforms( datatypeDefinitionInteger,
                                                                                        diagnostics,
@@ -365,6 +370,9 @@ public class ErfValidator extends EObjectValidator {
         if( result || diagnostics != null ) result &= validate_EveryReferenceIsContained( datatypeDefinitionInteger,
                                                                                           diagnostics,
                                                                                           context );
+        if( result || diagnostics != null ) result &= validate_EveryBidirectionalReferenceIsPaired( datatypeDefinitionInteger,
+                                                                                                    diagnostics,
+                                                                                                    context );
         if( result || diagnostics != null ) result &= validate_EveryProxyResolves( datatypeDefinitionInteger,
                                                                                    diagnostics,
                                                                                    context );

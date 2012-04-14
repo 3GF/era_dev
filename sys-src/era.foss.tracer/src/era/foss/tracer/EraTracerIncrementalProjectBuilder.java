@@ -33,8 +33,7 @@ public class EraTracerIncrementalProjectBuilder extends IncrementalProjectBuilde
 
     private static final Logger logger = Logger.getLogger( EraTracerIncrementalProjectBuilder.class.getSimpleName() );
 
-    @SuppressWarnings("unchecked")
-    protected IProject[] build( int kind, Map args, IProgressMonitor monitor ) throws CoreException {
+    protected IProject[] build( int kind, @SuppressWarnings("rawtypes") Map args, IProgressMonitor monitor ) throws CoreException {
         if( kind == IncrementalProjectBuilder.FULL_BUILD ) {
             fullBuild( monitor );
         } else {
