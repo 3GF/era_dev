@@ -49,6 +49,7 @@ public class AttributeDefinitionBooleanComposite extends AbstractAttributeDefini
                 checkBox.setBackground( Display.getDefault().getSystemColor( COLOR_DEFAULT_VALUE ) );
             } else {
                 checkBox.setText( "" );
+                checkBox.setSelection( false);
                 checkBox.setBackground( Display.getDefault().getSystemColor( SWT.COLOR_WIDGET_BACKGROUND ) );
             }
             defaultValueModifyListener = new DefaultModifyListener( specObject, editingDomain );
@@ -73,7 +74,7 @@ public class AttributeDefinitionBooleanComposite extends AbstractAttributeDefini
     }
 
     /**
-     * Listener whichs adds a AttributeValue to a SpecObject in case no
+     * Listener which adds a AttributeValue to a SpecObject in case no
      * 
      */
     private class DefaultModifyListener implements SelectionListener {
