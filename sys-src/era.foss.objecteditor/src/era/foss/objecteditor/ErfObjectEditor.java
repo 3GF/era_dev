@@ -799,36 +799,6 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
                 this.setCurrentViewerPane( viewerPane );
             }
 
-            // Create a page for the ERA SpecObjectViewerPane / TableViewer-based
-            {
-                ViewerPane viewerPane = new NebulaBasedSpecObjectsViewerPane( getSite().getPage(),
-                                                                              ErfObjectEditor.this,
-                                                                              getContainer() ) {
-
-                    @Override
-                    public void requestActivation() {
-                        super.requestActivation();
-                        setCurrentViewerPane( this );
-                    }
-                };
-                int pageIndex = addPage( viewerPane.getControl() );
-                setPageText( pageIndex, "ERA Viewer (deprecated)" );
-            }
-
-            // Create a page for the ERA SpecObjectViewerPane / TableViewer-based
-            {
-                ViewerPane viewerPane = new SpecObjectsViewerPane( getSite().getPage(),
-                                                                   ErfObjectEditor.this,
-                                                                   getContainer() ) {
-                    @Override
-                    public void requestActivation() {
-                        super.requestActivation();
-                        setCurrentViewerPane( this );
-                    }
-                };
-                int pageIndex = addPage( viewerPane.getControl() );
-                setPageText( pageIndex, "Debug Table" );
-            }
 
         }
 
@@ -905,7 +875,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
      * @return the adapter
      */
     @Override
-    public Object getAdapter( @SuppressWarnings({"rawtypes", "unchecked"}) Class key ) {
+    public Object getAdapter( @SuppressWarnings({"rawtypes"}) Class key ) {
         if( key.equals( IContentOutlinePage.class ) ) {
             return showOutlineView() ? getContentOutlinePage() : null;
         } else if( key.equals( IPropertySheetPage.class ) ) {
