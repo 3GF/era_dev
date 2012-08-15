@@ -1,80 +1,44 @@
-/**************************************************************************
- * ERA - Eclipse Requirements Analysis
- * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
- * and Bernd Haberstumpf (http://era.origo.ethz.ch)
- **************************************************************************
- * Licensed under the Eclipse Public License - v 1.0 (the "License");
- * you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * http://www.eclipse.org/org/documents/epl-v10.html
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- **************************************************************************
+/**
+ * <copyright>
+ * </copyright>
+ *
  * $Id$
- *************************************************************************/
+ */
 package era.foss.erf.util;
 
-import java.util.ArrayList;
+import era.foss.erf.*;
+
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.EObjectValidator;
 
-import era.foss.erf.AttributeDefinition;
-import era.foss.erf.AttributeDefinitionBoolean;
-import era.foss.erf.AttributeDefinitionEnumeration;
-import era.foss.erf.AttributeDefinitionSimple;
-import era.foss.erf.AttributeValue;
-import era.foss.erf.AttributeValueBoolean;
-import era.foss.erf.AttributeValueEnumeration;
-import era.foss.erf.AttributeValueSimple;
-import era.foss.erf.Content;
-import era.foss.erf.DatatypeDefinition;
-import era.foss.erf.DatatypeDefinitionBoolean;
-import era.foss.erf.DatatypeDefinitionEnumeration;
-import era.foss.erf.DatatypeDefinitionInteger;
-import era.foss.erf.DatatypeDefinitionSimple;
-import era.foss.erf.DatatypeDefinitionString;
-import era.foss.erf.ERF;
-import era.foss.erf.EmbeddedValue;
-import era.foss.erf.EnumValue;
-import era.foss.erf.EraToolExtension;
-import era.foss.erf.ErfPackage;
-import era.foss.erf.Identifiable;
-import era.foss.erf.SpecElementWithUserDefinedAttributes;
-import era.foss.erf.SpecObject;
-import era.foss.erf.SpecRelation;
-import era.foss.erf.SpecType;
-import era.foss.erf.ToolExtension;
-import era.foss.erf.View;
-import era.foss.erf.ViewElement;
-
 /**
- * <!-- begin-user-doc --> The <b>Validator</b> for the model. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * The <b>Validator</b> for the model.
+ * <!-- end-user-doc -->
  * @see era.foss.erf.ErfPackage
  * @generated
  */
 public class ErfValidator extends EObjectValidator {
-
     /**
      * The cached model package
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public static final ErfValidator INSTANCE = new ErfValidator();
 
     /**
      * A constant for the {@link org.eclipse.emf.common.util.Diagnostic#getSource() source} of diagnostic {@link org.eclipse.emf.common.util.Diagnostic#getCode() codes} from this package.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see org.eclipse.emf.common.util.Diagnostic#getSource()
      * @see org.eclipse.emf.common.util.Diagnostic#getCode()
      * @generated
@@ -82,23 +46,25 @@ public class ErfValidator extends EObjectValidator {
     public static final String DIAGNOSTIC_SOURCE = "era.foss.erf";
 
     /**
-     * A constant with a fixed name that can be used as the base value for additional hand written constants. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * A constant with a fixed name that can be used as the base value for additional hand written constants.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     private static final int GENERATED_DIAGNOSTIC_CODE_COUNT = 0;
 
     /**
      * A constant with a fixed name that can be used as the base value for additional hand written constants in a derived class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     protected static final int DIAGNOSTIC_CODE_COUNT = GENERATED_DIAGNOSTIC_CODE_COUNT;
 
     /**
      * Creates an instance of the switch.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public ErfValidator() {
@@ -107,7 +73,8 @@ public class ErfValidator extends EObjectValidator {
 
     /**
      * Returns the package of this validator switch.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -117,8 +84,8 @@ public class ErfValidator extends EObjectValidator {
 
     /**
      * Calls <code>validateXXX</code> for the corresponding classifier of the model.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -195,7 +162,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateAttributeDefinition( AttributeDefinition attributeDefinition,
@@ -205,7 +173,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateAttributeValue( AttributeValue attributeValue,
@@ -215,7 +184,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateDatatypeDefinition( DatatypeDefinition datatypeDefinition,
@@ -225,7 +195,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateSpecElementWithUserDefinedAttributes( SpecElementWithUserDefinedAttributes specElementWithUserDefinedAttributes,
@@ -235,7 +206,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateSpecObject( SpecObject specObject, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -243,7 +215,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateSpecType( SpecType specType, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -251,7 +224,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateMap( Map<?, ?> map, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -259,13 +233,13 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateAttributeValueSimple( AttributeValueSimple attributeValueSimple,
                                                  DiagnosticChain diagnostics,
                                                  Map<Object, Object> context ) {
-        if( !validate_NoCircularContainment( attributeValueSimple, diagnostics, context ) ) return false;
         boolean result = validate_EveryMultiplicityConforms( attributeValueSimple, diagnostics, context );
         if( result || diagnostics != null ) result &= validate_EveryDataValueConforms( attributeValueSimple,
                                                                                        diagnostics,
@@ -273,9 +247,6 @@ public class ErfValidator extends EObjectValidator {
         if( result || diagnostics != null ) result &= validate_EveryReferenceIsContained( attributeValueSimple,
                                                                                           diagnostics,
                                                                                           context );
-        if( result || diagnostics != null ) result &= validate_EveryBidirectionalReferenceIsPaired( attributeValueSimple,
-                                                                                                    diagnostics,
-                                                                                                    context );
         if( result || diagnostics != null ) result &= validate_EveryProxyResolves( attributeValueSimple,
                                                                                    diagnostics,
                                                                                    context );
@@ -293,60 +264,27 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * Validates the DatatypeDefinitionConstraints constraint of '<em>Attribute Value Simple</em>'. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @NOT generated
+     * Validates the DatatypeDefinitionConstraints constraint of '<em>Attribute Value Simple</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
      */
     public boolean validateAttributeValueSimple_DatatypeDefinitionConstraints( AttributeValueSimple attributeValueSimple,
                                                                                DiagnosticChain diagnostics,
                                                                                Map<Object, Object> context ) {
-        /* String holding the error message key in case an error is detected */
-        String errorMsgKey = null;
-        DatatypeDefinition datatypeDefinition = attributeValueSimple.getDefinition().getType();
-        ArrayList<Object> substitutions = new ArrayList<Object>();
-        substitutions.add( attributeValueSimple.getTheValue() );
-
-        /* Check constraints if value is of DatatypedefinitionInteger */
-        if( datatypeDefinition instanceof DatatypeDefinitionInteger ) {
-
-            DatatypeDefinitionInteger datatypeDefinitionInteger = (DatatypeDefinitionInteger)datatypeDefinition;
-
-            int integerValue = 0;
-            try {
-                integerValue = Integer.parseInt( attributeValueSimple.getTheValue() );
-            } catch( NumberFormatException e ) {
-                errorMsgKey = "_UI_DatatypeDefinitionConstraints_InvalidInteger";
-            }
-
-            if( errorMsgKey == null ) {
-                if( (datatypeDefinitionInteger.isSetMax() && integerValue > datatypeDefinitionInteger.getMax())
-                    || (datatypeDefinitionInteger.isSetMin() && integerValue < datatypeDefinitionInteger.getMin()) ) {
-                    errorMsgKey = "_UI_DatatypeDefinitionConstraints_Range";
-                    substitutions.add( datatypeDefinitionInteger.getMin() );
-                    substitutions.add( datatypeDefinitionInteger.getMax() );
-                }
-            }
-        }
-
-        /* Check constraints if value is of DatatypedefinitionString */
-        else if( datatypeDefinition instanceof DatatypeDefinitionString ) {
-            DatatypeDefinitionString datatypeDefinitionString = (DatatypeDefinitionString)datatypeDefinition;
-            if( datatypeDefinitionString.isSetMaxLength()
-                && attributeValueSimple.getTheValue().length() > datatypeDefinitionString.getMaxLength() ) {
-                errorMsgKey = "_UI_DatatypeDefinitionConstraints_StringLength";
-                substitutions.add( datatypeDefinitionString.getMaxLength() );
-            }
-        }
-
-        /* check if an error has occurred */
-        if( errorMsgKey != null && diagnostics != null ) {
+        // TODO implement the constraint
+        // -> specify the condition that violates the constraint
+        // -> verify the diagnostic details, including severity, code, and message
+        // Ensure that you remove @generated or mark it @generated NOT
+        if( false ) {
             if( diagnostics != null ) {
                 diagnostics.add( createDiagnostic( Diagnostic.ERROR,
                                                    DIAGNOSTIC_SOURCE,
                                                    0,
-                                                   errorMsgKey,
-                                                   substitutions.toArray(),
+                                                   "_UI_GenericConstraint_diagnostic",
+                                                   new Object[]{
+                                                       "DatatypeDefinitionConstraints",
+                                                       getObjectLabel( attributeValueSimple, context )},
                                                    new Object[]{attributeValueSimple},
                                                    context ) );
             }
@@ -356,13 +294,13 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateDatatypeDefinitionInteger( DatatypeDefinitionInteger datatypeDefinitionInteger,
                                                       DiagnosticChain diagnostics,
                                                       Map<Object, Object> context ) {
-        if( !validate_NoCircularContainment( datatypeDefinitionInteger, diagnostics, context ) ) return false;
         boolean result = validate_EveryMultiplicityConforms( datatypeDefinitionInteger, diagnostics, context );
         if( result || diagnostics != null ) result &= validate_EveryDataValueConforms( datatypeDefinitionInteger,
                                                                                        diagnostics,
@@ -370,9 +308,6 @@ public class ErfValidator extends EObjectValidator {
         if( result || diagnostics != null ) result &= validate_EveryReferenceIsContained( datatypeDefinitionInteger,
                                                                                           diagnostics,
                                                                                           context );
-        if( result || diagnostics != null ) result &= validate_EveryBidirectionalReferenceIsPaired( datatypeDefinitionInteger,
-                                                                                                    diagnostics,
-                                                                                                    context );
         if( result || diagnostics != null ) result &= validate_EveryProxyResolves( datatypeDefinitionInteger,
                                                                                    diagnostics,
                                                                                    context );
@@ -395,16 +330,19 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * Validates the NonNegative constraint of '<em>Datatype Definition Integer</em>'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @NOT generated
+     * Validates the NonNegative constraint of '<em>Datatype Definition Integer</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
      */
     public boolean validateDatatypeDefinitionInteger_NonNegative( DatatypeDefinitionInteger datatypeDefinitionInteger,
                                                                   DiagnosticChain diagnostics,
                                                                   Map<Object, Object> context ) {
-        if( (datatypeDefinitionInteger.isSetMax() && datatypeDefinitionInteger.getMax() < 0)
-            || (datatypeDefinitionInteger.isSetMin() && datatypeDefinitionInteger.getMin() < 0) ) {
+        // TODO implement the constraint
+        // -> specify the condition that violates the constraint
+        // -> verify the diagnostic details, including severity, code, and message
+        // Ensure that you remove @generated or mark it @generated NOT
+        if( false ) {
             if( diagnostics != null ) {
                 diagnostics.add( createDiagnostic( Diagnostic.ERROR,
                                                    DIAGNOSTIC_SOURCE,
@@ -422,17 +360,19 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * Validates the MaxGreaterThanMin constraint of '<em>Datatype Definition Integer</em>'. <!-- begin-user-doc -->
+     * Validates the MaxGreaterThanMin constraint of '<em>Datatype Definition Integer</em>'.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
-     * @NOT generated
+     * @generated
      */
     public boolean validateDatatypeDefinitionInteger_MaxGreaterThanMin( DatatypeDefinitionInteger datatypeDefinitionInteger,
                                                                         DiagnosticChain diagnostics,
                                                                         Map<Object, Object> context ) {
-        if( datatypeDefinitionInteger.isSetMax()
-            && datatypeDefinitionInteger.isSetMin()
-            && datatypeDefinitionInteger.getMax() < datatypeDefinitionInteger.getMin() ) {
+        // TODO implement the constraint
+        // -> specify the condition that violates the constraint
+        // -> verify the diagnostic details, including severity, code, and message
+        // Ensure that you remove @generated or mark it @generated NOT
+        if( false ) {
             if( diagnostics != null ) {
                 diagnostics.add( createDiagnostic( Diagnostic.ERROR,
                                                    DIAGNOSTIC_SOURCE,
@@ -450,7 +390,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateDatatypeDefinitionSimple( DatatypeDefinitionSimple datatypeDefinitionSimple,
@@ -460,7 +401,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateDatatypeDefinitionString( DatatypeDefinitionString datatypeDefinitionString,
@@ -470,7 +412,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateIdentifiable( Identifiable identifiable,
@@ -480,7 +423,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateAttributeDefinitionSimple( AttributeDefinitionSimple attributeDefinitionSimple,
@@ -490,7 +434,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateERF( ERF erf, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -498,7 +443,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateContent( Content content, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -506,7 +452,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateSpecRelation( SpecRelation specRelation,
@@ -516,7 +463,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateEmbeddedValue( EmbeddedValue embeddedValue,
@@ -526,7 +474,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateEnumValue( EnumValue enumValue, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -534,7 +483,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateDatatypeDefinitionEnumeration( DatatypeDefinitionEnumeration datatypeDefinitionEnumeration,
@@ -544,7 +494,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateAttributeDefinitionEnumeration( AttributeDefinitionEnumeration attributeDefinitionEnumeration,
@@ -554,7 +505,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateAttributeValueEnumeration( AttributeValueEnumeration attributeValueEnumeration,
@@ -564,7 +516,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateDatatypeDefinitionBoolean( DatatypeDefinitionBoolean datatypeDefinitionBoolean,
@@ -574,7 +527,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateAttributeDefinitionBoolean( AttributeDefinitionBoolean attributeDefinitionBoolean,
@@ -584,7 +538,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateAttributeValueBoolean( AttributeValueBoolean attributeValueBoolean,
@@ -594,7 +549,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateToolExtension( ToolExtension toolExtension,
@@ -604,7 +560,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateView( View view, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -612,7 +569,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateViewElement( ViewElement viewElement,
@@ -622,7 +580,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateEraToolExtension( EraToolExtension eraToolExtension,
@@ -632,7 +591,8 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
     public boolean validateDiagnosticChain( DiagnosticChain diagnosticChain,
@@ -642,14 +602,17 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * Returns the resource locator that will be used to fetch messages for this validator's diagnostics. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @NOT generated
+     * Returns the resource locator that will be used to fetch messages for this validator's diagnostics.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return Activator.INSTANCE.getPluginResourceLocator();
+        // TODO
+        // Specialize this to return a resource locator for messages specific to this validator.
+        // Ensure that you remove @generated or mark it @generated NOT
+        return super.getResourceLocator();
     }
 
-} // ErfValidator
+} //ErfValidator

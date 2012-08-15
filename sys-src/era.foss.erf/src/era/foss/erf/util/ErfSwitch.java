@@ -1,57 +1,18 @@
-/**************************************************************************
- * ERA - Eclipse Requirements Analysis
- * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
- * and Bernd Haberstumpf (http://era.origo.ethz.ch)
- **************************************************************************
- * Licensed under the Eclipse Public License - v 1.0 (the "License");
- * you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- * http://www.eclipse.org/org/documents/epl-v10.html
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- **************************************************************************
+/**
+ * <copyright>
+ * </copyright>
+ *
  * $Id$
- *************************************************************************/
+ */
 package era.foss.erf.util;
 
+import era.foss.erf.*;
+
+import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
-
-import era.foss.erf.AttributeDefinition;
-import era.foss.erf.AttributeDefinitionBoolean;
-import era.foss.erf.AttributeDefinitionEnumeration;
-import era.foss.erf.AttributeDefinitionSimple;
-import era.foss.erf.AttributeValue;
-import era.foss.erf.AttributeValueBoolean;
-import era.foss.erf.AttributeValueEnumeration;
-import era.foss.erf.AttributeValueSimple;
-import era.foss.erf.Content;
-import era.foss.erf.DatatypeDefinition;
-import era.foss.erf.DatatypeDefinitionBoolean;
-import era.foss.erf.DatatypeDefinitionEnumeration;
-import era.foss.erf.DatatypeDefinitionInteger;
-import era.foss.erf.DatatypeDefinitionSimple;
-import era.foss.erf.DatatypeDefinitionString;
-import era.foss.erf.ERF;
-import era.foss.erf.EmbeddedValue;
-import era.foss.erf.EnumValue;
-import era.foss.erf.EraToolExtension;
-import era.foss.erf.ErfPackage;
-import era.foss.erf.Identifiable;
-import era.foss.erf.SpecElementWithUserDefinedAttributes;
-import era.foss.erf.SpecObject;
-import era.foss.erf.SpecRelation;
-import era.foss.erf.SpecType;
-import era.foss.erf.ToolExtension;
-import era.foss.erf.View;
-import era.foss.erf.ViewElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -66,8 +27,7 @@ import era.foss.erf.ViewElement;
  * @see era.foss.erf.ErfPackage
  * @generated
  */
-public class ErfSwitch<T2> extends Switch<T2> {
-
+public class ErfSwitch<T2> {
     /**
      * The cached model package
      * <!-- begin-user-doc -->
@@ -89,16 +49,14 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Checks whether this is a switch for the given package.
+     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @parameter ePackage the package in question.
-     * @return whether this is a switch for the given package.
+     * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
-    @Override
-    protected boolean isSwitchFor( EPackage ePackage ) {
-        return ePackage == modelPackage;
+    public T2 doSwitch( EObject theEObject ) {
+        return doSwitch( theEObject.eClass(), theEObject );
     }
 
     /**
@@ -108,7 +66,22 @@ public class ErfSwitch<T2> extends Switch<T2> {
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
-    @Override
+    protected T2 doSwitch( EClass theEClass, EObject theEObject ) {
+        if( theEClass.eContainer() == modelPackage ) {
+            return doSwitch( theEClass.getClassifierID(), theEObject );
+        } else {
+            List<EClass> eSuperTypes = theEClass.getESuperTypes();
+            return eSuperTypes.isEmpty() ? defaultCase( theEObject ) : doSwitch( eSuperTypes.get( 0 ), theEObject );
+        }
+    }
+
+    /**
+     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the first non-null result returned by a <code>caseXXX</code> call.
+     * @generated
+     */
     protected T2 doSwitch( int classifierID, EObject theEObject ) {
         switch (classifierID) {
         case ErfPackage.ATTRIBUTE_DEFINITION: {
@@ -745,7 +718,6 @@ public class ErfSwitch<T2> extends Switch<T2> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject)
      * @generated
      */
-    @Override
     public T2 defaultCase( EObject object ) {
         return null;
     }
