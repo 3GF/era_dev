@@ -119,7 +119,6 @@
   <extension point="org.eclipse.ui.editors.annotationTypes">
      <type
         super="org.eclipse.ui.workbench.texteditor.bookmark"
-        markerType="era.foss.tracer.reqmarker"
         name="era.foss.tracer.reqannotation"
      />
   </extension>
