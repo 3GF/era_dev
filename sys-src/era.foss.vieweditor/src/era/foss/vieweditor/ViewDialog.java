@@ -74,8 +74,8 @@ import era.foss.objecteditor.IAllowViewerSchemaChange;
 import era.foss.typeeditor.AddDeleteTableViewer;
 import era.foss.typeeditor.Ui;
 import era.foss.typeeditor.ui.BindingCheckBox;
-import era.foss.typeeditor.ui.BindingText;
 import era.foss.ui.contrib.ComboBoxViewerCellEditorSp;
+import era.foss.vieweditor.specobjectlayoutviewer.SpecObjectLayoutViewer;
 
 /**
  * The topmost UI class of the typeeditor plug-in: representing the overall dialog.
@@ -164,7 +164,7 @@ public class ViewDialog extends Dialog {
     protected void configureShell( Shell shell ) {
         super.configureShell( shell );
         shell.setText( viewEditorActivator.getString( "_UI_View_Editor_label" ) );
-        shell.setMinimumSize( 800, 400 );
+        shell.setMinimumSize( 1000, 400 );
     }
 
     /*
@@ -181,10 +181,11 @@ public class ViewDialog extends Dialog {
 
             }
         } );
-        composite.setLayout( new GridLayout( 3, true ) );
+        composite.setLayout( new GridLayout( 4, true ) );
 
         createViewTableViewer( composite );
         createViewElementTableViewer( composite );
+        createViewLayoutViewer( composite );
         createDetails( composite );
 
         // (font of parent will be applied recursively to the newly added controls!)
@@ -371,6 +372,13 @@ public class ViewDialog extends Dialog {
         this.viewElementMaster = ViewerProperties.singleSelection().observe( viewElementTableViewer );
     }
 
+    private void createViewLayoutViewer( Composite composite ) {
+        // TODO Auto-generated method stub
+        SpecObjectLayoutViewer viewer = new SpecObjectLayoutViewer( editingDomain, composite );
+        viewer.getControl().setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        viewer.setContents( viewMaster );
+    }
+
     /**
      * Creates the table viewer.
      */
@@ -430,12 +438,6 @@ public class ViewDialog extends Dialog {
 
         // create checkbox for editoShowLabel property
         createCheckbox( parent, ErfPackage.Literals.VIEW_ELEMENT__EDITOR_SHOW_LABEL );
-
-        // text field for editorRowNumber property
-        createTextField( parent, ErfPackage.Literals.VIEW_ELEMENT__EDITOR_ROW_NUMBER );
-
-        // text field for editorColumnSpan property
-        createTextField( parent, ErfPackage.Literals.VIEW_ELEMENT__EDITOR_COLUMN_SPAN );
     }
 
     private void createCheckbox( Composite parent, EStructuralFeature eStructuralFeature ) {
@@ -452,16 +454,16 @@ public class ViewDialog extends Dialog {
 
     }
 
-    private void createTextField( Composite parent, EStructuralFeature eStructuralFeature ) {
-        // label for editorRowNumber property
-        Label defaultValueLabel = new Label( parent, SWT.NONE );
-        defaultValueLabel.setText( Ui.getUiName( eStructuralFeature ) );
-        defaultValueLabel.setLayoutData( new GridData( SWT.LEFT, SWT.CENTER, true, false ) );
-
-        // text field for editorRowNumber property
-        BindingText defaultValueTextfield = new BindingText( parent, SWT.BORDER );
-        defaultValueTextfield.bind( editingDomain, eStructuralFeature, viewElementMaster );
-        defaultValueTextfield.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false ) );
-
-    }
+    /*
+     * private void createTextField( Composite parent, EStructuralFeature eStructuralFeature ) { // label for
+     * editorRowNumber property Label defaultValueLabel = new Label( parent, SWT.NONE ); defaultValueLabel.setText(
+     * Ui.getUiName( eStructuralFeature ) ); defaultValueLabel.setLayoutData( new GridData( SWT.LEFT, SWT.CENTER, true,
+     * false ) );
+     * 
+     * // text field for editorRowNumber property BindingText defaultValueTextfield = new BindingText( parent,
+     * SWT.BORDER ); defaultValueTextfield.bind( editingDomain, eStructuralFeature, viewElementMaster );
+     * defaultValueTextfield.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false ) );
+     * 
+     * }
+     */
 }

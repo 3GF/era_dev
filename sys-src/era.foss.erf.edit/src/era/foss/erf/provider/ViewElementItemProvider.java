@@ -58,9 +58,11 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
             super.getPropertyDescriptors( object );
 
             addEditorShowLabelPropertyDescriptor( object );
-            addEditorRowNumberPropertyDescriptor( object );
             addEditorColumnSpanPropertyDescriptor( object );
             addAttributeDefinitionPropertyDescriptor( object );
+            addEditorRowPositionPropertyDescriptor( object );
+            addEditorRowSpanPropertyDescriptor( object );
+            addEditorColumnPositionPropertyDescriptor( object );
         }
         return itemPropertyDescriptors;
     }
@@ -83,28 +85,6 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
                                                                    false,
                                                                    false,
                                                                    ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                                                                   null,
-                                                                   null ) );
-    }
-
-    /**
-     * This adds a property descriptor for the Editor Row Number feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addEditorRowNumberPropertyDescriptor( Object object ) {
-        itemPropertyDescriptors.add( createItemPropertyDescriptor( ((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                                                                   getResourceLocator(),
-                                                                   getString( "_UI_ViewElement_editorRowNumber_feature" ),
-                                                                   getString( "_UI_PropertyDescriptor_description",
-                                                                              "_UI_ViewElement_editorRowNumber_feature",
-                                                                              "_UI_ViewElement_type" ),
-                                                                   ErfPackage.Literals.VIEW_ELEMENT__EDITOR_ROW_NUMBER,
-                                                                   true,
-                                                                   false,
-                                                                   false,
-                                                                   ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
                                                                    null,
                                                                    null ) );
     }
@@ -154,6 +134,72 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
     }
 
     /**
+     * This adds a property descriptor for the Editor Row Position feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addEditorRowPositionPropertyDescriptor( Object object ) {
+        itemPropertyDescriptors.add( createItemPropertyDescriptor( ((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                                                   getResourceLocator(),
+                                                                   getString( "_UI_ViewElement_editorRowPosition_feature" ),
+                                                                   getString( "_UI_PropertyDescriptor_description",
+                                                                              "_UI_ViewElement_editorRowPosition_feature",
+                                                                              "_UI_ViewElement_type" ),
+                                                                   ErfPackage.Literals.VIEW_ELEMENT__EDITOR_ROW_POSITION,
+                                                                   true,
+                                                                   false,
+                                                                   false,
+                                                                   ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                                                                   null,
+                                                                   null ) );
+    }
+
+    /**
+     * This adds a property descriptor for the Editor Row Span feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addEditorRowSpanPropertyDescriptor( Object object ) {
+        itemPropertyDescriptors.add( createItemPropertyDescriptor( ((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                                                   getResourceLocator(),
+                                                                   getString( "_UI_ViewElement_editorRowSpan_feature" ),
+                                                                   getString( "_UI_PropertyDescriptor_description",
+                                                                              "_UI_ViewElement_editorRowSpan_feature",
+                                                                              "_UI_ViewElement_type" ),
+                                                                   ErfPackage.Literals.VIEW_ELEMENT__EDITOR_ROW_SPAN,
+                                                                   true,
+                                                                   false,
+                                                                   false,
+                                                                   ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                                                                   null,
+                                                                   null ) );
+    }
+
+    /**
+     * This adds a property descriptor for the Editor Column Position feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addEditorColumnPositionPropertyDescriptor( Object object ) {
+        itemPropertyDescriptors.add( createItemPropertyDescriptor( ((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                                                   getResourceLocator(),
+                                                                   getString( "_UI_ViewElement_editorColumnPosition_feature" ),
+                                                                   getString( "_UI_PropertyDescriptor_description",
+                                                                              "_UI_ViewElement_editorColumnPosition_feature",
+                                                                              "_UI_ViewElement_type" ),
+                                                                   ErfPackage.Literals.VIEW_ELEMENT__EDITOR_COLUMN_POSITION,
+                                                                   true,
+                                                                   false,
+                                                                   false,
+                                                                   ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                                                                   null,
+                                                                   null ) );
+    }
+
+    /**
      * This returns ViewElement.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -189,8 +235,10 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
 
         switch (notification.getFeatureID( ViewElement.class )) {
         case ErfPackage.VIEW_ELEMENT__EDITOR_SHOW_LABEL:
-        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_NUMBER:
         case ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_SPAN:
+        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_POSITION:
+        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_SPAN:
+        case ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_POSITION:
             fireNotifyChanged( new ViewerNotification( notification, notification.getNotifier(), false, true ) );
             return;
         }

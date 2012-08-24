@@ -123,8 +123,8 @@ class SpecObjectViewerRow extends Composite {
         Collections.sort( viewElementList, new Comparator<ViewElement>() {
             @Override
             public int compare( ViewElement elem1, ViewElement elem2 ) {
-                int elemRow1 = elem1.getEditorRowNumber();
-                int elemRow2 = elem2.getEditorRowNumber();
+                int elemRow1 = elem1.getEditorRowPosition();
+                int elemRow2 = elem2.getEditorRowPosition();
                 return elemRow1 != elemRow2 ? elemRow1 - elemRow2 : viewElementList.indexOf( elem1 )
                     - viewElementList.indexOf( elem2 );
             }
@@ -199,11 +199,11 @@ class SpecObjectViewerRow extends Composite {
         viewComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
 
         // get row number of first view element
-        int curRow = viewElementList.get( 0 ).getEditorRowNumber();
+        int curRow = viewElementList.get( 0 ).getEditorRowPosition();
 
         int curSpan = 0;
         for( final ViewElement viewElement : viewElementList ) {
-            final int r = viewElement.getEditorRowNumber();
+            final int r = viewElement.getEditorRowPosition();
             // do we have a row switch at this point of iteration?
             if( r > curRow ) {
                 // WARNING: this code block is not executed for the end of the last line!
@@ -273,11 +273,11 @@ class SpecObjectViewerRow extends Composite {
         int maxColumnSpan = 0;
 
         // get row number of first entry
-        int curRow = viewElementList.get( 0 ).getEditorRowNumber();
+        int curRow = viewElementList.get( 0 ).getEditorRowPosition();
 
         int curSpan = 0;
         for( ViewElement viewElement : viewElementList ) {
-            int r = viewElement.getEditorRowNumber();
+            int r = viewElement.getEditorRowPosition();
             // do we have a row switch at this point of iteration?
             if( r > curRow ) {
                 // WARNING: this code block is not executed for the end of the last line!

@@ -26,9 +26,11 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link era.foss.erf.impl.ViewElementImpl#isEditorShowLabel <em>Editor Show Label</em>}</li>
- *   <li>{@link era.foss.erf.impl.ViewElementImpl#getEditorRowNumber <em>Editor Row Number</em>}</li>
  *   <li>{@link era.foss.erf.impl.ViewElementImpl#getEditorColumnSpan <em>Editor Column Span</em>}</li>
  *   <li>{@link era.foss.erf.impl.ViewElementImpl#getAttributeDefinition <em>Attribute Definition</em>}</li>
+ *   <li>{@link era.foss.erf.impl.ViewElementImpl#getEditorRowPosition <em>Editor Row Position</em>}</li>
+ *   <li>{@link era.foss.erf.impl.ViewElementImpl#getEditorRowSpan <em>Editor Row Span</em>}</li>
+ *   <li>{@link era.foss.erf.impl.ViewElementImpl#getEditorColumnPosition <em>Editor Column Position</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,26 +56,6 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
      * @ordered
      */
     protected boolean editorShowLabel = EDITOR_SHOW_LABEL_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #getEditorRowNumber() <em>Editor Row Number</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getEditorRowNumber()
-     * @generated
-     * @ordered
-     */
-    protected static final int EDITOR_ROW_NUMBER_EDEFAULT = 1;
-
-    /**
-     * The cached value of the '{@link #getEditorRowNumber() <em>Editor Row Number</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see #getEditorRowNumber()
-     * @generated
-     * @ordered
-     */
-    protected int editorRowNumber = EDITOR_ROW_NUMBER_EDEFAULT;
 
     /**
      * The default value of the '{@link #getEditorColumnSpan() <em>Editor Column Span</em>}' attribute.
@@ -104,6 +86,66 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
      * @ordered
      */
     protected AttributeDefinition attributeDefinition;
+
+    /**
+     * The default value of the '{@link #getEditorRowPosition() <em>Editor Row Position</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getEditorRowPosition()
+     * @generated
+     * @ordered
+     */
+    protected static final int EDITOR_ROW_POSITION_EDEFAULT = 1;
+
+    /**
+     * The cached value of the '{@link #getEditorRowPosition() <em>Editor Row Position</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getEditorRowPosition()
+     * @generated
+     * @ordered
+     */
+    protected int editorRowPosition = EDITOR_ROW_POSITION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getEditorRowSpan() <em>Editor Row Span</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getEditorRowSpan()
+     * @generated
+     * @ordered
+     */
+    protected static final int EDITOR_ROW_SPAN_EDEFAULT = 1;
+
+    /**
+     * The cached value of the '{@link #getEditorRowSpan() <em>Editor Row Span</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getEditorRowSpan()
+     * @generated
+     * @ordered
+     */
+    protected int editorRowSpan = EDITOR_ROW_SPAN_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getEditorColumnPosition() <em>Editor Column Position</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getEditorColumnPosition()
+     * @generated
+     * @ordered
+     */
+    protected static final int EDITOR_COLUMN_POSITION_EDEFAULT = 1;
+
+    /**
+     * The cached value of the '{@link #getEditorColumnPosition() <em>Editor Column Position</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getEditorColumnPosition()
+     * @generated
+     * @ordered
+     */
+    protected int editorColumnPosition = EDITOR_COLUMN_POSITION_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -154,8 +196,8 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
      * <!-- end-user-doc -->
      * @generated
      */
-    public int getEditorRowNumber() {
-        return editorRowNumber;
+    public int getEditorRowPosition() {
+        return editorRowPosition;
     }
 
     /**
@@ -163,15 +205,65 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setEditorRowNumber( int newEditorRowNumber ) {
-        int oldEditorRowNumber = editorRowNumber;
-        editorRowNumber = newEditorRowNumber;
+    public void setEditorRowPosition( int newEditorRowPosition ) {
+        int oldEditorRowPosition = editorRowPosition;
+        editorRowPosition = newEditorRowPosition;
         if( eNotificationRequired() ) eNotify( new ENotificationImpl(
             this,
             Notification.SET,
-            ErfPackage.VIEW_ELEMENT__EDITOR_ROW_NUMBER,
-            oldEditorRowNumber,
-            editorRowNumber ) );
+            ErfPackage.VIEW_ELEMENT__EDITOR_ROW_POSITION,
+            oldEditorRowPosition,
+            editorRowPosition ) );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public int getEditorRowSpan() {
+        return editorRowSpan;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setEditorRowSpan( int newEditorRowSpan ) {
+        int oldEditorRowSpan = editorRowSpan;
+        editorRowSpan = newEditorRowSpan;
+        if( eNotificationRequired() ) eNotify( new ENotificationImpl(
+            this,
+            Notification.SET,
+            ErfPackage.VIEW_ELEMENT__EDITOR_ROW_SPAN,
+            oldEditorRowSpan,
+            editorRowSpan ) );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public int getEditorColumnPosition() {
+        return editorColumnPosition;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setEditorColumnPosition( int newEditorColumnPosition ) {
+        int oldEditorColumnPosition = editorColumnPosition;
+        editorColumnPosition = newEditorColumnPosition;
+        if( eNotificationRequired() ) eNotify( new ENotificationImpl(
+            this,
+            Notification.SET,
+            ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_POSITION,
+            oldEditorColumnPosition,
+            editorColumnPosition ) );
     }
 
     /**
@@ -255,13 +347,17 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
         switch (featureID) {
         case ErfPackage.VIEW_ELEMENT__EDITOR_SHOW_LABEL:
             return isEditorShowLabel();
-        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_NUMBER:
-            return getEditorRowNumber();
         case ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_SPAN:
             return getEditorColumnSpan();
         case ErfPackage.VIEW_ELEMENT__ATTRIBUTE_DEFINITION:
             if( resolve ) return getAttributeDefinition();
             return basicGetAttributeDefinition();
+        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_POSITION:
+            return getEditorRowPosition();
+        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_SPAN:
+            return getEditorRowSpan();
+        case ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_POSITION:
+            return getEditorColumnPosition();
         }
         return super.eGet( featureID, resolve, coreType );
     }
@@ -277,14 +373,20 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
         case ErfPackage.VIEW_ELEMENT__EDITOR_SHOW_LABEL:
             setEditorShowLabel( (Boolean)newValue );
             return;
-        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_NUMBER:
-            setEditorRowNumber( (Integer)newValue );
-            return;
         case ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_SPAN:
             setEditorColumnSpan( (Integer)newValue );
             return;
         case ErfPackage.VIEW_ELEMENT__ATTRIBUTE_DEFINITION:
             setAttributeDefinition( (AttributeDefinition)newValue );
+            return;
+        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_POSITION:
+            setEditorRowPosition( (Integer)newValue );
+            return;
+        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_SPAN:
+            setEditorRowSpan( (Integer)newValue );
+            return;
+        case ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_POSITION:
+            setEditorColumnPosition( (Integer)newValue );
             return;
         }
         super.eSet( featureID, newValue );
@@ -301,14 +403,20 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
         case ErfPackage.VIEW_ELEMENT__EDITOR_SHOW_LABEL:
             setEditorShowLabel( EDITOR_SHOW_LABEL_EDEFAULT );
             return;
-        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_NUMBER:
-            setEditorRowNumber( EDITOR_ROW_NUMBER_EDEFAULT );
-            return;
         case ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_SPAN:
             setEditorColumnSpan( EDITOR_COLUMN_SPAN_EDEFAULT );
             return;
         case ErfPackage.VIEW_ELEMENT__ATTRIBUTE_DEFINITION:
             setAttributeDefinition( (AttributeDefinition)null );
+            return;
+        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_POSITION:
+            setEditorRowPosition( EDITOR_ROW_POSITION_EDEFAULT );
+            return;
+        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_SPAN:
+            setEditorRowSpan( EDITOR_ROW_SPAN_EDEFAULT );
+            return;
+        case ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_POSITION:
+            setEditorColumnPosition( EDITOR_COLUMN_POSITION_EDEFAULT );
             return;
         }
         super.eUnset( featureID );
@@ -324,12 +432,16 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
         switch (featureID) {
         case ErfPackage.VIEW_ELEMENT__EDITOR_SHOW_LABEL:
             return editorShowLabel != EDITOR_SHOW_LABEL_EDEFAULT;
-        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_NUMBER:
-            return editorRowNumber != EDITOR_ROW_NUMBER_EDEFAULT;
         case ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_SPAN:
             return editorColumnSpan != EDITOR_COLUMN_SPAN_EDEFAULT;
         case ErfPackage.VIEW_ELEMENT__ATTRIBUTE_DEFINITION:
             return attributeDefinition != null;
+        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_POSITION:
+            return editorRowPosition != EDITOR_ROW_POSITION_EDEFAULT;
+        case ErfPackage.VIEW_ELEMENT__EDITOR_ROW_SPAN:
+            return editorRowSpan != EDITOR_ROW_SPAN_EDEFAULT;
+        case ErfPackage.VIEW_ELEMENT__EDITOR_COLUMN_POSITION:
+            return editorColumnPosition != EDITOR_COLUMN_POSITION_EDEFAULT;
         }
         return super.eIsSet( featureID );
     }
@@ -346,10 +458,14 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
         StringBuffer result = new StringBuffer( super.toString() );
         result.append( " (editorShowLabel: " );
         result.append( editorShowLabel );
-        result.append( ", editorRowNumber: " );
-        result.append( editorRowNumber );
         result.append( ", editorColumnSpan: " );
         result.append( editorColumnSpan );
+        result.append( ", editorRowPosition: " );
+        result.append( editorRowPosition );
+        result.append( ", editorRowSpan: " );
+        result.append( editorRowSpan );
+        result.append( ", editorColumnPosition: " );
+        result.append( editorColumnPosition );
         result.append( ')' );
         return result.toString();
     }

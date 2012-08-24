@@ -1676,22 +1676,13 @@ public interface ErfPackage extends EPackage {
     int VIEW_ELEMENT__EDITOR_SHOW_LABEL = 0;
 
     /**
-     * The feature id for the '<em><b>Editor Row Number</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int VIEW_ELEMENT__EDITOR_ROW_NUMBER = 1;
-
-    /**
      * The feature id for the '<em><b>Editor Column Span</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int VIEW_ELEMENT__EDITOR_COLUMN_SPAN = 2;
+    int VIEW_ELEMENT__EDITOR_COLUMN_SPAN = 1;
 
     /**
      * The feature id for the '<em><b>Attribute Definition</b></em>' reference.
@@ -1700,7 +1691,34 @@ public interface ErfPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int VIEW_ELEMENT__ATTRIBUTE_DEFINITION = 3;
+    int VIEW_ELEMENT__ATTRIBUTE_DEFINITION = 2;
+
+    /**
+     * The feature id for the '<em><b>Editor Row Position</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VIEW_ELEMENT__EDITOR_ROW_POSITION = 3;
+
+    /**
+     * The feature id for the '<em><b>Editor Row Span</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VIEW_ELEMENT__EDITOR_ROW_SPAN = 4;
+
+    /**
+     * The feature id for the '<em><b>Editor Column Position</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VIEW_ELEMENT__EDITOR_COLUMN_POSITION = 5;
 
     /**
      * The number of structural features of the '<em>View Element</em>' class.
@@ -1709,7 +1727,7 @@ public interface ErfPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int VIEW_ELEMENT_FEATURE_COUNT = 4;
+    int VIEW_ELEMENT_FEATURE_COUNT = 6;
 
     /**
      * The meta object id for the '{@link era.foss.erf.impl.EraToolExtensionImpl <em>Era Tool Extension</em>}' class.
@@ -2439,17 +2457,6 @@ public interface ErfPackage extends EPackage {
     EAttribute getViewElement_EditorShowLabel();
 
     /**
-     * Returns the meta object for the attribute '{@link era.foss.erf.ViewElement#getEditorRowNumber <em>Editor Row Number</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>Editor Row Number</em>'.
-     * @see era.foss.erf.ViewElement#getEditorRowNumber()
-     * @see #getViewElement()
-     * @generated
-     */
-    EAttribute getViewElement_EditorRowNumber();
-
-    /**
      * Returns the meta object for the attribute '{@link era.foss.erf.ViewElement#getEditorColumnSpan <em>Editor Column Span</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2470,6 +2477,39 @@ public interface ErfPackage extends EPackage {
      * @generated
      */
     EReference getViewElement_AttributeDefinition();
+
+    /**
+     * Returns the meta object for the attribute '{@link era.foss.erf.ViewElement#getEditorRowPosition <em>Editor Row Position</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Editor Row Position</em>'.
+     * @see era.foss.erf.ViewElement#getEditorRowPosition()
+     * @see #getViewElement()
+     * @generated
+     */
+    EAttribute getViewElement_EditorRowPosition();
+
+    /**
+     * Returns the meta object for the attribute '{@link era.foss.erf.ViewElement#getEditorRowSpan <em>Editor Row Span</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Editor Row Span</em>'.
+     * @see era.foss.erf.ViewElement#getEditorRowSpan()
+     * @see #getViewElement()
+     * @generated
+     */
+    EAttribute getViewElement_EditorRowSpan();
+
+    /**
+     * Returns the meta object for the attribute '{@link era.foss.erf.ViewElement#getEditorColumnPosition <em>Editor Column Position</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Editor Column Position</em>'.
+     * @see era.foss.erf.ViewElement#getEditorColumnPosition()
+     * @see #getViewElement()
+     * @generated
+     */
+    EAttribute getViewElement_EditorColumnPosition();
 
     /**
      * Returns the meta object for class '{@link era.foss.erf.EraToolExtension <em>Era Tool Extension</em>}'.
@@ -3036,13 +3076,6 @@ public interface ErfPackage extends EPackage {
          */
         EAttribute VIEW_ELEMENT__EDITOR_SHOW_LABEL = eINSTANCE.getViewElement_EditorShowLabel();
         /**
-         * The meta object literal for the '<em><b>Editor Row Number</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute VIEW_ELEMENT__EDITOR_ROW_NUMBER = eINSTANCE.getViewElement_EditorRowNumber();
-        /**
          * The meta object literal for the '<em><b>Editor Column Span</b></em>' attribute feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -3056,6 +3089,27 @@ public interface ErfPackage extends EPackage {
          * @generated
          */
         EReference VIEW_ELEMENT__ATTRIBUTE_DEFINITION = eINSTANCE.getViewElement_AttributeDefinition();
+        /**
+         * The meta object literal for the '<em><b>Editor Row Position</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute VIEW_ELEMENT__EDITOR_ROW_POSITION = eINSTANCE.getViewElement_EditorRowPosition();
+        /**
+         * The meta object literal for the '<em><b>Editor Row Span</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute VIEW_ELEMENT__EDITOR_ROW_SPAN = eINSTANCE.getViewElement_EditorRowSpan();
+        /**
+         * The meta object literal for the '<em><b>Editor Column Position</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute VIEW_ELEMENT__EDITOR_COLUMN_POSITION = eINSTANCE.getViewElement_EditorColumnPosition();
         /**
          * The meta object literal for the '{@link era.foss.erf.impl.EraToolExtensionImpl <em>Era Tool Extension</em>}' class.
          * <!-- begin-user-doc -->

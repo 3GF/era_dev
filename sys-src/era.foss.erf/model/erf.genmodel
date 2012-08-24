@@ -100,9 +100,11 @@
     </genClasses>
     <genClasses ecoreClass="erf.ecore#//ViewElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//ViewElement/editorShowLabel"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//ViewElement/editorRowNumber"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//ViewElement/editorColumnSpan"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//ViewElement/attributeDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//ViewElement/editorRowPosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//ViewElement/editorRowSpan"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//ViewElement/editorColumnPosition"/>
     </genClasses>
     <genClasses ecoreClass="erf.ecore#//EraToolExtension">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//EraToolExtension/views"/>

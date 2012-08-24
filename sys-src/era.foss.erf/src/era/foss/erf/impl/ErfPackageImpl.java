@@ -851,7 +851,7 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getViewElement_EditorRowNumber() {
+    public EAttribute getViewElement_EditorColumnSpan() {
         return (EAttribute)viewElementEClass.getEStructuralFeatures().get( 1 );
     }
 
@@ -860,8 +860,8 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getViewElement_EditorColumnSpan() {
-        return (EAttribute)viewElementEClass.getEStructuralFeatures().get( 2 );
+    public EReference getViewElement_AttributeDefinition() {
+        return (EReference)viewElementEClass.getEStructuralFeatures().get( 2 );
     }
 
     /**
@@ -869,8 +869,26 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EReference getViewElement_AttributeDefinition() {
-        return (EReference)viewElementEClass.getEStructuralFeatures().get( 3 );
+    public EAttribute getViewElement_EditorRowPosition() {
+        return (EAttribute)viewElementEClass.getEStructuralFeatures().get( 3 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getViewElement_EditorRowSpan() {
+        return (EAttribute)viewElementEClass.getEStructuralFeatures().get( 4 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getViewElement_EditorColumnPosition() {
+        return (EAttribute)viewElementEClass.getEStructuralFeatures().get( 5 );
     }
 
     /**
@@ -1016,9 +1034,11 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
         viewElementEClass = createEClass( VIEW_ELEMENT );
         createEAttribute( viewElementEClass, VIEW_ELEMENT__EDITOR_SHOW_LABEL );
-        createEAttribute( viewElementEClass, VIEW_ELEMENT__EDITOR_ROW_NUMBER );
         createEAttribute( viewElementEClass, VIEW_ELEMENT__EDITOR_COLUMN_SPAN );
         createEReference( viewElementEClass, VIEW_ELEMENT__ATTRIBUTE_DEFINITION );
+        createEAttribute( viewElementEClass, VIEW_ELEMENT__EDITOR_ROW_POSITION );
+        createEAttribute( viewElementEClass, VIEW_ELEMENT__EDITOR_ROW_SPAN );
+        createEAttribute( viewElementEClass, VIEW_ELEMENT__EDITOR_COLUMN_POSITION );
 
         eraToolExtensionEClass = createEClass( ERA_TOOL_EXTENSION );
         createEReference( eraToolExtensionEClass, ERA_TOOL_EXTENSION__VIEWS );
@@ -1869,21 +1889,6 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         !IS_UNIQUE,
                         !IS_DERIVED,
                         IS_ORDERED );
-        initEAttribute( getViewElement_EditorRowNumber(),
-                        ecorePackage.getEInt(),
-                        "editorRowNumber",
-                        "1",
-                        1,
-                        1,
-                        ViewElement.class,
-                        !IS_TRANSIENT,
-                        !IS_VOLATILE,
-                        IS_CHANGEABLE,
-                        !IS_UNSETTABLE,
-                        !IS_ID,
-                        !IS_UNIQUE,
-                        !IS_DERIVED,
-                        IS_ORDERED );
         initEAttribute( getViewElement_EditorColumnSpan(),
                         ecorePackage.getEInt(),
                         "editorColumnSpan",
@@ -1914,6 +1919,51 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         IS_RESOLVE_PROXIES,
                         !IS_UNSETTABLE,
                         IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEAttribute( getViewElement_EditorRowPosition(),
+                        ecorePackage.getEInt(),
+                        "editorRowPosition",
+                        "1",
+                        1,
+                        1,
+                        ViewElement.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_UNSETTABLE,
+                        !IS_ID,
+                        !IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEAttribute( getViewElement_EditorRowSpan(),
+                        ecorePackage.getEInt(),
+                        "editorRowSpan",
+                        "1",
+                        1,
+                        1,
+                        ViewElement.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_UNSETTABLE,
+                        !IS_ID,
+                        !IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEAttribute( getViewElement_EditorColumnPosition(),
+                        ecorePackage.getEInt(),
+                        "editorColumnPosition",
+                        "1",
+                        1,
+                        1,
+                        ViewElement.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_UNSETTABLE,
+                        !IS_ID,
+                        !IS_UNIQUE,
                         !IS_DERIVED,
                         IS_ORDERED );
 
