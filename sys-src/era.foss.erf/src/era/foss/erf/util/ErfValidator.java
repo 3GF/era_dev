@@ -18,7 +18,6 @@
  *************************************************************************/
 package era.foss.erf.util;
 
-import era.foss.erf.*;
 import java.util.ArrayList;
 import java.util.Map;
 

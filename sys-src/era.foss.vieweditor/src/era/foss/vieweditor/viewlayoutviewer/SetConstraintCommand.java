@@ -1,4 +1,4 @@
-package era.foss.vieweditor.specobjectlayoutviewer;
+package era.foss.vieweditor.viewlayoutviewer;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -22,7 +22,6 @@ public class SetConstraintCommand extends Command {
     private int gridWidth = 1;
 
     public void execute() {
-        System.out.println( "Called SetConstraintCommand.execute()" );
         CompoundCommand compoundCommand = new CompoundCommand( CompoundCommand.MERGE_COMMAND_ALL );
         compoundCommand.append( new SetCommand(
             editingDomain,
@@ -44,12 +43,10 @@ public class SetConstraintCommand extends Command {
             viewElement,
             ErfPackage.Literals.VIEW_ELEMENT__EDITOR_ROW_SPAN,
             rectangle.height / gridHeight ) );
-        System.out.println( "Called SetConstraintCommand.execute()" + rectangle );
         editingDomain.getCommandStack().execute( compoundCommand );
     }
 
     public void setLocation( Rectangle rectangle ) {
-        System.out.println( "Called SetConstraintCommand.setLocation() with r=" + rectangle );
         this.rectangle = rectangle;
     }
 

@@ -1,4 +1,4 @@
-package era.foss.vieweditor.specobjectlayoutviewer;
+package era.foss.vieweditor.viewlayoutviewer;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -33,7 +33,6 @@ public class ViewElementEditPart extends AbstractGraphicalEditPart implements Pr
      * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#createFigure()
      **/
     protected IFigure createFigure() {
-        System.out.println( "Called HelloEditPart.createFigure()" );
 
         // add listener to react on changes of an view element
         addEditPartListener();
@@ -109,7 +108,6 @@ public class ViewElementEditPart extends AbstractGraphicalEditPart implements Pr
      **/
     protected void refreshVisuals() {
         Rectangle r = getModelRectangle();
-        System.out.println( "Called HelloEditPart.refreshVisuals() with model=" + getModel() + ", rect=" + r );
         ((GraphicalEditPart)getParent()).setLayoutConstraint( this, getFigure(), r );
 
     }

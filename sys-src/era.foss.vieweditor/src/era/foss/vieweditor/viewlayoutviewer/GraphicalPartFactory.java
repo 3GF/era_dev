@@ -1,6 +1,5 @@
-package era.foss.vieweditor.specobjectlayoutviewer;
+package era.foss.vieweditor.viewlayoutviewer;
 
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartFactory;
 
@@ -14,22 +13,15 @@ import era.foss.erf.ViewElement;
  **/
 public class GraphicalPartFactory implements EditPartFactory {
 
-    private EditingDomain editingDomain;
-
-    public GraphicalPartFactory( EditingDomain editingDomain ) {
-        this.editingDomain = editingDomain;
-    }
-
     /**
      * @see org.eclipse.gef.EditPartFactory#createEditPart(EditPart, Object)
      **/
     public EditPart createEditPart( EditPart iContext, Object iModel ) {
-        System.out.println( "Called GraphicalPartFactory.createEditPart(" + iContext + "," + iModel + ")" );
 
         EditPart editPart = null;
 
         if( iModel instanceof View ) {
-            editPart = new ViewEditPart( editingDomain );
+            editPart = new ViewEditPart();
         } else if( iModel instanceof ViewElement ) {
             editPart = new ViewElementEditPart();
         }
@@ -38,7 +30,6 @@ public class GraphicalPartFactory implements EditPartFactory {
             editPart.setModel( iModel );
         }
 
-        System.out.println( "GraphicalPartFactory.createEditPart() return " + editPart );
         return editPart;
     }
 

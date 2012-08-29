@@ -1,10 +1,9 @@
-package era.foss.vieweditor.specobjectlayoutviewer;
+package era.foss.vieweditor.viewlayoutviewer;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPolicy;
@@ -26,20 +25,11 @@ import era.foss.erf.ViewElement;
  */
 public class NodeEditPolicy extends XYLayoutEditPolicy {
 
-    private EditingDomain editingDomain;
-
-    public NodeEditPolicy( EditingDomain editingDomain ) {
-        this.editingDomain = editingDomain;
-    }
-
     /**
      * @see org.eclipse.gef.editpolicies.ConstrainedLayoutEditPolicy#createAddCommand(EditPart, Object)
      **/
     protected Command createAddCommand( EditPart child, Object constraint ) {
-        System.out.println( "Called HelloXYLayoutEditPolicy.createAddCommand() with child="
-            + child
-            + ",constraint="
-            + constraint );
+
         return null;
     }
 
@@ -94,7 +84,7 @@ public class NodeEditPolicy extends XYLayoutEditPolicy {
         }
 
         locationCommand.setViewElement( (ViewElement)child.getModel() );
-        locationCommand.setEditingDomain( editingDomain );
+        locationCommand.setEditingDomain( ((ViewLayoutViewer)child.getViewer()).getEmfEditingDomain() );
         locationCommand.setLocation( rect );
 
         return locationCommand;
@@ -104,7 +94,6 @@ public class NodeEditPolicy extends XYLayoutEditPolicy {
      * @see org.eclipse.gef.editpolicies.LayoutEditPolicy#getCreateCommand(CreateRequest)
      **/
     protected Command getCreateCommand( CreateRequest request ) {
-        System.out.println( "Called HelloXYLayoutEditPolicy.getCreateCommand() with req=" + request );
         return null;
     }
 
@@ -112,8 +101,6 @@ public class NodeEditPolicy extends XYLayoutEditPolicy {
      * @see org.eclipse.gef.editpolicies.LayoutEditPolicy#createChildEditPolicy(EditPart)
      **/
     protected EditPolicy createChildEditPolicy( EditPart child ) {
-        System.out.println( "Called HelloXYLayoutEditPolicy.createChildEditPolicy() with child=" + child );
-
         // return new NonResizableEditPolicy();
         return new ResizableEditPolicy();
     }
@@ -122,7 +109,6 @@ public class NodeEditPolicy extends XYLayoutEditPolicy {
      * @see org.eclipse.gef.editpolicies.LayoutEditPolicy#getDeleteDependantCommand(Request)
      **/
     protected Command getDeleteDependantCommand( Request request ) {
-        System.out.println( "Called HelloXYLayoutEditPolicy.getDeleteDependantCommand() with req=" + request );
         return null;
     }
 

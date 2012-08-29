@@ -18,7 +18,6 @@
  *************************************************************************/
 package era.foss.erf.util;
 
-import era.foss.erf.*;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;

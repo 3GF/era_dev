@@ -74,8 +74,9 @@ import era.foss.objecteditor.IAllowViewerSchemaChange;
 import era.foss.typeeditor.AddDeleteTableViewer;
 import era.foss.typeeditor.Ui;
 import era.foss.typeeditor.ui.BindingCheckBox;
+import era.foss.ui.contrib.CheckingSelectionChangedListener;
 import era.foss.ui.contrib.ComboBoxViewerCellEditorSp;
-import era.foss.vieweditor.specobjectlayoutviewer.SpecObjectLayoutViewer;
+import era.foss.vieweditor.viewlayoutviewer.ViewLayoutViewer;
 
 /**
  * The topmost UI class of the typeeditor plug-in: representing the overall dialog.
@@ -118,6 +119,12 @@ public class ViewDialog extends Dialog {
 
     /** Master object for observing the selected {@link ViewElement}s */
     private IViewerObservableValue viewElementMaster;
+
+    /** table viewer showing holding view elements */
+    private AddDeleteTableViewer viewElementTableViewer;
+
+    /** gef viewer showing layout of view elements in a view */
+    ViewLayoutViewer viewLayoutViewer;
 
     /**
      * Creates a editor for Datatype, Attributes and Spectypes.
@@ -235,7 +242,7 @@ public class ViewDialog extends Dialog {
             | SWT.V_SCROLL
             | SWT.BORDER
             | SWT.FULL_SELECTION );
-        viewTableViewer.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        viewTableViewer.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true, 1, 2 ) );
         viewTableViewer.setEditingDomain( editingDomain );
         viewTableViewer.setElementInformation( toolExtension,
                                                ErfPackage.Literals.ERA_TOOL_EXTENSION__VIEWS,
@@ -267,7 +274,7 @@ public class ViewDialog extends Dialog {
      * Creates the table viewer for {@link ViewElements}
      */
     private void createViewElementTableViewer( Composite composite ) {
-        final AddDeleteTableViewer viewElementTableViewer = new AddDeleteTableViewer( composite, SWT.MULTI
+        this.viewElementTableViewer = new AddDeleteTableViewer( composite, SWT.MULTI
             | SWT.V_SCROLL
             | SWT.BORDER
             | SWT.FULL_SELECTION
@@ -285,7 +292,7 @@ public class ViewDialog extends Dialog {
                                                       ErfPackage.Literals.VIEW__VIEW_ELEMENTS,
                                                       ErfPackage.Literals.VIEW_ELEMENT );
 
-        viewElementTableViewer.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        viewElementTableViewer.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true, 1, 2 ) );
         viewElementTableViewer.setEditingDomain( editingDomain );
 
         ObservableListContentProvider cp = new ObservableListContentProvider();
@@ -366,17 +373,35 @@ public class ViewDialog extends Dialog {
 
         // provide input for the table
         IEMFListProperty viewsProperty = EMFProperties.list( ErfPackage.Literals.VIEW__VIEW_ELEMENTS );
+
         viewElementTableViewer.setInput( viewsProperty.observeDetail( viewMaster ) );
         viewElementTableViewer.getTable().select( 0 );
 
         this.viewElementMaster = ViewerProperties.singleSelection().observe( viewElementTableViewer );
     }
 
-    private void createViewLayoutViewer( Composite composite ) {
-        // TODO Auto-generated method stub
-        SpecObjectLayoutViewer viewer = new SpecObjectLayoutViewer( editingDomain, composite );
-        viewer.getControl().setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
-        viewer.setContents( viewMaster );
+    private void createViewLayoutViewer( Composite parent ) {
+
+        // composite holding the label and the composite with the widgets
+        Composite layoutComposite = new Composite( parent, SWT.NONE );
+        layoutComposite.setLayout( new GridLayout( 1, true ) );
+        layoutComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true, 2, 1 ) );
+
+        // create label for detail viewer
+        Label label = new Label( layoutComposite, SWT.NONE );
+        label.setLayoutData( new GridData( SWT.LEFT, SWT.TOP, true, false ) );
+        label.setText( Activator.INSTANCE.getString( "_UI_View_Layout_label" ) + ":" );
+
+        // create layout viewer
+        this.viewLayoutViewer = new ViewLayoutViewer( editingDomain, layoutComposite );
+        viewLayoutViewer.getControl().setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        viewLayoutViewer.setContents( viewMaster );
+        viewLayoutViewer.setSelection( viewElementTableViewer.getSelection() );
+
+        // add listeners so that the selections get updated in each viewer
+        viewLayoutViewer.addSelectionChangedListener( new CheckingSelectionChangedListener( viewElementTableViewer ) );
+        viewElementTableViewer.addSelectionChangedListener( new CheckingSelectionChangedListener( viewLayoutViewer ) );
+
     }
 
     /**
@@ -387,7 +412,7 @@ public class ViewDialog extends Dialog {
         // composite holding the label and the composite with the widgets
         Composite detailsComposite = new Composite( parent, SWT.NONE );
         detailsComposite.setLayout( new GridLayout( 1, true ) );
-        detailsComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        detailsComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true, 2, 1 ) );
 
         // create label for detail viewer
         Label label = new Label( detailsComposite, SWT.NONE );
@@ -396,7 +421,7 @@ public class ViewDialog extends Dialog {
 
         // Create composite holding the UI elements of the
         final Composite widgetComposite = new Composite( detailsComposite, SWT.BORDER );
-        widgetComposite.setLayout( new GridLayout( 2, true ) );
+        widgetComposite.setLayout( new GridLayout( 4, true ) );
         widgetComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
 
         if( viewElementMaster.getValue() != null ) {
