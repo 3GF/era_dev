@@ -16,6 +16,7 @@ import org.eclipse.gef.EditPartListener;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.SnapToGrid;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.swt.SWT;
 
 import era.foss.erf.ErfPackage;
 import era.foss.erf.ViewElement;
@@ -28,6 +29,8 @@ public class ViewElementEditPart extends AbstractGraphicalEditPart implements Pr
     // default height and width in case the values are not retrieved by the model
     private int elementHeightUnit = 20;
     private int elementWidthUnit = 20;
+
+    RoundedRectangle labelFigure;
 
     /**
      * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#createFigure()
@@ -49,6 +52,19 @@ public class ViewElementEditPart extends AbstractGraphicalEditPart implements Pr
         rectangle.setSize( getModelRectangle().getSize() );
         rectangle.setLocation( getModelRectangle().getLocation() );
         rectangle.setBackgroundColor( ColorConstants.menuBackground );
+
+        // create figure for label
+
+        labelFigure = new RoundedRectangle();
+        labelFigure.setLineStyle( SWT.LINE_DOT );
+        labelFigure.setLocation( getModelRectangle().getLocation() );
+        labelFigure.setSize( this.elementWidthUnit, this.elementHeightUnit );
+        labelFigure.setBackgroundColor( ColorConstants.orange );
+
+        ViewElement viewElement = (ViewElement)getModel();
+        if( viewElement.isEditorShowLabel() == true ) {
+            rectangle.add( labelFigure );
+        }
 
         return rectangle;
     }
@@ -159,6 +175,14 @@ public class ViewElementEditPart extends AbstractGraphicalEditPart implements Pr
             || feature.equals( ErfPackage.Literals.VIEW_ELEMENT__EDITOR_COLUMN_SPAN )
             || feature.equals( ErfPackage.Literals.VIEW_ELEMENT__EDITOR_ROW_SPAN ) ) {
             refreshVisuals();
+        } else if( feature.equals( ErfPackage.Literals.VIEW_ELEMENT__EDITOR_SHOW_LABEL ) ) {
+
+            if( notification.getNewBooleanValue() == true ) {
+                ViewElementEditPart.this.getFigure().add( labelFigure );
+            } else {
+                ViewElementEditPart.this.getFigure().remove( labelFigure );
+            }
+            ViewElementEditPart.this.getFigure().repaint();
         }
 
     }

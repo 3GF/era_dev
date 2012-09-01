@@ -45,8 +45,6 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
 
         this.emfEditingDomain = editingDomain;
 
-        // setup viewer
-        // this.createControl( parent );
         this.setControl( new FigureCanvas( parent, SWT.BORDER, getLightweightSystem() ) );
         this.getControl().setBackground( ColorConstants.white );
         this.setProperty( SnapToGrid.PROPERTY_GRID_ENABLED, true );
@@ -107,6 +105,13 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
         for( Object modelElement : ((IStructuredSelection)selection).toList() ) {
             newEditPartSelection.add( this.getEditPartRegistry().get( modelElement ) );
         }
+
+        /*
+         * setting the viewport for the selection. seems we need black magic here....
+         * ((FigureCanvas)this.getControl()).getViewport() .setViewLocation(
+         * ((AbstractGraphicalEditPart)super.getSelectedEditParts() .get( 0 )).getFigure() .getBounds() .getLocation()
+         * );
+         */
 
         super.setSelection( new StructuredSelection( newEditPartSelection ) );
     }

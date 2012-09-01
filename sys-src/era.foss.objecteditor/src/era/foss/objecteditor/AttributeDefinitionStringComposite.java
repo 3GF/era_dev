@@ -33,7 +33,11 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
     }
 
     public Control createControl() {
-        textControl = new Text( this, SWT.BORDER );
+        int style = SWT.BORDER;
+        if( viewElement.getEditorRowSpan() > 1 ) {
+            style |= SWT.MULTI | SWT.WRAP | SWT.V_SCROLL | SWT.H_SCROLL;
+        }
+        textControl = new Text( this, style );
         return textControl;
     }
 

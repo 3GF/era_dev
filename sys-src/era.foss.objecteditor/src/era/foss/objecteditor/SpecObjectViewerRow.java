@@ -1,8 +1,6 @@
 package era.foss.objecteditor;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,6 +32,7 @@ import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecObject;
 import era.foss.erf.View;
 import era.foss.erf.ViewElement;
+import era.foss.util.types.Tuple;
 
 class SpecObjectViewerRow extends Composite {
 
@@ -71,6 +70,12 @@ class SpecObjectViewerRow extends Composite {
 
     private SpecObject specObject;
 
+    /* matrix reverring to the viewElements */
+    ViewElement[][] viewElementMatrix;
+
+    int numColumns;
+    int numRows;
+
     /**
      * Constructor of the Row Composite
      * 
@@ -79,7 +84,7 @@ class SpecObjectViewerRow extends Composite {
      */
     public SpecObjectViewerRow( Composite parent, int style ) {
         super( parent, style );
-        sortViewElements();
+        fillViewElementMatrix();
         doLayout();
         createSelectionListener();
     }
@@ -105,10 +110,9 @@ class SpecObjectViewerRow extends Composite {
     /**
      * Sort the elements in the view according to row number and position in row
      */
-    private void sortViewElements() {
-
+    private void fillViewElementMatrix() {
         // get view
-        View selectedView = (View)SpecObjectViewerRow.viewMaster.getValue();
+        View selectedView = (View)viewMaster.getValue();
         if( selectedView == null ) {
             return;
         }
@@ -120,15 +124,30 @@ class SpecObjectViewerRow extends Composite {
 
         // Sort view elements in visual order (row first, index in list second)
         viewElementList.addAll( selectedView.getViewElements() );
-        Collections.sort( viewElementList, new Comparator<ViewElement>() {
-            @Override
-            public int compare( ViewElement elem1, ViewElement elem2 ) {
-                int elemRow1 = elem1.getEditorRowPosition();
-                int elemRow2 = elem2.getEditorRowPosition();
-                return elemRow1 != elemRow2 ? elemRow1 - elemRow2 : viewElementList.indexOf( elem1 )
-                    - viewElementList.indexOf( elem2 );
+
+        // calculate maxColumnSpan
+        Tuple<Integer, Integer> dimension = getDimensions();
+
+        numColumns = dimension.x;
+        numRows = dimension.y;
+
+        viewElementMatrix = new ViewElement[numRows][numColumns];
+
+        for( final ViewElement viewElement : viewElementList ) {
+
+            final int rowPos = viewElement.getEditorRowPosition();
+            final int rowSpan = viewElement.getEditorRowSpan();
+            final int columnSpan = viewElement.getEditorColumnSpan();
+            final int columnPos = viewElement.getEditorColumnPosition();
+
+            for( int rowPosSpan = rowPos; rowPosSpan < (rowPos + rowSpan); rowPosSpan++ ) {
+                for( int columnPosSpan = columnPos; columnPosSpan < (columnPos + columnSpan); columnPosSpan++ ) {
+                    viewElementMatrix[rowPosSpan][columnPosSpan] = viewElement;
+                }
             }
-        } );
+
+        }
+
     }
 
     /**
@@ -141,9 +160,7 @@ class SpecObjectViewerRow extends Composite {
      */
     private void doLayout() {
         this.setLayout( new GridLayout( 2, false ) );
-
         createDeleteButton();
-
         createSpecObjectControls();
     }
 
@@ -191,107 +208,119 @@ class SpecObjectViewerRow extends Composite {
             return;
         }
 
-        // calculate maxColumnSpan
-        int maxColumnSpan = calculateMaxColumnSpan();
-
         viewComposite = new Composite( this, SWT.NONE );
-        viewComposite.setLayout( new GridLayout( maxColumnSpan, true ) );
+        viewComposite.setLayout( new GridLayout( numColumns, true ) );
         viewComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
 
-        // get row number of first view element
-        int curRow = viewElementList.get( 0 ).getEditorRowPosition();
+        for( int rowPos = 0; rowPos < numRows; rowPos++ ) {
+            for( int columnPos = 0; columnPos < numColumns; columnPos++ ) {
 
-        int curSpan = 0;
-        for( final ViewElement viewElement : viewElementList ) {
-            final int r = viewElement.getEditorRowPosition();
-            // do we have a row switch at this point of iteration?
-            if( r > curRow ) {
-                // WARNING: this code block is not executed for the end of the last line!
-                // 1) finalize intermediate rows:
-                int paddingColumnSpan = maxColumnSpan - curSpan;
-                if( paddingColumnSpan > 0 ) {
+                // create padding if no element is occupying this spot
+                if( viewElementMatrix[rowPos][columnPos] == null ) {
+                    // determine horizontal span of the padding
+                    int paddingSpan = 1;
+                    while (((columnPos + paddingSpan) < numColumns)
+                        && (viewElementMatrix[rowPos][columnPos + paddingSpan] == null)) {
+                        paddingSpan++;
+                    }
                     // padding: fill up this line with an empty label
-                    Label labelLongName = new Label( viewComposite, SWT.NULL );
-                    labelLongName.setText( "" );
-                    labelLongName.setLayoutData( new GridData(
-                        SWT.FILL,
-                        SWT.CENTER,
-                        false,
-                        false,
-                        paddingColumnSpan,
-                        1 ) );
+                    Label paddingLabel = new Label( viewComposite, SWT.BORDER );
+                    paddingLabel.setText( "Pad" );
+                    paddingLabel.setVisible( false );
+                    paddingLabel.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false, false, paddingSpan, 1 ) );
+                    columnPos += paddingSpan - 1;
+                } else {
+                    ViewElement viewElement = viewElementMatrix[rowPos][columnPos];
+
+                    // if this spot is occupied by the origin coordinates of an viewElement create the respective
+                    // control
+                    if( rowPos == viewElement.getEditorRowPosition()
+                        && columnPos == viewElement.getEditorColumnPosition() ) {
+
+                        int controlColumnSpan = viewElement.getEditorColumnSpan();
+
+                        // show label (only if there is space for a label
+                        if( (viewElement.isEditorShowLabel() == true) && (controlColumnSpan > 1) ) {
+                            Label label = new Label( viewComposite, SWT.NULL );
+                            label.setText( viewElement.getAttributeDefinition().getLongName() + ":" );
+                            label.setLayoutData( new GridData(
+                                SWT.RIGHT,
+                                SWT.BEGINNING,
+                                false,
+                                false,
+                                1,
+                                viewElement.getEditorRowSpan() ) );
+                            controlColumnSpan--;
+                        }
+
+                        AbstractAttributeDefinitionComposite control = null;
+                        DatatypeDefinition dataTypeDefinition = viewElement.getAttributeDefinition().getType();
+                        if( dataTypeDefinition != null ) {
+
+                            switch (dataTypeDefinition.eClass().getClassifierID()) {
+                            case ErfPackage.DATATYPE_DEFINITION_INTEGER:
+                            case ErfPackage.DATATYPE_DEFINITION_STRING:
+                                control = new AttributeDefinitionStringComposite(
+                                    viewComposite,
+                                    viewElement,
+                                    specObject );
+                                break;
+                            case ErfPackage.DATATYPE_DEFINITION_BOOLEAN:
+                                control = new AttributeDefinitionBooleanComposite(
+                                    viewComposite,
+                                    viewElement,
+                                    specObject );
+                                break;
+                            case ErfPackage.DATATYPE_DEFINITION_ENUMERATION:
+                                control = new AttributeDefinitionEnumComposite(
+                                    viewComposite,
+                                    viewElement,
+                                    specObject );
+                                break;
+                            }
+
+                        }
+
+                        if( control != null ) {
+                            GridData gd = new GridData(
+                                SWT.FILL,
+                                SWT.FILL,
+                                true,
+                                true,
+                                controlColumnSpan,
+                                viewElement.getEditorRowSpan() );
+                            gd.minimumHeight = control.computeSize( SWT.DEFAULT, SWT.DEFAULT ).y
+                                * viewElement.getEditorRowSpan();
+                            control.setLayoutData( gd );
+                            attributeDefintionCompositeList.add( control );
+                        }
+                    }
                 }
-                // 2) reset for new row
-                curRow = r;
-                curSpan = 0;
-            }
-
-            // track current row span for the "end of row" padding above
-            final int controlSpan = viewElement.getEditorColumnSpan();
-            curSpan += controlSpan;
-
-            // initialize label
-            if( viewElement.isEditorShowLabel() ) {
-                curSpan++;
-                Label labelLongName = new Label( viewComposite, SWT.NULL );
-                labelLongName.setText( viewElement.getAttributeDefinition().getLongName() + ":" );
-                labelLongName.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER, false, false ) );
-            }
-
-            AbstractAttributeDefinitionComposite control = null;
-            DatatypeDefinition dataTypeDefinition = viewElement.getAttributeDefinition().getType();
-            if( dataTypeDefinition != null ) {
-
-                switch (dataTypeDefinition.eClass().getClassifierID()) {
-                case ErfPackage.DATATYPE_DEFINITION_INTEGER:
-                case ErfPackage.DATATYPE_DEFINITION_STRING:
-                    control = new AttributeDefinitionStringComposite( viewComposite, viewElement, specObject );
-                    break;
-                case ErfPackage.DATATYPE_DEFINITION_BOOLEAN:
-                    control = new AttributeDefinitionBooleanComposite( viewComposite, viewElement, specObject );
-                    break;
-                case ErfPackage.DATATYPE_DEFINITION_ENUMERATION:
-                    control = new AttributeDefinitionEnumComposite( viewComposite, viewElement, specObject );
-                    break;
-                }
-
-            }
-
-            if( control != null ) {
-                control.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false, controlSpan, 1 ) );
-                attributeDefintionCompositeList.add( control );
             }
         }
     }
 
     /**
-     * calculate the maximum column span required for displaying all the elements configured in the view
+     * Get the maximum number of columns needed for the GridLayout
      * 
      * @return maximum Column span
      */
-    private int calculateMaxColumnSpan() {
-        int maxColumnSpan = 0;
+    private Tuple<Integer, Integer> getDimensions() {
+        // the number of columns
+        int columnPosMax = 0;
+        // the number of rows
+        int rowPosMax = 0;
 
-        // get row number of first entry
-        int curRow = viewElementList.get( 0 ).getEditorRowPosition();
-
-        int curSpan = 0;
         for( ViewElement viewElement : viewElementList ) {
-            int r = viewElement.getEditorRowPosition();
-            // do we have a row switch at this point of iteration?
-            if( r > curRow ) {
-                // WARNING: this code block is not executed for the end of the last line!
-                // reset
-                curRow = r;
-                curSpan = 0;
-            }
-            curSpan += viewElement.getEditorColumnSpan() + (viewElement.isEditorShowLabel() ? 1 : 0);
-            // always check the column count: is it a new maximum?
-            if( maxColumnSpan < curSpan ) {
-                maxColumnSpan = curSpan;
-            }
+            // get the last column position used by this element
+            int columnPos = viewElement.getEditorColumnPosition() + viewElement.getEditorColumnSpan();
+            columnPosMax = Math.max( columnPos, columnPosMax );
+
+            // get the last row position used by this element
+            int rowPos = viewElement.getEditorRowPosition() + viewElement.getEditorRowSpan();
+            rowPosMax = Math.max( rowPos, rowPosMax );
         }
-        return maxColumnSpan;
+        return new Tuple<Integer, Integer>( columnPosMax, rowPosMax );
     }
 
     /**
