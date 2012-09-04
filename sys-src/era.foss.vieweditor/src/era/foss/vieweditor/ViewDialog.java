@@ -129,8 +129,24 @@ public class ViewDialog extends Dialog {
     /** gef viewer showing layout of view elements in a view */
     ViewLayoutViewer viewLayoutViewer;
 
-    /** Viewer filter for {@link AttributeDefinition}s selected in {@link specTypeMaster} */
-    ViewerFilter specTypeFilter;
+    /**
+     * Checks if the {@link AttributeDefinition} refers to the same {@link SpecType} as is selected in
+     * {@link specTypeMaster}
+     */
+    class SpecTypeFilter extends ViewerFilter {
+
+        @Override
+        public boolean select( Viewer viewer, Object parentElement, Object element ) {
+            assert (element instanceof ViewElement);
+            ViewElement viewElement = (ViewElement)element;
+            if( (ViewDialog.this.specTypeMaster.getValue() != null)
+                && ((viewElement.getAttributeDefinition() == null) || (viewElement.getAttributeDefinition()
+                                                                                  .getSpecType().equals( ViewDialog.this.specTypeMaster.getValue() ))) ) {
+                return true;
+            }
+            return false;
+        }
+    }
 
     /**
      * Creates a editor for {@link View} elements
@@ -195,21 +211,6 @@ public class ViewDialog extends Dialog {
             }
         } );
         composite.setLayout( new GridLayout( 4, true ) );
-
-        specTypeFilter = new ViewerFilter() {
-
-            @Override
-            public boolean select( Viewer viewer, Object parentElement, Object element ) {
-                assert (element instanceof ViewElement);
-                ViewElement viewElement = (ViewElement)element;
-                if( (specTypeMaster.getValue() != null)
-                    && ((viewElement.getAttributeDefinition() == null) || (viewElement.getAttributeDefinition()
-                                                                                      .getSpecType().equals( specTypeMaster.getValue() ))) ) {
-                    return true;
-                }
-                return false;
-            }
-        };
 
         createViewTableViewer( composite );
         createViewElementComposite( composite );
@@ -430,7 +431,7 @@ public class ViewDialog extends Dialog {
 
         viewElementTableViewer.setInput( viewsProperty.observeDetail( viewMaster ) );
         viewElementTableViewer.getTable().select( 0 );
-        viewElementTableViewer.addFilter( specTypeFilter );
+        viewElementTableViewer.addFilter( new SpecTypeFilter() );
 
         viewElementMaster = ViewerProperties.singleSelection().observe( viewElementTableViewer );
     }
@@ -457,12 +458,11 @@ public class ViewDialog extends Dialog {
         viewLayoutViewer.getControl().setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
         viewLayoutViewer.setContents( viewMaster );
         viewLayoutViewer.setSelection( viewElementTableViewer.getSelection() );
-        viewLayoutViewer.addFilter( specTypeFilter );
+        viewLayoutViewer.addFilter( new SpecTypeFilter() );
 
         // add listeners so that the selections get updated in each viewer
         viewLayoutViewer.addSelectionChangedListener( new CheckingSelectionChangedListener( viewElementTableViewer ) );
         viewElementTableViewer.addSelectionChangedListener( new CheckingSelectionChangedListener( viewLayoutViewer ) );
-
     }
 
     /**
