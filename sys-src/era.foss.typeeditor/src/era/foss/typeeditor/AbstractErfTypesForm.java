@@ -78,10 +78,6 @@ public abstract class AbstractErfTypesForm extends Composite {
     /** The type editor activator. */
     protected Activator typeEditorActivator = null;
 
-    // for now the one and only spec type
-    /** The one and only spec type. */
-    protected SpecType theOneAndOnlySpecType;
-
     /**
      * Constructs a new instance of this class - defaulting the style to {@link SWT#NONE}.
      * 
@@ -119,8 +115,6 @@ public abstract class AbstractErfTypesForm extends Composite {
         this.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
         this.typeEditorActivator = era.foss.typeeditor.Activator.INSTANCE;
 
-        // get the one and only SpecType
-        theOneAndOnlySpecType = (SpecType)erfModel.getCoreContent().getSpecTypes().get( 0 );
     }
 
     /**
@@ -170,14 +164,13 @@ public abstract class AbstractErfTypesForm extends Composite {
                 editingDomain.getCommandStack().execute( setCommand );
             }
         }
-
+        SpecType specType = attributeDefinition.getSpecType();
         Command deleteCommand = DeleteCommand.create( editingDomain, attributeDefinition );
         Command addCommand = AddCommand.create( editingDomain,
-                                                theOneAndOnlySpecType,
+                                                specType,
                                                 ErfPackage.Literals.SPEC_TYPE__SPEC_ATTRIBUTES,
                                                 newAttributeDefinition,
-                                                theOneAndOnlySpecType.getSpecAttributes()
-                                                                     .indexOf( attributeDefinition ) );
+                                                specType.getSpecAttributes().indexOf( attributeDefinition ) );
         editingDomain.getCommandStack().execute( deleteCommand );
 
         editingDomain.getCommandStack().execute( addCommand );

@@ -29,10 +29,12 @@ import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.FeaturePath;
 import org.eclipse.emf.databinding.IEMFListProperty;
 import org.eclipse.emf.databinding.edit.EMFEditProperties;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.databinding.viewers.CellEditorProperties;
+import org.eclipse.jface.databinding.viewers.IViewerObservableValue;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.databinding.viewers.ObservableMapCellLabelProvider;
 import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
@@ -83,11 +85,16 @@ import era.foss.erf.SpecType;
  */
 public class SpecTypeForm extends AbstractErfTypesForm {
 
-    /** Table viewer holding the attributes of a spec type. */
-    private AddDeleteTableViewer tableViewer;
+    /** Table viewer showing the attributes of a SpecType. */
+    private AddDeleteTableViewer specAttributeTableViewer;
 
     /** object for create data binding from model to UI widgets */
     private DataBindingContext dataBindContext;
+
+    /** object for creating and binding ui elements. */
+    private Ui ui;
+
+    private IViewerObservableValue specTypeMaster;
 
     /**
      * Instantiates a new spec type form.
@@ -99,53 +106,107 @@ public class SpecTypeForm extends AbstractErfTypesForm {
         super( parent, editor, SWT.NONE );
 
         dataBindContext = new DataBindingContext();
+        ui = new Ui( editingDomain );
 
         // set-up layout
-        GridLayout gridLayout = new GridLayout( 2, true );
+        GridLayout gridLayout = new GridLayout( 3, true );
         this.setLayout( gridLayout );
 
-        // set up table viewer for attribute definitions
-        createTableViewer();
+        // set up table viewer for attributes of the selected SpecType
+        createSpecTypeTableViewer();
 
-        // set up viewer for details
-        createDetailViewer();
+        // set up table viewer for attributes of the selected SpecType
+        createSpecAttributeTableViewer();
+
+        // set up viewer for details of a SpecAttribitute
+        createSpecAttributeDetailViewer();
     }
 
     /**
-     * Create Table viewer showing attributes.
+     * Create table viewer showing the SpecTypes
      */
-    private void createTableViewer() {
+    private void createSpecTypeTableViewer() {
+        AddDeleteTableViewer specTypeTableViewer = new AddDeleteTableViewer( this, SWT.MULTI
+            | SWT.V_SCROLL
+            | SWT.BORDER
+            | SWT.FULL_SELECTION );
+        specTypeTableViewer.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        specTypeTableViewer.setEditingDomain( editingDomain );
+        specTypeTableViewer.setElementInformation( erfModel.getCoreContent(),
+                                                   ErfPackage.Literals.CONTENT__SPEC_TYPES,
+                                                   ErfPackage.Literals.SPEC_TYPE );
 
-        tableViewer = new AddDeleteTableViewer( this, SWT.MULTI | SWT.V_SCROLL | SWT.BORDER | SWT.FULL_SELECTION );
-        tableViewer.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        ObservableListContentProvider cp = new ObservableListContentProvider();
+        specTypeTableViewer.setContentProvider( cp );
 
-        tableViewer.setEditingDomain( editingDomain );
-        tableViewer.setElementInformation( theOneAndOnlySpecType,
-                                           ErfPackage.Literals.SPEC_TYPE__SPEC_ATTRIBUTES,
-                                           ErfPackage.Literals.ATTRIBUTE_DEFINITION_SIMPLE );
+        TableColumnLayout columnLayout = (TableColumnLayout)specTypeTableViewer.getTable().getParent().getLayout();
 
-        ObservableListContentProvider contentProvider = new ObservableListContentProvider();
-        tableViewer.setContentProvider( contentProvider );
-
-        TableColumnLayout columnLayout = (TableColumnLayout)tableViewer.getTable().getParent().getLayout();
-
-        // create column with name of attribute definition
-        createNameColumn( contentProvider, columnLayout );
-
-        // create column with reference to datatype defintion
-        createTypeColumn( contentProvider, columnLayout );
+        // create column with name of the SpecType
+        TableViewerColumn nameColumn = new TableViewerColumn( specTypeTableViewer, SWT.NONE );
+        columnLayout.setColumnData( nameColumn.getColumn(), new ColumnWeightData( 100, 70 ) );
+        nameColumn.getColumn().setResizable( false );
+        nameColumn.getColumn().setMoveable( false );
+        nameColumn.getColumn().setText( Ui.getUiName( ErfPackage.Literals.IDENTIFIABLE__LONG_NAME ) );
+        EStructuralFeature[] structuralFeature = {ErfPackage.Literals.IDENTIFIABLE__LONG_NAME};
+        ui.bindColumn( nameColumn, structuralFeature );
 
         // provide input for the table
-        IEMFListProperty specAttributesProperty = EMFProperties.list( ErfPackage.Literals.SPEC_TYPE__SPEC_ATTRIBUTES );
-        tableViewer.setInput( specAttributesProperty.observe( theOneAndOnlySpecType ) );
+        IEMFListProperty specTypeProperty = EMFProperties.list( ErfPackage.Literals.CONTENT__SPEC_TYPES );
+        specTypeTableViewer.setInput( specTypeProperty.observe( erfModel.getCoreContent() ) );
+        specTypeTableViewer.getTable().select( 0 );
+
+        this.specTypeMaster = ViewerProperties.singleSelection().observe( specTypeTableViewer );
+    }
+
+    /**
+     * Create Table viewer showing attributes of the selected SpecType
+     */
+    private void createSpecAttributeTableViewer() {
+
+        specAttributeTableViewer = new AddDeleteTableViewer( this, SWT.MULTI
+            | SWT.V_SCROLL
+            | SWT.BORDER
+            | SWT.FULL_SELECTION ) {
+
+            @Override
+            public void addElement() {
+                this.elementOwner = (EObject)specTypeMaster.getValue();
+                super.addElement();
+            }
+        };
+        specAttributeTableViewer.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+
+        specAttributeTableViewer.setEditingDomain( editingDomain );
+        specAttributeTableViewer.setElementInformation( (EObject)specTypeMaster.getValue(),
+                                                        ErfPackage.Literals.SPEC_TYPE__SPEC_ATTRIBUTES,
+                                                        ErfPackage.Literals.ATTRIBUTE_DEFINITION_SIMPLE );
+
+        ObservableListContentProvider contentProvider = new ObservableListContentProvider();
+        specAttributeTableViewer.setContentProvider( contentProvider );
+
+        TableColumnLayout columnLayout = (TableColumnLayout)specAttributeTableViewer.getTable()
+                                                                                    .getParent()
+                                                                                    .getLayout();
+
+        // create column with name of attribute definition
+        createSpecAttributeNameColumn( specAttributeTableViewer, columnLayout );
+
+        // create column with reference to datatype defintion
+        createSpecAttributeTypeColumn( specAttributeTableViewer, columnLayout );
+
+        // provide input for the table
+        IEMFListProperty specAttributeProperty = EMFProperties.list( ErfPackage.Literals.SPEC_TYPE__SPEC_ATTRIBUTES );
+        specAttributeTableViewer.setInput( specAttributeProperty.observeDetail( specTypeMaster ) );
+        specAttributeTableViewer.getTable().select( 0 );
 
     }
 
     /** Create column for selecting the DatatypeDefinition associated with the AttributeDefinition */
-    private void createNameColumn( ObservableListContentProvider contentProvider, TableColumnLayout columnLayout ) {
+    private void createSpecAttributeNameColumn( AddDeleteTableViewer specAttributeTableViewer,
+                                                TableColumnLayout columnLayout ) {
 
         //
-        TableViewerColumn nameColumn = new TableViewerColumn( tableViewer, SWT.NONE );
+        TableViewerColumn nameColumn = new TableViewerColumn( specAttributeTableViewer, SWT.NONE );
 
         nameColumn.getColumn().setText( Ui.getUiName( ErfPackage.Literals.IDENTIFIABLE__LONG_NAME ) );
         nameColumn.getColumn().setResizable( true );
@@ -154,16 +215,16 @@ public class SpecTypeForm extends AbstractErfTypesForm {
         IValueProperty nameColumnElementProperty = EMFEditProperties.value( editingDomain,
                                                                             ErfPackage.Literals.IDENTIFIABLE__LONG_NAME );
         // add label provider
-        IObservableMap nameColumnAttributeMap = nameColumnElementProperty.observeDetail( contentProvider.getKnownElements() );
+        IObservableMap nameColumnAttributeMap = nameColumnElementProperty.observeDetail( ((ObservableListContentProvider)specAttributeTableViewer.getContentProvider()).getKnownElements() );
         nameColumn.setLabelProvider( new ObservableMapCellLabelProvider( nameColumnAttributeMap ) );
 
         // add editing support
         IValueProperty nameColumnCellEditorProperty = CellEditorProperties.control()
                                                                           .value( WidgetProperties.text( SWT.Modify ) );
-        EditingSupport editingSupport = ObservableValueEditingSupport.create( tableViewer,
+        EditingSupport editingSupport = ObservableValueEditingSupport.create( specAttributeTableViewer,
                                                                               dataBindContext,
                                                                               new TextCellEditor(
-                                                                                  tableViewer.getTable() ),
+                                                                                  specAttributeTableViewer.getTable() ),
                                                                               nameColumnCellEditorProperty,
                                                                               nameColumnElementProperty );
         nameColumn.setEditingSupport( editingSupport );
@@ -171,9 +232,9 @@ public class SpecTypeForm extends AbstractErfTypesForm {
     }
 
     /** Create column for selecting the DatatypeDefinition associated with the AttributeDefinition */
-    private void createTypeColumn( ObservableListContentProvider contentProvider, TableColumnLayout columnLayout ) {
+    private void createSpecAttributeTypeColumn( TableViewer specAttributeTableViewer, TableColumnLayout columnLayout ) {
 
-        TableViewerColumn dataTypeColumn = new TableViewerColumn( tableViewer, SWT.NONE );
+        TableViewerColumn dataTypeColumn = new TableViewerColumn( specAttributeTableViewer, SWT.NONE );
         dataTypeColumn.getColumn().setText( Ui.getUiName( ErfPackage.Literals.ATTRIBUTE_DEFINITION__TYPE ) );
         dataTypeColumn.getColumn().setResizable( false );
         dataTypeColumn.getColumn().setMoveable( false );
@@ -185,24 +246,24 @@ public class SpecTypeForm extends AbstractErfTypesForm {
 
         // add label provider
         ObservableMapCellLabelProvider labelProvider = new ObservableMapCellLabelProvider(
-            dataTypeNameProperty.observeDetail( contentProvider.getKnownElements() ) );
+            dataTypeNameProperty.observeDetail( ((ObservableListContentProvider)specAttributeTableViewer.getContentProvider()).getKnownElements() ) );
         dataTypeColumn.setLabelProvider( labelProvider );
 
         // add editing support
-        dataTypeColumn.setEditingSupport( new AttributeDefinitionTypeEditingSupport( tableViewer ) );
+        dataTypeColumn.setEditingSupport( new AttributeDefinitionTypeEditingSupport( specAttributeTableViewer ) );
 
     }
 
     /**
      * create detailed viewer for selected element.
      */
-    private void createDetailViewer() {
+    private void createSpecAttributeDetailViewer() {
         // setup Data type properties viewer
         AttributeDefinitionDetailViewer detailViewer = new AttributeDefinitionDetailViewer(
             this,
             SWT.NONE,
             editingDomain,
-            ViewerProperties.singleSelection().observe( tableViewer ) );
+            ViewerProperties.singleSelection().observe( specAttributeTableViewer ) );
         detailViewer.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
 
     }
