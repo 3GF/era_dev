@@ -234,7 +234,8 @@ class SpecObjectViewerRow extends Composite {
 
                     // if this spot is occupied by the origin coordinates of an viewElement create the respective
                     // control
-                    if( rowPos == viewElement.getEditorRowPosition()
+                    if( viewElement.getAttributeDefinition() != null
+                        && rowPos == viewElement.getEditorRowPosition()
                         && columnPos == viewElement.getEditorColumnPosition() ) {
 
                         int controlColumnSpan = viewElement.getEditorColumnSpan();

@@ -1,6 +1,7 @@
 package era.foss.vieweditor.viewlayoutviewer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.draw2d.Figure;
@@ -16,7 +17,6 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.RootComponentEditPolicy;
 
 import era.foss.erf.View;
-import era.foss.erf.ViewElement;
 
 /**
  * Our hello "root" edit part, this one will contains our nodes EditParts...
@@ -51,8 +51,10 @@ public class ViewEditPart extends AbstractGraphicalEditPart {
      * @see org.eclipse.gef.editparts.AbstractEditPart#getModelChildren() You must implement this method if you want you
      *      root model to have children!
      **/
-    protected List<ViewElement> getModelChildren() {
-        return ((View)this.getModel()).getViewElements();
+    protected List<Object> getModelChildren() {
+        View view = (View)this.getModel();
+        Object children[] = ((ViewLayoutViewer)this.getViewer()).filter( view, view.getViewElements().toArray() );
+        return Arrays.asList( children );
     }
 
     public Object getAdapter( @SuppressWarnings("rawtypes") Class adapter ) {

@@ -24,6 +24,7 @@ import org.eclipse.jface.databinding.viewers.IViewerObservableValue;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
@@ -39,6 +40,8 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
     private EditingDomain emfEditingDomain;
 
     IViewerObservableValue viewMaster;
+
+    final private List<ViewerFilter> viewerFilterList = new ArrayList<ViewerFilter>();
 
     public ViewLayoutViewer( EditingDomain editingDomain, Composite parent ) {
         super();
@@ -68,7 +71,7 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
 
             @Override
             public void handleValueChange( ValueChangeEvent event ) {
-                ViewLayoutViewer.super.setContents( viewMaster.getValue() );
+                ViewLayoutViewer.this.refresh();
             }
         } );
 
@@ -76,11 +79,15 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
         viewsProperty.observeDetail( viewMaster ).addChangeListener( new IChangeListener() {
             @Override
             public void handleChange( ChangeEvent event ) {
-                ViewLayoutViewer.super.setContents( viewMaster.getValue() );
+                ViewLayoutViewer.this.refresh();
             }
         } );
 
         super.setContents( viewMaster.getValue() );
+    }
+
+    public void refresh() {
+        ViewLayoutViewer.super.setContents( viewMaster.getValue() );
     }
 
     public ISelection getSelection() {
@@ -116,7 +123,35 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
         super.setSelection( new StructuredSelection( newEditPartSelection ) );
     }
 
+    /**
+     * add a filter
+     * 
+     * @return
+     */
+    public void addFilter( ViewerFilter filter ) {
+        this.viewerFilterList.add( filter );
+    }
+
+    /**
+     * remove a filter
+     */
+    public void removeFilter( ViewerFilter filter ) {
+        this.viewerFilterList.remove( filter );
+    }
+
+    /**
+     * add the emf editing domain
+     */
     public EditingDomain getEmfEditingDomain() {
         return emfEditingDomain;
+    }
+
+    Object[] filter( Object parent, Object[] elements ) {
+        Object result[] = elements;
+        for( ViewerFilter filter : viewerFilterList ) {
+            result = filter.filter( null, parent, result );
+        }
+        // TODO Auto-generated method stub
+        return result;
     }
 }
