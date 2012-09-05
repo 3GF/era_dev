@@ -21,7 +21,7 @@ package era.foss.typeeditor;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -34,6 +34,9 @@ import org.eclipse.ui.IEditorPart;
 
 import era.foss.objecteditor.EraCommandStack;
 import era.foss.objecteditor.IAllowViewerSchemaChange;
+import era.foss.typeeditor.datatype.DatatypeDefinitionsForm;
+import era.foss.typeeditor.spectype.SpecTypeForm;
+import era.foss.typeeditor.view.ViewForm;
 
 /**
  * The topmost UI class of the typeeditor plug-in: representing the overall dialog.
@@ -44,7 +47,7 @@ import era.foss.objecteditor.IAllowViewerSchemaChange;
  * 
  * @author cpn
  */
-public class TypeDialog extends Dialog {
+public class TypeDialog extends TitleAreaDialog {
 
     /** The editor. */
     private IEditorPart editor = null;
@@ -87,7 +90,7 @@ public class TypeDialog extends Dialog {
     protected void configureShell( Shell shell ) {
         super.configureShell( shell );
         shell.setText( typeEditorActivator.getString( "_UI_Type_Editor_label" ) );
-        shell.setMinimumSize( 600, 400 );
+        shell.setMinimumSize( 1000, 400 );
     }
 
     /*
@@ -101,9 +104,11 @@ public class TypeDialog extends Dialog {
 
         // Lists for TabItems: Controls and Labels
         Control[] listOfControls = {
+            new ViewForm( typeEditorTabFolder, this.editor ),
             new SpecTypeForm( typeEditorTabFolder, this.editor ),
             new DatatypeDefinitionsForm( typeEditorTabFolder, this.editor )};
         String[] listOfTabLabels = {
+            typeEditorActivator.getString( "_UI_ViewTab_label" ),
             typeEditorActivator.getString( "_UI_SpecTypeTab_label" ),
             typeEditorActivator.getString( "_UI_DataTypeDefinitionTab_label" )};
         TabItem additionalTabItem = null;

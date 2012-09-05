@@ -1,4 +1,4 @@
-package era.foss.vieweditor.viewlayoutviewer;
+package era.foss.typeeditor.view.layoutviewer;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.command.CompoundCommand;

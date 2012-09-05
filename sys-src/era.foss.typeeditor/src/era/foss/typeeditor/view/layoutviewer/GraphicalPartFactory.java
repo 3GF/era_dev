@@ -1,4 +1,4 @@
-package era.foss.vieweditor.viewlayoutviewer;
+package era.foss.typeeditor.view.layoutviewer;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartFactory;

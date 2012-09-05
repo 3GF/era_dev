@@ -17,7 +17,7 @@
  * $Id$
  *************************************************************************/
 
-package era.foss.typeeditor;
+package era.foss.typeeditor.common;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -45,6 +45,7 @@ import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecType;
 import era.foss.erf.impl.ErfFactoryImpl;
 import era.foss.objecteditor.EraCommandStack;
+import era.foss.typeeditor.Activator;
 
 /**
  * An abstract form, that contains members and constructor code that is common to all editing forms for ERA types.
@@ -77,6 +78,9 @@ public abstract class AbstractErfTypesForm extends Composite {
 
     /** The type editor activator. */
     protected Activator typeEditorActivator = null;
+
+    /** UI object for user interface helper methods */
+    protected Ui ui;
 
     /**
      * Constructs a new instance of this class - defaulting the style to {@link SWT#NONE}.
@@ -115,12 +119,14 @@ public abstract class AbstractErfTypesForm extends Composite {
         this.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
         this.typeEditorActivator = era.foss.typeeditor.Activator.INSTANCE;
 
+        ui = new Ui( editingDomain );
+
     }
 
     /**
      * Adapt attribute definition according to datatypeDefintion it is refering to
      */
-    AttributeDefinition adaptAttributeDefintion( AttributeDefinition attributeDefinition ) {
+    protected AttributeDefinition adaptAttributeDefintion( AttributeDefinition attributeDefinition ) {
 
         DatatypeDefinition datatypeDefinition = attributeDefinition.getType();
 

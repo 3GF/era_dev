@@ -17,7 +17,7 @@
  * $Id$
  *************************************************************************/
 
-package era.foss.typeeditor;
+package era.foss.typeeditor.datatype;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -59,6 +59,9 @@ import era.foss.erf.AttributeDefinition;
 import era.foss.erf.DatatypeDefinition;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.impl.ErfFactoryImpl;
+import era.foss.typeeditor.common.AbstractErfTypesForm;
+import era.foss.typeeditor.common.AddDeleteTableViewer;
+import era.foss.typeeditor.common.Ui;
 
 /**
  * A form for editing {@link DatatypeDefinition}s.
@@ -83,9 +86,6 @@ final public class DatatypeDefinitionsForm extends AbstractErfTypesForm {
     /** Table viewer containing the datatype definitions. */
     private AddDeleteTableViewer tableViewer;
 
-    /** object for creating and binding ui elements. */
-    private Ui ui;
-
     /**
      * Instantiates a new datatype definitions form.
      * 
@@ -98,8 +98,6 @@ final public class DatatypeDefinitionsForm extends AbstractErfTypesForm {
         // set-up layout
         GridLayout gridLayout = new GridLayout( 2, true );
         this.setLayout( gridLayout );
-
-        ui = new Ui( editingDomain );
 
         createTableViewer();
 

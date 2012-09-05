@@ -16,7 +16,7 @@
  **************************************************************************
  * $Id: DetailViewer.java 314 2011-04-05 22:28:39Z schorsch $
  *************************************************************************/
-package era.foss.typeeditor;
+package era.foss.typeeditor.common;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
@@ -30,6 +30,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
+
+import era.foss.typeeditor.Activator;
 
 /**
  * Create GUI elements for structural features of EMF model elements.A structural feature is only shown in case it has a
@@ -68,7 +70,7 @@ public abstract class AbstractDetailViewer extends ScrolledComposite {
      * @param editingDomain
      * @param master the master object for which the details are shown
      */
-    AbstractDetailViewer( Composite parent, int style, EditingDomain editingDomain, IObservableValue master ) {
+    protected AbstractDetailViewer( Composite parent, int style, EditingDomain editingDomain, IObservableValue master ) {
         super( parent, style | SWT.V_SCROLL | SWT.H_SCROLL );
         this.editingDomain = editingDomain;
         this.master = master;
@@ -144,7 +146,7 @@ public abstract class AbstractDetailViewer extends ScrolledComposite {
      * Clean up when disposing the details viewer
      * 
      * @see org.eclipse.swt.widgets.Widget#dispose()
-     * @see era.foss.typeeditor.Ui#dispose()
+     * @see era.foss.typeeditor.common.Ui#dispose()
      */
     @Override
     public void dispose() {

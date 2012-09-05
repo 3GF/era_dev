@@ -16,32 +16,25 @@
  **************************************************************************
  * $Id$
  *************************************************************************/
-package era.foss.vieweditor;
+package era.foss.typeeditor.view;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.map.IObservableMap;
 import org.eclipse.core.databinding.observable.value.IValueChangeListener;
 import org.eclipse.core.databinding.observable.value.ValueChangeEvent;
 import org.eclipse.core.databinding.property.value.IValueProperty;
-import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.FeaturePath;
 import org.eclipse.emf.databinding.IEMFListProperty;
 import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.XMIResource;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.jface.databinding.viewers.IViewerObservableValue;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.databinding.viewers.ObservableMapCellLabelProvider;
 import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.jface.databinding.viewers.ObservableValueEditingSupport;
 import org.eclipse.jface.databinding.viewers.ViewerProperties;
-import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ComboBoxViewerCellEditor;
@@ -52,19 +45,15 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.IEditorPart;
 
 import era.foss.erf.AttributeDefinition;
-import era.foss.erf.ERF;
 import era.foss.erf.EraToolExtension;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecType;
@@ -72,13 +61,14 @@ import era.foss.erf.ToolExtension;
 import era.foss.erf.View;
 import era.foss.erf.ViewElement;
 import era.foss.objecteditor.EraCommandStack;
-import era.foss.objecteditor.IAllowViewerSchemaChange;
-import era.foss.typeeditor.AddDeleteTableViewer;
-import era.foss.typeeditor.Ui;
-import era.foss.typeeditor.ui.BindingCheckBox;
+import era.foss.typeeditor.Activator;
+import era.foss.typeeditor.common.AbstractErfTypesForm;
+import era.foss.typeeditor.common.AddDeleteTableViewer;
+import era.foss.typeeditor.common.BindingCheckBox;
+import era.foss.typeeditor.common.Ui;
+import era.foss.typeeditor.view.layoutviewer.ViewLayoutViewer;
 import era.foss.ui.contrib.CheckingSelectionChangedListener;
 import era.foss.ui.contrib.ComboBoxViewerCellEditorSp;
-import era.foss.vieweditor.viewlayoutviewer.ViewLayoutViewer;
 
 /**
  * The topmost UI class of the typeeditor plug-in: representing the overall dialog.
@@ -88,30 +78,12 @@ import era.foss.vieweditor.viewlayoutviewer.ViewLayoutViewer;
  * Instantiates the {@link EraCommandStack} for handling the OK and Cancel buttons.
  * 
  */
-public class ViewDialog extends Dialog {
-
-    /** The editor. */
-    private IEditorPart editor = null;
-
-    /** The editing domain. */
-    private EditingDomain editingDomain = null;
-    // commandStack is required for Ok and Cancel Buttons
-    /** The era command stack. */
-    private EraCommandStack eraCommandStack = null;
-
-    /** The type editor activator. */
-    private Activator viewEditorActivator = null;
-
-    /** the erf model */
-    ERF erfModel;
+public class ViewForm extends AbstractErfTypesForm {
 
     /**
      * Era Tool extension model object
      */
     private EraToolExtension toolExtension;
-
-    /** UI object for helper methods */
-    Ui ui;
 
     /** The databinding context for binding model elements to widgets show in this dialog */
     DataBindingContext dataBindContext;
@@ -141,9 +113,9 @@ public class ViewDialog extends Dialog {
         public boolean select( Viewer viewer, Object parentElement, Object element ) {
             assert (element instanceof ViewElement);
             ViewElement viewElement = (ViewElement)element;
-            if( (ViewDialog.this.specTypeMaster.getValue() != null)
+            if( (ViewForm.this.specTypeMaster.getValue() != null)
                 && ((viewElement.getAttributeDefinition() == null) || (viewElement.getAttributeDefinition()
-                                                                                  .getSpecType().equals( ViewDialog.this.specTypeMaster.getValue() ))) ) {
+                                                                                  .getSpecType().equals( ViewForm.this.specTypeMaster.getValue() ))) ) {
                 return true;
             }
             return false;
@@ -156,24 +128,8 @@ public class ViewDialog extends Dialog {
      * @param activeShell the active shell
      * @param editor the editor
      */
-    public ViewDialog( Shell activeShell, IEditorPart editor ) {
-        super( activeShell );
-        setShellStyle( getShellStyle() | SWT.RESIZE | SWT.MAX );
-
-        // set-up context
-        this.editor = editor;
-        this.editingDomain = ((IEditingDomainProvider)editor).getEditingDomain();
-        this.eraCommandStack = (EraCommandStack)editingDomain.getCommandStack();
-        this.viewEditorActivator = era.foss.vieweditor.Activator.INSTANCE;
-
-        // plant an initial checkpoint
-        this.eraCommandStack.plantCheckpoint();
-
-        // check and fix model
-        Resource erfResource = (XMIResource)editingDomain.getResourceSet()
-                                                         .getResource( EditUIUtil.getURI( editor.getEditorInput() ),
-                                                                       true );
-        this.erfModel = (ERF)(erfResource).getContents().get( 0 );
+    public ViewForm( Composite parent, IEditorPart editor ) {
+        super( parent, editor, SWT.NONE );
 
         // find Era specific tool extensions
         for( ToolExtension toolExtension : this.erfModel.getToolExtensions() ) {
@@ -185,76 +141,12 @@ public class ViewDialog extends Dialog {
 
         dataBindContext = new DataBindingContext();
 
-    }
+        this.setLayout( new GridLayout( 4, true ) );
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.eclipse.jface.window.Window#configureShell(org.eclipse.swt.widgets.Shell)
-     */
-    protected void configureShell( Shell shell ) {
-        super.configureShell( shell );
-        shell.setText( viewEditorActivator.getString( "_UI_View_Editor_label" ) );
-        shell.setMinimumSize( 1000, 400 );
-    }
-
-    /*
-     * (non-Javadoc) Method declared on Dialog.
-     */
-    protected Control createDialogArea( Composite parent ) {
-        ui = new Ui( editingDomain );
-        Composite composite = (Composite)super.createDialogArea( parent );
-        composite.addDisposeListener( new DisposeListener() {
-
-            @Override
-            public void widgetDisposed( DisposeEvent e ) {
-                ViewDialog.this.ui.dispose();
-
-            }
-        } );
-        composite.setLayout( new GridLayout( 4, true ) );
-
-        createViewTableViewer( composite );
-        createViewElementComposite( composite );
-        createViewLayoutViewer( composite );
-        createDetails( composite );
-
-        // (font of parent will be applied recursively to the newly added controls!)
-        applyDialogFont( composite );
-
-        return composite;
-    }
-
-    /**
-     * Ok pressed.
-     * 
-     * @see org.eclipse.jface.dialogs.Dialog#okPressed()
-     * @since 03.03.2010
-     */
-    protected void okPressed() {
-        super.okPressed();
-        // the performed commands should not be available for undo after OK.
-        eraCommandStack.inhibitUndos();
-
-        // redraw the SpecObject editor
-        if( editor instanceof IViewerProvider ) {
-            Viewer viewer = ((IViewerProvider)editor).getViewer();
-            if( viewer instanceof IAllowViewerSchemaChange ) {
-                ((IAllowViewerSchemaChange)viewer).recreateViewerSchema();
-            }
-        }
-    }
-
-    /**
-     * Cancel pressed.
-     * 
-     * @see org.eclipse.jface.dialogs.Dialog#cancelPressed()
-     * @since 03.03.2010
-     */
-    protected void cancelPressed() {
-        super.cancelPressed();
-        // undo the complete CommandStack:
-        eraCommandStack.rollback();
+        createViewTableViewer( this );
+        createViewElementComposite( this );
+        createViewLayoutViewer( this );
+        createDetails( this );
     }
 
     /**

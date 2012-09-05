@@ -16,7 +16,7 @@
  **************************************************************************
  * $Id: DetailViewer.java 314 2011-04-05 22:28:39Z schorsch $
  *************************************************************************/
-package era.foss.typeeditor;
+package era.foss.typeeditor.datatype;
 
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.databinding.EMFProperties;
@@ -36,7 +36,10 @@ import org.eclipse.swt.widgets.Label;
 
 import era.foss.erf.DatatypeDefinition;
 import era.foss.erf.ErfPackage;
-import era.foss.typeeditor.ui.BindingText;
+import era.foss.typeeditor.common.AbstractDetailViewer;
+import era.foss.typeeditor.common.AddDeleteTableViewer;
+import era.foss.typeeditor.common.BindingText;
+import era.foss.typeeditor.common.Ui;
 
 /**
  * Create GUI elements for structural features of EMF model elements.A structural feature is only shown in case it has a

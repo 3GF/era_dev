@@ -9,12 +9,14 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: era.foss.typeeditor,
- era.foss.typeeditor.ui
+ era.foss.typeeditor.common,
+ era.foss.typeeditor.view
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.edit.ui,
  era.foss.erf,
  era.foss.erf.edit,
+ org.eclipse.gef,
  era.foss.ui.contrib,
  era.foss.objecteditor,
  org.eclipse.jface.databinding,

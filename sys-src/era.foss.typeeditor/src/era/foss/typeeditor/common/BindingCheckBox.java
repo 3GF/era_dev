@@ -1,4 +1,4 @@
-package era.foss.typeeditor.ui;
+package era.foss.typeeditor.common;
 
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;

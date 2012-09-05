@@ -16,7 +16,7 @@
  **************************************************************************
  * $Id: Ui.java 346 2011-07-09 18:10:18Z schorsch $
  *************************************************************************/
-package era.foss.typeeditor;
+package era.foss.typeeditor.common;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.map.IObservableMap;

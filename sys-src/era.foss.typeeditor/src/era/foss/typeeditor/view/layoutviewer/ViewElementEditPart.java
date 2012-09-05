@@ -1,4 +1,4 @@
-package era.foss.vieweditor.viewlayoutviewer;
+package era.foss.typeeditor.view.layoutviewer;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

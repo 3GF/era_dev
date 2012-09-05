@@ -16,7 +16,7 @@
  **************************************************************************
  * $Id$
  *************************************************************************/
-package era.foss.typeeditor;
+package era.foss.typeeditor.spectype;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.map.IObservableMap;
@@ -62,6 +62,9 @@ import era.foss.erf.AttributeValueSimple;
 import era.foss.erf.DatatypeDefinition;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecType;
+import era.foss.typeeditor.common.AbstractErfTypesForm;
+import era.foss.typeeditor.common.AddDeleteTableViewer;
+import era.foss.typeeditor.common.Ui;
 
 /**
  * A form for editing the {@link SpecType}.

@@ -16,7 +16,7 @@
  **************************************************************************
  * $Id$
  *************************************************************************/
-package era.foss.typeeditor;
+package era.foss.typeeditor.common;
 
 import java.util.Arrays;
 
@@ -68,6 +68,7 @@ import org.eclipse.ui.PlatformUI;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.Identifiable;
 import era.foss.erf.impl.ErfFactoryImpl;
+import era.foss.typeeditor.Activator;
 import era.foss.ui.contrib.EraImages;
 import era.foss.ui.contrib.SelectionProviderHasSelectionProperty;
 

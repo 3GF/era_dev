@@ -1,4 +1,4 @@
-package era.foss.typeeditor.ui;
+package era.foss.typeeditor.common;
 
 import org.eclipse.emf.databinding.EMFUpdateValueStrategy;
 import org.eclipse.emf.ecore.EStructuralFeature;
