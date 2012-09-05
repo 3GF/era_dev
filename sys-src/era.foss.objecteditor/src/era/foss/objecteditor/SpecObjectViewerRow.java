@@ -28,10 +28,13 @@ import org.eclipse.ui.PlatformUI;
 import era.foss.erf.AttributeDefinition;
 import era.foss.erf.AttributeValue;
 import era.foss.erf.DatatypeDefinition;
+import era.foss.erf.ERF;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecObject;
+import era.foss.erf.SpecType;
 import era.foss.erf.View;
 import era.foss.erf.ViewElement;
+import era.foss.ui.contrib.PageBookMax;
 import era.foss.util.types.Tuple;
 
 class SpecObjectViewerRow extends Composite {
@@ -45,15 +48,13 @@ class SpecObjectViewerRow extends Composite {
     /** The editing domain used for modifications on the model */
     static private EditingDomain editingDomain;
 
-    /**
-     * Map holding the element of the chose
-     */
-    private final List<ViewElement> viewElementList = new ArrayList<ViewElement>();
+    /** The model */
+    private static ERF erfModel;
 
     /**
      * The composite holding the all the controls according to the chosen view
      */
-    Composite viewComposite;
+    PageBookMax viewComposite;
 
     /**
      * List of Composites holding the graphical representation of a single AttributeDefinition
@@ -70,11 +71,7 @@ class SpecObjectViewerRow extends Composite {
 
     private SpecObject specObject;
 
-    /* matrix reverring to the viewElements */
-    ViewElement[][] viewElementMatrix;
-
-    int numColumns;
-    int numRows;
+    private HashMap<SpecType, Composite> pageMap = new HashMap<SpecType, Composite>();
 
     /**
      * Constructor of the Row Composite
@@ -84,9 +81,22 @@ class SpecObjectViewerRow extends Composite {
      */
     public SpecObjectViewerRow( Composite parent, int style ) {
         super( parent, style );
-        fillViewElementMatrix();
-        doLayout();
+
+        // layout button and controls
+        this.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        this.setLayout( new GridLayout( 2, false ) );
+        createDeleteButton( this );
+
+        viewComposite = new PageBookMax( this, SWT.NONE );
+        viewComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        // viewComposite.setLayout( new StackLayout() );
+        // create the controls for each SpecType
+        for( SpecType specType : erfModel.getCoreContent().getSpecTypes() ) {
+            createSpecObjectControls( viewComposite, specType );
+        }
+
         createSelectionListener();
+
     }
 
     /**
@@ -108,28 +118,46 @@ class SpecObjectViewerRow extends Composite {
     }
 
     /**
-     * Sort the elements in the view according to row number and position in row
+     * Set the editing domain used for operations on an AttributeValue of the associated SpecObject
+     * 
+     * @param editingDomain
      */
-    private void fillViewElementMatrix() {
+    public static void setErfModel( ERF erfModel ) {
+        SpecObjectViewerRow.erfModel = erfModel;
+    }
+
+    /**
+     * Sort the elements in the view according to row number and position in row
+     * 
+     * @return
+     */
+    private ViewElement[][] createViewElementMatrix( SpecType specType ) {
+        ViewElement[][] viewElementMatrix;
+        List<ViewElement> viewElementList = new ArrayList<ViewElement>();
+
         // get view
         View selectedView = (View)viewMaster.getValue();
         if( selectedView == null ) {
-            return;
+            return null;
+        }
+
+        // find all view elements referring to the current specObject
+        for( ViewElement viewElement : selectedView.getViewElements() ) {
+            if( viewElement.getAttributeDefinition() != null
+                && viewElement.getAttributeDefinition().getSpecType().equals( specType ) ) {
+                viewElementList.add( viewElement );
+            }
         }
 
         // check if there are elements to be shown in the selected view
-        if( selectedView.getViewElements().size() == 0 ) {
-            return;
+        if( viewElementList.size() == 0 ) {
+            return null;
         }
 
-        // Sort view elements in visual order (row first, index in list second)
-        viewElementList.addAll( selectedView.getViewElements() );
-
         // calculate maxColumnSpan
-        Tuple<Integer, Integer> dimension = getDimensions();
-
-        numColumns = dimension.x;
-        numRows = dimension.y;
+        Tuple<Integer, Integer> dimension = getDimensions( viewElementList );
+        int numColumns = dimension.x;
+        int numRows = dimension.y;
 
         viewElementMatrix = new ViewElement[numRows][numColumns];
 
@@ -148,29 +176,16 @@ class SpecObjectViewerRow extends Composite {
 
         }
 
-    }
-
-    /**
-     * Layout the row:
-     * <ul>
-     * <li>Delete button</li>
-     * <li>Controls for the editing the SpecObject</li>
-     * </ul>
-     * 
-     */
-    private void doLayout() {
-        this.setLayout( new GridLayout( 2, false ) );
-        createDeleteButton();
-        createSpecObjectControls();
+        return viewElementMatrix;
     }
 
     /**
      * create the delete button for the row
      */
-    private void createDeleteButton() {
+    private void createDeleteButton( Composite parent ) {
         // create delete button
-        Composite buttonComposite = new Composite( this, SWT.BORDER );
-        buttonComposite.setLayoutData( new GridData( SWT.LEFT, SWT.CENTER, false, false, 0, 0 ) );
+        Composite buttonComposite = new Composite( parent, SWT.BORDER );
+        buttonComposite.setLayoutData( new GridData( SWT.LEFT, SWT.CENTER, false, false ) );
         buttonComposite.setLayout( new FillLayout() );
 
         deleteButton = new Label( buttonComposite, SWT.NONE );
@@ -201,16 +216,24 @@ class SpecObjectViewerRow extends Composite {
     /**
      * create controls for elements in the chosen view
      */
-    private void createSpecObjectControls() {
+    private void createSpecObjectControls( Composite parent, SpecType specType ) {
+
+        // create matrix with holding references to ViewElements
+        ViewElement viewElementMatrix[][] = createViewElementMatrix( specType );;
 
         // Only create controls in case there are elements to show
-        if( viewElementList.size() == 0 ) {
+        if( viewElementMatrix == null ) {
             return;
         }
 
-        viewComposite = new Composite( this, SWT.NONE );
-        viewComposite.setLayout( new GridLayout( numColumns, true ) );
-        viewComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        int numRows = viewElementMatrix.length;
+        int numColumns = viewElementMatrix[0].length;
+
+        Composite viewCompositePage = new Composite( parent, SWT.NONE );
+        // viewCompositePage.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        viewCompositePage.setLayout( new GridLayout( numColumns, true ) );
+
+        pageMap.put( specType, viewCompositePage );
 
         for( int rowPos = 0; rowPos < numRows; rowPos++ ) {
             for( int columnPos = 0; columnPos < numColumns; columnPos++ ) {
@@ -224,7 +247,7 @@ class SpecObjectViewerRow extends Composite {
                         paddingSpan++;
                     }
                     // padding: fill up this line with an empty label
-                    Label paddingLabel = new Label( viewComposite, SWT.BORDER );
+                    Label paddingLabel = new Label( viewCompositePage, SWT.BORDER );
                     paddingLabel.setText( "Pad" );
                     paddingLabel.setVisible( false );
                     paddingLabel.setLayoutData( new GridData( SWT.FILL, SWT.CENTER, false, false, paddingSpan, 1 ) );
@@ -242,7 +265,7 @@ class SpecObjectViewerRow extends Composite {
 
                         // show label (only if there is space for a label
                         if( (viewElement.isEditorShowLabel() == true) && (controlColumnSpan > 1) ) {
-                            Label label = new Label( viewComposite, SWT.NULL );
+                            Label label = new Label( viewCompositePage, SWT.NULL );
                             label.setText( viewElement.getAttributeDefinition().getLongName() + ":" );
                             label.setLayoutData( new GridData(
                                 SWT.RIGHT,
@@ -262,19 +285,19 @@ class SpecObjectViewerRow extends Composite {
                             case ErfPackage.DATATYPE_DEFINITION_INTEGER:
                             case ErfPackage.DATATYPE_DEFINITION_STRING:
                                 control = new AttributeDefinitionStringComposite(
-                                    viewComposite,
+                                    viewCompositePage,
                                     viewElement,
                                     specObject );
                                 break;
                             case ErfPackage.DATATYPE_DEFINITION_BOOLEAN:
                                 control = new AttributeDefinitionBooleanComposite(
-                                    viewComposite,
+                                    viewCompositePage,
                                     viewElement,
                                     specObject );
                                 break;
                             case ErfPackage.DATATYPE_DEFINITION_ENUMERATION:
                                 control = new AttributeDefinitionEnumComposite(
-                                    viewComposite,
+                                    viewCompositePage,
                                     viewElement,
                                     specObject );
                                 break;
@@ -292,6 +315,8 @@ class SpecObjectViewerRow extends Composite {
                                 viewElement.getEditorRowSpan() );
                             gd.minimumHeight = control.computeSize( SWT.DEFAULT, SWT.DEFAULT ).y
                                 * viewElement.getEditorRowSpan();
+                            gd.heightHint = control.computeSize( SWT.DEFAULT, SWT.DEFAULT ).y
+                                * viewElement.getEditorRowSpan();
                             control.setLayoutData( gd );
                             attributeDefintionCompositeList.add( control );
                         }
@@ -299,6 +324,7 @@ class SpecObjectViewerRow extends Composite {
                 }
             }
         }
+
     }
 
     /**
@@ -306,7 +332,7 @@ class SpecObjectViewerRow extends Composite {
      * 
      * @return maximum Column span
      */
-    private Tuple<Integer, Integer> getDimensions() {
+    private Tuple<Integer, Integer> getDimensions( final List<ViewElement> viewElementList ) {
         // the number of columns
         int columnPosMax = 0;
         // the number of rows
@@ -439,13 +465,22 @@ class SpecObjectViewerRow extends Composite {
     }
 
     /**
-     * set the offset of the SpecObject associated with this row
+     * set the {@link SpecObject} and offset of this {@link SpecObject} associated with this row
      * 
+     * @param specObject the s{@link SpecObject} show in this row
      * @param offset of the SpecObject
      */
     public void setSpecObject( SpecObject specObject, int offset ) {
         this.specObjectOffset = offset;
         this.specObject = specObject;
+
+        // show page according to specType
+        if( specObject != null && specObject.getType() != null ) {
+            Composite page = pageMap.get( specObject.getType() );
+            if( page != null ) {
+                viewComposite.showPage( page );
+            }
+        }
     }
 
     /**

@@ -12,11 +12,13 @@ import org.eclipse.core.databinding.beans.PojoObservables;
 import org.eclipse.core.databinding.observable.ChangeEvent;
 import org.eclipse.core.databinding.observable.IChangeListener;
 import org.eclipse.core.databinding.observable.list.IObservableList;
+import org.eclipse.core.databinding.observable.value.IObservableValue;
+import org.eclipse.core.databinding.observable.value.IValueChangeListener;
+import org.eclipse.core.databinding.observable.value.ValueChangeEvent;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.IEMFListProperty;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -51,10 +53,11 @@ import org.eclipse.ui.PlatformUI;
 
 import era.foss.erf.ERF;
 import era.foss.erf.EraToolExtension;
+import era.foss.erf.ErfFactory;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecObject;
+import era.foss.erf.SpecType;
 import era.foss.erf.ToolExtension;
-import era.foss.erf.impl.ErfFactoryImpl;
 import era.foss.ui.contrib.NotifyingListSizeProperty;
 
 public class SpecObjectCompositeViewer extends Viewer implements IInputSelectionProvider, IAllowViewerSchemaChange {
@@ -91,6 +94,8 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
 
     /** List of selection changed listeners of this viewer */
     List<ISelectionChangedListener> selectionChangedListeners = new LinkedList<ISelectionChangedListener>();
+
+    protected IObservableValue specTypeMaster;
 
     /**
      * Create a Viewer for the SpecObjects
@@ -141,6 +146,7 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
 
         SpecObjectViewerRow.setViewMaster( viewMaster );
         SpecObjectViewerRow.setEditingDomain( editingDomain );
+        SpecObjectViewerRow.setErfModel( erfModel );
         new SpecObjectViewerRow( compositeTable, SWT.NULL );
 
         compositeTable.setRunTime( true );
@@ -223,7 +229,7 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
      */
     private void createButtonBar() {
         buttonBarComposite = new Composite( topLevelComposite, SWT.NONE );
-        buttonBarComposite.setLayout( new GridLayout( 2, true ) );
+        buttonBarComposite.setLayout( new GridLayout( 4, true ) );
         buttonBarComposite.setLayoutData( new GridData( SWT.FILL, SWT.TOP, true, false, 0, 0 ) );
 
         /*
@@ -253,7 +259,7 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
         if( toolExtension.getViews().size() > 0 ) {
             viewComboViewer.setSelection( new StructuredSelection( toolExtension.getViews().get( 0 ) ) );
         }
-        viewComboViewer.getControl().setLayoutData( new GridData( SWT.LEFT, SWT.CENTER, true, false ) );
+        viewComboViewer.getControl().setLayoutData( new GridData( SWT.LEFT, SWT.CENTER, true, false, 2, 1 ) );
 
         viewMaster = ViewerProperties.singleSelection().observe( viewComboViewer );
 
@@ -274,15 +280,56 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
         } );
 
         /*
+         * Create Combo box for selecting the SpecType
+         */
+        final ComboViewer specTypecomboViewer = new ComboViewer( buttonBarComposite, SWT.READ_ONLY ) {
+            @Override
+            protected void doUpdateItem( Widget data, Object element, boolean fullMap ) {
+                // memorize the selection before updating the item, as the
+                // update routine removes the selection...
+                ISelection currentSelection = this.getSelection();
+                super.doUpdateItem( data, element, fullMap );
+                // set the selection to the previous value
+                this.setSelection( currentSelection );
+            }
+        };
+        ObservableListContentProvider comboViewercontentProvider = new ObservableListContentProvider();
+        specTypecomboViewer.getControl().setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER, true, false ) );
+        // set content provider
+        specTypecomboViewer.setContentProvider( comboViewercontentProvider );
+        // set label provider
+        specTypecomboViewer.setLabelProvider( new ObservableMapLabelProvider(
+            EMFProperties.value( ErfPackage.Literals.IDENTIFIABLE__LONG_NAME )
+                         .observeDetail( comboViewercontentProvider.getKnownElements() ) ) );
+        // set input
+        IEMFListProperty specTypeProperty = EMFProperties.list( ErfPackage.Literals.CONTENT__SPEC_TYPES );
+        specTypecomboViewer.setInput( specTypeProperty.observe( this.erfModel.getCoreContent() ) );
+        // TODO: use a dedicated default view if available
+        if( erfModel.getCoreContent().getSpecTypes().size() > 0 ) {
+            specTypecomboViewer.setSelection( new StructuredSelection( erfModel.getCoreContent()
+                                                                               .getSpecTypes()
+                                                                               .get( 0 ) ) );
+        }
+        specTypeMaster = ViewerProperties.singleSelection().observe( specTypecomboViewer );
+
+        /*
          * create add button
          */
-        Button addButton = new Button( buttonBarComposite, SWT.NONE );
+        final Button addButton = new Button( buttonBarComposite, SWT.NONE );
         addButton.setImage( PlatformUI.getWorkbench().getSharedImages().getImage( ISharedImages.IMG_OBJ_ADD ) );
         addButton.setLayoutData( new GridData( SWT.RIGHT, SWT.CENTER, true, false ) );
+        addButton.setEnabled( specTypeMaster.getValue() != null );
         addButton.addSelectionListener( new SelectionAdapter() {
             @Override
             public void widgetSelected( SelectionEvent e ) {
-                SpecObjectCompositeViewer.this.createNewSpecObject();
+                SpecObjectCompositeViewer.this.createNewSpecObject( (SpecType)SpecObjectCompositeViewer.this.specTypeMaster.getValue() );
+            }
+        } );
+
+        specTypeMaster.addValueChangeListener( new IValueChangeListener() {
+            @Override
+            public void handleValueChange( ValueChangeEvent event ) {
+                addButton.setEnabled( event.getObservableValue().getValue() != null );
             }
         } );
 
@@ -310,8 +357,10 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
     }
 
     /** Add a new SpecObject */
-    private void createNewSpecObject() {
-        EObject newSpecObject = ErfFactoryImpl.eINSTANCE.create( ErfPackage.Literals.SPEC_OBJECT );
+    private void createNewSpecObject( SpecType specType ) {
+        SpecObject newSpecObject = ErfFactory.eINSTANCE.createSpecObject();
+        newSpecObject.setType( specType );
+
         Command cmd = AddCommand.create( editingDomain,
                                          erfModel.getCoreContent(),
                                          ErfPackage.CONTENT__SPEC_OBJECTS,
