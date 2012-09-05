@@ -2,6 +2,7 @@ package era.foss.ui.contrib;
 
 import java.util.List;
 
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -16,7 +17,7 @@ public class CheckingSelectionChangedListener implements ISelectionChangedListen
     private ISelectionProvider provider;
 
     /**
-     * @param provider the selction provider where the selected elements are set
+     * @param provider the selection provider where the selected elements are set
      */
     public CheckingSelectionChangedListener( ISelectionProvider provider ) {
         this.provider = provider;
@@ -24,11 +25,15 @@ public class CheckingSelectionChangedListener implements ISelectionChangedListen
 
     @Override
     public void selectionChanged( SelectionChangedEvent event ) {
-        List<?> currentSelection = ((IStructuredSelection)provider.getSelection()).toList();
 
-        if( !currentSelection.containsAll( ((IStructuredSelection)event.getSelection()).toList() ) ) {
-            provider.setSelection( event.getSelection() );
+        final List<?> currentSelectionList = ((IStructuredSelection)provider.getSelection()).toList();
+        final ISelection eventSelection = event.getSelection();
+        final List<?> eventSelectionList = ((IStructuredSelection)eventSelection).toList();
+        if( currentSelectionList.size() != eventSelectionList.size()
+            || !currentSelectionList.containsAll( eventSelectionList ) ) {
+            provider.setSelection( eventSelection );
         }
+
     }
 
 }
