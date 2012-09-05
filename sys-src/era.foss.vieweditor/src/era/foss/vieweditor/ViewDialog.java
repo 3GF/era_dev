@@ -46,11 +46,12 @@ import org.eclipse.jface.layout.TableColumnLayout;
 import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.ComboBoxViewerCellEditor;
 import org.eclipse.jface.viewers.ComboViewer;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.layout.GridData;
@@ -59,6 +60,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.IEditorPart;
 
 import era.foss.erf.AttributeDefinition;
@@ -320,23 +322,37 @@ public class ViewDialog extends Dialog {
      */
     private void createSpecTypeComboViewer( Composite parent ) {
 
-        ComboViewer comboViewer = new ComboViewer( new CCombo( parent, SWT.READ_ONLY | SWT.BORDER ) );
+        final ComboViewer specTypeComboViewer = new ComboViewer( parent, SWT.READ_ONLY ) {
+            @Override
+            protected void doUpdateItem( Widget data, Object element, boolean fullMap ) {
+                // memorize the selection before updating the item, as the
+                // update routine removes the selection...
+                ISelection currentSelection = this.getSelection();
+                super.doUpdateItem( data, element, fullMap );
+                // set the selection to the previous value
+                this.setSelection( currentSelection );
+            }
+        };
         ObservableListContentProvider contentProvider = new ObservableListContentProvider();
-        comboViewer.getControl().setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false ) );
+        specTypeComboViewer.getControl().setLayoutData( new GridData( SWT.FILL, SWT.CENTER, true, false ) );
 
         // set content provider
-        comboViewer.setContentProvider( contentProvider );
+        specTypeComboViewer.setContentProvider( contentProvider );
         // set label provider
-        comboViewer.setLabelProvider( new ObservableMapLabelProvider(
+        specTypeComboViewer.setLabelProvider( new ObservableMapLabelProvider(
             EMFProperties.value( ErfPackage.Literals.IDENTIFIABLE__LONG_NAME )
                          .observeDetail( contentProvider.getKnownElements() ) ) );
 
         // set input
-        IEMFListProperty dataTypeDefinitions = EMFProperties.list( ErfPackage.Literals.CONTENT__SPEC_TYPES );
-        comboViewer.setInput( dataTypeDefinitions.observe( this.erfModel.getCoreContent() ) );
-        comboViewer.getCCombo().select( 0 );
+        IEMFListProperty specTypeProperty = EMFProperties.list( ErfPackage.Literals.CONTENT__SPEC_TYPES );
+        specTypeComboViewer.setInput( specTypeProperty.observe( this.erfModel.getCoreContent() ) );
+        specTypeMaster = ViewerProperties.singleSelection().observe( specTypeComboViewer );
+        if( erfModel.getCoreContent().getSpecTypes().size() > 0 ) {
+            specTypeComboViewer.setSelection( new StructuredSelection( erfModel.getCoreContent()
+                                                                               .getSpecTypes()
+                                                                               .get( 0 ) ) );
+        }
 
-        specTypeMaster = ViewerProperties.singleSelection().observe( comboViewer );
         specTypeMaster.addValueChangeListener( new IValueChangeListener() {
 
             @Override
@@ -428,12 +444,11 @@ public class ViewDialog extends Dialog {
 
         // provide input for the table
         IEMFListProperty viewsProperty = EMFProperties.list( ErfPackage.Literals.VIEW__VIEW_ELEMENTS );
-
-        viewElementTableViewer.setInput( viewsProperty.observeDetail( viewMaster ) );
-        viewElementTableViewer.getTable().select( 0 );
         viewElementTableViewer.addFilter( new SpecTypeFilter() );
+        viewElementTableViewer.setInput( viewsProperty.observeDetail( viewMaster ) );
 
         viewElementMaster = ViewerProperties.singleSelection().observe( viewElementTableViewer );
+        viewElementTableViewer.getTable().select( 0 );
     }
 
     /**
@@ -456,9 +471,9 @@ public class ViewDialog extends Dialog {
         // create layout viewer
         this.viewLayoutViewer = new ViewLayoutViewer( editingDomain, layoutComposite );
         viewLayoutViewer.getControl().setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        viewLayoutViewer.addFilter( new SpecTypeFilter() );
         viewLayoutViewer.setContents( viewMaster );
         viewLayoutViewer.setSelection( viewElementTableViewer.getSelection() );
-        viewLayoutViewer.addFilter( new SpecTypeFilter() );
 
         // add listeners so that the selections get updated in each viewer
         viewLayoutViewer.addSelectionChangedListener( new CheckingSelectionChangedListener( viewElementTableViewer ) );
