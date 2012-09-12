@@ -64,7 +64,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -534,14 +533,14 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
                 if( validateJob == null ) {
                     validateJob = new Job( "Validation" ) {
                         ErfMarkerHelper markerHelper = new ErfMarkerHelper();
-                        Resource erfResource = (XMIResource)editingDomain.getResourceSet()
-                                                                         .getResource( EditUIUtil.getURI( ErfObjectEditor.this.getEditorInput() ),
-                                                                                       true );
-                        ERF erfModel = (ERF)(erfResource).getContents().get( 0 );
 
                         public IStatus run( IProgressMonitor monitor ) {
                             markerHelper.deleteMarkers( erfResource );
-                            Diagnostic diagnostic = Diagnostician.INSTANCE.validate( erfModel );
+                            BasicDiagnostic diagnostic = Diagnostician.INSTANCE.createDefaultDiagnostic( erfModel.getCoreContent() );
+                            // Map<Object, Object> context = Diagnostician.INSTANCE.createDefaultContext();
+                            for( SpecObject specObject : erfModel.getCoreContent().getSpecObjects() ) {
+                                Diagnostician.INSTANCE.validate( specObject, diagnostic );
+                            }
                             markerHelper.createMarkers( diagnostic );
                             return Status.OK_STATUS;
                         }
@@ -798,7 +797,6 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
                 setPageText( pageIndex, "ERA SpecObj Viewer" );
                 this.setCurrentViewerPane( viewerPane );
             }
-
 
         }
 
