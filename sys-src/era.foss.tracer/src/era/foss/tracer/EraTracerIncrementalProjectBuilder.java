@@ -236,7 +236,7 @@ public class EraTracerIncrementalProjectBuilder extends IncrementalProjectBuilde
      */
 
     private static CompilationUnit parse( ICompilationUnit unit ) {
-        ASTParser parser = ASTParser.newParser( AST.JLS3 );
+        ASTParser parser = ASTParser.newParser( AST.JLS4 );
         parser.setKind( ASTParser.K_COMPILATION_UNIT );
         parser.setSource( unit );
         parser.setResolveBindings( true );
