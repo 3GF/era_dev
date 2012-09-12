@@ -304,7 +304,7 @@ public class ErfValidator extends EObjectValidator {
                                                                                Map<Object, Object> context ) {
         /* String holding the error message key in case an error is detected */
         String errorMsgKey = null;
-        if( attributeValueSimple != null ) {
+        if( attributeValueSimple == null ) {
             return true;
         }
 
