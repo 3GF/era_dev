@@ -93,7 +93,7 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
     public ISelection getSelection() {
 
         @SuppressWarnings("unchecked")
-        List<EditPart> selectionEditPartList = ((IStructuredSelection)super.getSelection()).toList();
+        List<EditPart> selectionEditPartList = this.getSelectedEditParts();
         List<Object> modelElementList = new ArrayList<Object>();
 
         // get model elements of edit parts
