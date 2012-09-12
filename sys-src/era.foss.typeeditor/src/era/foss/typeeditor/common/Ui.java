@@ -148,7 +148,7 @@ public class Ui {
                 SWT.READ_ONLY );
             // Combo box: Set Content Provider
             ObservableListContentProvider comboContentProvider = new ObservableListContentProvider();
-            combo.setContenProvider( comboContentProvider );
+            combo.setContentProvider( comboContentProvider );
 
             IObservableMap comboAttributeMap = EMFProperties.value( eStructuralFeatureList[eStructuralFeatureList.length - 1] )
                                                             .observeDetail( comboContentProvider.getKnownElements() );
