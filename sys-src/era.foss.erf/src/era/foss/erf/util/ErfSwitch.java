@@ -18,7 +18,6 @@
  *************************************************************************/
 package era.foss.erf.util;
 
-import era.foss.erf.*;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
@@ -55,32 +54,26 @@ import era.foss.erf.View;
 import era.foss.erf.ViewElement;
 
 /**
- * <!-- begin-user-doc -->
- * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
- * to invoke the <code>caseXXX</code> method for each class of the model,
- * starting with the actual class of the object
- * and proceeding up the inheritance hierarchy
- * until a non-null result is returned,
- * which is the result of the switch.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance hierarchy. It supports the call
+ * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
+ * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
+ * returned, which is the result of the switch. <!-- end-user-doc -->
+ * 
  * @see era.foss.erf.ErfPackage
  * @generated
  */
 public class ErfSwitch<T2> extends Switch<T2> {
 
     /**
-     * The cached model package
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected static ErfPackage modelPackage;
 
     /**
-     * Creates an instance of the switch.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ErfSwitch() {
@@ -90,9 +83,8 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Checks whether this is a switch for the given package.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Checks whether this is a switch for the given package. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @parameter ePackage the package in question.
      * @return whether this is a switch for the given package.
      * @generated
@@ -103,9 +95,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
+     * result. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @return the first non-null result returned by a <code>caseXXX</code> call.
      * @generated
      */
@@ -316,11 +308,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Attribute Definition</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Attribute Definition</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Attribute Definition</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -331,11 +322,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Attribute Value</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Attribute Value</em>'. <!-- begin-user-doc
+     * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
+     * -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Attribute Value</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -346,11 +336,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Datatype Definition</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -361,13 +350,13 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Spec Element With User Defined Attributes</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Spec Element With User Defined Attributes</em>'. <!-- begin-user-doc --> This implementation returns null;
+     * returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Spec Element With User Defined Attributes</em>'.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Spec Element With User Defined Attributes</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
@@ -376,11 +365,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Spec Object</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Spec Object</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Spec Object</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -391,11 +378,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Spec Type</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Spec Type</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Spec Type</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -406,11 +391,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Map</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Map</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Map</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -421,11 +404,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Attribute Value Simple</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Attribute Value Simple</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Attribute Value Simple</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -436,11 +418,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition Integer</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition Integer</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Datatype Definition Integer</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -451,11 +432,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition Simple</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition Simple</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Datatype Definition Simple</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -466,11 +446,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition String</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition String</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Datatype Definition String</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -481,11 +460,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Identifiable</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -496,11 +473,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Attribute Definition Simple</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Attribute Definition Simple</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Attribute Definition Simple</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -511,11 +487,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>ERF</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>ERF</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>ERF</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -526,11 +500,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Content</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Content</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Content</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -541,11 +513,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Spec Relation</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Spec Relation</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Spec Relation</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -556,11 +526,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Embedded Value</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Embedded Value</em>'. <!-- begin-user-doc
+     * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
+     * -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Embedded Value</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -571,11 +540,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Enum Value</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Enum Value</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Enum Value</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -586,11 +553,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition Enumeration</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition Enumeration</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Datatype Definition Enumeration</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -601,11 +567,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Attribute Definition Enumeration</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Attribute Definition Enumeration</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Attribute Definition Enumeration</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -616,11 +581,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Attribute Value Enumeration</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Attribute Value Enumeration</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Attribute Value Enumeration</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -631,11 +595,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition Boolean</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Datatype Definition Boolean</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Datatype Definition Boolean</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -646,11 +609,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Attribute Definition Boolean</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Attribute Definition Boolean</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Attribute Definition Boolean</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -661,11 +623,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Attribute Value Boolean</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Attribute Value Boolean</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Attribute Value Boolean</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -676,11 +637,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Tool Extension</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Tool Extension</em>'. <!-- begin-user-doc
+     * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
+     * -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Tool Extension</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -691,11 +651,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>View</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>View</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>View</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -706,11 +664,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>View Element</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>View Element</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>View Element</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -721,11 +677,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Era Tool Extension</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Era Tool Extension</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Era Tool Extension</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -736,11 +691,10 @@ public class ErfSwitch<T2> extends Switch<T2> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch, but this is the last case anyway.
-     * <!-- end-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
+     * anyway. <!-- end-user-doc -->
+     * 
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject)
@@ -751,4 +705,4 @@ public class ErfSwitch<T2> extends Switch<T2> {
         return null;
     }
 
-} //ErfSwitch
+} // ErfSwitch

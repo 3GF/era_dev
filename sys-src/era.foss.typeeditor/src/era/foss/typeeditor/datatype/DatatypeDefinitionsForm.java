@@ -130,7 +130,7 @@ final public class DatatypeDefinitionsForm extends AbstractErfTypesForm {
             ComboBoxViewerCellEditor comboCellEditor = new ComboBoxViewerCellEditor(
                 ((TableViewer)viewer).getTable(),
                 SWT.READ_ONLY );
-            comboCellEditor.setContenProvider( new TypesForDatatypeDefinitionComboContentProvider(
+            comboCellEditor.setContentProvider( new TypesForDatatypeDefinitionComboContentProvider(
                 adapterFactory,
                 comboCellEditor.getViewer() ) );
 

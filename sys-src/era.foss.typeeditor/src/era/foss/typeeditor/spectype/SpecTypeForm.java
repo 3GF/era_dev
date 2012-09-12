@@ -292,7 +292,7 @@ public class SpecTypeForm extends AbstractErfTypesForm {
                 SWT.READ_ONLY );
             // set content provider
             ObservableListContentProvider contentProvider = new ObservableListContentProvider();
-            comboCellEditor.setContenProvider( contentProvider );
+            comboCellEditor.setContentProvider( contentProvider );
             // set label provider
             comboCellEditor.setLabelProvider( new ObservableMapLabelProvider(
                 EMFProperties.value( ErfPackage.Literals.IDENTIFIABLE__LONG_NAME )

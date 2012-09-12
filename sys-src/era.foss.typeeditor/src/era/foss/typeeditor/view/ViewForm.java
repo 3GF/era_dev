@@ -313,7 +313,7 @@ public class ViewForm extends AbstractErfTypesForm {
             SWT.READ_ONLY );
         // Combo box: Set Content Provider;
         ObservableListContentProvider comboBoxContentProvider = new ObservableListContentProvider();
-        combo.setContenProvider( comboBoxContentProvider );
+        combo.setContentProvider( comboBoxContentProvider );
 
         // Combo box: Set Label Provider
         combo.setLabelProvider( new ObservableMapLabelProvider(
