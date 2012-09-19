@@ -137,6 +137,8 @@ public class ViewForm extends AbstractErfTypesForm {
                 this.toolExtension = (EraToolExtension)toolExtension;
             }
         }
+        // The existence of the EraToolExtension object as part of the model is currently
+        // guaranteed by the EraModelWizard that creates it explicitly
         assert (this.toolExtension != null);
 
         dataBindContext = new DataBindingContext();
@@ -272,7 +274,24 @@ public class ViewForm extends AbstractErfTypesForm {
             @Override
             public void addElement() {
                 this.elementOwner = (EObject)viewMaster.getValue();
-                super.addElement();
+                super.addElement(); // is_a ViewElement
+                ViewElement addedViewElement = (ViewElement)super.getElementAt( super.doGetItemCount() - 1 );
+                // default placement of views' elements
+                addedViewElement.setEditorRowPosition( getCurrentMaxRowIdx() + 1 );
+                addedViewElement.setEditorColumnPosition( 0 );
+                addedViewElement.setEditorColumnSpan( 2 );
+                addedViewElement.setEditorRowSpan( 1 );
+            }
+
+            private int getCurrentMaxRowIdx() {
+                int maxRowIdx = 0;
+                for( int i = 0; i < super.doGetItemCount(); ++i ) {
+                    ViewElement iterViewElement = (ViewElement)super.getElementAt( i );
+                    maxRowIdx = Math.max( maxRowIdx,
+                                          iterViewElement.getEditorRowPosition()
+                                              + (iterViewElement.getEditorRowSpan() - 1) );
+                }
+                return maxRowIdx;
             }
         };
 
@@ -310,7 +329,7 @@ public class ViewForm extends AbstractErfTypesForm {
         // Combo box: Create combo box to select choices for the reference
         ComboBoxViewerCellEditor combo = new ComboBoxViewerCellEditorSp(
             (Composite)viewElementTableViewer.getControl(),
-            SWT.READ_ONLY );
+            SWT.DROP_DOWN | SWT.READ_ONLY );
         // Combo box: Set Content Provider;
         ObservableListContentProvider comboBoxContentProvider = new ObservableListContentProvider();
         combo.setContentProvider( comboBoxContentProvider );
