@@ -45,6 +45,7 @@ import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerEditor;
+import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -251,12 +252,20 @@ public class AddDeleteTableViewer extends TableViewer {
             }
         } );
 
-        // prepare the activation strategy for setting the behavior when editing table cells
+        // prepare the activation strategy for setting a default behavior when editing table cells
+        // (may be overwritten)
         ColumnViewerEditorActivationStrategy actStrategy = new ColumnViewerEditorActivationStrategy( this ) {
             protected boolean isEditorActivationEvent( ColumnViewerEditorActivationEvent event ) {
-                return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
-                    || event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION
-                    || event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC;
+                boolean retVal = false;
+
+                // TODO: make click-behavior like: 1) single-click if drop-down box 2) double-click if text-box
+                // ((ViewerCell) event.getSource()).getElement(). ...?
+
+                if( ((ViewerCell)event.getSource()).getColumnIndex() <= 0 ) retVal = (event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
+                    || event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION || event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC);
+                if( ((ViewerCell)event.getSource()).getColumnIndex() >= 1 ) retVal = (event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
+                    || event.eventType == ColumnViewerEditorActivationEvent.MOUSE_CLICK_SELECTION || event.eventType == ColumnViewerEditorActivationEvent.PROGRAMMATIC);
+                return retVal;
             }
         };
 
