@@ -336,7 +336,7 @@ public class AddDeleteTableViewer extends TableViewer {
     /**
      * Create a button bar holding the Add and Remove Button.
      */
-    private void createButtonBar() {
+    protected void createButtonBar() {
 
         buttonBar = new Composite( composite, SWT.NONE );
         buttonBar.setLayoutData( new GridData( SWT.LEFT, SWT.BOTTOM, true, false ) );

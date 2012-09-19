@@ -160,6 +160,7 @@ public class ViewForm extends AbstractErfTypesForm {
             | SWT.V_SCROLL
             | SWT.BORDER
             | SWT.FULL_SELECTION );
+        
         viewTableViewer.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true, 1, 2 ) );
         viewTableViewer.setEditingDomain( editingDomain );
         viewTableViewer.setElementInformation( toolExtension,
@@ -283,6 +284,11 @@ public class ViewForm extends AbstractErfTypesForm {
                 addedViewElement.setEditorRowSpan( 1 );
             }
 
+            /**
+             * Calculates maximum row index of existing view elements
+             * 
+             * @return maximum row index
+             */
             private int getCurrentMaxRowIdx() {
                 int maxRowIdx = 0;
                 for( int i = 0; i < super.doGetItemCount(); ++i ) {
@@ -292,6 +298,12 @@ public class ViewForm extends AbstractErfTypesForm {
                                               + (iterViewElement.getEditorRowSpan() - 1) );
                 }
                 return maxRowIdx;
+            }
+            
+            @Override
+            protected void createButtonBar() {
+                super.createButtonBar();
+                // FIXME @cpn create "add all" button
             }
         };
 
