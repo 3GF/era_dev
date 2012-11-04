@@ -74,7 +74,6 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 import era.foss.erf.ERF;
 import era.foss.erf.ErfFactory;
 import era.foss.erf.ErfPackage;
-import era.foss.erf.SpecType;
 import era.foss.erf.provider.ErfEditPlugin;
 
 /**
@@ -204,10 +203,6 @@ public class ErfModelWizard extends Wizard implements INewWizard {
         // create element for era tool extension
         erfModel.getToolExtensions().add( erfFactory.createEraToolExtension() );
 
-        // Right now we support only one spec type for a single document
-        SpecType defaultSpecType = erfFactory.createSpecType();
-        defaultSpecType.setLongName( "TheOneAndOnly" );
-        erfModel.getCoreContent().getSpecTypes().add( defaultSpecType );
         return erfModel;
     }
 
