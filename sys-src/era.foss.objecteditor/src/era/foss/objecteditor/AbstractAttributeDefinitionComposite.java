@@ -48,10 +48,10 @@ public abstract class AbstractAttributeDefinitionComposite extends Composite {
 
         // set up decoration for showing erroneous validation
         errorDecoration = new ControlDecoration( this.control, SWT.RIGHT | SWT.TOP );
+        errorDecoration.hide();
         FieldDecoration fieldDecoration = FieldDecorationRegistry.getDefault()
                                                                  .getFieldDecoration( FieldDecorationRegistry.DEC_ERROR );
         errorDecoration.setImage( fieldDecoration.getImage() );
-        errorDecoration.hide();
 
     }
 

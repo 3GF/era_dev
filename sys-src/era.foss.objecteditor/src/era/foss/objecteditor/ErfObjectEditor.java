@@ -40,10 +40,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -61,7 +58,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
@@ -185,6 +181,11 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
      * The MarkerHelper is responsible for creating workspace resource markers presented in Eclipse's Problems View.
      */
     protected MarkerHelper markerHelper = new EditUIMarkerHelper();
+
+    /**
+     * Job for validation of spec objects
+     */
+    protected ErfValidateJob validateJob;
 
     /**
      * This listens for when the outline becomes active <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -498,6 +499,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     public ErfObjectEditor() {
         super();
         initializeEditingDomain();
+
     }
 
     /**
@@ -505,7 +507,6 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
      */
     protected void initializeEditingDomain() {
         // Create an adapter factory that yields item providers.
-        //
         adapterFactory = new ComposedAdapterFactory( ComposedAdapterFactory.Descriptor.Registry.INSTANCE );
 
         adapterFactory.addAdapterFactory( new ResourceItemProviderAdapterFactory() );
@@ -513,15 +514,11 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
         adapterFactory.addAdapterFactory( new ReflectiveItemProviderAdapterFactory() );
 
         // Create the command stack that will notify this editor as commands are executed.
-        //
         BasicCommandStack commandStack = new EraCommandStack();
 
         // Add a listener to set the most recent command's affected objects to be the selection of the viewer with
         // focus.
-        //
         commandStack.addCommandStackListener( new CommandStackListener() {
-
-            private Job validateJob = null;
 
             /**
              * create a validate job if none is existing yet The validate job asynchronously checks if the erfModel is
@@ -529,35 +526,13 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
              * 
              * @return the validate job
              */
-            private Job getValidateJob() {
-                if( validateJob == null ) {
-                    validateJob = new Job( "Validation" ) {
-                        ErfMarkerHelper markerHelper = new ErfMarkerHelper();
-
-                        public IStatus run( IProgressMonitor monitor ) {
-                            markerHelper.deleteMarkers( erfResource );
-                            BasicDiagnostic diagnostic = Diagnostician.INSTANCE.createDefaultDiagnostic( erfModel.getCoreContent() );
-                            // Map<Object, Object> context = Diagnostician.INSTANCE.createDefaultContext();
-                            for( SpecObject specObject : erfModel.getCoreContent().getSpecObjects() ) {
-                                Diagnostician.INSTANCE.validate( specObject, diagnostic );
-                            }
-                            markerHelper.createMarkers( diagnostic );
-                            return Status.OK_STATUS;
-                        }
-                    };
-                }
-                return validateJob;
-            }
 
             public void commandStackChanged( final EventObject event ) {
-                /*
-                 * if( ErfObjectEditor.this.currentViewerPane == null ) { return; }
-                 */
                 ErfObjectEditor.this.currentViewerPane.getControl().getDisplay().asyncExec( new Runnable() {
                     public void run() {
                         firePropertyChange( IEditorPart.PROP_DIRTY );
 
-                        // Try to select the affected objects. (e.g. skip to respective objects when perform ing an UNDO
+                        // Try to select the affected objects. (e.g. skip to respective objects when performing an UNDO
                         // operation)
                         Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();
                         if( mostRecentCommand != null ) {
@@ -569,9 +544,11 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
                             propertySheetPage.refresh();
                         }
 
-                        // start model validation
-                        getValidateJob().cancel();
-                        getValidateJob().schedule();
+                        // start model validation:
+                        // * Try to cancel the job.
+                        // * It does not matter if the cancellation fails as we schedule the Job again in any case.
+                        ErfObjectEditor.this.validateJob.cancel();
+                        ErfObjectEditor.this.validateJob.schedule();
                     }
                 } );
 
@@ -584,6 +561,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
             adapterFactory,
             commandStack,
             new HashMap<Resource, Boolean>() );
+
     }
 
     /**
@@ -728,8 +706,11 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
             resourceToDiagnosticMap.put( erfResource, analyzeResourceProblems( erfResource, exception ) );
         }
         editingDomain.getResourceSet().eAdapters().add( problemIndicationAdapter );
-
         erfModel = (ERF)erfResource.getContents().get( 0 );
+
+        // create validation job and start validation of the model
+        validateJob = new ErfValidateJob( erfModel );
+        validateJob.schedule();
     }
 
     /**
