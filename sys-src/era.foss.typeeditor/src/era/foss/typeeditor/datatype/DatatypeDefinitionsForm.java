@@ -226,15 +226,18 @@ final public class DatatypeDefinitionsForm extends AbstractErfTypesForm {
 
             // adapt all AttributeDefintions refering to this DatatypeDefinition
             for( AttributeDefinition attributeDefinition : attributeDefintions ) {
-                Command setCommand = new SetCommand(
-                    editingDomain,
-                    attributeDefinition,
-                    ErfPackage.Literals.ATTRIBUTE_DEFINITION__TYPE,
-                    newDataTypeDefinition );
-                editingDomain.getCommandStack().execute( setCommand );
-                // attributeDefinition.setType( newDataTypeDefinition );
+                if( attributeDefinition == null ) {
+                    attributeDefintions.remove( attributeDefinition );
+                } else {
+                    Command setCommand = new SetCommand(
+                        editingDomain,
+                        attributeDefinition,
+                        ErfPackage.Literals.ATTRIBUTE_DEFINITION__TYPE,
+                        newDataTypeDefinition );
+                    editingDomain.getCommandStack().execute( setCommand );
 
-                adaptAttributeDefintion( attributeDefinition );
+                    adaptAttributeDefintion( attributeDefinition );
+                }
             }
 
             // reset the cellEditor (remember: there is only one object, which handles all cell in its row)
