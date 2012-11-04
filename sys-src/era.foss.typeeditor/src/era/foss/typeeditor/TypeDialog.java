@@ -19,8 +19,15 @@
 package era.foss.typeeditor;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.ui.util.EditUIUtil;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
@@ -32,6 +39,12 @@ import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 import org.eclipse.ui.IEditorPart;
 
+import era.foss.erf.DatatypeDefinition;
+import era.foss.erf.ERF;
+import era.foss.erf.EraToolExtension;
+import era.foss.erf.ErfPackage;
+import era.foss.erf.SpecType;
+import era.foss.erf.ToolExtension;
 import era.foss.objecteditor.EraCommandStack;
 import era.foss.objecteditor.IAllowViewerSchemaChange;
 import era.foss.typeeditor.datatype.DatatypeDefinitionsForm;
@@ -61,6 +74,15 @@ public class TypeDialog extends TitleAreaDialog {
     /** The type editor activator. */
     private Activator typeEditorActivator = null;
 
+    private ERF erfModel;
+
+    private Resource erfResource;
+
+    /**
+     * Era Tool extension model object
+     */
+    private EraToolExtension toolExtension;
+
     /**
      * Creates a editor for Datatype, Attributes and Spectypes.
      * 
@@ -74,8 +96,19 @@ public class TypeDialog extends TitleAreaDialog {
         // set-up context
         this.editor = editor;
         this.editingDomain = ((IEditingDomainProvider)editor).getEditingDomain();
+        URI resourceURI = EditUIUtil.getURI( editor.getEditorInput() );
+        this.erfResource = editingDomain.getResourceSet().getResource( resourceURI, true );
+        this.erfModel = (ERF)erfResource.getContents().get( 0 );
         this.eraCommandStack = (EraCommandStack)editingDomain.getCommandStack();
         this.typeEditorActivator = era.foss.typeeditor.Activator.INSTANCE;
+
+        // find Era specific tool extensions
+        for( ToolExtension toolExtension : this.erfModel.getToolExtensions() ) {
+            if( toolExtension.eClass().getClassifierID() == ErfPackage.ERA_TOOL_EXTENSION ) {
+                this.toolExtension = (EraToolExtension)toolExtension;
+            }
+        }
+        assert (this.toolExtension != null);
 
         // plant an initial checkpoint
         this.eraCommandStack.plantCheckpoint();
@@ -132,17 +165,46 @@ public class TypeDialog extends TitleAreaDialog {
      * @since 03.03.2010
      */
     protected void okPressed() {
-        super.okPressed();
-        // the performed commands should not be available for undo after OK.
-        eraCommandStack.inhibitUndos();
+        // validate model
+        BasicDiagnostic diagnostic = Diagnostician.INSTANCE.createDefaultDiagnostic( erfModel.getCoreContent() );
+        for( DatatypeDefinition dataType : erfModel.getCoreContent().getDataTypes() ) {
+            Diagnostician.INSTANCE.validate( dataType, diagnostic );
+        }
+        for( SpecType specType : erfModel.getCoreContent().getSpecTypes() ) {
+            Diagnostician.INSTANCE.validate( specType, diagnostic );
+        }
+        Diagnostician.INSTANCE.validate( toolExtension, diagnostic );
 
-        // redraw the SpecObject editor
-        if( editor instanceof IViewerProvider ) {
-            Viewer viewer = ((IViewerProvider)editor).getViewer();
-            if( viewer instanceof IAllowViewerSchemaChange ) {
-                ((IAllowViewerSchemaChange)viewer).recreateViewerSchema();
+        if( !diagnostic.getChildren().isEmpty() ) {
+            MessageDialog dialog = new MessageDialog(
+                this.getShell(),
+                typeEditorActivator.getString( "_UI_ValidationErrorDialog_title" ),
+                null,
+                typeEditorActivator.getString( "_UI_ValidationErrorDialog_text" ),
+                MessageDialog.ERROR,
+                new String[]{"OK"},
+                0 );
+            dialog.open();
+
+            String errorMessage = "";
+            for( Diagnostic diagnosticChildren : diagnostic.getChildren() ) {
+                errorMessage += diagnosticChildren.getMessage() + "\n";
+            }
+            this.setErrorMessage( errorMessage );
+        } else {
+            super.okPressed();
+            // the performed commands should not be available for undo after OK.
+            eraCommandStack.inhibitUndos();
+
+            // redraw the SpecObject editor
+            if( editor instanceof IViewerProvider ) {
+                Viewer viewer = ((IViewerProvider)editor).getViewer();
+                if( viewer instanceof IAllowViewerSchemaChange ) {
+                    ((IAllowViewerSchemaChange)viewer).recreateViewerSchema();
+                }
             }
         }
+
     }
 
     /**
