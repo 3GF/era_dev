@@ -147,10 +147,14 @@ public class DataTypeDefinitionDetailViewer extends AbstractDetailViewer {
     private void createDetailsEnumeration() {
 
         // create table for enumeration values
-        AddDeleteTableViewer tableViewer = new AddDeleteTableViewer( detailComposite, SWT.MULTI
+        final AddDeleteTableViewer tableViewer = new AddDeleteTableViewer( detailComposite, SWT.MULTI
             | SWT.V_SCROLL
             | SWT.BORDER
             | SWT.FULL_SELECTION );
+
+        tableViewer.getTable().setHeaderVisible( true );
+        tableViewer.getTable().setLinesVisible( true );
+
         tableViewer.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true, 2, 1 ) );
         tableViewer.setEditingDomain( editingDomain );
         tableViewer.setElementInformation( (EObject)this.master.getValue(),
@@ -161,15 +165,27 @@ public class DataTypeDefinitionDetailViewer extends AbstractDetailViewer {
         tableViewer.setContentProvider( cp );
 
         TableColumnLayout columnLayout = (TableColumnLayout)tableViewer.getTable().getParent().getLayout();
-        // create column with name of the element
-        TableViewerColumn column = new TableViewerColumn( tableViewer, SWT.NONE );
 
-        columnLayout.setColumnData( column.getColumn(), new ColumnWeightData( 20, 20 ) );
-        column.getColumn().setResizable( true );
-        column.getColumn().setMoveable( false );
-        column.getColumn().setText( Ui.getUiName( ErfPackage.Literals.IDENTIFIABLE__LONG_NAME ) );
+        // create column with name of the element
+        TableViewerColumn columnName = new TableViewerColumn( tableViewer, SWT.NONE );
+
+        columnLayout.setColumnData( columnName.getColumn(), new ColumnWeightData( 20, 20 ) );
+        columnName.getColumn().setResizable( true );
+        columnName.getColumn().setMoveable( false );
+        columnName.getColumn().setText( Ui.getUiName( ErfPackage.Literals.IDENTIFIABLE__LONG_NAME ) );
         EStructuralFeature[] structuralFeature = {ErfPackage.Literals.IDENTIFIABLE__LONG_NAME};
-        ui.bindColumn( column, structuralFeature );
+        ui.bindColumn( columnName, structuralFeature );
+
+        // create column with color of element
+        TableViewerColumn columnColor = new TableViewerColumn( tableViewer, SWT.NONE );
+
+        columnLayout.setColumnData( columnColor.getColumn(), new ColumnWeightData( 10, 10 ) );
+        columnColor.getColumn().setResizable( false );
+        columnColor.getColumn().setWidth( 20 );
+        columnColor.setLabelProvider( new EnumColorLabelProvider() );
+        EnumColorEditingSupport colorCellEditingSupport = new EnumColorEditingSupport( tableViewer );
+        colorCellEditingSupport.setEditingDomain( editingDomain );
+        columnColor.setEditingSupport( colorCellEditingSupport );
 
         IEMFListProperty enumerationProperty = EMFProperties.list( ErfPackage.Literals.DATATYPE_DEFINITION_ENUMERATION__SPECIFIED_VALUES );
         tableViewer.setInput( enumerationProperty.observe( master.getValue() ) );
