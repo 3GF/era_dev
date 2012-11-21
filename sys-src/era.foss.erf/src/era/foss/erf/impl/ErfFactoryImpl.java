@@ -114,6 +114,8 @@ public class ErfFactoryImpl extends EFactoryImpl implements ErfFactory {
             return createViewElement();
         case ErfPackage.ERA_TOOL_EXTENSION:
             return createEraToolExtension();
+        case ErfPackage.COLOR:
+            return createColor();
         default:
             throw new IllegalArgumentException( "The class '" + eClass.getName() + "' is not a valid classifier" );
         }
@@ -351,6 +353,16 @@ public class ErfFactoryImpl extends EFactoryImpl implements ErfFactory {
     public EraToolExtension createEraToolExtension() {
         EraToolExtensionImpl eraToolExtension = new EraToolExtensionImpl();
         return eraToolExtension;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Color createColor() {
+        ColorImpl color = new ColorImpl();
+        return color;
     }
 
     /**

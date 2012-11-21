@@ -72,6 +72,7 @@ public class EnumValueItemProvider extends IdentifiableItemProvider implements I
         if( childrenFeatures == null ) {
             super.getChildrenFeatures( object );
             childrenFeatures.add( ErfPackage.Literals.ENUM_VALUE__PROPERTIES );
+            childrenFeatures.add( ErfPackage.Literals.ENUM_VALUE__COLOR );
         }
         return childrenFeatures;
     }
@@ -127,6 +128,7 @@ public class EnumValueItemProvider extends IdentifiableItemProvider implements I
 
         switch (notification.getFeatureID( EnumValue.class )) {
         case ErfPackage.ENUM_VALUE__PROPERTIES:
+        case ErfPackage.ENUM_VALUE__COLOR:
             fireNotifyChanged( new ViewerNotification( notification, notification.getNotifier(), true, false ) );
             return;
         }
@@ -146,6 +148,9 @@ public class EnumValueItemProvider extends IdentifiableItemProvider implements I
 
         newChildDescriptors.add( createChildParameter( ErfPackage.Literals.ENUM_VALUE__PROPERTIES,
                                                        ErfFactory.eINSTANCE.createEmbeddedValue() ) );
+
+        newChildDescriptors.add( createChildParameter( ErfPackage.Literals.ENUM_VALUE__COLOR,
+                                                       ErfFactory.eINSTANCE.createColor() ) );
     }
 
 }

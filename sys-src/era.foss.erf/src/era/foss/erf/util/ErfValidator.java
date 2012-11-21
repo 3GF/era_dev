@@ -188,6 +188,8 @@ public class ErfValidator extends EObjectValidator {
             return validateViewElement( (ViewElement)value, diagnostics, context );
         case ErfPackage.ERA_TOOL_EXTENSION:
             return validateEraToolExtension( (EraToolExtension)value, diagnostics, context );
+        case ErfPackage.COLOR:
+            return validateColor( (Color)value, diagnostics, context );
         case ErfPackage.DIAGNOSTIC_CHAIN:
             return validateDiagnosticChain( (DiagnosticChain)value, diagnostics, context );
         default:
@@ -634,6 +636,15 @@ public class ErfValidator extends EObjectValidator {
                                              DiagnosticChain diagnostics,
                                              Map<Object, Object> context ) {
         return validate_EveryDefaultConstraint( eraToolExtension, diagnostics, context );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean validateColor( Color color, DiagnosticChain diagnostics, Map<Object, Object> context ) {
+        return validate_EveryDefaultConstraint( color, diagnostics, context );
     }
 
     /**

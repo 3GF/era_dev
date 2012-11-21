@@ -310,6 +310,12 @@ public class ErfSwitch<T2> extends Switch<T2> {
             if( result == null ) result = defaultCase( theEObject );
             return result;
         }
+        case ErfPackage.COLOR: {
+            Color color = (Color)theEObject;
+            T2 result = caseColor( color );
+            if( result == null ) result = defaultCase( theEObject );
+            return result;
+        }
         default:
             return defaultCase( theEObject );
         }
@@ -732,6 +738,21 @@ public class ErfSwitch<T2> extends Switch<T2> {
      * @generated
      */
     public T2 caseEraToolExtension( EraToolExtension object ) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Color</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Color</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T2 caseColor( Color object ) {
         return null;
     }
 

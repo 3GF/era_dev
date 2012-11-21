@@ -1136,13 +1136,22 @@ public interface ErfPackage extends EPackage {
     int ENUM_VALUE__PROPERTIES = IDENTIFIABLE_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Color</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ENUM_VALUE__COLOR = IDENTIFIABLE_FEATURE_COUNT + 1;
+
+    /**
      * The number of structural features of the '<em>Enum Value</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int ENUM_VALUE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
+    int ENUM_VALUE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link era.foss.erf.impl.DatatypeDefinitionEnumerationImpl <em>Datatype Definition Enumeration</em>}' class.
@@ -1758,6 +1767,52 @@ public interface ErfPackage extends EPackage {
     int ERA_TOOL_EXTENSION_FEATURE_COUNT = TOOL_EXTENSION_FEATURE_COUNT + 1;
 
     /**
+     * The meta object id for the '{@link era.foss.erf.impl.ColorImpl <em>Color</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see era.foss.erf.impl.ColorImpl
+     * @see era.foss.erf.impl.ErfPackageImpl#getColor()
+     * @generated
+     */
+    int COLOR = 28;
+
+    /**
+     * The feature id for the '<em><b>Red</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COLOR__RED = 0;
+
+    /**
+     * The feature id for the '<em><b>Green</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COLOR__GREEN = 1;
+
+    /**
+     * The feature id for the '<em><b>Blue</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COLOR__BLUE = 2;
+
+    /**
+     * The number of structural features of the '<em>Color</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COLOR_FEATURE_COUNT = 3;
+
+    /**
      * The meta object id for the '<em>Diagnostic Chain</em>' data type.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1765,7 +1820,7 @@ public interface ErfPackage extends EPackage {
      * @see era.foss.erf.impl.ErfPackageImpl#getDiagnosticChain()
      * @generated
      */
-    int DIAGNOSTIC_CHAIN = 28;
+    int DIAGNOSTIC_CHAIN = 29;
 
     /**
      * Returns the meta object for class '{@link era.foss.erf.AttributeDefinition <em>Attribute Definition</em>}'.
@@ -2279,6 +2334,17 @@ public interface ErfPackage extends EPackage {
     EReference getEnumValue_Properties();
 
     /**
+     * Returns the meta object for the containment reference '{@link era.foss.erf.EnumValue#getColor <em>Color</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Color</em>'.
+     * @see era.foss.erf.EnumValue#getColor()
+     * @see #getEnumValue()
+     * @generated
+     */
+    EReference getEnumValue_Color();
+
+    /**
      * Returns the meta object for class '{@link era.foss.erf.DatatypeDefinitionEnumeration <em>Datatype Definition Enumeration</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2531,6 +2597,49 @@ public interface ErfPackage extends EPackage {
      * @generated
      */
     EReference getEraToolExtension_Views();
+
+    /**
+     * Returns the meta object for class '{@link era.foss.erf.Color <em>Color</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Color</em>'.
+     * @see era.foss.erf.Color
+     * @generated
+     */
+    EClass getColor();
+
+    /**
+     * Returns the meta object for the attribute '{@link era.foss.erf.Color#getRed <em>Red</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Red</em>'.
+     * @see era.foss.erf.Color#getRed()
+     * @see #getColor()
+     * @generated
+     */
+    EAttribute getColor_Red();
+
+    /**
+     * Returns the meta object for the attribute '{@link era.foss.erf.Color#getGreen <em>Green</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Green</em>'.
+     * @see era.foss.erf.Color#getGreen()
+     * @see #getColor()
+     * @generated
+     */
+    EAttribute getColor_Green();
+
+    /**
+     * Returns the meta object for the attribute '{@link era.foss.erf.Color#getBlue <em>Blue</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Blue</em>'.
+     * @see era.foss.erf.Color#getBlue()
+     * @see #getColor()
+     * @generated
+     */
+    EAttribute getColor_Blue();
 
     /**
      * Returns the meta object for data type '{@link org.eclipse.emf.common.util.DiagnosticChain <em>Diagnostic Chain</em>}'.
@@ -2939,6 +3048,13 @@ public interface ErfPackage extends EPackage {
          */
         EReference ENUM_VALUE__PROPERTIES = eINSTANCE.getEnumValue_Properties();
         /**
+         * The meta object literal for the '<em><b>Color</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference ENUM_VALUE__COLOR = eINSTANCE.getEnumValue_Color();
+        /**
          * The meta object literal for the '{@link era.foss.erf.impl.DatatypeDefinitionEnumerationImpl <em>Datatype Definition Enumeration</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -3126,6 +3242,36 @@ public interface ErfPackage extends EPackage {
          * @generated
          */
         EReference ERA_TOOL_EXTENSION__VIEWS = eINSTANCE.getEraToolExtension_Views();
+        /**
+         * The meta object literal for the '{@link era.foss.erf.impl.ColorImpl <em>Color</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see era.foss.erf.impl.ColorImpl
+         * @see era.foss.erf.impl.ErfPackageImpl#getColor()
+         * @generated
+         */
+        EClass COLOR = eINSTANCE.getColor();
+        /**
+         * The meta object literal for the '<em><b>Red</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute COLOR__RED = eINSTANCE.getColor_Red();
+        /**
+         * The meta object literal for the '<em><b>Green</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute COLOR__GREEN = eINSTANCE.getColor_Green();
+        /**
+         * The meta object literal for the '<em><b>Blue</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute COLOR__BLUE = eINSTANCE.getColor_Blue();
         /**
          * The meta object literal for the '<em>Diagnostic Chain</em>' data type.
          * <!-- begin-user-doc -->

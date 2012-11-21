@@ -12,5 +12,6 @@ Export-Package: era.foss.erf,
  era.foss.erf.impl,
  era.foss.erf.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore.xmi
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.swt
 Bundle-ActivationPolicy: lazy

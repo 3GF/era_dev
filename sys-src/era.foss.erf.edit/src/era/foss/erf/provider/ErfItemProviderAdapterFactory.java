@@ -549,6 +549,29 @@ public class ErfItemProviderAdapterFactory extends ErfAdapterFactory implements 
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link era.foss.erf.Color} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ColorItemProvider colorItemProvider;
+
+    /**
+     * This creates an adapter for a {@link era.foss.erf.Color}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createColorAdapter() {
+        if( colorItemProvider == null ) {
+            colorItemProvider = new ColorItemProvider( this );
+        }
+
+        return colorItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -667,6 +690,7 @@ public class ErfItemProviderAdapterFactory extends ErfAdapterFactory implements 
         if( viewItemProvider != null ) viewItemProvider.dispose();
         if( viewElementItemProvider != null ) viewElementItemProvider.dispose();
         if( eraToolExtensionItemProvider != null ) eraToolExtensionItemProvider.dispose();
+        if( colorItemProvider != null ) colorItemProvider.dispose();
     }
 
 }

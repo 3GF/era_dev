@@ -37,6 +37,7 @@ import era.foss.erf.AttributeValue;
 import era.foss.erf.AttributeValueBoolean;
 import era.foss.erf.AttributeValueEnumeration;
 import era.foss.erf.AttributeValueSimple;
+import era.foss.erf.Color;
 import era.foss.erf.Content;
 import era.foss.erf.DatatypeDefinition;
 import era.foss.erf.DatatypeDefinitionBoolean;
@@ -239,6 +240,13 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
      * @generated
      */
     private EClass eraToolExtensionEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass colorEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -701,6 +709,15 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getEnumValue_Color() {
+        return (EReference)enumValueEClass.getEStructuralFeatures().get( 1 );
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
@@ -910,6 +927,42 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getColor() {
+        return colorEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getColor_Red() {
+        return (EAttribute)colorEClass.getEStructuralFeatures().get( 0 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getColor_Green() {
+        return (EAttribute)colorEClass.getEStructuralFeatures().get( 1 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getColor_Blue() {
+        return (EAttribute)colorEClass.getEStructuralFeatures().get( 2 );
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
@@ -1008,6 +1061,7 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
         enumValueEClass = createEClass( ENUM_VALUE );
         createEReference( enumValueEClass, ENUM_VALUE__PROPERTIES );
+        createEReference( enumValueEClass, ENUM_VALUE__COLOR );
 
         datatypeDefinitionEnumerationEClass = createEClass( DATATYPE_DEFINITION_ENUMERATION );
         createEReference( datatypeDefinitionEnumerationEClass, DATATYPE_DEFINITION_ENUMERATION__SPECIFIED_VALUES );
@@ -1042,6 +1096,11 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
         eraToolExtensionEClass = createEClass( ERA_TOOL_EXTENSION );
         createEReference( eraToolExtensionEClass, ERA_TOOL_EXTENSION__VIEWS );
+
+        colorEClass = createEClass( COLOR );
+        createEAttribute( colorEClass, COLOR__RED );
+        createEAttribute( colorEClass, COLOR__GREEN );
+        createEAttribute( colorEClass, COLOR__BLUE );
 
         // Create data types
         diagnosticChainEDataType = createEDataType( DIAGNOSTIC_CHAIN );
@@ -1701,6 +1760,23 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         IS_UNIQUE,
                         !IS_DERIVED,
                         IS_ORDERED );
+        initEReference( getEnumValue_Color(),
+                        this.getColor(),
+                        null,
+                        "color",
+                        null,
+                        1,
+                        1,
+                        EnumValue.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        IS_COMPOSITE,
+                        !IS_RESOLVE_PROXIES,
+                        !IS_UNSETTABLE,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
 
         initEClass( datatypeDefinitionEnumerationEClass,
                     DatatypeDefinitionEnumeration.class,
@@ -1987,6 +2063,53 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         IS_COMPOSITE,
                         !IS_RESOLVE_PROXIES,
                         !IS_UNSETTABLE,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+
+        initEClass( colorEClass, Color.class, "Color", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS );
+        initEAttribute( getColor_Red(),
+                        ecorePackage.getEInt(),
+                        "red",
+                        null,
+                        0,
+                        1,
+                        Color.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_UNSETTABLE,
+                        !IS_ID,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEAttribute( getColor_Green(),
+                        ecorePackage.getEInt(),
+                        "green",
+                        null,
+                        0,
+                        1,
+                        Color.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_UNSETTABLE,
+                        !IS_ID,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEAttribute( getColor_Blue(),
+                        ecorePackage.getEInt(),
+                        "blue",
+                        null,
+                        0,
+                        1,
+                        Color.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_UNSETTABLE,
+                        !IS_ID,
                         IS_UNIQUE,
                         !IS_DERIVED,
                         IS_ORDERED );

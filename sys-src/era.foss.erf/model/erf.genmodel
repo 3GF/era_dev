@@ -74,6 +74,7 @@
     </genClasses>
     <genClasses ecoreClass="erf.ecore#//EnumValue">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//EnumValue/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//EnumValue/color"/>
     </genClasses>
     <genClasses ecoreClass="erf.ecore#//DatatypeDefinitionEnumeration">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//DatatypeDefinitionEnumeration/specifiedValues"/>
@@ -106,6 +107,11 @@
     </genClasses>
     <genClasses ecoreClass="erf.ecore#//EraToolExtension">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//EraToolExtension/views"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//Color">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//Color/red"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//Color/green"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//Color/blue"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
