@@ -37,7 +37,7 @@ public abstract class AbstractAttributeDefinitionComposite extends Composite {
 
     private ControlDecoration errorDecoration;
 
-    private AttributeValue attributeValue;
+    protected AttributeValue attributeValue;
 
     public AbstractAttributeDefinitionComposite( Composite parent, ViewElement viewElement ) {
         super( parent, SWT.NONE );

@@ -459,9 +459,6 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
             final SpecObjectViewerRow currentRow = (SpecObjectViewerRow)rowControl;
             final SpecObject currentSpecObject = erfModel.getCoreContent().getSpecObjects().get( currentObjectOffset );
 
-            // unbind
-            // currentRow.unbind();
-
             // remove previous listener if nay
             if( deleteListenerMap.get( currentRow ) != null ) {
                 currentRow.getDeleteButton().removeMouseListener( deleteListenerMap.get( currentRow ) );

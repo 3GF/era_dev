@@ -13,6 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit.ui,
  org.eclipse.core.databinding.property,
  org.eclipse.team.core,
+ org.eclipse.jface.databinding,
  org.eclipse.core.databinding.observable
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.databinding.property.value,

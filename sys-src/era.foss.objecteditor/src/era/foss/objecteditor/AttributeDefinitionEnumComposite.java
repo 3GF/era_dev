@@ -8,16 +8,16 @@ import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
-import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.jface.databinding.viewers.ViewerProperties;
 import org.eclipse.jface.viewers.AbstractListViewer;
-import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -25,18 +25,22 @@ import org.eclipse.swt.widgets.Display;
 import era.foss.erf.AttributeDefinitionEnumeration;
 import era.foss.erf.AttributeValue;
 import era.foss.erf.AttributeValueEnumeration;
+import era.foss.erf.EnumValue;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecObject;
 import era.foss.erf.ViewElement;
+import era.foss.erf.impl.EnumValueImpl;
 import era.foss.erf.impl.ErfFactoryImpl;
+import era.foss.ui.contrib.ColorComboViewer;
 import era.foss.ui.contrib.MultiComboViewer;
+import era.foss.ui.contrib.ObservableMapLabelColorProvider;
 
 public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitionComposite {
 
     /** The GUI element representing a AttributeDefinitionBoolean */
     AbstractListViewer comboViewer;
 
-    private DefaultModifyListener defaultValueModifyListener;
+    private DefaultModifyListener valueModifyListener;
 
     private AttributeDefinitionEnumeration attributeDefinition;
 
@@ -51,7 +55,7 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
         if( attributeDefinition.isMultiValued() ) {
             comboViewer = new MultiComboViewer( this, SWT.READ_ONLY | SWT.BORDER );
         } else {
-            comboViewer = new ComboViewer( new CCombo( this, SWT.READ_ONLY | SWT.BORDER ) );
+            comboViewer = new ColorComboViewer( new CCombo( this, SWT.READ_ONLY | SWT.BORDER ) );
         }
 
         ObservableListContentProvider contentProvider = new ObservableListContentProvider();
@@ -59,10 +63,39 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
         // set content provider
         comboViewer.setContentProvider( contentProvider );
 
+        ObservableMapLabelColorProvider labelProvider = new ObservableMapLabelColorProvider( EMFProperties.value( ErfPackage.Literals.IDENTIFIABLE__LONG_NAME )
+                                                                                                          .observeDetail( contentProvider.getKnownElements() ) ) {
+
+            @Override
+            public String getText( Object element ) {
+                return super.getText( element );
+            }
+
+            @Override
+            public Image getImage( Object element ) {
+                return super.getImage( element );
+            }
+
+            public Color getForeground( Object element ) {
+                return null;
+            }
+
+            public Color getBackground( Object element ) {
+                org.eclipse.swt.graphics.Color swtColor;
+                if( element != null ) {
+                    assert (element instanceof EnumValueImpl);
+                    EnumValueImpl enumValue = (EnumValueImpl)element;
+                    swtColor = enumValue.getColor().getColor();
+                } else {
+                    swtColor = Display.getDefault().getSystemColor( SWT.COLOR_WHITE );
+                }
+                return swtColor;
+            }
+
+        };
+
         // set label provider
-        comboViewer.setLabelProvider( new ObservableMapLabelProvider(
-            EMFProperties.value( ErfPackage.Literals.IDENTIFIABLE__LONG_NAME )
-                         .observeDetail( contentProvider.getKnownElements() ) ) );
+        comboViewer.setLabelProvider( labelProvider );
 
         // set input
         IEMFListProperty dataTypeDefinitions = EMFProperties.list( ErfPackage.Literals.DATATYPE_DEFINITION_ENUMERATION__SPECIFIED_VALUES );
@@ -74,38 +107,46 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
 
     @Override
     public void doBind( SpecObject specObject, AttributeValue attributeValue, EditingDomain editingDomain ) {
+        valueModifyListener = new DefaultModifyListener( specObject, editingDomain );
+        comboViewer.addSelectionChangedListener( valueModifyListener );
         if( attributeValue == null ) {
-
             if( attributeDefinition.getDefaultValue() != null ) {
                 comboViewer.setSelection( new StructuredSelection( attributeDefinition.getDefaultValue().getValues() ) );
-                comboViewer.getControl().setBackground( Display.getDefault().getSystemColor( COLOR_DEFAULT_VALUE ) );
             } else {
                 comboViewer.setSelection( StructuredSelection.EMPTY );
-                comboViewer.getControl().setBackground( Display.getDefault().getSystemColor( SWT.COLOR_WHITE ) );
             }
-            defaultValueModifyListener = new DefaultModifyListener( specObject, editingDomain );
-            comboViewer.addSelectionChangedListener( defaultValueModifyListener );
-
         } else {
             this.binding = dbc.bindList( ViewerProperties.multipleSelection().observe( comboViewer ),
                                          EMFEditProperties.list( editingDomain,
                                                                  ErfPackage.Literals.ATTRIBUTE_VALUE_ENUMERATION__VALUES )
                                                           .observe( attributeValue ) );
-            comboViewer.getControl().setBackground( Display.getDefault().getSystemColor( SWT.COLOR_WHITE ) );
         }
+
+    }
+
+    protected void setKColor( EnumValue enumValue ) {
+        org.eclipse.swt.graphics.Color swtColor;
+        if( enumValue != null ) {
+            swtColor = enumValue.getColor().getColor();
+        } else if( attributeDefinition.getDefaultValue() != null ) {
+            swtColor = attributeDefinition.getDefaultValue().getValues().get( 0 ).getColor().getColor();
+        } else {
+            swtColor = Display.getDefault().getSystemColor( SWT.COLOR_WHITE );
+        }
+        comboViewer.getControl().setBackground( swtColor );
     }
 
     @Override
     public void unbind() {
 
-        if( defaultValueModifyListener != null ) {
-            comboViewer.removeSelectionChangedListener( defaultValueModifyListener );
+        if( valueModifyListener != null ) {
+            comboViewer.removeSelectionChangedListener( valueModifyListener );
         }
         super.unbind();
     }
 
     /**
-     * Listener whichs adds a AttributeValue to a SpecObject in case no
+     * Listener which adds a AttributeValue to a SpecObject in case no attributeValue exists yet
      * 
      */
     private class DefaultModifyListener implements ISelectionChangedListener {
@@ -124,29 +165,35 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
 
         @SuppressWarnings("unchecked")
         @Override
-        public void selectionChanged( SelectionChangedEvent e ) {
-            AttributeDefinitionEnumeration attributeDefinition = (AttributeDefinitionEnumeration)viewElement.getAttributeDefinition();
-            AbstractListViewer comboViewer = ((AbstractListViewer)e.getSource());
+        synchronized public void selectionChanged( SelectionChangedEvent e ) {
 
-            // as now a value is entered this listener is obsolete
-            comboViewer.removeSelectionChangedListener( this );
+            if( AttributeDefinitionEnumComposite.this.attributeValue == null ) {
 
-            // create an Attribute Value
-            AttributeValueEnumeration attributeValue = ErfFactoryImpl.eINSTANCE.createAttributeValueEnumeration();
+                AttributeDefinitionEnumeration attributeDefinition = (AttributeDefinitionEnumeration)viewElement.getAttributeDefinition();
 
-            // set reference to the respective Attribute Definition
-            attributeValue.setDefinition( attributeDefinition );
+                AbstractListViewer comboViewer = ((AbstractListViewer)e.getSource());
 
-            // set value of attribute definition
-            attributeValue.getValues().addAll( ((IStructuredSelection)e.getSelection()).toList() );
+                // as now a value is entered this listener is obsolete
+                comboViewer.removeSelectionChangedListener( this );
 
-            // create new Attribute value in the model
-            Command cmd = AddCommand.create( editingDomain,
-                                             specObject,
-                                             ErfPackage.SPEC_OBJECT__VALUES,
-                                             attributeValue );
-            editingDomain.getCommandStack().execute( cmd );
-            AttributeDefinitionEnumComposite.this.bind( specObject, attributeValue, editingDomain );
+                // create an Attribute Value
+                AttributeValueEnumeration attributeValue = ErfFactoryImpl.eINSTANCE.createAttributeValueEnumeration();
+
+                // set reference to the respective Attribute Definition
+                attributeValue.setDefinition( attributeDefinition );
+
+                // set value of attribute definition
+                attributeValue.getValues().addAll( ((IStructuredSelection)e.getSelection()).toList() );
+
+                // create new Attribute value in the model
+                Command cmd = AddCommand.create( editingDomain,
+                                                 specObject,
+                                                 ErfPackage.SPEC_OBJECT__VALUES,
+                                                 attributeValue );
+                editingDomain.getCommandStack().execute( cmd );
+                AttributeDefinitionEnumComposite.this.bind( specObject, attributeValue, editingDomain );
+            }
+            comboViewer.refresh();
 
         }
     }
