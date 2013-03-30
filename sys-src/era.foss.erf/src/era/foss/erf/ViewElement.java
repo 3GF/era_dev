@@ -1,15 +1,37 @@
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+*/
 package era.foss.erf;
 
 import org.eclipse.emf.ecore.EObject;
 
 /**
+ * The Interface ViewElement.
+ *
  * @model
  */
 public interface ViewElement extends EObject {
+    
     /**
+     * Gets the attribute definition.
+     *
+     * @return the attribute definition
      * @model lowerBound="1"
      * @Not generated
-     * @return
      */
     public AttributeDefinition getAttributeDefinition();
 
@@ -24,9 +46,11 @@ public interface ViewElement extends EObject {
     void setAttributeDefinition( AttributeDefinition value );
 
     /**
+     * Checks if is editor show label.
+     *
+     * @return true, if is editor show label
      * @model unique="false" default="true" required="true"
      * @Not generated
-     * @return
      */
     boolean isEditorShowLabel();
 
@@ -40,9 +64,11 @@ public interface ViewElement extends EObject {
     void setEditorShowLabel( boolean value );
 
     /**
+     * Gets the editor row position.
+     *
+     * @return the editor row position
      * @model unique="false" default="1" lowerBound="1" upperBound="1"
      * @Not generated
-     * @return
      */
     int getEditorRowPosition();
 
@@ -57,9 +83,11 @@ public interface ViewElement extends EObject {
     void setEditorRowPosition( int value );
 
     /**
-     * @model unique="false" default="1" lowerBound="1" upperBound="1" 
+     * Gets the editor row span.
+     *
+     * @return the editor row span
+     * @model unique="false" default="1" lowerBound="1" upperBound="1"
      * @Not generated
-     * @return
      */
     int getEditorRowSpan();
 
@@ -74,9 +102,11 @@ public interface ViewElement extends EObject {
     void setEditorRowSpan( int value );
 
     /**
+     * Gets the editor column position.
+     *
+     * @return the editor column position
      * @model unique="false" default="1" lowerBound="1" upperBound="1"
      * @Not generated
-     * @return
      */
     int getEditorColumnPosition();
 
@@ -91,9 +121,11 @@ public interface ViewElement extends EObject {
     void setEditorColumnPosition( int value );
 
     /**
+     * Gets the editor column span.
+     *
+     * @return the editor column span
      * @model unique="false" default="1" lowerBound="1" upperBound="1"
      * @Not generated
-     * @return
      */
     int getEditorColumnSpan();
 

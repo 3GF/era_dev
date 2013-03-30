@@ -1,3 +1,20 @@
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+ */
 package era.foss.ui.contrib;
 
 /*******************************************************************************
@@ -14,7 +31,6 @@ package era.foss.ui.contrib;
 import java.util.Arrays;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.SWTException;
 import org.eclipse.swt.accessibility.ACC;
 import org.eclipse.swt.accessibility.AccessibleAdapter;
 import org.eclipse.swt.accessibility.AccessibleControlAdapter;
@@ -74,17 +90,37 @@ import org.eclipse.swt.widgets.Widget;
  */
 public class MultiCCombo extends Composite {
 
+    /** The text. */
     Text text;
+
+    /** The list. */
     List list;
+
+    /** The visible item count. */
     int visibleItemCount = 5;
+
+    /** The popup. */
     Shell popup;
+
+    /** The arrow. */
     Button arrow;
+
+    /** The has focus. */
     boolean hasFocus;
+
+    /** The filter. */
     Listener listener, filter;
+
+    /** The background. */
     Color foreground, background;
+
+    /** The font. */
     Font font;
+
+    /** The _shell. */
     Shell _shell;
 
+    /** The Constant PACKAGE_PREFIX. */
     static final String PACKAGE_PREFIX = "org.eclipse.swt.custom."; //$NON-NLS-1$
 
     /**
@@ -99,14 +135,6 @@ public class MultiCCombo extends Composite {
      * 
      * @param parent a widget which will be the parent of the new instance (cannot be null)
      * @param style the style of widget to construct
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the parent is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the parent</li>
-     *            </ul>
-     * 
      * @see SWT#BORDER
      * @see SWT#READ_ONLY
      * @see SWT#FLAT
@@ -225,15 +253,6 @@ public class MultiCCombo extends Composite {
      * Adds the argument to the end of the receiver's list.
      * 
      * @param string the new item
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the string is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @see #add(String,int)
      */
     public void add( String string ) {
@@ -251,17 +270,6 @@ public class MultiCCombo extends Composite {
      * 
      * @param string the new item
      * @param index the index for the item
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the string is null</li>
-     *            <li>ERROR_INVALID_RANGE - if the index is not between 0 and the number of elements in the list
-     *            (inclusive)</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @see #add(String)
      */
     public void add( String string, int index ) {
@@ -275,15 +283,6 @@ public class MultiCCombo extends Composite {
      * sending it one of the messages defined in the <code>ModifyListener</code> interface.
      * 
      * @param listener the listener which should be notified
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the listener is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @see ModifyListener
      * @see #removeModifyListener
      */
@@ -303,15 +302,6 @@ public class MultiCCombo extends Composite {
      * </p>
      * 
      * @param listener the listener which should be notified when the user changes the receiver's selection
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the listener is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @see SelectionListener
      * @see #removeSelectionListener
      * @see SelectionEvent
@@ -329,18 +319,8 @@ public class MultiCCombo extends Composite {
      * sending it one of the messages defined in the <code>VerifyListener</code> interface.
      * 
      * @param listener the listener which should be notified
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the listener is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @see VerifyListener
      * @see #removeVerifyListener
-     * 
      * @since 3.3
      */
     public void addVerifyListener( VerifyListener listener ) {
@@ -413,11 +393,6 @@ public class MultiCCombo extends Composite {
      * <p>
      * Note: To clear the selected items in the receiver's list, use <code>deselectAll()</code>.
      * </p>
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      * 
      * @see #deselectAll
      */
@@ -495,11 +470,6 @@ public class MultiCCombo extends Composite {
      * The current selection is copied to the clipboard.
      * </p>
      * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @since 3.3
      */
     public void copy() {
@@ -545,11 +515,6 @@ public class MultiCCombo extends Composite {
      * The current selection is first copied to the clipboard and then deleted from the widget.
      * </p>
      * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @since 3.3
      */
     public void cut() {
@@ -562,11 +527,6 @@ public class MultiCCombo extends Composite {
      * deselected, it remains deselected. Indices that are out of range are ignored.
      * 
      * @param index the index of the item to deselect
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void deselect( int index ) {
         checkWidget();
@@ -584,11 +544,6 @@ public class MultiCCombo extends Composite {
      * <p>
      * Note: To clear the selection in the receiver's text field, use <code>clearSelection()</code>.
      * </p>
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      * 
      * @see #clearSelection
      */
@@ -675,6 +630,11 @@ public class MultiCCombo extends Composite {
     /*
      * Return the Label immediately preceding the receiver in the z-order, or null if none.
      */
+    /**
+     * Gets the associated label.
+     * 
+     * @return the associated label
+     */
     String getAssociatedLabel() {
         Control[] siblings = getParent().getChildren();
         for( int i = 0; i < siblings.length; i++ ) {
@@ -690,6 +650,11 @@ public class MultiCCombo extends Composite {
         return null;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Composite#getChildren()
+     */
     public Control[] getChildren() {
         checkWidget();
         return new Control[0];
@@ -699,12 +664,6 @@ public class MultiCCombo extends Composite {
      * Gets the editable state.
      * 
      * @return whether or not the receiver is editable
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @since 3.0
      */
     public boolean getEditable() {
@@ -718,15 +677,6 @@ public class MultiCCombo extends Composite {
      * 
      * @param index the index of the item to return
      * @return the item at the given index
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_INVALID_RANGE - if the index is not between 0 and the number of elements in the list minus 1
-     *            (inclusive)</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public String getItem( int index ) {
         checkWidget();
@@ -737,11 +687,6 @@ public class MultiCCombo extends Composite {
      * Returns the number of items contained in the receiver's list.
      * 
      * @return the number of items
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public int getItemCount() {
         checkWidget();
@@ -752,11 +697,6 @@ public class MultiCCombo extends Composite {
      * Returns the height of the area which would be used to display <em>one</em> of the items in the receiver's list.
      * 
      * @return the height of one item
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public int getItemHeight() {
         checkWidget();
@@ -771,11 +711,6 @@ public class MultiCCombo extends Composite {
      * </p>
      * 
      * @return the items in the receiver's list
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public String[] getItems() {
         checkWidget();
@@ -790,12 +725,6 @@ public class MultiCCombo extends Composite {
      * </p>
      * 
      * @return the receiver's list's visibility state
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @since 3.4
      */
     public boolean getListVisible() {
@@ -803,6 +732,11 @@ public class MultiCCombo extends Composite {
         return isDropped();
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Control#getMenu()
+     */
     public Menu getMenu() {
         return text.getMenu();
     }
@@ -813,11 +747,6 @@ public class MultiCCombo extends Composite {
      * indicated by the the x and y coordinates having the same value.
      * 
      * @return a point representing the selection start and end
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public Point getSelection() {
         checkWidget();
@@ -829,22 +758,27 @@ public class MultiCCombo extends Composite {
      * is selected.
      * 
      * @return the index of the selected item
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public int getSelectionIndex() {
         checkWidget();
         return list.getSelectionIndex();
     }
 
+    /**
+     * Gets the selection indices.
+     * 
+     * @return the selection indices
+     */
     public int[] getSelectionIndices() {
         checkWidget();
         return list.getSelectionIndices();
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Control#getShell()
+     */
     public Shell getShell() {
         checkWidget();
         Shell shell = super.getShell();
@@ -857,6 +791,11 @@ public class MultiCCombo extends Composite {
         return _shell;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Widget#getStyle()
+     */
     public int getStyle() {
         int style = super.getStyle();
         style &= ~SWT.READ_ONLY;
@@ -868,11 +807,6 @@ public class MultiCCombo extends Composite {
      * Returns a string containing a copy of the contents of the receiver's text field.
      * 
      * @return the receiver's text
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public String getText() {
         checkWidget();
@@ -883,11 +817,6 @@ public class MultiCCombo extends Composite {
      * Returns the height of the receivers's text field.
      * 
      * @return the text height
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public int getTextHeight() {
         checkWidget();
@@ -899,11 +828,6 @@ public class MultiCCombo extends Composite {
      * been changed by <code>setTextLimit()</code>, it will be the constant <code>Combo.LIMIT</code>.
      * 
      * @return the text limit
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public int getTextLimit() {
         checkWidget();
@@ -914,12 +838,6 @@ public class MultiCCombo extends Composite {
      * Gets the number of items that are visible in the drop down portion of the receiver's list.
      * 
      * @return the number of items that are visible
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @since 3.0
      */
     public int getVisibleItemCount() {
@@ -972,14 +890,6 @@ public class MultiCCombo extends Composite {
      * 
      * @param string the search item
      * @return the index of the item
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the string is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public int indexOf( String string ) {
         checkWidget();
@@ -995,14 +905,6 @@ public class MultiCCombo extends Composite {
      * @param string the search item
      * @param start the zero-relative index at which to begin the search
      * @return the index of the item
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the string is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public int indexOf( String string, int start ) {
         checkWidget();
@@ -1114,10 +1016,20 @@ public class MultiCCombo extends Composite {
         } );
     }
 
+    /**
+     * Checks if is dropped.
+     * 
+     * @return true, if is dropped
+     */
     boolean isDropped() {
         return popup.getVisible();
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Control#isFocusControl()
+     */
     public boolean isFocusControl() {
         checkWidget();
         if( text.isFocusControl() || arrow.isFocusControl() || list.isFocusControl() || popup.isFocusControl() ) {
@@ -1268,11 +1180,6 @@ public class MultiCCombo extends Composite {
      * The selected text is deleted from the widget and new text inserted from the clipboard.
      * </p>
      * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @since 3.3
      */
     public void paste() {
@@ -1328,15 +1235,6 @@ public class MultiCCombo extends Composite {
      * Removes the item from the receiver's list at the given zero-relative index.
      * 
      * @param index the index for the item
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_INVALID_RANGE - if the index is not between 0 and the number of elements in the list minus 1
-     *            (inclusive)</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void remove( int index ) {
         checkWidget();
@@ -1349,15 +1247,6 @@ public class MultiCCombo extends Composite {
      * 
      * @param start the start of the range
      * @param end the end of the range
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_INVALID_RANGE - if either the start or end are not between 0 and the number of elements in
-     *            the list minus 1 (inclusive)</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void remove( int start, int end ) {
         checkWidget();
@@ -1369,15 +1258,6 @@ public class MultiCCombo extends Composite {
      * removes that item from the list.
      * 
      * @param string the item to remove
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the string is null</li>
-     *            <li>ERROR_INVALID_ARGUMENT - if the string is not found in the list</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void remove( String string ) {
         checkWidget();
@@ -1389,10 +1269,6 @@ public class MultiCCombo extends Composite {
      * Removes all of the items from the receiver's list and clear the contents of receiver's text field.
      * <p>
      * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li> <li>ERROR_THREAD_INVALID_ACCESS -
-     *            if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void removeAll() {
         checkWidget();
@@ -1404,15 +1280,6 @@ public class MultiCCombo extends Composite {
      * Removes the listener from the collection of listeners who will be notified when the receiver's text is modified.
      * 
      * @param listener the listener which should no longer be notified
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the listener is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @see ModifyListener
      * @see #addModifyListener
      */
@@ -1427,15 +1294,6 @@ public class MultiCCombo extends Composite {
      * selection.
      * 
      * @param listener the listener which should no longer be notified
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the listener is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @see SelectionListener
      * @see #addSelectionListener
      */
@@ -1450,18 +1308,8 @@ public class MultiCCombo extends Composite {
      * Removes the listener from the collection of listeners who will be notified when the control is verified.
      * 
      * @param listener the listener which should no longer be notified
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the listener is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @see VerifyListener
      * @see #addVerifyListener
-     * 
      * @since 3.3
      */
     public void removeVerifyListener( VerifyListener listener ) {
@@ -1475,11 +1323,6 @@ public class MultiCCombo extends Composite {
      * selected, it remains selected. Indices that are out of range are ignored.
      * 
      * @param index the index of the item to select
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void select( int index ) {
         checkWidget();
@@ -1498,6 +1341,11 @@ public class MultiCCombo extends Composite {
         }
     }
 
+    /**
+     * Select.
+     * 
+     * @param indices the indices
+     */
     public void select( int[] indices ) {
         checkWidget();
         if( indices.length == 0 ) {
@@ -1513,6 +1361,11 @@ public class MultiCCombo extends Composite {
         }
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Control#setBackground(org.eclipse.swt.graphics.Color)
+     */
     public void setBackground( Color color ) {
         super.setBackground( color );
         background = color;
@@ -1525,12 +1378,6 @@ public class MultiCCombo extends Composite {
      * Sets the editable state.
      * 
      * @param editable the new editable state
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @since 3.0
      */
     public void setEditable( boolean editable ) {
@@ -1538,6 +1385,11 @@ public class MultiCCombo extends Composite {
         text.setEditable( editable );
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Control#setEnabled(boolean)
+     */
     public void setEnabled( boolean enabled ) {
         super.setEnabled( enabled );
         if( popup != null ) popup.setVisible( false );
@@ -1552,6 +1404,11 @@ public class MultiCCombo extends Composite {
         return text.setFocus();
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Control#setFont(org.eclipse.swt.graphics.Font)
+     */
     public void setFont( Font font ) {
         super.setFont( font );
         this.font = font;
@@ -1560,6 +1417,11 @@ public class MultiCCombo extends Composite {
         internalLayout( true );
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Control#setForeground(org.eclipse.swt.graphics.Color)
+     */
     public void setForeground( Color color ) {
         super.setForeground( color );
         foreground = color;
@@ -1575,16 +1437,6 @@ public class MultiCCombo extends Composite {
      * 
      * @param index the index for the item
      * @param string the new text for the item
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_INVALID_RANGE - if the index is not between 0 and the number of elements in the list minus 1
-     *            (inclusive)</li>
-     *            <li>ERROR_NULL_ARGUMENT - if the string is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void setItem( int index, String string ) {
         checkWidget();
@@ -1595,15 +1447,6 @@ public class MultiCCombo extends Composite {
      * Sets the receiver's list to be the given array of items.
      * 
      * @param items the array of items
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the items array is null</li>
-     *            <li>ERROR_INVALID_ARGUMENT - if an item in the items array is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void setItems( String[] items ) {
         checkWidget();
@@ -1618,11 +1461,6 @@ public class MultiCCombo extends Composite {
      * </p>
      * 
      * @param layout the receiver's new layout or null
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void setLayout( Layout layout ) {
         checkWidget();
@@ -1637,12 +1475,6 @@ public class MultiCCombo extends Composite {
      * </p>
      * 
      * @param visible the new visibility state
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @since 3.4
      */
     public void setListVisible( boolean visible ) {
@@ -1650,6 +1482,11 @@ public class MultiCCombo extends Composite {
         dropDown( visible );
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Control#setMenu(org.eclipse.swt.widgets.Menu)
+     */
     public void setMenu( Menu menu ) {
         text.setMenu( menu );
     }
@@ -1659,14 +1496,6 @@ public class MultiCCombo extends Composite {
      * start of the selection and whose y coordinate is the end of the selection.
      * 
      * @param selection a point representing the new selection start and end
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the point is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void setSelection( Point selection ) {
         checkWidget();
@@ -1683,14 +1512,6 @@ public class MultiCCombo extends Composite {
      * </p>
      * 
      * @param string the new text
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_NULL_ARGUMENT - if the string is null</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void setText( String string ) {
         checkWidget();
@@ -1711,20 +1532,17 @@ public class MultiCCombo extends Composite {
      * Sets the maximum number of characters that the receiver's text field is capable of holding to be the argument.
      * 
      * @param limit new text limit
-     * 
-     * @exception IllegalArgumentException <ul>
-     *            <li>ERROR_CANNOT_BE_ZERO - if the limit is zero</li>
-     *            </ul>
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
      */
     public void setTextLimit( int limit ) {
         checkWidget();
         text.setTextLimit( limit );
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Control#setToolTipText(java.lang.String)
+     */
     public void setToolTipText( String string ) {
         checkWidget();
         super.setToolTipText( string );
@@ -1732,6 +1550,11 @@ public class MultiCCombo extends Composite {
         text.setToolTipText( string );
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.swt.widgets.Control#setVisible(boolean)
+     */
     public void setVisible( boolean visible ) {
         super.setVisible( visible );
         /*
@@ -1747,12 +1570,6 @@ public class MultiCCombo extends Composite {
      * Sets the number of items that are visible in the drop down portion of the receiver's list.
      * 
      * @param count the new number of items to be visible
-     * 
-     * @exception SWTException <ul>
-     *            <li>ERROR_WIDGET_DISPOSED - if the receiver has been disposed</li>
-     *            <li>ERROR_THREAD_INVALID_ACCESS - if not called from the thread that created the receiver</li>
-     *            </ul>
-     * 
      * @since 3.0
      */
     public void setVisibleItemCount( int count ) {

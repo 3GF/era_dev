@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,25 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
- * @model
- * @author poldi
+ * The Interface SpecObject.
  * 
+ * @model
  */
 public interface SpecObject extends SpecElementWithUserDefinedAttributes {
 
     /**
+     * Gets the sources.
+     * 
+     * @return the sources
      * @model kind="reference" opposite="target" required="false"
      */
     public EList<SpecRelation> getSources();
 
     /**
+     * Gets the targets.
+     * 
+     * @return the targets
      * @model kind="reference" opposite="source" required="false"
      */
     public EList<SpecRelation> getTargets();

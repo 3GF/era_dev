@@ -32,7 +32,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
  * <p>
  * Upon {@link #execute(ExecutionEvent)} it instantiates the ERA type dialog.
  * 
- * @author cpn
  */
 public class TypeDialogCommandHandler extends AbstractHandler {
 

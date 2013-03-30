@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: era.foss.erf.presentation.ErfEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: era.foss.erf.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources,

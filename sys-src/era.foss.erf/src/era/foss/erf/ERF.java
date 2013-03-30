@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,24 +14,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
+ * The Interface ERF.
+ *
  * @model
  */
 public interface ERF extends EObject {
 
     /**
+     * Gets the core content.
+     *
+     * @return the core content
      * @model containment="true" lowerBound="1"
      */
     public Content getCoreContent();
 
     /**
+     * Gets the tool extensions.
+     *
+     * @return the tool extensions
      * @model containment="true" lowerBound="0"
      */
     public EList<ToolExtension> getToolExtensions();

@@ -1,5 +1,20 @@
-/**
- */
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+*/
 package era.foss.erf.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -84,8 +99,12 @@ public class ColorImpl extends EObjectImpl implements Color {
      */
     protected int blue = BLUE_EDEFAULT;
 
+    /** The color. */
     private org.eclipse.swt.graphics.Color color;
 
+    /* (non-Javadoc)
+     * @see era.foss.erf.Color#getColor()
+     */
     public org.eclipse.swt.graphics.Color getColor() {
 
         if( color == null ) {
@@ -122,8 +141,9 @@ public class ColorImpl extends EObjectImpl implements Color {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the red
      * @generated
      */
     public int getRed() {
@@ -131,8 +151,9 @@ public class ColorImpl extends EObjectImpl implements Color {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newRed the new red
      * @generated
      */
     public void setRed( int newRed ) {
@@ -147,8 +168,9 @@ public class ColorImpl extends EObjectImpl implements Color {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the green
      * @generated
      */
     public int getGreen() {
@@ -156,8 +178,9 @@ public class ColorImpl extends EObjectImpl implements Color {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newGreen the new green
      * @generated
      */
     public void setGreen( int newGreen ) {
@@ -172,8 +195,9 @@ public class ColorImpl extends EObjectImpl implements Color {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the blue
      * @generated
      */
     public int getBlue() {
@@ -181,8 +205,9 @@ public class ColorImpl extends EObjectImpl implements Color {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newBlue the new blue
      * @generated
      */
     public void setBlue( int newBlue ) {

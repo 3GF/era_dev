@@ -1,9 +1,20 @@
-/**
- * <copyright>
- * </copyright>
- *
- * $Id$
- */
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+*/
 package era.foss.erf.impl;
 
 import era.foss.erf.AttributeDefinition;
@@ -168,7 +179,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return true, if is editor show label
      * @generated
      */
     public boolean isEditorShowLabel() {
@@ -177,7 +190,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newEditorShowLabel the new editor show label
      * @generated
      */
     public void setEditorShowLabel( boolean newEditorShowLabel ) {
@@ -193,7 +208,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the editor row position
      * @generated
      */
     public int getEditorRowPosition() {
@@ -202,7 +219,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newEditorRowPosition the new editor row position
      * @generated
      */
     public void setEditorRowPosition( int newEditorRowPosition ) {
@@ -218,7 +237,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the editor row span
      * @generated
      */
     public int getEditorRowSpan() {
@@ -227,7 +248,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newEditorRowSpan the new editor row span
      * @generated
      */
     public void setEditorRowSpan( int newEditorRowSpan ) {
@@ -243,7 +266,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the editor column position
      * @generated
      */
     public int getEditorColumnPosition() {
@@ -252,7 +277,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newEditorColumnPosition the new editor column position
      * @generated
      */
     public void setEditorColumnPosition( int newEditorColumnPosition ) {
@@ -268,7 +295,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the editor column span
      * @generated
      */
     public int getEditorColumnSpan() {
@@ -277,7 +306,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newEditorColumnSpan the new editor column span
      * @generated
      */
     public void setEditorColumnSpan( int newEditorColumnSpan ) {
@@ -293,7 +324,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the attribute definition
      * @generated
      */
     public AttributeDefinition getAttributeDefinition() {
@@ -314,7 +347,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the attribute definition
      * @generated
      */
     public AttributeDefinition basicGetAttributeDefinition() {
@@ -323,7 +358,9 @@ public class ViewElementImpl extends EObjectImpl implements ViewElement {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newAttributeDefinition the new attribute definition
      * @generated
      */
     public void setAttributeDefinition( AttributeDefinition newAttributeDefinition ) {

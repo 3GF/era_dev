@@ -35,7 +35,6 @@ import org.eclipse.m2m.atl.engine.vm.nativelib.ASMModel;
 /**
  * Wrapper around the ATL Transformer to.
  * 
- * @author poldi
  */
 public class ATLTranformer {
 

@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.util;
 
 import era.foss.erf.*;
@@ -64,17 +63,14 @@ import era.foss.erf.ViewElement;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
+ *
+ * @param <T2> the generic type
  * @see era.foss.erf.ErfPackage
  * @generated
  */
 public class ErfSwitch<T2> extends Switch<T2> {
 
-    /**
-     * The cached model package
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+    /** The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     protected static ErfPackage modelPackage;
 
     /**
@@ -417,6 +413,9 @@ public class ErfSwitch<T2> extends Switch<T2> {
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
+     *
+     * @param <T> the generic type
+     * @param <T1> the generic type
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Map</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)

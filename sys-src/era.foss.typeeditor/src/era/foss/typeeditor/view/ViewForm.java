@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.typeeditor.view;
 
 import org.eclipse.core.databinding.DataBindingContext;
@@ -123,9 +122,9 @@ public class ViewForm extends AbstractErfTypesForm {
     }
 
     /**
-     * Creates a editor for {@link View} elements
-     * 
-     * @param activeShell the active shell
+     * Creates a editor for {@link View} elements.
+     *
+     * @param parent the parent
      * @param editor the editor
      */
     public ViewForm( Composite parent, IEditorPart editor ) {

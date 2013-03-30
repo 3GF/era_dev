@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.impl;
 
 import era.foss.erf.ErfPackage;
@@ -86,7 +85,9 @@ public class SpecRelationImpl extends SpecElementWithUserDefinedAttributesImpl i
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the source
      * @generated
      */
     public SpecObject getSource() {
@@ -107,7 +108,9 @@ public class SpecRelationImpl extends SpecElementWithUserDefinedAttributesImpl i
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the spec object
      * @generated
      */
     public SpecObject basicGetSource() {
@@ -116,7 +119,11 @@ public class SpecRelationImpl extends SpecElementWithUserDefinedAttributesImpl i
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newSource the new source
+     * @param msgs the msgs
+     * @return the notification chain
      * @generated
      */
     public NotificationChain basicSetSource( SpecObject newSource, NotificationChain msgs ) {
@@ -137,7 +144,9 @@ public class SpecRelationImpl extends SpecElementWithUserDefinedAttributesImpl i
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newSource the new source
      * @generated
      */
     public void setSource( SpecObject newSource ) {
@@ -163,7 +172,9 @@ public class SpecRelationImpl extends SpecElementWithUserDefinedAttributesImpl i
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the target
      * @generated
      */
     public SpecObject getTarget() {
@@ -184,7 +195,9 @@ public class SpecRelationImpl extends SpecElementWithUserDefinedAttributesImpl i
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the spec object
      * @generated
      */
     public SpecObject basicGetTarget() {
@@ -193,7 +206,11 @@ public class SpecRelationImpl extends SpecElementWithUserDefinedAttributesImpl i
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newTarget the new target
+     * @param msgs the msgs
+     * @return the notification chain
      * @generated
      */
     public NotificationChain basicSetTarget( SpecObject newTarget, NotificationChain msgs ) {
@@ -214,7 +231,9 @@ public class SpecRelationImpl extends SpecElementWithUserDefinedAttributesImpl i
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newTarget the new target
      * @generated
      */
     public void setTarget( SpecObject newTarget ) {

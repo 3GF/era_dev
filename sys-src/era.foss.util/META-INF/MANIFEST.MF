@@ -7,9 +7,8 @@ Bundle-ClassPath: .
 Bundle-Activator: era.foss.util.plugin.Activator
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: era.foss.util.extensionpoint,
- era.foss.util.log,
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: 
  era.foss.util.types
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,

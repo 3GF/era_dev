@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id: Ui.java 346 2011-07-09 18:10:18Z schorsch $
- *************************************************************************/
+*/
 package era.foss.typeeditor.common;
 
 import org.eclipse.core.databinding.DataBindingContext;
@@ -63,9 +62,8 @@ public class Ui {
 
     /**
      * Create Ui Please call the dispose method when an object of this type is not required anymore.
-     * 
+     *
      * @param editingDomain used for binding the UI elements to
-     * @param erfModel the erf model
      */
     public Ui( EditingDomain editingDomain ) {
         this.editingDomain = editingDomain;
@@ -105,6 +103,12 @@ public class Ui {
         return (name == null) ? eStructuralFeature.getName() : name;
     }
 
+    /**
+     * Bind column.
+     *
+     * @param column the column
+     * @param eStructuralFeatureList the e structural feature list
+     */
     public void bindColumn( TableViewerColumn column, EStructuralFeature[] eStructuralFeatureList ) {
         bindColumn( column, eStructuralFeatureList, null, null );
     }
@@ -115,9 +119,11 @@ public class Ui {
      * <li>In case the top level structural feature is a reference display a combo box</li> <li>In case the top level
      * structural feature is a containment reference create element if it does not exist</li> <li>In case the structural
      * feature is a boolean show a checkbox</li> <li>Otherwise show a simple text field</li>.
-     * 
-     * @param tableViewer the table viewer
+     *
+     * @param column the column
      * @param eStructuralFeatureList list to create a feature path from
+     * @param refObservedObject the ref observed object
+     * @param refEStructuralFeatureList the ref e structural feature list
      */
     public void bindColumn( TableViewerColumn column,
                             EStructuralFeature[] eStructuralFeatureList,

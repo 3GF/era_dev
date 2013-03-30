@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.impl;
 
 import era.foss.erf.*;
@@ -42,6 +41,8 @@ public class ErfFactoryImpl extends EFactoryImpl implements ErfFactory {
      * Creates the default factory implementation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @return the erf factory
      * @generated
      */
     public static ErfFactory init() {
@@ -367,7 +368,11 @@ public class ErfFactoryImpl extends EFactoryImpl implements ErfFactory {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param eDataType the e data type
+     * @param initialValue the initial value
+     * @return the diagnostic chain
      * @generated
      */
     public DiagnosticChain createDiagnosticChainFromString( EDataType eDataType, String initialValue ) {
@@ -376,7 +381,11 @@ public class ErfFactoryImpl extends EFactoryImpl implements ErfFactory {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param eDataType the e data type
+     * @param instanceValue the instance value
+     * @return the string
      * @generated
      */
     public String convertDiagnosticChainToString( EDataType eDataType, Object instanceValue ) {
@@ -385,7 +394,9 @@ public class ErfFactoryImpl extends EFactoryImpl implements ErfFactory {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the erf package
      * @generated
      */
     public ErfPackage getErfPackage() {
@@ -394,7 +405,9 @@ public class ErfFactoryImpl extends EFactoryImpl implements ErfFactory {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the package
      * @deprecated
      * @generated
      */

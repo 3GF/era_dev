@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id: ErfModelWizard.java 308 2011-04-01 17:45:50Z cpn $
- *************************************************************************/
+*/
 package era.foss.erf.presentation;
 
 import java.util.ArrayList;
@@ -196,6 +195,8 @@ public class ErfModelWizard extends Wizard implements INewWizard {
      * Returns the names of the types that can be created as the root object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @return the initial object names
      * @generated
      */
     protected Collection<String> getInitialObjectNames() {
@@ -218,6 +219,8 @@ public class ErfModelWizard extends Wizard implements INewWizard {
      * Create a new model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @return the e object
      * @generated
      */
     protected EObject createInitialModel() {
@@ -321,10 +324,14 @@ public class ErfModelWizard extends Wizard implements INewWizard {
      * @generated
      */
     public class ErfModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
+        
         /**
          * Pass in the selection.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
+         *
+         * @param pageId the page id
+         * @param selection the selection
          * @generated
          */
         public ErfModelWizardNewFileCreationPage( String pageId, IStructuredSelection selection ) {
@@ -353,7 +360,9 @@ public class ErfModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * <!-- end-user-doc -->.
+         *
+         * @return the model file
          * @generated
          */
         public IFile getModelFile() {
@@ -375,11 +384,7 @@ public class ErfModelWizard extends Wizard implements INewWizard {
          */
         protected Combo initialObjectField;
 
-        /**
-         * @generated
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         */
+        /** The encodings. @generated <!-- begin-user-doc --> <!-- end-user-doc --> */
         protected List<String> encodings;
 
         /**
@@ -393,6 +398,8 @@ public class ErfModelWizard extends Wizard implements INewWizard {
          * Pass in the selection.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
+         *
+         * @param pageId the page id
          * @generated
          */
         public ErfModelWizardInitialObjectCreationPage( String pageId ) {
@@ -485,7 +492,9 @@ public class ErfModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * <!-- end-user-doc -->.
+         *
+         * @return true, if successful
          * @generated
          */
         protected boolean validatePage() {
@@ -513,7 +522,9 @@ public class ErfModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * <!-- end-user-doc -->.
+         *
+         * @return the initial object name
          * @generated
          */
         public String getInitialObjectName() {
@@ -529,7 +540,9 @@ public class ErfModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * <!-- end-user-doc -->.
+         *
+         * @return the encoding
          * @generated
          */
         public String getEncoding() {
@@ -540,6 +553,9 @@ public class ErfModelWizard extends Wizard implements INewWizard {
          * Returns the label for the specified type name.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
+         *
+         * @param typeName the type name
+         * @return the label
          * @generated
          */
         protected String getLabel( String typeName ) {
@@ -553,7 +569,9 @@ public class ErfModelWizard extends Wizard implements INewWizard {
 
         /**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * <!-- end-user-doc -->.
+         *
+         * @return the encodings
          * @generated
          */
         protected Collection<String> getEncodings() {
@@ -629,6 +647,8 @@ public class ErfModelWizard extends Wizard implements INewWizard {
      * Get the file from the page.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @return the model file
      * @generated
      */
     public IFile getModelFile() {

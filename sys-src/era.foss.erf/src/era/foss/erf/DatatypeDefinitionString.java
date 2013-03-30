@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,17 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf;
 
 /**
+ * The Interface DatatypeDefinitionString.
+ *
  * @model
- * @author schorsch
- * 
  */
 public interface DatatypeDefinitionString extends DatatypeDefinitionSimple {
+    
     /**
+     * Gets the max length.
+     *
+     * @return the max length
      * @model unsettable="true" ordered="false"
      */
     public Integer getMaxLength();

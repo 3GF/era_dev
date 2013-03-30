@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id: ERFItemProvider.java 342 2011-06-15 20:31:30Z schorsch $
- *************************************************************************/
+*/
 package era.foss.erf.provider;
 
 import era.foss.erf.ERF;
@@ -49,10 +48,13 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  */
 public class ERFItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+    
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param adapterFactory the adapter factory
      * @generated
      */
     public ERFItemProvider( AdapterFactory adapterFactory ) {
@@ -169,6 +171,8 @@ public class ERFItemProvider extends ItemProviderAdapter implements IEditingDoma
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @return the resource locator
      * @generated
      */
     @Override

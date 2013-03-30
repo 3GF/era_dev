@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id: IdentifiableItemProvider.java 308 2011-04-01 17:45:50Z cpn $
- *************************************************************************/
+*/
 package era.foss.erf.provider;
 
 import era.foss.erf.ErfPackage;
@@ -48,10 +47,13 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  */
 public class IdentifiableItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+    
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param adapterFactory the adapter factory
      * @generated
      */
     public IdentifiableItemProvider( AdapterFactory adapterFactory ) {
@@ -80,6 +82,8 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
      * This adds a property descriptor for the ID feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addIDPropertyDescriptor( Object object ) {
@@ -102,6 +106,8 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
      * This adds a property descriptor for the Desc feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addDescPropertyDescriptor( Object object ) {
@@ -124,6 +130,8 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
      * This adds a property descriptor for the Long Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addLongNamePropertyDescriptor( Object object ) {
@@ -193,6 +201,8 @@ public class IdentifiableItemProvider extends ItemProviderAdapter implements IEd
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @return the resource locator
      * @generated
      */
     @Override

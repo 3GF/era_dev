@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.impl;
 
 import era.foss.erf.DatatypeDefinition;
@@ -118,7 +117,9 @@ public class ContentImpl extends EObjectImpl implements Content {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the spec objects
      * @generated
      */
     public EList<SpecObject> getSpecObjects() {
@@ -133,7 +134,9 @@ public class ContentImpl extends EObjectImpl implements Content {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the spec types
      * @generated
      */
     public EList<SpecType> getSpecTypes() {
@@ -145,7 +148,9 @@ public class ContentImpl extends EObjectImpl implements Content {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the data types
      * @generated
      */
     public EList<DatatypeDefinition> getDataTypes() {
@@ -160,7 +165,9 @@ public class ContentImpl extends EObjectImpl implements Content {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the spec relations
      * @generated
      */
     public EList<SpecRelation> getSpecRelations() {

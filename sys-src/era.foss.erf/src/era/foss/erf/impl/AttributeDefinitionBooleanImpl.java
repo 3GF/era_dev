@@ -1,9 +1,20 @@
-/**
- * <copyright>
- * </copyright>
- *
- * $Id$
- */
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+*/
 package era.foss.erf.impl;
 
 import era.foss.erf.AttributeDefinitionBoolean;
@@ -72,7 +83,9 @@ public class AttributeDefinitionBooleanImpl extends AttributeDefinitionImpl impl
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the default value
      * @generated
      */
     public AttributeValueBoolean getDefaultValue() {
@@ -81,7 +94,11 @@ public class AttributeDefinitionBooleanImpl extends AttributeDefinitionImpl impl
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newDefaultValue the new default value
+     * @param msgs the msgs
+     * @return the notification chain
      * @generated
      */
     public NotificationChain basicSetDefaultValue( AttributeValueBoolean newDefaultValue, NotificationChain msgs ) {
@@ -105,7 +122,9 @@ public class AttributeDefinitionBooleanImpl extends AttributeDefinitionImpl impl
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newDefaultValue the new default value
      * @generated
      */
     public void setDefaultValue( AttributeValueBoolean newDefaultValue ) {
@@ -138,7 +157,10 @@ public class AttributeDefinitionBooleanImpl extends AttributeDefinitionImpl impl
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param msgs the msgs
+     * @return the notification chain
      * @generated
      */
     public NotificationChain basicUnsetDefaultValue( NotificationChain msgs ) {
@@ -187,7 +209,9 @@ public class AttributeDefinitionBooleanImpl extends AttributeDefinitionImpl impl
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return true, if is sets the default value
      * @generated
      */
     public boolean isSetDefaultValue() {

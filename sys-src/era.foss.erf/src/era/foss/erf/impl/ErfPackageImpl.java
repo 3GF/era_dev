@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.impl;
 
 import java.util.Map;
@@ -66,192 +65,94 @@ import era.foss.erf.util.ErfValidator;
  */
 public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass attributeDefinitionEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass attributeValueEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass datatypeDefinitionEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass specElementWithUserDefinedAttributesEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass specObjectEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass specTypeEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass mapEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass attributeValueSimpleEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass datatypeDefinitionIntegerEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass datatypeDefinitionSimpleEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass datatypeDefinitionStringEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass identifiableEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass attributeDefinitionSimpleEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass erfEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass contentEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass specRelationEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass embeddedValueEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass enumValueEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass datatypeDefinitionEnumerationEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass attributeDefinitionEnumerationEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass attributeValueEnumerationEClass = null;
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass datatypeDefinitionBooleanEClass = null;
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass attributeDefinitionBooleanEClass = null;
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass attributeValueBooleanEClass = null;
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass toolExtensionEClass = null;
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass viewEClass = null;
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass viewElementEClass = null;
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass eraToolExtensionEClass = null;
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass colorEClass = null;
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EDataType diagnosticChainEDataType = null;
 
     /**
@@ -271,10 +172,7 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
         super( eNS_URI, ErfFactory.eINSTANCE );
     }
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private static boolean isInited = false;
 
     /**
@@ -284,6 +182,8 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @return the erf package
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -321,7 +221,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute definition
      * @generated
      */
     public EClass getAttributeDefinition() {
@@ -329,7 +231,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute definition_ type
      * @generated
      */
     public EReference getAttributeDefinition_Type() {
@@ -337,7 +241,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute definition_ ident
      * @generated
      */
     public EAttribute getAttributeDefinition_Ident() {
@@ -345,7 +251,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute definition_ unique
      * @generated
      */
     public EAttribute getAttributeDefinition_Unique() {
@@ -354,7 +262,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the attribute definition_ spec type
      * @generated
      */
     public EReference getAttributeDefinition_SpecType() {
@@ -362,7 +272,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute value
      * @generated
      */
     public EClass getAttributeValue() {
@@ -371,7 +283,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the attribute value_ definition
      * @generated
      */
     public EReference getAttributeValue_Definition() {
@@ -379,7 +293,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the datatype definition
      * @generated
      */
     public EClass getDatatypeDefinition() {
@@ -388,7 +304,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the datatype definition_ attribute definitions
      * @generated
      */
     public EReference getDatatypeDefinition_AttributeDefinitions() {
@@ -396,7 +314,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec element with user defined attributes
      * @generated
      */
     public EClass getSpecElementWithUserDefinedAttributes() {
@@ -404,7 +324,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec element with user defined attributes_ values
      * @generated
      */
     public EReference getSpecElementWithUserDefinedAttributes_Values() {
@@ -412,7 +334,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec element with user defined attributes_ type
      * @generated
      */
     public EReference getSpecElementWithUserDefinedAttributes_Type() {
@@ -420,7 +344,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec object
      * @generated
      */
     public EClass getSpecObject() {
@@ -428,7 +354,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec object_ sources
      * @generated
      */
     public EReference getSpecObject_Sources() {
@@ -436,7 +364,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec object_ targets
      * @generated
      */
     public EReference getSpecObject_Targets() {
@@ -444,7 +374,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec type
      * @generated
      */
     public EClass getSpecType() {
@@ -452,7 +384,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec type_ spec attributes
      * @generated
      */
     public EReference getSpecType_SpecAttributes() {
@@ -460,7 +394,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the map
      * @generated
      */
     public EClass getMap() {
@@ -468,7 +404,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute value simple
      * @generated
      */
     public EClass getAttributeValueSimple() {
@@ -476,7 +414,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute value simple_ the value
      * @generated
      */
     public EAttribute getAttributeValueSimple_TheValue() {
@@ -484,7 +424,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the datatype definition integer
      * @generated
      */
     public EClass getDatatypeDefinitionInteger() {
@@ -492,7 +434,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the datatype definition integer_ max
      * @generated
      */
     public EAttribute getDatatypeDefinitionInteger_Max() {
@@ -500,7 +444,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the datatype definition integer_ min
      * @generated
      */
     public EAttribute getDatatypeDefinitionInteger_Min() {
@@ -508,7 +454,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the datatype definition simple
      * @generated
      */
     public EClass getDatatypeDefinitionSimple() {
@@ -516,7 +464,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the datatype definition string
      * @generated
      */
     public EClass getDatatypeDefinitionString() {
@@ -524,7 +474,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the datatype definition string_ max length
      * @generated
      */
     public EAttribute getDatatypeDefinitionString_MaxLength() {
@@ -532,7 +484,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the identifiable
      * @generated
      */
     public EClass getIdentifiable() {
@@ -540,7 +494,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the identifiable_ id
      * @generated
      */
     public EAttribute getIdentifiable_ID() {
@@ -548,7 +504,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the identifiable_ desc
      * @generated
      */
     public EAttribute getIdentifiable_Desc() {
@@ -556,7 +514,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the identifiable_ long name
      * @generated
      */
     public EAttribute getIdentifiable_LongName() {
@@ -564,7 +524,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute definition simple
      * @generated
      */
     public EClass getAttributeDefinitionSimple() {
@@ -572,7 +534,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute definition simple_ default value
      * @generated
      */
     public EReference getAttributeDefinitionSimple_DefaultValue() {
@@ -580,7 +544,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the erf
      * @generated
      */
     public EClass getERF() {
@@ -588,7 +554,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the eR f_ core content
      * @generated
      */
     public EReference getERF_CoreContent() {
@@ -597,7 +565,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the eR f_ tool extensions
      * @generated
      */
     public EReference getERF_ToolExtensions() {
@@ -605,7 +575,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the content
      * @generated
      */
     public EClass getContent() {
@@ -613,7 +585,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the content_ spec objects
      * @generated
      */
     public EReference getContent_SpecObjects() {
@@ -621,7 +595,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the content_ spec types
      * @generated
      */
     public EReference getContent_SpecTypes() {
@@ -629,7 +605,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the content_ data types
      * @generated
      */
     public EReference getContent_DataTypes() {
@@ -637,7 +615,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the content_ spec relations
      * @generated
      */
     public EReference getContent_SpecRelations() {
@@ -645,7 +625,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec relation
      * @generated
      */
     public EClass getSpecRelation() {
@@ -653,7 +635,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec relation_ source
      * @generated
      */
     public EReference getSpecRelation_Source() {
@@ -661,7 +645,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec relation_ target
      * @generated
      */
     public EReference getSpecRelation_Target() {
@@ -669,7 +655,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the embedded value
      * @generated
      */
     public EClass getEmbeddedValue() {
@@ -677,7 +665,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the embedded value_ key
      * @generated
      */
     public EAttribute getEmbeddedValue_Key() {
@@ -685,7 +675,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the embedded value_ other content
      * @generated
      */
     public EAttribute getEmbeddedValue_OtherContent() {
@@ -693,7 +685,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the enum value
      * @generated
      */
     public EClass getEnumValue() {
@@ -701,7 +695,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the enum value_ properties
      * @generated
      */
     public EReference getEnumValue_Properties() {
@@ -710,7 +706,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the enum value_ color
      * @generated
      */
     public EReference getEnumValue_Color() {
@@ -718,7 +716,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the datatype definition enumeration
      * @generated
      */
     public EClass getDatatypeDefinitionEnumeration() {
@@ -726,7 +726,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the datatype definition enumeration_ specified values
      * @generated
      */
     public EReference getDatatypeDefinitionEnumeration_SpecifiedValues() {
@@ -734,7 +736,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute definition enumeration
      * @generated
      */
     public EClass getAttributeDefinitionEnumeration() {
@@ -742,7 +746,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute definition enumeration_ multi valued
      * @generated
      */
     public EAttribute getAttributeDefinitionEnumeration_MultiValued() {
@@ -750,7 +756,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute definition enumeration_ default value
      * @generated
      */
     public EReference getAttributeDefinitionEnumeration_DefaultValue() {
@@ -758,7 +766,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute value enumeration
      * @generated
      */
     public EClass getAttributeValueEnumeration() {
@@ -766,7 +776,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the attribute value enumeration_ values
      * @generated
      */
     public EReference getAttributeValueEnumeration_Values() {
@@ -775,7 +787,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the datatype definition boolean
      * @generated
      */
     public EClass getDatatypeDefinitionBoolean() {
@@ -784,7 +798,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the attribute definition boolean
      * @generated
      */
     public EClass getAttributeDefinitionBoolean() {
@@ -793,7 +809,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the attribute definition boolean_ default value
      * @generated
      */
     public EReference getAttributeDefinitionBoolean_DefaultValue() {
@@ -802,7 +820,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the attribute value boolean
      * @generated
      */
     public EClass getAttributeValueBoolean() {
@@ -811,7 +831,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the attribute value boolean_ the value
      * @generated
      */
     public EAttribute getAttributeValueBoolean_TheValue() {
@@ -820,7 +842,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the tool extension
      * @generated
      */
     public EClass getToolExtension() {
@@ -829,7 +853,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the view
      * @generated
      */
     public EClass getView() {
@@ -838,7 +864,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the view_ view elements
      * @generated
      */
     public EReference getView_ViewElements() {
@@ -847,7 +875,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the view element
      * @generated
      */
     public EClass getViewElement() {
@@ -856,7 +886,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the view element_ editor show label
      * @generated
      */
     public EAttribute getViewElement_EditorShowLabel() {
@@ -865,7 +897,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the view element_ editor column span
      * @generated
      */
     public EAttribute getViewElement_EditorColumnSpan() {
@@ -874,7 +908,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the view element_ attribute definition
      * @generated
      */
     public EReference getViewElement_AttributeDefinition() {
@@ -883,7 +919,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the view element_ editor row position
      * @generated
      */
     public EAttribute getViewElement_EditorRowPosition() {
@@ -892,7 +930,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the view element_ editor row span
      * @generated
      */
     public EAttribute getViewElement_EditorRowSpan() {
@@ -901,7 +941,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the view element_ editor column position
      * @generated
      */
     public EAttribute getViewElement_EditorColumnPosition() {
@@ -910,7 +952,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the era tool extension
      * @generated
      */
     public EClass getEraToolExtension() {
@@ -919,7 +963,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the era tool extension_ views
      * @generated
      */
     public EReference getEraToolExtension_Views() {
@@ -928,7 +974,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the color
      * @generated
      */
     public EClass getColor() {
@@ -937,7 +985,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the color_ red
      * @generated
      */
     public EAttribute getColor_Red() {
@@ -946,7 +996,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the color_ green
      * @generated
      */
     public EAttribute getColor_Green() {
@@ -955,7 +1007,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the color_ blue
      * @generated
      */
     public EAttribute getColor_Blue() {
@@ -963,7 +1017,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the diagnostic chain
      * @generated
      */
     public EDataType getDiagnosticChain() {
@@ -971,17 +1027,16 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the erf factory
      * @generated
      */
     public ErfFactory getErfFactory() {
         return (ErfFactory)getEFactoryInstance();
     }
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private boolean isCreated = false;
 
     /**
@@ -1106,10 +1161,7 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
         diagnosticChainEDataType = createEDataType( DIAGNOSTIC_CHAIN );
     }
 
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private boolean isInitialized = false;
 
     /**

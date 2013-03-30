@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,27 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * @model abstract="true"
+ * The Interface Identifiable.
  * 
+ * @model abstract="true"
  */
 public interface Identifiable extends EObject {
 
     /**
+     * Gets the id.
+     * 
+     * @return the id
      * @model lowerBound="1" upperBound="1" unsettable="true" unique="true"
      */
     public String getID();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.Identifiable#getID <em>ID</em>}' attribute.
-     * <!-- begin-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.Identifiable#getID <em>ID</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>ID</em>' attribute.
      * @see #isSetID()
      * @see #unsetID()
@@ -44,9 +47,9 @@ public interface Identifiable extends EObject {
     void setID( String value );
 
     /**
-     * Unsets the value of the '{@link era.foss.erf.Identifiable#getID <em>ID</em>}' attribute.
-     * <!-- begin-user-doc -->
+     * Unsets the value of the '{@link era.foss.erf.Identifiable#getID <em>ID</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @see #isSetID()
      * @see #getID()
      * @see #setID(String)
@@ -67,14 +70,17 @@ public interface Identifiable extends EObject {
     boolean isSetID();
 
     /**
+     * Gets the desc.
+     * 
+     * @return the desc
      * @model default=""
      */
     public String getDesc();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.Identifiable#getDesc <em>Desc</em>}' attribute.
-     * <!-- begin-user-doc
+     * Sets the value of the '{@link era.foss.erf.Identifiable#getDesc <em>Desc</em>}' attribute. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Desc</em>' attribute.
      * @see #getDesc()
      * @generated
@@ -82,6 +88,9 @@ public interface Identifiable extends EObject {
     void setDesc( String value );
 
     /**
+     * Gets the long name.
+     * 
+     * @return the long name
      * @model default=""
      */
     public String getLongName();

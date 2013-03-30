@@ -8,7 +8,7 @@ Bundle-ClassPath: .,
 Bundle-Activator: era.foss.objecteditor.ErfObjectsEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: era.foss.objecteditor,
  org.eclipse.swt.nebula.widgets.compositetable,
  org.eclipse.swt.nebula.widgets.compositetable.day,

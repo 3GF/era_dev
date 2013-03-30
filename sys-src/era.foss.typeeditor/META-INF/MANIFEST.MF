@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: era.foss.typeeditor.Activator$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: era.foss.typeeditor,
  era.foss.typeeditor.common,
  era.foss.typeeditor.view

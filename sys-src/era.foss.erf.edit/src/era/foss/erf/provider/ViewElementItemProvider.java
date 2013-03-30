@@ -1,9 +1,20 @@
-/**
- * <copyright>
- * </copyright>
- *
- * $Id$
- */
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+*/
 package era.foss.erf.provider;
 
 import era.foss.erf.ErfPackage;
@@ -36,10 +47,13 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  */
 public class ViewElementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+    
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param adapterFactory the adapter factory
      * @generated
      */
     public ViewElementItemProvider( AdapterFactory adapterFactory ) {
@@ -71,6 +85,8 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
      * This adds a property descriptor for the Editor Show Label feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addEditorShowLabelPropertyDescriptor( Object object ) {
@@ -93,6 +109,8 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
      * This adds a property descriptor for the Editor Column Span feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addEditorColumnSpanPropertyDescriptor( Object object ) {
@@ -115,6 +133,8 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
      * This adds a property descriptor for the Attribute Definition feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addAttributeDefinitionPropertyDescriptor( Object object ) {
@@ -137,6 +157,8 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
      * This adds a property descriptor for the Editor Row Position feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addEditorRowPositionPropertyDescriptor( Object object ) {
@@ -159,6 +181,8 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
      * This adds a property descriptor for the Editor Row Span feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addEditorRowSpanPropertyDescriptor( Object object ) {
@@ -181,6 +205,8 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
      * This adds a property descriptor for the Editor Column Position feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addEditorColumnPositionPropertyDescriptor( Object object ) {
@@ -261,6 +287,8 @@ public class ViewElementItemProvider extends ItemProviderAdapter implements IEdi
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @return the resource locator
      * @generated
      */
     @Override

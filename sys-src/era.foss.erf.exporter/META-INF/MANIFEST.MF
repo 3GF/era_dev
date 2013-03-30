@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: era.foss.erf.exporter.Activator$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: era.foss.erf.exporter
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi,

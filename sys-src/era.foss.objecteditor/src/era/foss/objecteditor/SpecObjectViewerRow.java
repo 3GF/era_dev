@@ -1,3 +1,20 @@
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+*/
 package era.foss.objecteditor;
 
 import java.util.ArrayList;
@@ -37,47 +54,46 @@ import era.foss.erf.ViewElement;
 import era.foss.ui.contrib.PageBookMax;
 import era.foss.util.types.Tuple;
 
+/**
+ * The Class SpecObjectViewerRow.
+ */
 class SpecObjectViewerRow extends Composite {
 
-    /** Delete button */
+    /** Delete button. */
     private Label deleteButton;
 
-    /** Master observable for the chosen view */
+    /** Master observable for the chosen view. */
     static private IViewerObservableValue viewMaster;
 
-    /** The editing domain used for modifications on the model */
+    /** The editing domain used for modifications on the model. */
     static private EditingDomain editingDomain;
 
-    /** The model */
+    /** The model. */
     private static ERF erfModel;
 
-    /**
-     * The composite holding the all the controls according to the chosen view
-     */
+    /** The composite holding the all the controls according to the chosen view. */
     PageBookMax viewComposite;
 
-    /**
-     * List of Composites holding the graphical representation of a single AttributeDefinition
-     */
+    /** List of Composites holding the graphical representation of a single AttributeDefinition. */
     private final List<AbstractAttributeDefinitionComposite> attributeDefintionCompositeList = new ArrayList<AbstractAttributeDefinitionComposite>();
 
-    /**
-     * offset of the SpecObject associated with this row
-     */
+    /** offset of the SpecObject associated with this row. */
     private int specObjectOffset;
 
-    /** List of selection listeners of this row */
+    /** List of selection listeners of this row. */
     private List<SelectionListener> selectionListenerList = new LinkedList<SelectionListener>();
 
+    /** The spec object. */
     private SpecObject specObject;
 
+    /** The page map. */
     private HashMap<SpecType, Composite> pageMap = new HashMap<SpecType, Composite>();
 
     /**
-     * Constructor of the Row Composite
-     * 
-     * @param parent
-     * @param style
+     * Constructor of the Row Composite.
+     *
+     * @param parent the parent
+     * @param style the style
      */
     public SpecObjectViewerRow( Composite parent, int style ) {
         super( parent, style );
@@ -100,8 +116,8 @@ class SpecObjectViewerRow extends Composite {
     }
 
     /**
-     * Set the master of the view to observe
-     * 
+     * Set the master of the view to observe.
+     *
      * @param viewMaster master observable
      */
     public static void setViewMaster( IViewerObservableValue viewMaster ) {
@@ -109,18 +125,18 @@ class SpecObjectViewerRow extends Composite {
     }
 
     /**
-     * Set the editing domain used for operations on an AttributeValue of the associated SpecObject
-     * 
-     * @param editingDomain
+     * Set the editing domain used for operations on an AttributeValue of the associated SpecObject.
+     *
+     * @param editingDomain the new editing domain
      */
     public static void setEditingDomain( EditingDomain editingDomain ) {
         SpecObjectViewerRow.editingDomain = editingDomain;
     }
 
     /**
-     * Set the editing domain used for operations on an AttributeValue of the associated SpecObject
-     * 
-     * @param editingDomain
+     * Set the editing domain used for operations on an AttributeValue of the associated SpecObject.
+     *
+     * @param erfModel the new erf model
      */
     public static void setErfModel( ERF erfModel ) {
         SpecObjectViewerRow.erfModel = erfModel;
@@ -351,9 +367,9 @@ class SpecObjectViewerRow extends Composite {
     }
 
     /**
-     * Binds the current SpecObject
-     * 
-     * @param The SpecObject to bind
+     * Binds the current SpecObject.
+     *
+     * @param specObject the spec object
      */
     public void bind( SpecObject specObject ) {
 
@@ -373,8 +389,8 @@ class SpecObjectViewerRow extends Composite {
     }
 
     /**
-     * Get the delete button of this row
-     * 
+     * Get the delete button of this row.
+     *
      * @return the delete Button of this row
      */
     public Label getDeleteButton() {
@@ -383,11 +399,10 @@ class SpecObjectViewerRow extends Composite {
 
     /**
      * Set the selection status of this row. Alter the background when the row gets selected.
-     * 
+     *
      * @param isSelected if true the row is displayed as selected
-     * @param setFocus
-     * 
-     * */
+     * @param setFocus the set focus
+     */
     public void setSelected( boolean isSelected, boolean setFocus ) {
         if( isSelected ) {
             this.setBackground( Display.getDefault().getSystemColor( SWT.COLOR_LIST_SELECTION ) );
@@ -418,18 +433,18 @@ class SpecObjectViewerRow extends Composite {
     }
 
     /**
-     * Add a selection listener to this row
-     * 
-     * @param listener
+     * Add a selection listener to this row.
+     *
+     * @param listener the listener
      */
     public void addSelectionListener( SelectionListener listener ) {
         this.selectionListenerList.add( listener );
     }
 
     /**
-     * Remove a selection listener
-     * 
-     * @param listener
+     * Remove a selection listener.
+     *
+     * @param listener the listener
      */
     public void removeSelectionListener( SelectionListener listener ) {
         this.selectionListenerList.remove( listener );
@@ -484,8 +499,8 @@ class SpecObjectViewerRow extends Composite {
     }
 
     /**
-     * get the offset of the SpecObject associated with this row
-     * 
+     * get the offset of the SpecObject associated with this row.
+     *
      * @return the offset of the SpecObject
      */
     public int getSpecObjectOffset() {

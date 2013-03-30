@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 
 package era.foss.typeeditor.common;
 
@@ -54,7 +53,6 @@ import era.foss.typeeditor.Activator;
  * <p>
  * Contains a reference to the {@link EraCommandStack}.
  * 
- * @author cpn
  */
 public abstract class AbstractErfTypesForm extends Composite {
 
@@ -124,7 +122,10 @@ public abstract class AbstractErfTypesForm extends Composite {
     }
 
     /**
-     * Adapt attribute definition according to datatypeDefintion it is refering to
+     * Adapt attribute definition according to datatypeDefintion it is refering to.
+     *
+     * @param attributeDefinition the attribute definition
+     * @return the attribute definition
      */
     protected AttributeDefinition adaptAttributeDefintion( AttributeDefinition attributeDefinition ) {
 

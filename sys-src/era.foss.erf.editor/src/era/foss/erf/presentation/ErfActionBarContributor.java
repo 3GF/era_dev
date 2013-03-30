@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id: ErfActionBarContributor.java 308 2011-04-01 17:45:50Z cpn $
- *************************************************************************/
+*/
 package era.foss.erf.presentation;
 
 import java.util.ArrayList;
@@ -303,6 +302,10 @@ public class ErfActionBarContributor extends EditingDomainActionBarContributor i
      * and returns the collection of these actions.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param descriptors the descriptors
+     * @param selection the selection
+     * @return the collection
      * @generated
      */
     protected Collection<IAction> generateCreateChildActions( Collection<?> descriptors, ISelection selection ) {
@@ -320,6 +323,10 @@ public class ErfActionBarContributor extends EditingDomainActionBarContributor i
      * and returns the collection of these actions.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param descriptors the descriptors
+     * @param selection the selection
+     * @return the collection
      * @generated
      */
     protected Collection<IAction> generateCreateSiblingActions( Collection<?> descriptors, ISelection selection ) {
@@ -339,6 +346,10 @@ public class ErfActionBarContributor extends EditingDomainActionBarContributor i
      * If <code>contributionID</code> is <code>null</code>, they are simply added.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param manager the manager
+     * @param actions the actions
+     * @param contributionID the contribution id
      * @generated
      */
     protected void populateManager( IContributionManager manager,
@@ -360,6 +371,9 @@ public class ErfActionBarContributor extends EditingDomainActionBarContributor i
      * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param manager the manager
+     * @param actions the actions
      * @generated
      */
     protected void depopulateManager( IContributionManager manager, Collection<? extends IAction> actions ) {

@@ -1,9 +1,20 @@
-/**
- * <copyright>
- * </copyright>
- *
- * $Id$
- */
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+*/
 package era.foss.erf.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -72,8 +83,9 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the properties
      * @generated
      */
     public EmbeddedValue getProperties() {
@@ -81,8 +93,11 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newProperties the new properties
+     * @param msgs the msgs
+     * @return the notification chain
      * @generated
      */
     public NotificationChain basicSetProperties( EmbeddedValue newProperties, NotificationChain msgs ) {
@@ -102,8 +117,9 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newProperties the new properties
      * @generated
      */
     public void setProperties( EmbeddedValue newProperties ) {
@@ -130,8 +146,9 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the color
      * @generated
      */
     public Color getColor() {
@@ -139,8 +156,11 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newColor the new color
+     * @param msgs the msgs
+     * @return the notification chain
      * @generated
      */
     public NotificationChain basicSetColor( Color newColor, NotificationChain msgs ) {
@@ -160,8 +180,9 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newColor the new color
      * @generated
      */
     public void setColor( Color newColor ) {

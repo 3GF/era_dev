@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.presentation;
 
 import java.io.IOException;
@@ -492,7 +491,6 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
      * <p>
      * It is derived from EContentAdapter that auto-adapts all new objects
      * 
-     * @author cpn
      */
     public class ViewerRefreshEContentAdapter extends EContentAdapter {
 
@@ -635,7 +633,8 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     /**
      * Shows a dialog that asks if conflicting changes should be discarded. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
-     * 
+     *
+     * @return true, if successful
      * @generated
      */
     protected boolean handleDirtyConflict() {
@@ -716,6 +715,8 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     /**
      * This sets the selection into whichever viewer is active.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param collection the new selection to viewer
      * @generated
      */
     public void setSelectionToViewer( Collection<?> collection ) {
@@ -752,8 +753,11 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
      * @generated
      */
     public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
+        
         /**
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * <!-- begin-user-doc --> <!-- end-user-doc -->.
+         *
+         * @param adapterFactory the adapter factory
          * @generated
          */
         public ReverseAdapterFactoryContentProvider( AdapterFactory adapterFactory ) {
@@ -801,7 +805,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param viewerPane the new current viewer pane
      * @generated
      */
     public void setCurrentViewerPane( ViewerPane viewerPane ) {
@@ -818,6 +824,8 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
      * This makes sure that one content viewer, either for the current page or the outline view, if it has focus,
      * is the current one.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param viewer the new current viewer
      * @generated
      */
     public void setCurrentViewer( Viewer viewer ) {
@@ -871,7 +879,8 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     /**
      * This creates a context menu for the viewer and adds a listener as well registering the menu for extension. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @param viewer the viewer
      * @generated
      */
     protected void createContextMenuFor( StructuredViewer viewer ) {
@@ -920,6 +929,10 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
      * Returns a diagnostic describing the errors and warnings listed in the resource
      * and the specified exception (if any).
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param resource the resource
+     * @param exception the exception
+     * @return the diagnostic
      * @generated
      */
     public Diagnostic analyzeResourceProblems( Resource resource, Exception exception ) {
@@ -1258,6 +1271,8 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     /**
      * This accesses a cached version of the content outliner.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the content outline page
      * @generated
      */
     public IContentOutlinePage getContentOutlinePage() {
@@ -1324,6 +1339,8 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     /**
      * This accesses a cached version of the property sheet.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the property sheet page
      * @generated
      */
     public IPropertySheetPage getPropertySheetPage() {
@@ -1350,7 +1367,8 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     /**
      * This deals with how we want selection in the outliner to affect the other views. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
+     * @param selection the selection
      * @not generated
      */
     public void handleContentOutlineSelection( ISelection selection ) {
@@ -1458,9 +1476,12 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
 
     /**
      * This returns whether something has been persisted to the URI of the specified resource.
-     * The implementation uses the URI converter from the editor's resource set to try to open an input stream. 
+     * The implementation uses the URI converter from the editor's resource set to try to open an input stream.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     *
+     * @param resource the resource
+     * @return true, if is persisted
      * @generated
      */
     protected boolean isPersisted( Resource resource ) {
@@ -1509,7 +1530,10 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param uri the uri
+     * @param editorInput the editor input
      * @generated
      */
     protected void doSaveAs( URI uri, IEditorInput editorInput ) {
@@ -1617,7 +1641,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param selection the new status line manager
      * @generated
      */
     public void setStatusLineManager( ISelection selection ) {
@@ -1679,7 +1705,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the action bar contributor
      * @generated
      */
     public EditingDomainActionBarContributor getActionBarContributor() {
@@ -1687,7 +1715,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the action bars
      * @generated
      */
     public IActionBars getActionBars() {
@@ -1734,6 +1764,8 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     /**
      * Returns whether the outline view should be presented to the user.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return true, if successful
      * @generated
      */
     protected boolean showOutlineView() {

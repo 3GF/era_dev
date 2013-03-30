@@ -1,3 +1,20 @@
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+*/
 package era.foss.objecteditor;
 
 import org.eclipse.emf.common.command.Command;
@@ -24,11 +41,24 @@ import era.foss.erf.ViewElement;
 import era.foss.erf.impl.ErfFactoryImpl;
 import era.foss.ui.contrib.TextAction;
 
+/**
+ * The Class AttributeDefinitionStringComposite.
+ */
 public class AttributeDefinitionStringComposite extends AbstractAttributeDefinitionComposite {
 
+    /** The text control. */
     Text textControl;
+    
+    /** The default value modify listener. */
     private DefaultModifyListener defaultValueModifyListener;
 
+    /**
+     * Instantiates a new attribute definition string composite.
+     *
+     * @param parent the parent
+     * @param viewElement the view element
+     * @param specObject the spec object
+     */
     public AttributeDefinitionStringComposite( Composite parent, ViewElement viewElement, SpecObject specObject ) {
         super( parent, viewElement );
 
@@ -82,15 +112,16 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
     }
 
     /**
-     * Listener whichs adds a AttributeValue to a SpecObject in case no
-     * 
+     * Listener whichs adds a AttributeValue to a SpecObject in case no.
+     *
+     * @see DefaultModifyEvent
      */
     private class DefaultModifyListener implements ModifyListener {
 
-        /**
-         * Spec Object for which a AttributeValue has to be created in case the content of the Text control is changed
-         */
+        /** Spec Object for which a AttributeValue has to be created in case the content of the Text control is changed. */
         SpecObject specObject;
+        
+        /** The editing domain. */
         EditingDomain editingDomain;
 
         public DefaultModifyListener( SpecObject specObject, EditingDomain editingDomain ) {
@@ -125,6 +156,9 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
         }
     }
 
+    /* (non-Javadoc)
+     * @see era.foss.objecteditor.AbstractAttributeDefinitionComposite#getControl()
+     */
     @Override
     public Control getControl() {
         return textControl;

@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.util;
 
 import era.foss.erf.*;
@@ -65,11 +64,7 @@ import era.foss.erf.ViewElement;
  */
 public class ErfValidator extends EObjectValidator {
 
-    /**
-     * The cached model package
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @generated
-     */
+    /** The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     public static final ErfValidator INSTANCE = new ErfValidator();
 
     /**
@@ -109,6 +104,8 @@ public class ErfValidator extends EObjectValidator {
     /**
      * Returns the package of this validator switch.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the e package
      * @generated
      */
     @Override
@@ -198,7 +195,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param attributeDefinition the attribute definition
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateAttributeDefinition( AttributeDefinition attributeDefinition,
@@ -208,7 +210,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param attributeValue the attribute value
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateAttributeValue( AttributeValue attributeValue,
@@ -218,7 +225,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param datatypeDefinition the datatype definition
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateDatatypeDefinition( DatatypeDefinition datatypeDefinition,
@@ -228,7 +240,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param specElementWithUserDefinedAttributes the spec element with user defined attributes
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateSpecElementWithUserDefinedAttributes( SpecElementWithUserDefinedAttributes specElementWithUserDefinedAttributes,
@@ -238,7 +255,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param specObject the spec object
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateSpecObject( SpecObject specObject, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -246,7 +268,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param specType the spec type
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateSpecType( SpecType specType, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -254,7 +281,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param map the map
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateMap( Map<?, ?> map, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -262,7 +294,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param attributeValueSimple the attribute value simple
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateAttributeValueSimple( AttributeValueSimple attributeValueSimple,
@@ -298,7 +335,11 @@ public class ErfValidator extends EObjectValidator {
     /**
      * Validates the DatatypeDefinitionConstraints constraint of '<em>Attribute Value Simple</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
+     *
+     * @param attributeValueSimple the attribute value simple
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @NOT generated
      */
     public boolean validateAttributeValueSimple_DatatypeDefinitionConstraints( AttributeValueSimple attributeValueSimple,
@@ -363,7 +404,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param datatypeDefinitionInteger the datatype definition integer
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateDatatypeDefinitionInteger( DatatypeDefinitionInteger datatypeDefinitionInteger,
@@ -404,7 +450,11 @@ public class ErfValidator extends EObjectValidator {
     /**
      * Validates the NonNegative constraint of '<em>Datatype Definition Integer</em>'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
+     * @param datatypeDefinitionInteger the datatype definition integer
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @NOT generated
      */
     public boolean validateDatatypeDefinitionInteger_NonNegative( DatatypeDefinitionInteger datatypeDefinitionInteger,
@@ -431,7 +481,11 @@ public class ErfValidator extends EObjectValidator {
     /**
      * Validates the MaxGreaterThanMin constraint of '<em>Datatype Definition Integer</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
+     *
+     * @param datatypeDefinitionInteger the datatype definition integer
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @NOT generated
      */
     public boolean validateDatatypeDefinitionInteger_MaxGreaterThanMin( DatatypeDefinitionInteger datatypeDefinitionInteger,
@@ -457,7 +511,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param datatypeDefinitionSimple the datatype definition simple
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateDatatypeDefinitionSimple( DatatypeDefinitionSimple datatypeDefinitionSimple,
@@ -467,7 +526,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param datatypeDefinitionString the datatype definition string
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateDatatypeDefinitionString( DatatypeDefinitionString datatypeDefinitionString,
@@ -477,7 +541,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param identifiable the identifiable
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateIdentifiable( Identifiable identifiable,
@@ -487,7 +556,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param attributeDefinitionSimple the attribute definition simple
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateAttributeDefinitionSimple( AttributeDefinitionSimple attributeDefinitionSimple,
@@ -497,7 +571,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param erf the erf
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateERF( ERF erf, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -505,7 +584,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param content the content
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateContent( Content content, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -513,7 +597,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param specRelation the spec relation
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateSpecRelation( SpecRelation specRelation,
@@ -523,7 +612,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param embeddedValue the embedded value
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateEmbeddedValue( EmbeddedValue embeddedValue,
@@ -533,7 +627,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param enumValue the enum value
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateEnumValue( EnumValue enumValue, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -541,7 +640,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param datatypeDefinitionEnumeration the datatype definition enumeration
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateDatatypeDefinitionEnumeration( DatatypeDefinitionEnumeration datatypeDefinitionEnumeration,
@@ -551,7 +655,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param attributeDefinitionEnumeration the attribute definition enumeration
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateAttributeDefinitionEnumeration( AttributeDefinitionEnumeration attributeDefinitionEnumeration,
@@ -561,7 +670,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param attributeValueEnumeration the attribute value enumeration
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateAttributeValueEnumeration( AttributeValueEnumeration attributeValueEnumeration,
@@ -571,7 +685,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param datatypeDefinitionBoolean the datatype definition boolean
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateDatatypeDefinitionBoolean( DatatypeDefinitionBoolean datatypeDefinitionBoolean,
@@ -581,7 +700,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param attributeDefinitionBoolean the attribute definition boolean
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateAttributeDefinitionBoolean( AttributeDefinitionBoolean attributeDefinitionBoolean,
@@ -591,7 +715,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param attributeValueBoolean the attribute value boolean
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateAttributeValueBoolean( AttributeValueBoolean attributeValueBoolean,
@@ -601,7 +730,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param toolExtension the tool extension
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateToolExtension( ToolExtension toolExtension,
@@ -611,7 +745,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param view the view
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateView( View view, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -619,7 +758,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param viewElement the view element
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateViewElement( ViewElement viewElement,
@@ -629,7 +773,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param eraToolExtension the era tool extension
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateEraToolExtension( EraToolExtension eraToolExtension,
@@ -640,7 +789,12 @@ public class ErfValidator extends EObjectValidator {
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param color the color
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateColor( Color color, DiagnosticChain diagnostics, Map<Object, Object> context ) {
@@ -648,7 +802,12 @@ public class ErfValidator extends EObjectValidator {
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param diagnosticChain the diagnostic chain
+     * @param diagnostics the diagnostics
+     * @param context the context
+     * @return true, if successful
      * @generated
      */
     public boolean validateDiagnosticChain( DiagnosticChain diagnosticChain,
@@ -660,7 +819,8 @@ public class ErfValidator extends EObjectValidator {
     /**
      * Returns the resource locator that will be used to fetch messages for this validator's diagnostics. <!--
      * begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @return the resource locator
      * @NOT generated
      */
     @Override

@@ -1,3 +1,20 @@
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+ */
 package era.foss.typeeditor.view.layoutviewer;
 
 import java.util.ArrayList;
@@ -30,19 +47,34 @@ import org.eclipse.swt.widgets.Composite;
 
 import era.foss.erf.ErfPackage;
 
+/**
+ * The Class ViewLayoutViewer.
+ */
 public class ViewLayoutViewer extends ScrollingGraphicalViewer {
+
+    /** The Constant ID. */
     public static final String ID = "test.view";
 
     // GEF editing domain
+    /** The gef editing domain. */
     private EditDomain gefEditingDomain;
 
     // eMF editing domain
+    /** The emf editing domain. */
     private EditingDomain emfEditingDomain;
 
+    /** The view master. */
     IViewerObservableValue viewMaster;
 
+    /** The viewer filter list. */
     final private List<ViewerFilter> viewerFilterList = new ArrayList<ViewerFilter>();
 
+    /**
+     * Instantiates a new view layout viewer.
+     * 
+     * @param editingDomain the editing domain
+     * @param parent the parent
+     */
     public ViewLayoutViewer( EditingDomain editingDomain, Composite parent ) {
         super();
 
@@ -61,6 +93,11 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
         this.setRootEditPart( new FreeformGraphicalRootEditPart() );
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.gef.ui.parts.AbstractEditPartViewer#setContents(java.lang.Object)
+     */
     @Override
     public void setContents( Object content ) {
         assert (content instanceof IViewerObservableValue);
@@ -86,10 +123,18 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
         super.setContents( viewMaster.getValue() );
     }
 
+    /**
+     * Refresh.
+     */
     public void refresh() {
         ViewLayoutViewer.super.setContents( viewMaster.getValue() );
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.gef.ui.parts.AbstractEditPartViewer#getSelection()
+     */
     public ISelection getSelection() {
 
         @SuppressWarnings("unchecked")
@@ -104,6 +149,11 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
         return new StructuredSelection( modelElementList );
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see org.eclipse.gef.ui.parts.AbstractEditPartViewer#setSelection(org.eclipse.jface.viewers.ISelection)
+     */
     public void setSelection( ISelection selection ) {
 
         List<Object> newEditPartSelection = new ArrayList<Object>();
@@ -124,23 +174,27 @@ public class ViewLayoutViewer extends ScrollingGraphicalViewer {
     }
 
     /**
-     * add a filter
+     * add a filter.
      * 
-     * @return
+     * @param filter the filter
      */
     public void addFilter( ViewerFilter filter ) {
         this.viewerFilterList.add( filter );
     }
 
     /**
-     * remove a filter
+     * remove a filter.
+     * 
+     * @param filter the filter
      */
     public void removeFilter( ViewerFilter filter ) {
         this.viewerFilterList.remove( filter );
     }
 
     /**
-     * add the emf editing domain
+     * add the emf editing domain.
+     * 
+     * @return the emf editing domain
      */
     public EditingDomain getEmfEditingDomain() {
         return emfEditingDomain;

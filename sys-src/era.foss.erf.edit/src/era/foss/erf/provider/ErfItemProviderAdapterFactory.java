@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id: ErfItemProviderAdapterFactory.java 357 2011-09-18 18:30:13Z schorsch $
- *************************************************************************/
+*/
 package era.foss.erf.provider;
 
 import era.foss.erf.util.ErfAdapterFactory;
@@ -575,6 +574,8 @@ public class ErfItemProviderAdapterFactory extends ErfAdapterFactory implements 
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @return the root adapter factory
      * @generated
      */
     public ComposeableAdapterFactory getRootAdapterFactory() {
@@ -585,6 +586,8 @@ public class ErfItemProviderAdapterFactory extends ErfAdapterFactory implements 
      * This sets the composed adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param parentAdapterFactory the new parent adapter factory
      * @generated
      */
     public void setParentAdapterFactory( ComposedAdapterFactory parentAdapterFactory ) {

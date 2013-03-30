@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id: DetailViewer.java 314 2011-04-05 22:28:39Z schorsch $
- *************************************************************************/
+*/
 package era.foss.typeeditor.common;
 
 import org.eclipse.core.databinding.DataBindingContext;
@@ -63,11 +62,11 @@ public abstract class AbstractDetailViewer extends ScrolledComposite {
     protected DataBindingContext dataBindingContext;
 
     /**
-     * Create a new detail viewer
-     * 
+     * Create a new detail viewer.
+     *
      * @param parent the parent composite
      * @param style the widget style
-     * @param editingDomain
+     * @param editingDomain the editing domain
      * @param master the master object for which the details are shown
      */
     protected AbstractDetailViewer( Composite parent, int style, EditingDomain editingDomain, IObservableValue master ) {

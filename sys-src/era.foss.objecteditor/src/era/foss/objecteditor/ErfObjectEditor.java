@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.objecteditor;
 
 import java.io.IOException;
@@ -182,16 +181,10 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
      */
     protected MarkerHelper markerHelper = new EditUIMarkerHelper();
 
-    /**
-     * Job for validation of spec objects
-     */
+    /** Job for validation of spec objects. */
     protected ErfValidateJob validateJob;
 
-    /**
-     * This listens for when the outline becomes active <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
+    /** This listens for when the outline becomes active <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     protected IPartListener partListener = new IPartListener() {
         public void partActivated( IWorkbenchPart p ) {
             if( p instanceof PropertySheet ) {
@@ -575,8 +568,8 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     }
 
     /**
-     * This sets the selection of current viewer
-     * 
+     * This sets the selection of current viewer.
+     *
      * @param collection the new selection to viewer
      */
     public void setSelectionToViewer( Collection<?> collection ) {
@@ -617,8 +610,9 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param viewerPane the new current viewer pane
      * @generated
      */
     public void setCurrentViewerPane( ViewerPane viewerPane ) {
@@ -678,7 +672,8 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     /**
      * This returns the viewer as required by the {@link IViewerProvider} interface. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
+     *
+     * @return the viewer
      * @generated
      */
     public Viewer getViewer() {
@@ -1202,8 +1197,9 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the action bar contributor
      * @generated
      */
     public EditingDomainActionBarContributor getActionBarContributor() {
@@ -1211,8 +1207,9 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the action bars
      * @generated
      */
     public IActionBars getActionBars() {
@@ -1220,8 +1217,9 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the adapter factory
      * @generated
      */
     public AdapterFactory getAdapterFactory() {
@@ -1252,7 +1250,8 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
 
     /**
      * Returns whether the outline view should be presented to the user. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     *
+     * @return true, if successful
      * @generated
      */
     protected boolean showOutlineView() {

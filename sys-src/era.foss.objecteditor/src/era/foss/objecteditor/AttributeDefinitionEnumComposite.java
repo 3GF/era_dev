@@ -1,3 +1,20 @@
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+*/
 package era.foss.objecteditor;
 
 import org.eclipse.core.databinding.observable.list.IObservableList;
@@ -35,15 +52,27 @@ import era.foss.ui.contrib.ColorComboViewer;
 import era.foss.ui.contrib.MultiComboViewer;
 import era.foss.ui.contrib.ObservableMapLabelColorProvider;
 
+/**
+ * The Class AttributeDefinitionEnumComposite.
+ */
 public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitionComposite {
 
-    /** The GUI element representing a AttributeDefinitionBoolean */
+    /** The GUI element representing a AttributeDefinitionBoolean. */
     AbstractListViewer comboViewer;
 
+    /** The value modify listener. */
     private DefaultModifyListener valueModifyListener;
 
+    /** The attribute definition. */
     private AttributeDefinitionEnumeration attributeDefinition;
 
+    /**
+     * Instantiates a new attribute definition enum composite.
+     *
+     * @param parent the parent
+     * @param viewElement the view element
+     * @param specObject the spec object
+     */
     public AttributeDefinitionEnumComposite( Composite parent, ViewElement viewElement, SpecObject specObject ) {
         super( parent, viewElement );
 
@@ -124,6 +153,11 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
 
     }
 
+    /**
+     * Sets the k color.
+     *
+     * @param enumValue the new k color
+     */
     protected void setKColor( EnumValue enumValue ) {
         org.eclipse.swt.graphics.Color swtColor;
         if( enumValue != null ) {
@@ -146,15 +180,16 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
     }
 
     /**
-     * Listener which adds a AttributeValue to a SpecObject in case no attributeValue exists yet
-     * 
+     * Listener which adds a AttributeValue to a SpecObject in case no attributeValue exists yet.
+     *
+     * @see DefaultModifyEvent
      */
     private class DefaultModifyListener implements ISelectionChangedListener {
 
-        /**
-         * Spec Object for which a AttributeValue has to be created in case the content of the Text control is changed
-         */
+        /** Spec Object for which a AttributeValue has to be created in case the content of the Text control is changed. */
         SpecObject specObject;
+        
+        /** The editing domain. */
         EditingDomain editingDomain;
 
         public DefaultModifyListener( SpecObject specObject, EditingDomain editingDomain ) {
@@ -198,6 +233,9 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
         }
     }
 
+    /* (non-Javadoc)
+     * @see era.foss.objecteditor.AbstractAttributeDefinitionComposite#getControl()
+     */
     @Override
     public Control getControl() {
         return comboViewer.getControl();

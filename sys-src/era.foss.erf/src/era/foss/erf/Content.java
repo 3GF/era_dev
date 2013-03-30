@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,34 +14,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
+ * The Interface Content.
+ *
  * @model
  */
 public interface Content extends EObject {
 
     /**
+     * Gets the spec objects.
+     *
+     * @return the spec objects
      * @model containment="true"
      */
     public EList<SpecObject> getSpecObjects();
 
     /**
+     * Gets the spec types.
+     *
+     * @return the spec types
      * @model containment="true"
      */
     public EList<SpecType> getSpecTypes();
 
     /**
+     * Gets the data types.
+     *
+     * @return the data types
      * @model containment="true"
      */
     public EList<DatatypeDefinition> getDataTypes();
 
     /**
+     * Gets the spec relations.
+     *
+     * @return the spec relations
      * @model containment="true"
      */
     public EList<SpecRelation> getSpecRelations();

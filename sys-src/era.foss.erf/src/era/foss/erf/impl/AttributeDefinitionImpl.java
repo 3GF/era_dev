@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -115,7 +114,9 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the type
      * @generated
      */
     public DatatypeDefinition getType() {
@@ -135,7 +136,9 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the datatype definition
      * @generated
      */
     public DatatypeDefinition basicGetType() {
@@ -143,7 +146,11 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newType the new type
+     * @param msgs the msgs
+     * @return the notification chain
      * @generated
      */
     public NotificationChain basicSetType( DatatypeDefinition newType, NotificationChain msgs ) {
@@ -163,7 +170,9 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newType the new type
      * @generated
      */
     public void setType( DatatypeDefinition newType ) {
@@ -188,7 +197,9 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return true, if is ident
      * @generated
      */
     public boolean isIdent() {
@@ -196,7 +207,9 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newIdent the new ident
      * @generated
      */
     public void setIdent( boolean newIdent ) {
@@ -211,7 +224,9 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return true, if is unique
      * @generated
      */
     public boolean isUnique() {
@@ -219,7 +234,9 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newUnique the new unique
      * @generated
      */
     public void setUnique( boolean newUnique ) {
@@ -234,7 +251,9 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @return the spec type
      * @generated
      */
     public SpecType getSpecType() {
@@ -243,7 +262,11 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newSpecType the new spec type
+     * @param msgs the msgs
+     * @return the notification chain
      * @generated
      */
     public NotificationChain basicSetSpecType( SpecType newSpecType, NotificationChain msgs ) {
@@ -252,7 +275,9 @@ public abstract class AttributeDefinitionImpl extends IdentifiableImpl implement
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     *
+     * @param newSpecType the new spec type
      * @generated
      */
     public void setSpecType( SpecType newSpecType ) {

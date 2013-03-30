@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.impl;
 
 import era.foss.erf.DatatypeDefinitionInteger;
@@ -122,7 +121,9 @@ public class DatatypeDefinitionIntegerImpl extends DatatypeDefinitionSimpleImpl 
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the max
      * @generated
      */
     public Integer getMax() {
@@ -131,7 +132,9 @@ public class DatatypeDefinitionIntegerImpl extends DatatypeDefinitionSimpleImpl 
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newMax the new max
      * @generated
      */
     public void setMax( Integer newMax ) {
@@ -169,7 +172,9 @@ public class DatatypeDefinitionIntegerImpl extends DatatypeDefinitionSimpleImpl 
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return true, if is sets the max
      * @generated
      */
     public boolean isSetMax() {
@@ -178,7 +183,9 @@ public class DatatypeDefinitionIntegerImpl extends DatatypeDefinitionSimpleImpl 
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the min
      * @generated
      */
     public Integer getMin() {
@@ -187,7 +194,9 @@ public class DatatypeDefinitionIntegerImpl extends DatatypeDefinitionSimpleImpl 
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newMin the new min
      * @generated
      */
     public void setMin( Integer newMin ) {
@@ -225,7 +234,9 @@ public class DatatypeDefinitionIntegerImpl extends DatatypeDefinitionSimpleImpl 
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return true, if is sets the min
      * @generated
      */
     public boolean isSetMin() {

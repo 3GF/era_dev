@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.provider;
 
 import java.util.Collection;
@@ -47,9 +46,12 @@ import era.foss.erf.SpecType;
  */
 public class SpecTypeItemProvider extends IdentifiableItemProvider implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+    
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param adapterFactory the adapter factory
      * @generated
      */
     public SpecTypeItemProvider( AdapterFactory adapterFactory ) {

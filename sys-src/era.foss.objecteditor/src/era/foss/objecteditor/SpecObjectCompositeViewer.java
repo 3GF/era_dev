@@ -1,3 +1,20 @@
+/**************************************************************************
+ * ERA - Eclipse Requirements Analysis
+ * ==============================================
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
+ * and Bernd Haberstumpf (http://era.origo.ethz.ch)
+ **************************************************************************
+ * Licensed under the Eclipse Public License - v 1.0 (the "License");
+ * you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * http://www.eclipse.org/org/documents/epl-v10.html
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ **************************************************************************
+*/
 package era.foss.objecteditor;
 
 import java.util.HashMap;
@@ -60,45 +77,53 @@ import era.foss.erf.SpecType;
 import era.foss.erf.ToolExtension;
 import era.foss.ui.contrib.NotifyingListSizeProperty;
 
+/**
+ * The Class SpecObjectCompositeViewer.
+ */
 public class SpecObjectCompositeViewer extends Viewer implements IInputSelectionProvider, IAllowViewerSchemaChange {
 
-    /** selected Spec Objects */
+    /** selected Spec Objects. */
     ISelection selectedSpecObjects;
 
-    /** Master observable referring to the currently selected view */
+    /** Master observable referring to the currently selected view. */
     IViewerObservableValue viewMaster;
 
-    /** ERF Model */
+    /** ERF Model. */
     ERF erfModel;
 
-    /** ERA specific extensions */
+    /** ERA specific extensions. */
     EraToolExtension toolExtension;
 
-    /** top level composite of this viewer */
+    /** top level composite of this viewer. */
     Composite topLevelComposite;
 
-    /** composite table showing the spec objects */
+    /** composite table showing the spec objects. */
     CompositeTable compositeTable;
 
     /** Button bar for various buttons (adding elements, selecting views,... */
     Composite buttonBarComposite;
 
-    /** editing Domain */
+    /** editing Domain. */
     EditingDomain editingDomain;
 
-    /** Databinding context for this viewer */
+    /** Databinding context for this viewer. */
     DataBindingContext dbc;
 
-    /** The current selected SpecObjects */
+    /** The current selected SpecObjects. */
     protected LinkedHashMap<Integer, SpecObject> selectedSpecObjectMap = new LinkedHashMap<Integer, SpecObject>();
 
-    /** List of selection changed listeners of this viewer */
+    /** List of selection changed listeners of this viewer. */
     List<ISelectionChangedListener> selectionChangedListeners = new LinkedList<ISelectionChangedListener>();
 
+    /** The spec type master. */
     protected IObservableValue specTypeMaster;
 
     /**
-     * Create a Viewer for the SpecObjects
+     * Create a Viewer for the SpecObjects.
+     *
+     * @param parent the parent
+     * @param editingDomain the editing domain
+     * @param erfModel the erf model
      */
     public SpecObjectCompositeViewer( Composite parent, AdapterFactoryEditingDomain editingDomain, ERF erfModel ) {
         this.editingDomain = editingDomain;
@@ -380,6 +405,9 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
         selectionChangedListeners.remove( listener );
     }
 
+    /* (non-Javadoc)
+     * @see org.eclipse.jface.viewers.Viewer#getSelection()
+     */
     @Override
     public ISelection getSelection() {
         if( selectedSpecObjectMap.size() == 0 ) {
@@ -435,7 +463,7 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
     }
 
     /**
-     * Content Provider for Row in the Composite table
+     * Content Provider for Row in the Composite table.
      */
     private class SpecObjectRowContentProvider implements IRowContentProvider {
 

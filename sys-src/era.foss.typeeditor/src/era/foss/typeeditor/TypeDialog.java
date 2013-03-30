@@ -58,7 +58,6 @@ import era.foss.typeeditor.view.ViewForm;
  * <p>
  * Instantiates the {@link EraCommandStack} for handling the OK and Cancel buttons.
  * 
- * @author cpn
  */
 public class TypeDialog extends TitleAreaDialog {
 

@@ -81,7 +81,6 @@ import era.foss.ui.contrib.SelectionProviderHasSelectionProperty;
  * Actually, this should be a generic UI widget. But now it is not any more. A description field was added, which is
  * bound to the basic {@link Identifiable} element from the ERF model.
  * 
- * @author schorsch
  */
 public class AddDeleteTableViewer extends TableViewer {
 

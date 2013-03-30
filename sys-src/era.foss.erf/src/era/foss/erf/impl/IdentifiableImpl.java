@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id$
- *************************************************************************/
+*/
 package era.foss.erf.impl;
 
 import java.util.UUID;
@@ -138,7 +137,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the id
      * @generated
      */
     public String getID() {
@@ -147,7 +148,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newID the new id
      * @generated
      */
     public void setID( String newID ) {
@@ -185,7 +188,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return true, if is sets the id
      * @generated
      */
     public boolean isSetID() {
@@ -194,7 +199,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the desc
      * @generated
      */
     public String getDesc() {
@@ -203,7 +210,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newDesc the new desc
      * @generated
      */
     public void setDesc( String newDesc ) {
@@ -219,7 +228,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @return the long name
      * @generated
      */
     public String getLongName() {
@@ -228,7 +239,9 @@ public abstract class IdentifiableImpl extends EObjectImpl implements Identifiab
 
     /**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- end-user-doc -->.
+     *
+     * @param newLongName the new long name
      * @generated
      */
     public void setLongName( String newLongName ) {

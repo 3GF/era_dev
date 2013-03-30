@@ -1,7 +1,7 @@
 /**************************************************************************
  * ERA - Eclipse Requirements Analysis
  * ==============================================
- * Copyright (C) 2009-2011 by Georg Blaschke, Christoph P. Neumann
+ * Copyright (C) 2009-2013 by Georg Blaschke, Christoph P. Neumann
  * and Bernd Haberstumpf (http://era.origo.ethz.ch)
  **************************************************************************
  * Licensed under the Eclipse Public License - v 1.0 (the "License");
@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
- * $Id: SpecObjectItemProvider.java 308 2011-04-01 17:45:50Z cpn $
- *************************************************************************/
+*/
 package era.foss.erf.provider;
 
 import era.foss.erf.ErfPackage;
@@ -44,10 +43,13 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 public class SpecObjectItemProvider extends SpecElementWithUserDefinedAttributesItemProvider implements
         IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
         IItemPropertySource {
+    
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param adapterFactory the adapter factory
      * @generated
      */
     public SpecObjectItemProvider( AdapterFactory adapterFactory ) {
@@ -75,6 +77,8 @@ public class SpecObjectItemProvider extends SpecElementWithUserDefinedAttributes
      * This adds a property descriptor for the Sources feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addSourcesPropertyDescriptor( Object object ) {
@@ -97,6 +101,8 @@ public class SpecObjectItemProvider extends SpecElementWithUserDefinedAttributes
      * This adds a property descriptor for the Targets feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     *
+     * @param object the object
      * @generated
      */
     protected void addTargetsPropertyDescriptor( Object object ) {
