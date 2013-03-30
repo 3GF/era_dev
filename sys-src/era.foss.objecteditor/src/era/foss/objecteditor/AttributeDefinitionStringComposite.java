@@ -4,6 +4,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -21,6 +22,7 @@ import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecObject;
 import era.foss.erf.ViewElement;
 import era.foss.erf.impl.ErfFactoryImpl;
+import era.foss.ui.contrib.TextAction;
 
 public class AttributeDefinitionStringComposite extends AbstractAttributeDefinitionComposite {
 
@@ -128,4 +130,11 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
         return textControl;
     }
 
+    @Override
+    protected void menuAboutToShow( IMenuManager manager ) {
+        super.menuAboutToShow( manager );
+        manager.add( new TextAction( textControl, TextAction.TextActionType.COPY ) );
+        manager.add( new TextAction( textControl, TextAction.TextActionType.CUT ) );
+        manager.add( new TextAction( textControl, TextAction.TextActionType.PASTE ) );
+    }
 }
