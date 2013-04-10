@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.impl;
 
 import era.foss.erf.*;
@@ -41,8 +41,6 @@ public class ErfFactoryImpl extends EFactoryImpl implements ErfFactory {
      * Creates the default factory implementation.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @return the erf factory
      * @generated
      */
     public static ErfFactory init() {
@@ -117,6 +115,10 @@ public class ErfFactoryImpl extends EFactoryImpl implements ErfFactory {
             return createEraToolExtension();
         case ErfPackage.COLOR:
             return createColor();
+        case ErfPackage.SPEC_HIERARCHY:
+            return createSpecHierarchy();
+        case ErfPackage.SPECIFICATION:
+            return createSpecification();
         default:
             throw new IllegalArgumentException( "The class '" + eClass.getName() + "' is not a valid classifier" );
         }
@@ -364,6 +366,26 @@ public class ErfFactoryImpl extends EFactoryImpl implements ErfFactory {
     public Color createColor() {
         ColorImpl color = new ColorImpl();
         return color;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public SpecHierarchy createSpecHierarchy() {
+        SpecHierarchyImpl specHierarchy = new SpecHierarchyImpl();
+        return specHierarchy;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Specification createSpecification() {
+        SpecificationImpl specification = new SpecificationImpl();
+        return specification;
     }
 
     /**

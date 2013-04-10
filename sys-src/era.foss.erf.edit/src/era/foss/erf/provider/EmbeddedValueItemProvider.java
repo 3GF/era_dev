@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.provider;
 
 import era.foss.erf.EmbeddedValue;
@@ -47,13 +47,11 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  */
 public class EmbeddedValueItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
-    
+
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param adapterFactory the adapter factory
      * @generated
      */
     public EmbeddedValueItemProvider( AdapterFactory adapterFactory ) {
@@ -81,8 +79,6 @@ public class EmbeddedValueItemProvider extends ItemProviderAdapter implements IE
      * This adds a property descriptor for the Key feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param object the object
      * @generated
      */
     protected void addKeyPropertyDescriptor( Object object ) {
@@ -105,8 +101,6 @@ public class EmbeddedValueItemProvider extends ItemProviderAdapter implements IE
      * This adds a property descriptor for the Other Content feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param object the object
      * @generated
      */
     protected void addOtherContentPropertyDescriptor( Object object ) {
@@ -184,8 +178,6 @@ public class EmbeddedValueItemProvider extends ItemProviderAdapter implements IE
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @return the resource locator
      * @generated
      */
     @Override

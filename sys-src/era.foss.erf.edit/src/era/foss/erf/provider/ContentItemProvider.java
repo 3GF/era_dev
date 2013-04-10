@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.provider;
 
 import java.util.Collection;
@@ -49,12 +49,10 @@ import era.foss.erf.ErfPackage;
  */
 public class ContentItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
-    
+
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @param adapterFactory the adapter factory
      * @generated
      */
     public ContentItemProvider( AdapterFactory adapterFactory ) {
@@ -91,6 +89,7 @@ public class ContentItemProvider extends ItemProviderAdapter implements IEditing
             childrenFeatures.add( ErfPackage.Literals.CONTENT__SPEC_TYPES );
             childrenFeatures.add( ErfPackage.Literals.CONTENT__DATA_TYPES );
             childrenFeatures.add( ErfPackage.Literals.CONTENT__SPEC_RELATIONS );
+            childrenFeatures.add( ErfPackage.Literals.CONTENT__SPECIFICATIONS );
         }
         return childrenFeatures;
     }
@@ -143,6 +142,7 @@ public class ContentItemProvider extends ItemProviderAdapter implements IEditing
         case ErfPackage.CONTENT__SPEC_TYPES:
         case ErfPackage.CONTENT__DATA_TYPES:
         case ErfPackage.CONTENT__SPEC_RELATIONS:
+        case ErfPackage.CONTENT__SPECIFICATIONS:
             fireNotifyChanged( new ViewerNotification( notification, notification.getNotifier(), true, false ) );
             return;
         }
@@ -179,13 +179,14 @@ public class ContentItemProvider extends ItemProviderAdapter implements IEditing
 
         newChildDescriptors.add( createChildParameter( ErfPackage.Literals.CONTENT__SPEC_RELATIONS,
                                                        ErfFactory.eINSTANCE.createSpecRelation() ) );
+
+        newChildDescriptors.add( createChildParameter( ErfPackage.Literals.CONTENT__SPECIFICATIONS,
+                                                       ErfFactory.eINSTANCE.createSpecification() ) );
     }
 
     /**
      * Return the resource locator for this item provider's resources.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the resource locator
      * @generated
      */
     @Override

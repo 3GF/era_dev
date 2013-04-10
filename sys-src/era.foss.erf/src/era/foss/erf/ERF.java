@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
@@ -22,14 +22,14 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * The Interface ERF.
- *
+ * 
  * @model
  */
 public interface ERF extends EObject {
 
     /**
      * Gets the core content.
-     *
+     * 
      * @return the core content
      * @model containment="true" lowerBound="1"
      */
@@ -37,7 +37,7 @@ public interface ERF extends EObject {
 
     /**
      * Gets the tool extensions.
-     *
+     * 
      * @return the tool extensions
      * @model containment="true" lowerBound="0"
      */

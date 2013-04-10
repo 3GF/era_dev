@@ -14,30 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.ecore.EObject;
 
 /**
  * The Interface EmbeddedValue.
- *
+ * 
  * @model
  */
 public interface EmbeddedValue extends EObject {
 
     /**
      * Gets the key.
-     *
+     * 
      * @return the key
      * @model unique="false" default="0" lowerBound="1" upperBound="1" ordered="false"
      */
     int getKey();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.EmbeddedValue#getKey <em>Key</em>}' attribute.
-     * <!-- begin-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.EmbeddedValue#getKey <em>Key</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Key</em>' attribute.
      * @see #getKey()
      * @generated
@@ -46,7 +46,7 @@ public interface EmbeddedValue extends EObject {
 
     /**
      * Gets the other content.
-     *
+     * 
      * @return the other content
      * @model unique="false" default="" lowerBound="1" upperBound="1" ordered="false"
      */

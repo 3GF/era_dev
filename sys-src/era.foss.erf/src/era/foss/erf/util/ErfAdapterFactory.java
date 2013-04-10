@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.util;
 
 import era.foss.erf.*;
@@ -226,6 +226,21 @@ public class ErfAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseColor( Color object ) {
             return createColorAdapter();
+        }
+
+        @Override
+        public Adapter caseAccessControlledElement( AccessControlledElement object ) {
+            return createAccessControlledElementAdapter();
+        }
+
+        @Override
+        public Adapter caseSpecHierarchy( SpecHierarchy object ) {
+            return createSpecHierarchyAdapter();
+        }
+
+        @Override
+        public Adapter caseSpecification( Specification object ) {
+            return createSpecificationAdapter();
         }
 
         @Override
@@ -650,6 +665,48 @@ public class ErfAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createColorAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link era.foss.erf.AccessControlledElement <em>Access Controlled Element</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see era.foss.erf.AccessControlledElement
+     * @generated
+     */
+    public Adapter createAccessControlledElementAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link era.foss.erf.SpecHierarchy <em>Spec Hierarchy</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see era.foss.erf.SpecHierarchy
+     * @generated
+     */
+    public Adapter createSpecHierarchyAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link era.foss.erf.Specification <em>Specification</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see era.foss.erf.Specification
+     * @generated
+     */
+    public Adapter createSpecificationAdapter() {
         return null;
     }
 

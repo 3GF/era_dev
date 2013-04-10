@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.presentation;
 
 import java.util.ArrayList;
@@ -302,10 +302,6 @@ public class ErfActionBarContributor extends EditingDomainActionBarContributor i
      * and returns the collection of these actions.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param descriptors the descriptors
-     * @param selection the selection
-     * @return the collection
      * @generated
      */
     protected Collection<IAction> generateCreateChildActions( Collection<?> descriptors, ISelection selection ) {
@@ -323,10 +319,6 @@ public class ErfActionBarContributor extends EditingDomainActionBarContributor i
      * and returns the collection of these actions.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param descriptors the descriptors
-     * @param selection the selection
-     * @return the collection
      * @generated
      */
     protected Collection<IAction> generateCreateSiblingActions( Collection<?> descriptors, ISelection selection ) {
@@ -346,10 +338,6 @@ public class ErfActionBarContributor extends EditingDomainActionBarContributor i
      * If <code>contributionID</code> is <code>null</code>, they are simply added.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param manager the manager
-     * @param actions the actions
-     * @param contributionID the contribution id
      * @generated
      */
     protected void populateManager( IContributionManager manager,
@@ -371,9 +359,6 @@ public class ErfActionBarContributor extends EditingDomainActionBarContributor i
      * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param manager the manager
-     * @param actions the actions
      * @generated
      */
     protected void depopulateManager( IContributionManager manager, Collection<? extends IAction> actions ) {

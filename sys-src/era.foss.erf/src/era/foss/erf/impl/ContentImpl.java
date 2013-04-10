@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.impl;
 
 import era.foss.erf.DatatypeDefinition;
@@ -24,6 +24,7 @@ import era.foss.erf.SpecObject;
 import era.foss.erf.SpecRelation;
 import era.foss.erf.SpecType;
 
+import era.foss.erf.Specification;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -36,6 +37,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -49,6 +51,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link era.foss.erf.impl.ContentImpl#getSpecTypes <em>Spec Types</em>}</li>
  *   <li>{@link era.foss.erf.impl.ContentImpl#getDataTypes <em>Data Types</em>}</li>
  *   <li>{@link era.foss.erf.impl.ContentImpl#getSpecRelations <em>Spec Relations</em>}</li>
+ *   <li>{@link era.foss.erf.impl.ContentImpl#getSpecifications <em>Specifications</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,6 +98,16 @@ public class ContentImpl extends EObjectImpl implements Content {
      * @ordered
      */
     protected EList<SpecRelation> specRelations;
+
+    /**
+     * The cached value of the '{@link #getSpecifications() <em>Specifications</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSpecifications()
+     * @generated
+     * @ordered
+     */
+    protected EList<Specification> specifications;
 
     /**
      * <!-- begin-user-doc -->
@@ -185,6 +198,37 @@ public class ContentImpl extends EObjectImpl implements Content {
      * <!-- end-user-doc -->
      * @generated
      */
+    public EList<Specification> getSpecifications() {
+        if( specifications == null ) {
+            specifications = new EObjectContainmentWithInverseEList<Specification>(
+                Specification.class,
+                this,
+                ErfPackage.CONTENT__SPECIFICATIONS,
+                ErfPackage.SPECIFICATION__CORE_CONTENT );
+        }
+        return specifications;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public NotificationChain eInverseAdd( InternalEObject otherEnd, int featureID, NotificationChain msgs ) {
+        switch (featureID) {
+        case ErfPackage.CONTENT__SPECIFICATIONS:
+            return ((InternalEList<InternalEObject>)(InternalEList<?>)getSpecifications()).basicAdd( otherEnd, msgs );
+        }
+        return super.eInverseAdd( otherEnd, featureID, msgs );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove( InternalEObject otherEnd, int featureID, NotificationChain msgs ) {
         switch (featureID) {
@@ -196,6 +240,8 @@ public class ContentImpl extends EObjectImpl implements Content {
             return ((InternalEList<?>)getDataTypes()).basicRemove( otherEnd, msgs );
         case ErfPackage.CONTENT__SPEC_RELATIONS:
             return ((InternalEList<?>)getSpecRelations()).basicRemove( otherEnd, msgs );
+        case ErfPackage.CONTENT__SPECIFICATIONS:
+            return ((InternalEList<?>)getSpecifications()).basicRemove( otherEnd, msgs );
         }
         return super.eInverseRemove( otherEnd, featureID, msgs );
     }
@@ -216,6 +262,8 @@ public class ContentImpl extends EObjectImpl implements Content {
             return getDataTypes();
         case ErfPackage.CONTENT__SPEC_RELATIONS:
             return getSpecRelations();
+        case ErfPackage.CONTENT__SPECIFICATIONS:
+            return getSpecifications();
         }
         return super.eGet( featureID, resolve, coreType );
     }
@@ -245,6 +293,10 @@ public class ContentImpl extends EObjectImpl implements Content {
             getSpecRelations().clear();
             getSpecRelations().addAll( (Collection<? extends SpecRelation>)newValue );
             return;
+        case ErfPackage.CONTENT__SPECIFICATIONS:
+            getSpecifications().clear();
+            getSpecifications().addAll( (Collection<? extends Specification>)newValue );
+            return;
         }
         super.eSet( featureID, newValue );
     }
@@ -269,6 +321,9 @@ public class ContentImpl extends EObjectImpl implements Content {
         case ErfPackage.CONTENT__SPEC_RELATIONS:
             getSpecRelations().clear();
             return;
+        case ErfPackage.CONTENT__SPECIFICATIONS:
+            getSpecifications().clear();
+            return;
         }
         super.eUnset( featureID );
     }
@@ -289,6 +344,8 @@ public class ContentImpl extends EObjectImpl implements Content {
             return dataTypes != null && !dataTypes.isEmpty();
         case ErfPackage.CONTENT__SPEC_RELATIONS:
             return specRelations != null && !specRelations.isEmpty();
+        case ErfPackage.CONTENT__SPECIFICATIONS:
+            return specifications != null && !specifications.isEmpty();
         }
         return super.eIsSet( featureID );
     }

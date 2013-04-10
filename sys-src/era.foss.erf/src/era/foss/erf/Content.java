@@ -14,22 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * The Interface Content.
- *
+ * This element represents the root of the Exchange Document core content.
+ * 
  * @model
  */
 public interface Content extends EObject {
 
     /**
      * Gets the spec objects.
-     *
+     * 
      * @return the spec objects
      * @model containment="true"
      */
@@ -37,7 +37,7 @@ public interface Content extends EObject {
 
     /**
      * Gets the spec types.
-     *
+     * 
      * @return the spec types
      * @model containment="true"
      */
@@ -45,7 +45,7 @@ public interface Content extends EObject {
 
     /**
      * Gets the data types.
-     *
+     * 
      * @return the data types
      * @model containment="true"
      */
@@ -53,10 +53,17 @@ public interface Content extends EObject {
 
     /**
      * Gets the spec relations.
-     *
+     * 
      * @return the spec relations
      * @model containment="true"
      */
     public EList<SpecRelation> getSpecRelations();
+
+    /**
+     * Specification content elements
+     * 
+     * @model containment="true" opposite="coreContent"
+     */
+    public EList<Specification> getSpecifications();
 
 }

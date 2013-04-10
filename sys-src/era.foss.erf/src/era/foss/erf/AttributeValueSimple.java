@@ -14,19 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 /**
  * The Interface AttributeValueSimple.
- *
+ * 
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='DatatypeDefinitionConstraints'"
  */
 public interface AttributeValueSimple extends AttributeValue {
 
     /**
      * Gets the the value.
-     *
+     * 
      * @return the the value
      * @model lowerBound="1" defaultValue=""
      */

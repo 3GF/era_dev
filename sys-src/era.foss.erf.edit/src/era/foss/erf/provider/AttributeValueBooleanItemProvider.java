@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.provider;
 
 import era.foss.erf.AttributeValueBoolean;
@@ -45,13 +45,11 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 public class AttributeValueBooleanItemProvider extends AttributeValueItemProvider implements
         IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
         IItemPropertySource {
-    
+
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param adapterFactory the adapter factory
      * @generated
      */
     public AttributeValueBooleanItemProvider( AdapterFactory adapterFactory ) {
@@ -78,8 +76,6 @@ public class AttributeValueBooleanItemProvider extends AttributeValueItemProvide
      * This adds a property descriptor for the The Value feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param object the object
      * @generated
      */
     protected void addTheValuePropertyDescriptor( Object object ) {

@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * The Interface DatatypeDefinitionEnumeration.
- *
+ * 
  * @model
  */
 public interface DatatypeDefinitionEnumeration extends DatatypeDefinition {
 
     /**
      * Gets the specified values.
-     *
+     * 
      * @return the specified values
      * @model containment="true" ordered="true"
      */

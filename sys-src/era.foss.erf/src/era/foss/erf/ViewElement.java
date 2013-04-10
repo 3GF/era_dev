@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.ecore.EObject;
 
 /**
  * The Interface ViewElement.
- *
+ * 
  * @model
  */
 public interface ViewElement extends EObject {
-    
+
     /**
      * Gets the attribute definition.
-     *
+     * 
      * @return the attribute definition
      * @model lowerBound="1"
      * @Not generated
@@ -36,9 +36,9 @@ public interface ViewElement extends EObject {
     public AttributeDefinition getAttributeDefinition();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.ViewElement#getAttributeDefinition <em>Attribute Definition</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.ViewElement#getAttributeDefinition <em>Attribute Definition</em>}'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Attribute Definition</em>' reference.
      * @see #getAttributeDefinition()
      * @generated
@@ -47,7 +47,7 @@ public interface ViewElement extends EObject {
 
     /**
      * Checks if is editor show label.
-     *
+     * 
      * @return true, if is editor show label
      * @model unique="false" default="true" required="true"
      * @Not generated
@@ -57,6 +57,7 @@ public interface ViewElement extends EObject {
     /**
      * Sets the value of the '{@link era.foss.erf.ViewElement#isEditorShowLabel <em>Editor Show Label</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Editor Show Label</em>' attribute.
      * @see #isEditorShowLabel()
      * @generated
@@ -65,7 +66,7 @@ public interface ViewElement extends EObject {
 
     /**
      * Gets the editor row position.
-     *
+     * 
      * @return the editor row position
      * @model unique="false" default="1" lowerBound="1" upperBound="1"
      * @Not generated
@@ -73,9 +74,9 @@ public interface ViewElement extends EObject {
     int getEditorRowPosition();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.ViewElement#getEditorRowPosition <em>Editor Row Position</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.ViewElement#getEditorRowPosition <em>Editor Row Position</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Editor Row Position</em>' attribute.
      * @see #getEditorRowPosition()
      * @generated
@@ -84,7 +85,7 @@ public interface ViewElement extends EObject {
 
     /**
      * Gets the editor row span.
-     *
+     * 
      * @return the editor row span
      * @model unique="false" default="1" lowerBound="1" upperBound="1"
      * @Not generated
@@ -93,8 +94,8 @@ public interface ViewElement extends EObject {
 
     /**
      * Sets the value of the '{@link era.foss.erf.ViewElement#getEditorRowSpan <em>Editor Row Span</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Editor Row Span</em>' attribute.
      * @see #getEditorRowSpan()
      * @generated
@@ -103,7 +104,7 @@ public interface ViewElement extends EObject {
 
     /**
      * Gets the editor column position.
-     *
+     * 
      * @return the editor column position
      * @model unique="false" default="1" lowerBound="1" upperBound="1"
      * @Not generated
@@ -111,9 +112,9 @@ public interface ViewElement extends EObject {
     int getEditorColumnPosition();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.ViewElement#getEditorColumnPosition <em>Editor Column Position</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.ViewElement#getEditorColumnPosition <em>Editor Column Position</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Editor Column Position</em>' attribute.
      * @see #getEditorColumnPosition()
      * @generated
@@ -122,7 +123,7 @@ public interface ViewElement extends EObject {
 
     /**
      * Gets the editor column span.
-     *
+     * 
      * @return the editor column span
      * @model unique="false" default="1" lowerBound="1" upperBound="1"
      * @Not generated
@@ -130,8 +131,9 @@ public interface ViewElement extends EObject {
     int getEditorColumnSpan();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.ViewElement#getEditorColumnSpan <em>Editor Column Span</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.ViewElement#getEditorColumnSpan <em>Editor Column Span</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Editor Column Span</em>' attribute.
      * @see #getEditorColumnSpan()
      * @generated

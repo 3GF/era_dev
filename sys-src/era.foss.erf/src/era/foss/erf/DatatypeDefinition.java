@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * The Interface DatatypeDefinition.
- *
+ * 
  * @model abstract="true"
  */
 public interface DatatypeDefinition extends Identifiable {
 
     /**
      * Gets the attribute definitions.
-     *
+     * 
      * @return the attribute definitions
      * @model kind="reference" opposite="type" required="false"
      */

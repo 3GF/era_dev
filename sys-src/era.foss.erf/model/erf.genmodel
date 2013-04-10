@@ -63,6 +63,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//Content/specTypes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//Content/dataTypes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//Content/specRelations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//Content/specifications"/>
     </genClasses>
     <genClasses ecoreClass="erf.ecore#//SpecRelation">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//SpecRelation/source"/>
@@ -112,6 +113,20 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//Color/red"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//Color/green"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//Color/blue"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="erf.ecore#//AccessControlledElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//AccessControlledElement/editable"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//SpecHierarchy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute erf.ecore#//SpecHierarchy/tableInternal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//SpecHierarchy/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//SpecHierarchy/object"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference erf.ecore#//SpecHierarchy/parent"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference erf.ecore#//SpecHierarchy/root"/>
+    </genClasses>
+    <genClasses ecoreClass="erf.ecore#//Specification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//Specification/children"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference erf.ecore#//Specification/coreContent"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

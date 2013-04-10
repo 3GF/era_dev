@@ -5,8 +5,7 @@
       eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//DatatypeDefinition"
         eOpposite="#//DatatypeDefinition/attributeDefinitions"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ident" ordered="false"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ident" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" ordered="false"
         unique="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -94,6 +93,8 @@
         eType="#//DatatypeDefinition" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specRelations" upperBound="-1"
         eType="#//SpecRelation" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="specifications" upperBound="-1"
+        eType="#//Specification" containment="true" resolveProxies="false" eOpposite="#//Specification/coreContent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SpecRelation" eSuperTypes="#//SpecElementWithUserDefinedAttributes">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
@@ -172,6 +173,29 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="red" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="green" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="blue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AccessControlledElement" abstract="true"
+      eSuperTypes="#//Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="editable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpecHierarchy" eSuperTypes="#//AccessControlledElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tableInternal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//SpecHierarchy" containment="true" resolveProxies="false" eOpposite="#//SpecHierarchy/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" lowerBound="1"
+        eType="#//SpecObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//SpecHierarchy"
+        transient="true" eOpposite="#//SpecHierarchy/children"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//Specification"
+        transient="true" eOpposite="#//Specification/children"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Specification" eSuperTypes="#//SpecElementWithUserDefinedAttributes">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//SpecHierarchy" containment="true" resolveProxies="false" eOpposite="#//SpecHierarchy/root"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="coreContent" lowerBound="1"
+        eType="#//Content" eOpposite="#//Content/specifications"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DiagnosticChain" instanceClassName="org.eclipse.emf.common.util.DiagnosticChain"/>
 </ecore:EPackage>

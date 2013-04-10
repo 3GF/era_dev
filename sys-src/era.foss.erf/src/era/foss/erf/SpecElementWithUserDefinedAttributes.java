@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * The Interface SpecElementWithUserDefinedAttributes.
- *
+ * 
  * @model abstract="true"
  */
 public interface SpecElementWithUserDefinedAttributes extends Identifiable {
 
     /**
      * Gets the values.
-     *
+     * 
      * @return the values
      * @model containment="true"
      */
@@ -36,16 +36,16 @@ public interface SpecElementWithUserDefinedAttributes extends Identifiable {
 
     /**
      * Gets the type.
-     *
+     * 
      * @return the type
      * @model
      */
     public SpecType getType();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.SpecElementWithUserDefinedAttributes#getType <em>Type</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.SpecElementWithUserDefinedAttributes#getType <em>Type</em>}'
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Type</em>' reference.
      * @see #getType()
      * @generated

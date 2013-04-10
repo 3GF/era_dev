@@ -14,19 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 /**
  * The Interface AttributeDefinition.
- *
+ * 
  * @model abstract="true"
  */
 public interface AttributeDefinition extends Identifiable {
 
     /**
      * Gets the type.
-     *
+     * 
      * @return the type
      * @model lowerBound="1" opposite="attributeDefinitions"
      * @Not generated
@@ -35,16 +35,16 @@ public interface AttributeDefinition extends Identifiable {
 
     /**
      * The value assigned to this attribute definition is used as ID.
-     *
+     * 
      * @return true, if is ident
-     * @model unique="true" default="false" required="true" ordered="false"
+     * @model unique="true" default="false" required="true"
      * @Not generated
      */
     boolean isIdent();
 
     /**
      * The value assigned to this attribute definition must be unique.
-     *
+     * 
      * @return true, if is unique
      * @model unique="false" default="false" required="true" ordered="false"
      * @Not generated
@@ -53,7 +53,7 @@ public interface AttributeDefinition extends Identifiable {
 
     /**
      * Back linkage to the owning SpecType.
-     *
+     * 
      * @return the spec type
      * @model kind="reference" opposite="specAttributes" required="true"
      * @Not generated
@@ -61,8 +61,9 @@ public interface AttributeDefinition extends Identifiable {
     SpecType getSpecType();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.AttributeDefinition#getSpecType <em>Spec Type</em>}' container reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.AttributeDefinition#getSpecType <em>Spec Type</em>}' container
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Spec Type</em>' container reference.
      * @see #getSpecType()
      * @generated

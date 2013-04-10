@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.provider;
 
 import era.foss.erf.ErfPackage;
@@ -43,13 +43,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 public class SpecObjectItemProvider extends SpecElementWithUserDefinedAttributesItemProvider implements
         IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
         IItemPropertySource {
-    
+
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param adapterFactory the adapter factory
      * @generated
      */
     public SpecObjectItemProvider( AdapterFactory adapterFactory ) {
@@ -77,8 +75,6 @@ public class SpecObjectItemProvider extends SpecElementWithUserDefinedAttributes
      * This adds a property descriptor for the Sources feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param object the object
      * @generated
      */
     protected void addSourcesPropertyDescriptor( Object object ) {
@@ -101,8 +97,6 @@ public class SpecObjectItemProvider extends SpecElementWithUserDefinedAttributes
      * This adds a property descriptor for the Targets feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param object the object
      * @generated
      */
     protected void addTargetsPropertyDescriptor( Object object ) {

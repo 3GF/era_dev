@@ -14,44 +14,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.impl;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import era.foss.erf.DatatypeDefinitionEnumeration;
 import era.foss.erf.EnumValue;
 import era.foss.erf.ErfPackage;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Datatype Definition Enumeration</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Datatype Definition Enumeration</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link era.foss.erf.impl.DatatypeDefinitionEnumerationImpl#getSpecifiedValues <em>Specified Values</em>}</li>
+ * <li>{@link era.foss.erf.impl.DatatypeDefinitionEnumerationImpl#getSpecifiedValues <em>Specified Values</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl implements
         DatatypeDefinitionEnumeration {
     /**
-     * The cached value of the '{@link #getSpecifiedValues() <em>Specified Values</em>}' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The cached value of the '{@link #getSpecifiedValues() <em>Specified Values</em>}' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see #getSpecifiedValues()
      * @generated
      * @ordered
@@ -59,8 +52,8 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
     protected EList<EnumValue> specifiedValues;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected DatatypeDefinitionEnumerationImpl() {
@@ -68,8 +61,8 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -78,15 +71,14 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->.
-     *
+     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     * 
      * @return the specified values
      * @generated
      */
     public EList<EnumValue> getSpecifiedValues() {
         if( specifiedValues == null ) {
-            specifiedValues = new EObjectContainmentEList<EnumValue>(
+            specifiedValues = new EObjectResolvingEList<EnumValue>(
                 EnumValue.class,
                 this,
                 ErfPackage.DATATYPE_DEFINITION_ENUMERATION__SPECIFIED_VALUES );
@@ -95,22 +87,8 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public NotificationChain eInverseRemove( InternalEObject otherEnd, int featureID, NotificationChain msgs ) {
-        switch (featureID) {
-        case ErfPackage.DATATYPE_DEFINITION_ENUMERATION__SPECIFIED_VALUES:
-            return ((InternalEList<?>)getSpecifiedValues()).basicRemove( otherEnd, msgs );
-        }
-        return super.eInverseRemove( otherEnd, featureID, msgs );
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -123,8 +101,8 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -140,8 +118,8 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -155,8 +133,8 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -168,4 +146,4 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
         return super.eIsSet( featureID );
     }
 
-} //DatatypeDefinitionEnumerationImpl
+} // DatatypeDefinitionEnumerationImpl

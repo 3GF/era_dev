@@ -14,9 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.impl;
 
+import era.foss.erf.AccessControlledElement;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -51,9 +52,11 @@ import era.foss.erf.ErfPackage;
 import era.foss.erf.EraToolExtension;
 import era.foss.erf.Identifiable;
 import era.foss.erf.SpecElementWithUserDefinedAttributes;
+import era.foss.erf.SpecHierarchy;
 import era.foss.erf.SpecObject;
 import era.foss.erf.SpecRelation;
 import era.foss.erf.SpecType;
+import era.foss.erf.Specification;
 import era.foss.erf.ToolExtension;
 import era.foss.erf.View;
 import era.foss.erf.ViewElement;
@@ -152,6 +155,27 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EClass colorEClass = null;
 
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass accessControlledElementEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass specHierarchyEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass specificationEClass = null;
+
     /** <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     private EDataType diagnosticChainEDataType = null;
 
@@ -182,8 +206,6 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @return the erf package
      * @see #eNS_URI
      * @see #createPackageContents()
      * @see #initializePackageContents()
@@ -625,6 +647,15 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getContent_Specifications() {
+        return (EReference)contentEClass.getEStructuralFeatures().get( 4 );
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->.
      *
      * @return the spec relation
@@ -1017,6 +1048,105 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getAccessControlledElement() {
+        return accessControlledElementEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getAccessControlledElement_Editable() {
+        return (EAttribute)accessControlledElementEClass.getEStructuralFeatures().get( 0 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getSpecHierarchy() {
+        return specHierarchyEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getSpecHierarchy_TableInternal() {
+        return (EAttribute)specHierarchyEClass.getEStructuralFeatures().get( 0 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSpecHierarchy_Children() {
+        return (EReference)specHierarchyEClass.getEStructuralFeatures().get( 1 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSpecHierarchy_Object() {
+        return (EReference)specHierarchyEClass.getEStructuralFeatures().get( 2 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSpecHierarchy_Parent() {
+        return (EReference)specHierarchyEClass.getEStructuralFeatures().get( 3 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSpecHierarchy_Root() {
+        return (EReference)specHierarchyEClass.getEStructuralFeatures().get( 4 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getSpecification() {
+        return specificationEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSpecification_Children() {
+        return (EReference)specificationEClass.getEStructuralFeatures().get( 0 );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSpecification_CoreContent() {
+        return (EReference)specificationEClass.getEStructuralFeatures().get( 1 );
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->.
      *
      * @return the diagnostic chain
@@ -1105,6 +1235,7 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
         createEReference( contentEClass, CONTENT__SPEC_TYPES );
         createEReference( contentEClass, CONTENT__DATA_TYPES );
         createEReference( contentEClass, CONTENT__SPEC_RELATIONS );
+        createEReference( contentEClass, CONTENT__SPECIFICATIONS );
 
         specRelationEClass = createEClass( SPEC_RELATION );
         createEReference( specRelationEClass, SPEC_RELATION__SOURCE );
@@ -1157,6 +1288,20 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
         createEAttribute( colorEClass, COLOR__GREEN );
         createEAttribute( colorEClass, COLOR__BLUE );
 
+        accessControlledElementEClass = createEClass( ACCESS_CONTROLLED_ELEMENT );
+        createEAttribute( accessControlledElementEClass, ACCESS_CONTROLLED_ELEMENT__EDITABLE );
+
+        specHierarchyEClass = createEClass( SPEC_HIERARCHY );
+        createEAttribute( specHierarchyEClass, SPEC_HIERARCHY__TABLE_INTERNAL );
+        createEReference( specHierarchyEClass, SPEC_HIERARCHY__CHILDREN );
+        createEReference( specHierarchyEClass, SPEC_HIERARCHY__OBJECT );
+        createEReference( specHierarchyEClass, SPEC_HIERARCHY__PARENT );
+        createEReference( specHierarchyEClass, SPEC_HIERARCHY__ROOT );
+
+        specificationEClass = createEClass( SPECIFICATION );
+        createEReference( specificationEClass, SPECIFICATION__CHILDREN );
+        createEReference( specificationEClass, SPECIFICATION__CORE_CONTENT );
+
         // Create data types
         diagnosticChainEDataType = createEDataType( DIAGNOSTIC_CHAIN );
     }
@@ -1207,6 +1352,9 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
         attributeValueBooleanEClass.getESuperTypes().add( this.getAttributeValue() );
         viewEClass.getESuperTypes().add( this.getIdentifiable() );
         eraToolExtensionEClass.getESuperTypes().add( this.getToolExtension() );
+        accessControlledElementEClass.getESuperTypes().add( this.getIdentifiable() );
+        specHierarchyEClass.getESuperTypes().add( this.getAccessControlledElement() );
+        specificationEClass.getESuperTypes().add( this.getSpecElementWithUserDefinedAttributes() );
 
         // Initialize classes and features; add operations and parameters
         initEClass( attributeDefinitionEClass,
@@ -1246,7 +1394,7 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         !IS_ID,
                         IS_UNIQUE,
                         !IS_DERIVED,
-                        !IS_ORDERED );
+                        IS_ORDERED );
         initEAttribute( getAttributeDefinition_Unique(),
                         ecorePackage.getEBoolean(),
                         "unique",
@@ -1710,6 +1858,23 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         IS_UNIQUE,
                         !IS_DERIVED,
                         IS_ORDERED );
+        initEReference( getContent_Specifications(),
+                        this.getSpecification(),
+                        this.getSpecification_CoreContent(),
+                        "specifications",
+                        null,
+                        0,
+                        -1,
+                        Content.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        IS_COMPOSITE,
+                        !IS_RESOLVE_PROXIES,
+                        !IS_UNSETTABLE,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
 
         initEClass( specRelationEClass,
                     SpecRelation.class,
@@ -1847,8 +2012,8 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         !IS_TRANSIENT,
                         !IS_VOLATILE,
                         IS_CHANGEABLE,
-                        IS_COMPOSITE,
-                        !IS_RESOLVE_PROXIES,
+                        !IS_COMPOSITE,
+                        IS_RESOLVE_PROXIES,
                         !IS_UNSETTABLE,
                         IS_UNIQUE,
                         !IS_DERIVED,
@@ -2162,6 +2327,159 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         IS_CHANGEABLE,
                         !IS_UNSETTABLE,
                         !IS_ID,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+
+        initEClass( accessControlledElementEClass,
+                    AccessControlledElement.class,
+                    "AccessControlledElement",
+                    IS_ABSTRACT,
+                    !IS_INTERFACE,
+                    IS_GENERATED_INSTANCE_CLASS );
+        initEAttribute( getAccessControlledElement_Editable(),
+                        ecorePackage.getEBoolean(),
+                        "editable",
+                        "true",
+                        0,
+                        1,
+                        AccessControlledElement.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_UNSETTABLE,
+                        !IS_ID,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+
+        initEClass( specHierarchyEClass,
+                    SpecHierarchy.class,
+                    "SpecHierarchy",
+                    !IS_ABSTRACT,
+                    !IS_INTERFACE,
+                    IS_GENERATED_INSTANCE_CLASS );
+        initEAttribute( getSpecHierarchy_TableInternal(),
+                        ecorePackage.getEBoolean(),
+                        "tableInternal",
+                        "false",
+                        0,
+                        1,
+                        SpecHierarchy.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_UNSETTABLE,
+                        !IS_ID,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEReference( getSpecHierarchy_Children(),
+                        this.getSpecHierarchy(),
+                        this.getSpecHierarchy_Parent(),
+                        "children",
+                        null,
+                        0,
+                        -1,
+                        SpecHierarchy.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        IS_COMPOSITE,
+                        !IS_RESOLVE_PROXIES,
+                        !IS_UNSETTABLE,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEReference( getSpecHierarchy_Object(),
+                        this.getSpecObject(),
+                        null,
+                        "object",
+                        null,
+                        1,
+                        1,
+                        SpecHierarchy.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_COMPOSITE,
+                        IS_RESOLVE_PROXIES,
+                        !IS_UNSETTABLE,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEReference( getSpecHierarchy_Parent(),
+                        this.getSpecHierarchy(),
+                        this.getSpecHierarchy_Children(),
+                        "parent",
+                        null,
+                        0,
+                        1,
+                        SpecHierarchy.class,
+                        IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_COMPOSITE,
+                        !IS_RESOLVE_PROXIES,
+                        !IS_UNSETTABLE,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEReference( getSpecHierarchy_Root(),
+                        this.getSpecification(),
+                        this.getSpecification_Children(),
+                        "root",
+                        null,
+                        0,
+                        1,
+                        SpecHierarchy.class,
+                        IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_COMPOSITE,
+                        !IS_RESOLVE_PROXIES,
+                        !IS_UNSETTABLE,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+
+        initEClass( specificationEClass,
+                    Specification.class,
+                    "Specification",
+                    !IS_ABSTRACT,
+                    !IS_INTERFACE,
+                    IS_GENERATED_INSTANCE_CLASS );
+        initEReference( getSpecification_Children(),
+                        this.getSpecHierarchy(),
+                        this.getSpecHierarchy_Root(),
+                        "children",
+                        null,
+                        0,
+                        -1,
+                        Specification.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        IS_COMPOSITE,
+                        !IS_RESOLVE_PROXIES,
+                        !IS_UNSETTABLE,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEReference( getSpecification_CoreContent(),
+                        this.getContent(),
+                        this.getContent_Specifications(),
+                        "coreContent",
+                        null,
+                        1,
+                        1,
+                        Specification.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_COMPOSITE,
+                        !IS_RESOLVE_PROXIES,
+                        !IS_UNSETTABLE,
                         IS_UNIQUE,
                         !IS_DERIVED,
                         IS_ORDERED );

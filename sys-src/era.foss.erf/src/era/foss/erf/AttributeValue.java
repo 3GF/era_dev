@@ -14,28 +14,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 /**
  * The Interface AttributeValue.
- *
+ * 
  * @model abstract="true"
  */
 public interface AttributeValue extends Identifiable {
 
     /**
      * Gets the definition.
-     *
+     * 
      * @return the definition
      * @model lowerBound="1"
      */
     public AttributeDefinition getDefinition();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.AttributeValue#getDefinition <em>Definition</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.AttributeValue#getDefinition <em>Definition</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Definition</em>' reference.
      * @see #getDefinition()
      * @generated

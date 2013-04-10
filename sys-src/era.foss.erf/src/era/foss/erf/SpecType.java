@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * The Interface SpecType.
- *
+ * 
  * @model
  */
 public interface SpecType extends Identifiable {
 
     /**
      * Gets the spec attributes.
-     *
+     * 
      * @return the spec attributes
      * @model containment="true"
      */

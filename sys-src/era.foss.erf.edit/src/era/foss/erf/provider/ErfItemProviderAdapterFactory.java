@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.provider;
 
 import era.foss.erf.util.ErfAdapterFactory;
@@ -571,11 +571,55 @@ public class ErfItemProviderAdapterFactory extends ErfAdapterFactory implements 
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link era.foss.erf.SpecHierarchy} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected SpecHierarchyItemProvider specHierarchyItemProvider;
+
+    /**
+     * This creates an adapter for a {@link era.foss.erf.SpecHierarchy}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createSpecHierarchyAdapter() {
+        if( specHierarchyItemProvider == null ) {
+            specHierarchyItemProvider = new SpecHierarchyItemProvider( this );
+        }
+
+        return specHierarchyItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link era.foss.erf.Specification} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected SpecificationItemProvider specificationItemProvider;
+
+    /**
+     * This creates an adapter for a {@link era.foss.erf.Specification}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createSpecificationAdapter() {
+        if( specificationItemProvider == null ) {
+            specificationItemProvider = new SpecificationItemProvider( this );
+        }
+
+        return specificationItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @return the root adapter factory
      * @generated
      */
     public ComposeableAdapterFactory getRootAdapterFactory() {
@@ -586,8 +630,6 @@ public class ErfItemProviderAdapterFactory extends ErfAdapterFactory implements 
      * This sets the composed adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param parentAdapterFactory the new parent adapter factory
      * @generated
      */
     public void setParentAdapterFactory( ComposedAdapterFactory parentAdapterFactory ) {
@@ -694,6 +736,8 @@ public class ErfItemProviderAdapterFactory extends ErfAdapterFactory implements 
         if( viewElementItemProvider != null ) viewElementItemProvider.dispose();
         if( eraToolExtensionItemProvider != null ) eraToolExtensionItemProvider.dispose();
         if( colorItemProvider != null ) colorItemProvider.dispose();
+        if( specHierarchyItemProvider != null ) specHierarchyItemProvider.dispose();
+        if( specificationItemProvider != null ) specificationItemProvider.dispose();
     }
 
 }

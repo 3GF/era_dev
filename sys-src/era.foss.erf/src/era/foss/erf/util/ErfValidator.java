@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.util;
 
 import era.foss.erf.*;
@@ -104,8 +104,6 @@ public class ErfValidator extends EObjectValidator {
     /**
      * Returns the package of this validator switch.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the e package
      * @generated
      */
     @Override
@@ -187,6 +185,12 @@ public class ErfValidator extends EObjectValidator {
             return validateEraToolExtension( (EraToolExtension)value, diagnostics, context );
         case ErfPackage.COLOR:
             return validateColor( (Color)value, diagnostics, context );
+        case ErfPackage.ACCESS_CONTROLLED_ELEMENT:
+            return validateAccessControlledElement( (AccessControlledElement)value, diagnostics, context );
+        case ErfPackage.SPEC_HIERARCHY:
+            return validateSpecHierarchy( (SpecHierarchy)value, diagnostics, context );
+        case ErfPackage.SPECIFICATION:
+            return validateSpecification( (Specification)value, diagnostics, context );
         case ErfPackage.DIAGNOSTIC_CHAIN:
             return validateDiagnosticChain( (DiagnosticChain)value, diagnostics, context );
         default:
@@ -799,6 +803,39 @@ public class ErfValidator extends EObjectValidator {
      */
     public boolean validateColor( Color color, DiagnosticChain diagnostics, Map<Object, Object> context ) {
         return validate_EveryDefaultConstraint( color, diagnostics, context );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean validateAccessControlledElement( AccessControlledElement accessControlledElement,
+                                                    DiagnosticChain diagnostics,
+                                                    Map<Object, Object> context ) {
+        return validate_EveryDefaultConstraint( accessControlledElement, diagnostics, context );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean validateSpecHierarchy( SpecHierarchy specHierarchy,
+                                          DiagnosticChain diagnostics,
+                                          Map<Object, Object> context ) {
+        return validate_EveryDefaultConstraint( specHierarchy, diagnostics, context );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean validateSpecification( Specification specification,
+                                          DiagnosticChain diagnostics,
+                                          Map<Object, Object> context ) {
+        return validate_EveryDefaultConstraint( specification, diagnostics, context );
     }
 
     /**

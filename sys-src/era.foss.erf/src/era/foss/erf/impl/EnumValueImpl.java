@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -33,18 +33,18 @@ import era.foss.erf.ErfPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link era.foss.erf.impl.EnumValueImpl#getProperties <em>Properties</em>}</li>
- * <li>{@link era.foss.erf.impl.EnumValueImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link era.foss.erf.impl.EnumValueImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link era.foss.erf.impl.EnumValueImpl#getColor <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
     /**
-     * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference. <!-- begin-user-doc
+     * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @see #getProperties()
      * @generated
      * @ordered
@@ -52,9 +52,9 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
     protected EmbeddedValue properties;
 
     /**
-     * The cached value of the '{@link #getColor() <em>Color</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * The cached value of the '{@link #getColor() <em>Color</em>}' containment reference.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getColor()
      * @generated
      * @ordered
@@ -74,7 +74,6 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -204,7 +203,6 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -220,7 +218,6 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -236,7 +233,6 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -254,7 +250,6 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -272,7 +267,6 @@ public class EnumValueImpl extends IdentifiableImpl implements EnumValue {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

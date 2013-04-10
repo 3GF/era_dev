@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 /**
  * The Interface DatatypeDefinitionBoolean.
- *
+ * 
  * @model
  */
 public interface DatatypeDefinitionBoolean extends DatatypeDefinition {

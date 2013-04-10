@@ -14,19 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 /**
  * The Interface AttributeValueBoolean.
- *
+ * 
  * @model
  */
 public interface AttributeValueBoolean extends AttributeValue {
 
     /**
      * Gets the the value.
-     *
+     * 
      * @return the the value
      * @model lowerBound="1" defaultValue="false"
      */

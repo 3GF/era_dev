@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.util;
 
 import era.foss.erf.*;
@@ -63,8 +63,6 @@ import era.foss.erf.ViewElement;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- *
- * @param <T2> the generic type
  * @see era.foss.erf.ErfPackage
  * @generated
  */
@@ -312,6 +310,29 @@ public class ErfSwitch<T2> extends Switch<T2> {
             if( result == null ) result = defaultCase( theEObject );
             return result;
         }
+        case ErfPackage.ACCESS_CONTROLLED_ELEMENT: {
+            AccessControlledElement accessControlledElement = (AccessControlledElement)theEObject;
+            T2 result = caseAccessControlledElement( accessControlledElement );
+            if( result == null ) result = caseIdentifiable( accessControlledElement );
+            if( result == null ) result = defaultCase( theEObject );
+            return result;
+        }
+        case ErfPackage.SPEC_HIERARCHY: {
+            SpecHierarchy specHierarchy = (SpecHierarchy)theEObject;
+            T2 result = caseSpecHierarchy( specHierarchy );
+            if( result == null ) result = caseAccessControlledElement( specHierarchy );
+            if( result == null ) result = caseIdentifiable( specHierarchy );
+            if( result == null ) result = defaultCase( theEObject );
+            return result;
+        }
+        case ErfPackage.SPECIFICATION: {
+            Specification specification = (Specification)theEObject;
+            T2 result = caseSpecification( specification );
+            if( result == null ) result = caseSpecElementWithUserDefinedAttributes( specification );
+            if( result == null ) result = caseIdentifiable( specification );
+            if( result == null ) result = defaultCase( theEObject );
+            return result;
+        }
         default:
             return defaultCase( theEObject );
         }
@@ -413,9 +434,6 @@ public class ErfSwitch<T2> extends Switch<T2> {
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-     *
-     * @param <T> the generic type
-     * @param <T1> the generic type
      * @param object the target of the switch.
      * @return the result of interpreting the object as an instance of '<em>Map</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -752,6 +770,51 @@ public class ErfSwitch<T2> extends Switch<T2> {
      * @generated
      */
     public T2 caseColor( Color object ) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Access Controlled Element</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Access Controlled Element</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T2 caseAccessControlledElement( AccessControlledElement object ) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Spec Hierarchy</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Spec Hierarchy</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T2 caseSpecHierarchy( SpecHierarchy object ) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Specification</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Specification</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T2 caseSpecification( Specification object ) {
         return null;
     }
 

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.presentation;
 
 import java.util.ArrayList;
@@ -195,8 +195,6 @@ public class ErfModelWizard extends Wizard implements INewWizard {
      * Returns the names of the types that can be created as the root object.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @return the initial object names
      * @generated
      */
     protected Collection<String> getInitialObjectNames() {
@@ -219,8 +217,6 @@ public class ErfModelWizard extends Wizard implements INewWizard {
      * Create a new model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @return the e object
      * @generated
      */
     protected EObject createInitialModel() {
@@ -324,14 +320,11 @@ public class ErfModelWizard extends Wizard implements INewWizard {
      * @generated
      */
     public class ErfModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
-        
+
         /**
          * Pass in the selection.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         *
-         * @param pageId the page id
-         * @param selection the selection
          * @generated
          */
         public ErfModelWizardNewFileCreationPage( String pageId, IStructuredSelection selection ) {
@@ -398,8 +391,6 @@ public class ErfModelWizard extends Wizard implements INewWizard {
          * Pass in the selection.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         *
-         * @param pageId the page id
          * @generated
          */
         public ErfModelWizardInitialObjectCreationPage( String pageId ) {
@@ -553,9 +544,6 @@ public class ErfModelWizard extends Wizard implements INewWizard {
          * Returns the label for the specified type name.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         *
-         * @param typeName the type name
-         * @return the label
          * @generated
          */
         protected String getLabel( String typeName ) {
@@ -647,8 +635,6 @@ public class ErfModelWizard extends Wizard implements INewWizard {
      * Get the file from the page.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @return the model file
      * @generated
      */
     public IFile getModelFile() {

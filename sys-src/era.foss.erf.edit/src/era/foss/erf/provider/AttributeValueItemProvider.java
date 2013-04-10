@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.provider;
 
 import era.foss.erf.AttributeValue;
@@ -42,13 +42,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  */
 public class AttributeValueItemProvider extends IdentifiableItemProvider implements IEditingDomainItemProvider,
         IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
-    
+
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param adapterFactory the adapter factory
      * @generated
      */
     public AttributeValueItemProvider( AdapterFactory adapterFactory ) {
@@ -75,8 +73,6 @@ public class AttributeValueItemProvider extends IdentifiableItemProvider impleme
      * This adds a property descriptor for the Definition feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     *
-     * @param object the object
      * @generated
      */
     protected void addDefinitionPropertyDescriptor( Object object ) {

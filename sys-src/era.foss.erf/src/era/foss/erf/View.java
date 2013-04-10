@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * The Interface View.
- *
+ * 
  * @model
  */
 public interface View extends Identifiable {
 
     /**
      * Gets the view elements.
-     *
+     * 
      * @return the view elements
      * @model containment="true" ordered="true"
      */

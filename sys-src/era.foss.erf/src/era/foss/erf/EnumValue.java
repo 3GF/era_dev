@@ -14,19 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 /**
  * The Interface EnumValue.
- *
+ * 
  * @model
  */
 public interface EnumValue extends Identifiable {
 
     /**
      * Gets the color.
-     *
+     * 
      * @return the color
      * @model lowerBound="1" upperBound="1" containment="true"
      */
@@ -44,7 +44,7 @@ public interface EnumValue extends Identifiable {
 
     /**
      * Gets the properties.
-     *
+     * 
      * @return the properties
      * @model lowerBound="1" upperBound="1" containment="true"
      */

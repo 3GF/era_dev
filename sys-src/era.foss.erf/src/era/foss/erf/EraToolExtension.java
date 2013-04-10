@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * The Interface EraToolExtension.
- *
+ * 
  * @model
  */
 public interface EraToolExtension extends ToolExtension {
 
     /**
      * Gets the views.
-     *
+     * 
      * @return the views
      * @model containment="true"
      */

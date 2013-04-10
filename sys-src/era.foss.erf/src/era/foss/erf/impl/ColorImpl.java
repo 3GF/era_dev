@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -31,12 +31,12 @@ import era.foss.erf.ErfPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link era.foss.erf.impl.ColorImpl#getRed <em>Red</em>}</li>
- * <li>{@link era.foss.erf.impl.ColorImpl#getGreen <em>Green</em>}</li>
- * <li>{@link era.foss.erf.impl.ColorImpl#getBlue <em>Blue</em>}</li>
+ *   <li>{@link era.foss.erf.impl.ColorImpl#getRed <em>Red</em>}</li>
+ *   <li>{@link era.foss.erf.impl.ColorImpl#getGreen <em>Green</em>}</li>
+ *   <li>{@link era.foss.erf.impl.ColorImpl#getBlue <em>Blue</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ColorImpl extends EObjectImpl implements Color {
@@ -51,8 +51,8 @@ public class ColorImpl extends EObjectImpl implements Color {
     protected static final int RED_EDEFAULT = 0;
 
     /**
-     * The cached value of the '{@link #getRed() <em>Red</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The cached value of the '{@link #getRed() <em>Red</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see #getRed()
      * @generated
      * @ordered
@@ -60,9 +60,9 @@ public class ColorImpl extends EObjectImpl implements Color {
     protected int red = RED_EDEFAULT;
 
     /**
-     * The default value of the '{@link #getGreen() <em>Green</em>}' attribute. <!-- begin-user-doc --> <!--
+     * The default value of the '{@link #getGreen() <em>Green</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @see #getGreen()
      * @generated
      * @ordered
@@ -122,17 +122,14 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ColorImpl() {
         super();
-        // create color
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -223,7 +220,6 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -241,7 +237,6 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -262,7 +257,6 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -283,7 +277,6 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -301,7 +294,6 @@ public class ColorImpl extends EObjectImpl implements Color {
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.ecore.EObject;
 
 /**
  * The Interface Color.
- *
+ * 
  * @model
  */
 public interface Color extends EObject {
 
     /**
      * Gets the red.
-     *
+     * 
      * @return the red
      * @model
      */
@@ -46,7 +46,7 @@ public interface Color extends EObject {
 
     /**
      * Gets the green.
-     *
+     * 
      * @return the green
      * @model
      */
@@ -64,7 +64,7 @@ public interface Color extends EObject {
 
     /**
      * Gets the blue.
-     *
+     * 
      * @return the blue
      * @model
      */
@@ -82,7 +82,7 @@ public interface Color extends EObject {
 
     /**
      * Gets the color.
-     *
+     * 
      * @return the color
      */
     public org.eclipse.swt.graphics.Color getColor();

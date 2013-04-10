@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * The Interface AttributeValueEnumeration.
- *
+ * 
  * @model
  */
 public interface AttributeValueEnumeration extends AttributeValue {
 
     /**
      * Gets the values.
-     *
+     * 
      * @return the values
      * @model upperBound="-1" lowerBound="1"
      */
