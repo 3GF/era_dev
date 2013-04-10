@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.objecteditor;
 
 import java.io.IOException;
@@ -66,7 +66,6 @@ import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
-import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
@@ -89,7 +88,6 @@ import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
@@ -189,7 +187,6 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
         public void partActivated( IWorkbenchPart p ) {
             if( p instanceof PropertySheet ) {
                 if( ((PropertySheet)p).getCurrentPage() == propertySheetPage ) {
-                    getActionBarContributor().setActiveEditor( ErfObjectEditor.this );
                     handleActivate();
                 }
             } else if( p == ErfObjectEditor.this ) {
@@ -569,7 +566,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
 
     /**
      * This sets the selection of current viewer.
-     *
+     * 
      * @param collection the new selection to viewer
      */
     public void setSelectionToViewer( Collection<?> collection ) {
@@ -611,7 +608,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->.
-     *
+     * 
      * @param viewerPane the new current viewer pane
      * @generated
      */
@@ -672,7 +669,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     /**
      * This returns the viewer as required by the {@link IViewerProvider} interface. <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     *
+     * 
      * @return the viewer
      * @generated
      */
@@ -1198,27 +1195,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->.
-     *
-     * @return the action bar contributor
-     * @generated
-     */
-    public EditingDomainActionBarContributor getActionBarContributor() {
-        return (EditingDomainActionBarContributor)getEditorSite().getActionBarContributor();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->.
-     *
-     * @return the action bars
-     * @generated
-     */
-    public IActionBars getActionBars() {
-        return getActionBarContributor().getActionBars();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->.
-     *
+     * 
      * @return the adapter factory
      * @generated
      */
@@ -1250,7 +1227,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
 
     /**
      * Returns whether the outline view should be presented to the user. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
+     * 
      * @return true, if successful
      * @generated
      */
