@@ -24,6 +24,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.EventObject;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,12 +67,16 @@ import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
+import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
+import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -88,6 +93,7 @@ import org.eclipse.swt.events.ControlAdapter;
 import org.eclipse.swt.events.ControlEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
@@ -100,6 +106,8 @@ import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.part.WorkbenchPart;
+import org.eclipse.ui.views.contentoutline.ContentOutline;
+import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
@@ -185,8 +193,15 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     /** This listens for when the outline becomes active <!-- begin-user-doc --> <!-- end-user-doc -->. @generated */
     protected IPartListener partListener = new IPartListener() {
         public void partActivated( IWorkbenchPart p ) {
-            if( p instanceof PropertySheet ) {
+            if( p instanceof ContentOutline ) {
+                if( ((ContentOutline)p).getCurrentPage() == contentOutlinePage ) {
+                    getActionBarContributor().setActiveEditor( ErfObjectEditor.this );
+
+                    setCurrentViewer( contentOutlineViewer );
+                }
+            } else if( p instanceof PropertySheet ) {
                 if( ((PropertySheet)p).getCurrentPage() == propertySheetPage ) {
+                    getActionBarContributor().setActiveEditor( ErfObjectEditor.this );
                     handleActivate();
                 }
             } else if( p == ErfObjectEditor.this ) {
@@ -461,6 +476,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
             }
 
             if( markerHelper.hasMarkers( editingDomain.getResourceSet() ) ) {
+                markerHelper.deleteMarkers( editingDomain.getResourceSet() );
                 if( diagnostic.getSeverity() != Diagnostic.OK ) {
                     try {
                         markerHelper.createMarkers( diagnostic );
@@ -518,7 +534,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
              */
 
             public void commandStackChanged( final EventObject event ) {
-                ErfObjectEditor.this.currentViewerPane.getControl().getDisplay().asyncExec( new Runnable() {
+                getContainer().getDisplay().asyncExec( new Runnable() {
                     public void run() {
                         firePropertyChange( IEditorPart.PROP_DIRTY );
 
@@ -667,8 +683,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     }
 
     /**
-     * This returns the viewer as required by the {@link IViewerProvider} interface. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This returns the viewer as required by the {@link IViewerProvider} interface.
      * 
      * @return the viewer
      * @generated
@@ -676,6 +691,23 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     public Viewer getViewer() {
         return currentViewer;
     }
+
+    /**
+     * This creates a context menu for the viewer and adds a listener as well registering the menu for extension.
+     * 
+     * @generated
+     * 
+     *            protected void createContextMenuFor( StructuredViewer viewer ) { MenuManager contextMenu = new
+     *            MenuManager( "#PopUp" ); contextMenu.add( new Separator( "additions" ) );
+     *            contextMenu.setRemoveAllWhenShown( true ); contextMenu.addMenuListener( this ); Menu menu =
+     *            contextMenu.createContextMenu( viewer.getControl() ); viewer.getControl().setMenu( menu );
+     *            getSite().registerContextMenu( contextMenu, new UnwrappingSelectionProvider( viewer ) );
+     * 
+     *            int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK; Transfer[] transfers = new
+     *            Transfer[]{LocalTransfer.getInstance()}; viewer.addDragSupport( dndOperations, transfers, new
+     *            ViewerDragAdapter( viewer ) ); viewer.addDropSupport( dndOperations, transfers, new
+     *            EditingDomainViewerDropAdapter( editingDomain, viewer ) ); }
+     */
 
     /**
      * This is the method called to load a resource into the editing domain's resource set based on the editor's input.
@@ -771,6 +803,11 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
                 this.setCurrentViewerPane( viewerPane );
             }
 
+            getSite().getShell().getDisplay().asyncExec( new Runnable() {
+                public void run() {
+                    setActivePage( 0 );
+                }
+            } );
         }
 
         // Ensures that this editor will only display the page's tab
@@ -837,6 +874,10 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     @Override
     protected void pageChange( int pageIndex ) {
         super.pageChange( pageIndex );
+
+        if( contentOutlinePage != null ) {
+            handleContentOutlineSelection( contentOutlinePage.getSelection() );
+        }
     }
 
     /**
@@ -864,8 +905,64 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
      * @return the content outline page
      */
     public IContentOutlinePage getContentOutlinePage() {
-        // TODO: the outline shall display the hierarchy as soon as it is supported by ERA
-        return null;
+        if( contentOutlinePage == null ) {
+            // The content outline is just a tree.
+            //
+            class MyContentOutlinePage extends ContentOutlinePage {
+                @Override
+                public void createControl( Composite parent ) {
+                    super.createControl( parent );
+                    contentOutlineViewer = getTreeViewer();
+                    contentOutlineViewer.addSelectionChangedListener( this );
+
+                    // Set up the tree viewer.
+                    //
+                    contentOutlineViewer.setContentProvider( new AdapterFactoryContentProvider( adapterFactory ) );
+                    contentOutlineViewer.setLabelProvider( new AdapterFactoryLabelProvider( adapterFactory ) );
+                    contentOutlineViewer.setInput( editingDomain.getResourceSet() );
+
+                    // Make sure our popups work.
+                    //
+                    // createContextMenuFor( contentOutlineViewer );
+
+                    if( !editingDomain.getResourceSet().getResources().isEmpty() ) {
+                        // Select the root object in the view.
+                        //
+                        contentOutlineViewer.setSelection( new StructuredSelection( editingDomain.getResourceSet()
+                                                                                                 .getResources()
+                                                                                                 .get( 0 ) ), true );
+                    }
+                }
+
+                @Override
+                public void makeContributions( IMenuManager menuManager,
+                                               IToolBarManager toolBarManager,
+                                               IStatusLineManager statusLineManager ) {
+                    super.makeContributions( menuManager, toolBarManager, statusLineManager );
+                    contentOutlineStatusLineManager = statusLineManager;
+                }
+
+                @Override
+                public void setActionBars( IActionBars actionBars ) {
+                    super.setActionBars( actionBars );
+                    getActionBarContributor().shareGlobalActions( this, actionBars );
+                }
+            }
+
+            contentOutlinePage = new MyContentOutlinePage();
+
+            // Listen to selection so that we can handle it is a special way.
+            //
+            contentOutlinePage.addSelectionChangedListener( new ISelectionChangedListener() {
+                // This ensures that we handle selections correctly.
+                //
+                public void selectionChanged( SelectionChangedEvent event ) {
+                    handleContentOutlineSelection( event.getSelection() );
+                }
+            } );
+        }
+
+        return contentOutlinePage;
     }
 
     /**
@@ -875,7 +972,6 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
      */
     public IPropertySheetPage getPropertySheetPage() {
         if( propertySheetPage == null ) {
-
             propertySheetPage = new ExtendedPropertySheetPage( editingDomain ) {
                 @Override
                 public void setSelectionToViewer( List<?> selection ) {
@@ -883,12 +979,45 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
                     ErfObjectEditor.this.setFocus();
                 }
 
-            };
+                @Override
+                public void setActionBars( IActionBars actionBars ) {
+                    super.setActionBars( actionBars );
+                    getActionBarContributor().shareGlobalActions( this, actionBars );
+                }
 
+            };
             propertySheetPage.setPropertySourceProvider( new SpecObjectPropertySourceProvider() );
         }
 
         return propertySheetPage;
+    }
+
+    /**
+     * This deals with how we want selection in the outliner to affect the other views. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    public void handleContentOutlineSelection( ISelection selection ) {
+        if( currentViewerPane != null && !selection.isEmpty() && selection instanceof IStructuredSelection ) {
+            Iterator<?> selectedElements = ((IStructuredSelection)selection).iterator();
+            if( selectedElements.hasNext() ) {
+                // Get the first selected element.
+                //
+                Object selectedElement = selectedElements.next();
+
+                // If it's the selection viewer, then we want it to select the same selection as this selection.
+                //
+
+                // Set the input to the widget.
+                //
+                if( currentViewerPane.getViewer().getInput() != selectedElement ) {
+                    currentViewerPane.getViewer().setInput( selectedElement );
+                    currentViewerPane.setTitle( selectedElement );
+
+                }
+            }
+        }
     }
 
     /**
@@ -1011,6 +1140,22 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     }
 
     /**
+     * Handle save operation (Save As).
+     * 
+     * @param uri the uri
+     * @param editorInput the editor input
+     */
+    protected void doSaveAs( URI uri, IEditorInput editorInput ) {
+        (editingDomain.getResourceSet().getResources().get( 0 )).setURI( uri );
+        setInputWithNotify( editorInput );
+        setPartName( editorInput.getName() );
+        IProgressMonitor progressMonitor = getActionBars().getStatusLineManager() != null
+            ? getActionBars().getStatusLineManager().getProgressMonitor()
+            : new NullProgressMonitor();
+        doSave( progressMonitor );
+    }
+
+    /**
      * See {@link org.eclipse.ui.ide.IGotoMarker}
      * 
      * @param marker the marker
@@ -1030,20 +1175,6 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
         } catch( CoreException exception ) {
             ErfObjectsEditorPlugin.INSTANCE.log( exception );
         }
-    }
-
-    /**
-     * Handle save operation (Save As).
-     * 
-     * @param uri the uri
-     * @param editorInput the editor input
-     */
-    protected void doSaveAs( URI uri, IEditorInput editorInput ) {
-        (editingDomain.getResourceSet().getResources().get( 0 )).setURI( uri );
-        setInputWithNotify( editorInput );
-        setPartName( editorInput.getName() );
-        IProgressMonitor progressMonitor = new NullProgressMonitor();
-        doSave( progressMonitor );
     }
 
     /**
@@ -1137,7 +1268,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
          */
         IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer
             ? contentOutlineStatusLineManager
-            : null;
+            : getActionBars().getStatusLineManager();
 
         if( statusLineManager != null ) {
             if( selection instanceof IStructuredSelection ) {
@@ -1194,8 +1325,24 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
+     * @generated
+     */
+    public EditingDomainActionBarContributor getActionBarContributor() {
+        return (EditingDomainActionBarContributor)getEditorSite().getActionBarContributor();
+    }
+
+    /**
+     * 
+     * 
+     * @generated
+     */
+    public IActionBars getActionBars() {
+        return getActionBarContributor().getActionBars();
+    }
+
+    /**
      * @return the adapter factory
      * @generated
      */
@@ -1204,9 +1351,7 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
     }
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
      */
     @Override
     public void dispose() {
@@ -1218,8 +1363,16 @@ public class ErfObjectEditor extends MultiPageEditorPart implements IEditingDoma
 
         adapterFactory.dispose();
 
+        if( getActionBarContributor().getActiveEditor() == this ) {
+            getActionBarContributor().setActiveEditor( null );
+        }
+
         if( propertySheetPage != null ) {
             propertySheetPage.dispose();
+        }
+
+        if( contentOutlinePage != null ) {
+            contentOutlinePage.dispose();
         }
 
         super.dispose();
