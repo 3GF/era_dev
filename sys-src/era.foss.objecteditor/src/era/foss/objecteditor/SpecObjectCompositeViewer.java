@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.objecteditor;
 
 import java.util.HashMap;
@@ -48,6 +48,7 @@ import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.IInputSelectionProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
@@ -81,9 +82,6 @@ import era.foss.ui.contrib.NotifyingListSizeProperty;
  * The Class SpecObjectCompositeViewer.
  */
 public class SpecObjectCompositeViewer extends Viewer implements IInputSelectionProvider, IAllowViewerSchemaChange {
-
-    /** selected Spec Objects. */
-    ISelection selectedSpecObjects;
 
     /** Master observable referring to the currently selected view. */
     IViewerObservableValue viewMaster;
@@ -120,7 +118,7 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
 
     /**
      * Create a Viewer for the SpecObjects.
-     *
+     * 
      * @param parent the parent
      * @param editingDomain the editing domain
      * @param erfModel the erf model
@@ -396,8 +394,9 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
 
     @Override
     public void addSelectionChangedListener( ISelectionChangedListener listener ) {
-        if( selectionChangedListeners.contains( listener ) ) return;
-        selectionChangedListeners.add( listener );
+        if( !selectionChangedListeners.contains( listener ) ) {
+            selectionChangedListeners.add( listener );
+        }
     }
 
     @Override
@@ -405,7 +404,9 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
         selectionChangedListeners.remove( listener );
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.eclipse.jface.viewers.Viewer#getSelection()
      */
     @Override
@@ -459,6 +460,14 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
         for( Control control : compositeTable.getRowControls() ) {
             SpecObjectViewerRow row = (SpecObjectViewerRow)control;
             row.setSelected( selectedSpecObjectMap.containsKey( row.getSpecObjectOffset() ), setFocus );
+        }
+
+        // send event to selectionChangedListener
+        SelectionChangedEvent selectionChangeEvent = new SelectionChangedEvent(
+            SpecObjectCompositeViewer.this,
+            new StructuredSelection( selectedSpecObjectMap.values().toArray() ) );
+        for( ISelectionChangedListener listener : selectionChangedListeners ) {
+            listener.selectionChanged( selectionChangeEvent );
         }
     }
 
