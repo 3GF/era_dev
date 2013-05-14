@@ -38,7 +38,8 @@
             id="era.editor.prim"
             name="%_UI_ErfEditor_label"
             icon="icons/full/obj16/EraFile.gif"
-            class="era.foss.objecteditor.ErfObjectEditor">
+            class="era.foss.objecteditor.ErfObjectEditor"
+            contributorClass="org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor">
          <contentTypeBinding contentTypeId="era.foss.erf.ErfContentType"/>
       </editor>
    </extension>
