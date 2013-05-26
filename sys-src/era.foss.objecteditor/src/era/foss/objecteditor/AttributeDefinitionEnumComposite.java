@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.objecteditor;
 
 import org.eclipse.core.databinding.observable.list.IObservableList;
@@ -68,7 +68,7 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
 
     /**
      * Instantiates a new attribute definition enum composite.
-     *
+     * 
      * @param parent the parent
      * @param viewElement the view element
      * @param specObject the spec object
@@ -136,9 +136,9 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
 
     @Override
     public void doBind( SpecObject specObject, AttributeValue attributeValue, EditingDomain editingDomain ) {
-        valueModifyListener = new DefaultModifyListener( specObject, editingDomain );
-        comboViewer.addSelectionChangedListener( valueModifyListener );
         if( attributeValue == null ) {
+            valueModifyListener = new DefaultModifyListener( specObject, editingDomain );
+            comboViewer.addSelectionChangedListener( valueModifyListener );
             if( attributeDefinition.getDefaultValue() != null ) {
                 comboViewer.setSelection( new StructuredSelection( attributeDefinition.getDefaultValue().getValues() ) );
             } else {
@@ -150,12 +150,11 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
                                                                  ErfPackage.Literals.ATTRIBUTE_VALUE_ENUMERATION__VALUES )
                                                           .observe( attributeValue ) );
         }
-
     }
 
     /**
      * Sets the k color.
-     *
+     * 
      * @param enumValue the new k color
      */
     protected void setKColor( EnumValue enumValue ) {
@@ -172,7 +171,6 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
 
     @Override
     public void unbind() {
-
         if( valueModifyListener != null ) {
             comboViewer.removeSelectionChangedListener( valueModifyListener );
         }
@@ -181,14 +179,14 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
 
     /**
      * Listener which adds a AttributeValue to a SpecObject in case no attributeValue exists yet.
-     *
+     * 
      * @see DefaultModifyEvent
      */
     private class DefaultModifyListener implements ISelectionChangedListener {
 
         /** Spec Object for which a AttributeValue has to be created in case the content of the Text control is changed. */
         SpecObject specObject;
-        
+
         /** The editing domain. */
         EditingDomain editingDomain;
 
@@ -226,14 +224,16 @@ public class AttributeDefinitionEnumComposite extends AbstractAttributeDefinitio
                                                  ErfPackage.SPEC_OBJECT__VALUES,
                                                  attributeValue );
                 editingDomain.getCommandStack().execute( cmd );
-                AttributeDefinitionEnumComposite.this.bind( specObject, attributeValue, editingDomain );
+                // AttributeDefinitionEnumComposite.this.bind( specObject, attributeValue, editingDomain );
             }
             comboViewer.refresh();
 
         }
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see era.foss.objecteditor.AbstractAttributeDefinitionComposite#getControl()
      */
     @Override

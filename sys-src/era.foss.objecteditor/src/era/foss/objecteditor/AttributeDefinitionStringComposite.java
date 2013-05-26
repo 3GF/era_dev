@@ -48,7 +48,7 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
 
     /** The text control. */
     Text textControl;
-    
+
     /** The default value modify listener. */
     private DefaultModifyListener defaultValueModifyListener;
 
@@ -120,7 +120,7 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
 
         /** Spec Object for which a AttributeValue has to be created in case the content of the Text control is changed. */
         SpecObject specObject;
-        
+
         /** The editing domain. */
         EditingDomain editingDomain;
 
@@ -152,7 +152,6 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
                                              ErfPackage.SPEC_OBJECT__VALUES,
                                              attributeValue );
             editingDomain.getCommandStack().execute( cmd );
-            AttributeDefinitionStringComposite.this.bind( specObject, attributeValue, editingDomain );
         }
     }
 

@@ -77,7 +77,7 @@ public class AttributeDefinitionBooleanComposite extends AbstractAttributeDefini
                 checkBox.setBackground( Display.getDefault().getSystemColor( COLOR_DEFAULT_VALUE ) );
             } else {
                 checkBox.setText( "" );
-                checkBox.setSelection( false);
+                checkBox.setSelection( false );
                 checkBox.setBackground( Display.getDefault().getSystemColor( SWT.COLOR_WIDGET_BACKGROUND ) );
             }
             defaultValueModifyListener = new DefaultModifyListener( specObject, editingDomain );
@@ -110,7 +110,7 @@ public class AttributeDefinitionBooleanComposite extends AbstractAttributeDefini
 
         /** Spec Object for which a AttributeValue has to be created in case the content of the Text control is changed. */
         SpecObject specObject;
-        
+
         /** The editing domain. */
         EditingDomain editingDomain;
 
@@ -142,7 +142,6 @@ public class AttributeDefinitionBooleanComposite extends AbstractAttributeDefini
                                              ErfPackage.SPEC_OBJECT__VALUES,
                                              attributeValue );
             editingDomain.getCommandStack().execute( cmd );
-            AttributeDefinitionBooleanComposite.this.bind( specObject, attributeValue, editingDomain );
         }
 
         @Override

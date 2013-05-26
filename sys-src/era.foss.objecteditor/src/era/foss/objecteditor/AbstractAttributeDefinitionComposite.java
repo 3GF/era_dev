@@ -67,10 +67,10 @@ public abstract class AbstractAttributeDefinitionComposite extends Composite {
 
     /** The error decoration. */
     private ControlDecoration errorDecoration;
-    
+
     /** The attribute value. */
     protected AttributeValue attributeValue;
-    
+
     /** The editing domain. */
     protected EditingDomain editingDomain;
 
@@ -245,7 +245,6 @@ public abstract class AbstractAttributeDefinitionComposite extends Composite {
                 Command deleteCommand = new DeleteCommand( editingDomain, new StructuredSelection(
                     attributeValueLocal ).toList() );
                 editingDomain.getCommandStack().execute( deleteCommand );
-                bind( specObject, null, editingDomain );
             }
         }
 

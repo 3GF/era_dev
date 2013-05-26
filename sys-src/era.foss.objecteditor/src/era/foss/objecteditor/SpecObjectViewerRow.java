@@ -22,6 +22,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.databinding.viewers.IViewerObservableValue;
 import org.eclipse.swt.SWT;
@@ -88,6 +90,47 @@ class SpecObjectViewerRow extends Composite {
 
     /** The page map. */
     private HashMap<SpecType, Composite> pageMap = new HashMap<SpecType, Composite>();
+
+    /** listner for adding and removing AttributeValue of SpecObjects*/
+    private AttributeValueAddRemoveListener attributeValueAddRemoveListener;
+
+    /**
+     * Updates the composites in case of an AttributeValue is added or removed from a SpecObject (e.g. by Undo or Redo
+     * actions)
+     * 
+     * In case a an AttributeValue is added or removed then the respective composite is bound to a the new
+     * AttributeValue in case there is any
+     */
+    private class AttributeValueAddRemoveListener extends AdapterImpl {
+        @Override
+        public void notifyChanged( Notification msg ) {
+            super.notifyChanged( msg );
+
+            Object changedValue = null;
+
+            // find changed object for determining the attribute definition
+            if( (msg.getEventType() == Notification.REMOVE) ) {
+                changedValue = msg.getOldValue();
+
+            } else if( (msg.getEventType() == Notification.ADD) ) {
+                changedValue = msg.getNewValue();
+            }
+
+            if( (changedValue != null) && (changedValue instanceof AttributeValue) ) {
+                AttributeDefinition attributeDefinition = ((AttributeValue)changedValue).getDefinition();
+
+                // find composites to re-bind
+                for( AbstractAttributeDefinitionComposite attributeDefinitionComposite : attributeDefintionCompositeList ) {
+                    if( attributeDefinitionComposite.getViewElement().getAttributeDefinition() == attributeDefinition ) {
+                        attributeDefinitionComposite.bind( (SpecObject)msg.getNotifier(),
+                                                           (AttributeValue)msg.getNewValue(),
+                                                           editingDomain );
+                    }
+                }
+            }
+
+        }
+    };
 
     /**
      * Constructor of the Row Composite.
@@ -372,6 +415,14 @@ class SpecObjectViewerRow extends Composite {
      * @param specObject the spec object
      */
     public void bind( SpecObject specObject ) {
+
+        // add listener to the spec obejct which takes care about changes in list of AttributeValue
+        if( this.attributeValueAddRemoveListener == null ) {
+            this.attributeValueAddRemoveListener = new AttributeValueAddRemoveListener();
+        } else {
+            attributeValueAddRemoveListener.getTarget().eAdapters().remove( attributeValueAddRemoveListener );
+        }
+        specObject.eAdapters().add( attributeValueAddRemoveListener );
 
         // create Hashmap for look up the attribute values for a certain attribute definition
         HashMap<AttributeDefinition, AttributeValue> attributeDefintionValueMap = new HashMap<AttributeDefinition, AttributeValue>();
