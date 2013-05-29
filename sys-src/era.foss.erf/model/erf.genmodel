@@ -27,6 +27,7 @@
     <genClasses ecoreClass="erf.ecore#//SpecObject">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//SpecObject/sources"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//SpecObject/targets"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference erf.ecore#//SpecObject/specHierarchy"/>
     </genClasses>
     <genClasses ecoreClass="erf.ecore#//SpecType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference erf.ecore#//SpecType/specAttributes"/>

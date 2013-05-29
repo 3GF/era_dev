@@ -61,9 +61,8 @@ public interface AttributeDefinition extends Identifiable {
     SpecType getSpecType();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.AttributeDefinition#getSpecType <em>Spec Type</em>}' container
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link era.foss.erf.AttributeDefinition#getSpecType <em>Spec Type</em>}' container reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @param value the new value of the '<em>Spec Type</em>' container reference.
      * @see #getSpecType()
      * @generated

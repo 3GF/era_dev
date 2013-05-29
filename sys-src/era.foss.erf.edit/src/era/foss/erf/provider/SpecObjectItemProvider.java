@@ -67,6 +67,7 @@ public class SpecObjectItemProvider extends SpecElementWithUserDefinedAttributes
 
             addSourcesPropertyDescriptor( object );
             addTargetsPropertyDescriptor( object );
+            addSpecHierarchyPropertyDescriptor( object );
         }
         return itemPropertyDescriptors;
     }
@@ -107,6 +108,28 @@ public class SpecObjectItemProvider extends SpecElementWithUserDefinedAttributes
                                                                               "_UI_SpecObject_targets_feature",
                                                                               "_UI_SpecObject_type" ),
                                                                    ErfPackage.Literals.SPEC_OBJECT__TARGETS,
+                                                                   true,
+                                                                   false,
+                                                                   true,
+                                                                   null,
+                                                                   null,
+                                                                   null ) );
+    }
+
+    /**
+     * This adds a property descriptor for the Spec Hierarchy feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addSpecHierarchyPropertyDescriptor( Object object ) {
+        itemPropertyDescriptors.add( createItemPropertyDescriptor( ((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                                                                   getResourceLocator(),
+                                                                   getString( "_UI_SpecObject_specHierarchy_feature" ),
+                                                                   getString( "_UI_PropertyDescriptor_description",
+                                                                              "_UI_SpecObject_specHierarchy_feature",
+                                                                              "_UI_SpecObject_type" ),
+                                                                   ErfPackage.Literals.SPEC_OBJECT__SPEC_HIERARCHY,
                                                                    true,
                                                                    false,
                                                                    true,

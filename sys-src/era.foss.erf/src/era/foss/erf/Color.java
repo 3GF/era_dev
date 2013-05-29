@@ -35,9 +35,9 @@ public interface Color extends EObject {
     int getRed();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.Color#getRed <em>Red</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link era.foss.erf.Color#getRed <em>Red</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @param value the new value of the '<em>Red</em>' attribute.
      * @see #getRed()
      * @generated
@@ -53,9 +53,9 @@ public interface Color extends EObject {
     int getGreen();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.Color#getGreen <em>Green</em>}' attribute. <!-- begin-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.Color#getGreen <em>Green</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Green</em>' attribute.
      * @see #getGreen()
      * @generated
@@ -71,9 +71,9 @@ public interface Color extends EObject {
     int getBlue();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.Color#getBlue <em>Blue</em>}' attribute. <!-- begin-user-doc --> <!--
+     * Sets the value of the '{@link era.foss.erf.Color#getBlue <em>Blue</em>}' attribute.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @param value the new value of the '<em>Blue</em>' attribute.
      * @see #getBlue()
      * @generated

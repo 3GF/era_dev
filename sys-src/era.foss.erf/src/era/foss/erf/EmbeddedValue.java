@@ -35,9 +35,9 @@ public interface EmbeddedValue extends EObject {
     int getKey();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.EmbeddedValue#getKey <em>Key</em>}' attribute. <!-- begin-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.EmbeddedValue#getKey <em>Key</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Key</em>' attribute.
      * @see #getKey()
      * @generated

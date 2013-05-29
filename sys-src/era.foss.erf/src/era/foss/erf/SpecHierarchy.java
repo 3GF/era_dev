@@ -22,7 +22,6 @@ public interface SpecHierarchy extends AccessControlledElement {
     /**
      * Sets the value of the '{@link era.foss.erf.SpecHierarchy#isTableInternal <em>Table Internal</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Table Internal</em>' attribute.
      * @see #isTableInternal()
      * @generated
@@ -39,7 +38,7 @@ public interface SpecHierarchy extends AccessControlledElement {
     /**
      * Pointer to the associated SpecObject
      * 
-     * @model kind="reference" required="true"
+     * @model kind="reference" required="true" opposite="specHierarchy"
      */
     public SpecObject getObject();
 

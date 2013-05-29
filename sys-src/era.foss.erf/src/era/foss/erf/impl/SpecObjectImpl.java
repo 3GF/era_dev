@@ -18,14 +18,17 @@
 package era.foss.erf.impl;
 
 import era.foss.erf.ErfPackage;
+import era.foss.erf.SpecHierarchy;
 import era.foss.erf.SpecObject;
 
 import era.foss.erf.SpecRelation;
 import java.util.Collection;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -38,6 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link era.foss.erf.impl.SpecObjectImpl#getSources <em>Sources</em>}</li>
  *   <li>{@link era.foss.erf.impl.SpecObjectImpl#getTargets <em>Targets</em>}</li>
+ *   <li>{@link era.foss.erf.impl.SpecObjectImpl#getSpecHierarchy <em>Spec Hierarchy</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,6 +67,16 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
      * @ordered
      */
     protected EList<SpecRelation> targets;
+
+    /**
+     * The cached value of the '{@link #getSpecHierarchy() <em>Spec Hierarchy</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getSpecHierarchy()
+     * @generated
+     * @ordered
+     */
+    protected SpecHierarchy specHierarchy;
 
     /**
      * <!-- begin-user-doc -->
@@ -124,6 +138,83 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
      * <!-- end-user-doc -->
      * @generated
      */
+    public SpecHierarchy getSpecHierarchy() {
+        if( specHierarchy != null && specHierarchy.eIsProxy() ) {
+            InternalEObject oldSpecHierarchy = (InternalEObject)specHierarchy;
+            specHierarchy = (SpecHierarchy)eResolveProxy( oldSpecHierarchy );
+            if( specHierarchy != oldSpecHierarchy ) {
+                if( eNotificationRequired() ) eNotify( new ENotificationImpl(
+                    this,
+                    Notification.RESOLVE,
+                    ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY,
+                    oldSpecHierarchy,
+                    specHierarchy ) );
+            }
+        }
+        return specHierarchy;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public SpecHierarchy basicGetSpecHierarchy() {
+        return specHierarchy;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetSpecHierarchy( SpecHierarchy newSpecHierarchy, NotificationChain msgs ) {
+        SpecHierarchy oldSpecHierarchy = specHierarchy;
+        specHierarchy = newSpecHierarchy;
+        if( eNotificationRequired() ) {
+            ENotificationImpl notification = new ENotificationImpl(
+                this,
+                Notification.SET,
+                ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY,
+                oldSpecHierarchy,
+                newSpecHierarchy );
+            if( msgs == null ) msgs = notification;
+            else msgs.add( notification );
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setSpecHierarchy( SpecHierarchy newSpecHierarchy ) {
+        if( newSpecHierarchy != specHierarchy ) {
+            NotificationChain msgs = null;
+            if( specHierarchy != null ) msgs = ((InternalEObject)specHierarchy).eInverseRemove( this,
+                                                                                                ErfPackage.SPEC_HIERARCHY__OBJECT,
+                                                                                                SpecHierarchy.class,
+                                                                                                msgs );
+            if( newSpecHierarchy != null ) msgs = ((InternalEObject)newSpecHierarchy).eInverseAdd( this,
+                                                                                                   ErfPackage.SPEC_HIERARCHY__OBJECT,
+                                                                                                   SpecHierarchy.class,
+                                                                                                   msgs );
+            msgs = basicSetSpecHierarchy( newSpecHierarchy, msgs );
+            if( msgs != null ) msgs.dispatch();
+        } else if( eNotificationRequired() ) eNotify( new ENotificationImpl(
+            this,
+            Notification.SET,
+            ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY,
+            newSpecHierarchy,
+            newSpecHierarchy ) );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @SuppressWarnings("unchecked")
     @Override
     public NotificationChain eInverseAdd( InternalEObject otherEnd, int featureID, NotificationChain msgs ) {
@@ -132,6 +223,12 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
             return ((InternalEList<InternalEObject>)(InternalEList<?>)getSources()).basicAdd( otherEnd, msgs );
         case ErfPackage.SPEC_OBJECT__TARGETS:
             return ((InternalEList<InternalEObject>)(InternalEList<?>)getTargets()).basicAdd( otherEnd, msgs );
+        case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
+            if( specHierarchy != null ) msgs = ((InternalEObject)specHierarchy).eInverseRemove( this,
+                                                                                                ErfPackage.SPEC_HIERARCHY__OBJECT,
+                                                                                                SpecHierarchy.class,
+                                                                                                msgs );
+            return basicSetSpecHierarchy( (SpecHierarchy)otherEnd, msgs );
         }
         return super.eInverseAdd( otherEnd, featureID, msgs );
     }
@@ -148,6 +245,8 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
             return ((InternalEList<?>)getSources()).basicRemove( otherEnd, msgs );
         case ErfPackage.SPEC_OBJECT__TARGETS:
             return ((InternalEList<?>)getTargets()).basicRemove( otherEnd, msgs );
+        case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
+            return basicSetSpecHierarchy( null, msgs );
         }
         return super.eInverseRemove( otherEnd, featureID, msgs );
     }
@@ -164,6 +263,9 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
             return getSources();
         case ErfPackage.SPEC_OBJECT__TARGETS:
             return getTargets();
+        case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
+            if( resolve ) return getSpecHierarchy();
+            return basicGetSpecHierarchy();
         }
         return super.eGet( featureID, resolve, coreType );
     }
@@ -185,6 +287,9 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
             getTargets().clear();
             getTargets().addAll( (Collection<? extends SpecRelation>)newValue );
             return;
+        case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
+            setSpecHierarchy( (SpecHierarchy)newValue );
+            return;
         }
         super.eSet( featureID, newValue );
     }
@@ -203,6 +308,9 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
         case ErfPackage.SPEC_OBJECT__TARGETS:
             getTargets().clear();
             return;
+        case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
+            setSpecHierarchy( (SpecHierarchy)null );
+            return;
         }
         super.eUnset( featureID );
     }
@@ -219,6 +327,8 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
             return sources != null && !sources.isEmpty();
         case ErfPackage.SPEC_OBJECT__TARGETS:
             return targets != null && !targets.isEmpty();
+        case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
+            return specHierarchy != null;
         }
         return super.eIsSet( featureID );
     }

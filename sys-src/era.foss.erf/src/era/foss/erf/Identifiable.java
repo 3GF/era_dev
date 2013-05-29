@@ -35,9 +35,9 @@ public interface Identifiable extends EObject {
     public String getID();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.Identifiable#getID <em>ID</em>}' attribute. <!-- begin-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.Identifiable#getID <em>ID</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>ID</em>' attribute.
      * @see #isSetID()
      * @see #unsetID()
@@ -47,9 +47,9 @@ public interface Identifiable extends EObject {
     void setID( String value );
 
     /**
-     * Unsets the value of the '{@link era.foss.erf.Identifiable#getID <em>ID</em>}' attribute. <!-- begin-user-doc -->
+     * Unsets the value of the '{@link era.foss.erf.Identifiable#getID <em>ID</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @see #isSetID()
      * @see #getID()
      * @see #setID(String)
@@ -78,9 +78,9 @@ public interface Identifiable extends EObject {
     public String getDesc();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.Identifiable#getDesc <em>Desc</em>}' attribute. <!-- begin-user-doc
+     * Sets the value of the '{@link era.foss.erf.Identifiable#getDesc <em>Desc</em>}' attribute.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Desc</em>' attribute.
      * @see #getDesc()
      * @generated

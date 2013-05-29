@@ -33,6 +33,8 @@
         eType="#//SpecRelation" eOpposite="#//SpecRelation/target"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
         eType="#//SpecRelation" eOpposite="#//SpecRelation/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="specHierarchy" eType="#//SpecHierarchy"
+        eOpposite="#//SpecHierarchy/object"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SpecType" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="specAttributes" upperBound="-1"
@@ -185,7 +187,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//SpecHierarchy" containment="true" resolveProxies="false" eOpposite="#//SpecHierarchy/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="object" lowerBound="1"
-        eType="#//SpecObject"/>
+        eType="#//SpecObject" eOpposite="#//SpecObject/specHierarchy"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//SpecHierarchy"
         transient="true" eOpposite="#//SpecHierarchy/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//Specification"

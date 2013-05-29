@@ -34,6 +34,7 @@ import org.eclipse.core.databinding.observable.value.IValueChangeListener;
 import org.eclipse.core.databinding.observable.value.ValueChangeEvent;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
+import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.IEMFListProperty;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -73,9 +74,11 @@ import era.foss.erf.ERF;
 import era.foss.erf.EraToolExtension;
 import era.foss.erf.ErfFactory;
 import era.foss.erf.ErfPackage;
+import era.foss.erf.SpecHierarchy;
 import era.foss.erf.SpecObject;
 import era.foss.erf.SpecType;
 import era.foss.erf.ToolExtension;
+import era.foss.erf.contrib.HierachicalSpecObjectProvider;
 import era.foss.ui.contrib.NotifyingListSizeProperty;
 
 /**
@@ -113,6 +116,8 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
     /** List of selection changed listeners of this viewer. */
     List<ISelectionChangedListener> selectionChangedListeners = new LinkedList<ISelectionChangedListener>();
 
+    HierachicalSpecObjectProvider specObjectProvider;
+
     /** The spec type master. */
     protected IObservableValue specTypeMaster;
 
@@ -135,6 +140,10 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
             }
         }
         assert (this.toolExtension != null);
+
+        specObjectProvider = new HierachicalSpecObjectProvider( this.erfModel.getCoreContent()
+                                                                             .getSpecifications()
+                                                                             .get( 0 ) );
 
         doLayout( parent );
 
@@ -327,7 +336,8 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
         // set input
         IEMFListProperty specTypeProperty = EMFProperties.list( ErfPackage.Literals.CONTENT__SPEC_TYPES );
         specTypecomboViewer.setInput( specTypeProperty.observe( this.erfModel.getCoreContent() ) );
-        // TODO: use a dedicated default view if available
+
+        // TODO: use a dedicated default type if available
         if( erfModel.getCoreContent().getSpecTypes().size() > 0 ) {
             specTypecomboViewer.setSelection( new StructuredSelection( erfModel.getCoreContent()
                                                                                .getSpecTypes()
@@ -365,7 +375,7 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
     private void binding() {
 
         dbc.bindValue( PojoObservables.observeValue( compositeTable, "numRowsInCollection" ),
-                       new NotifyingListSizeProperty().observe( erfModel.getCoreContent().getSpecObjects() ),
+                       new NotifyingListSizeProperty().observe( specObjectProvider.getSpecObjectList() ),
                        new UpdateValueStrategy( UpdateValueStrategy.POLICY_NEVER ),
                        new UpdateValueStrategy() );
 
@@ -374,9 +384,22 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
 
     /** Delete a SpecObject */
     private void deleteSpecObject( SpecObject specObject ) {
-        Command deleteCommand = new DeleteCommand( editingDomain, new StructuredSelection( specObject ).toList() );
-        editingDomain.getCommandStack().execute( deleteCommand );
+        CompoundCommand compoundCommand = new CompoundCommand();
+        compoundCommand.setLabel( ErfObjectsEditorPlugin.INSTANCE.getString( "_UI_DeleteSpecObject_label" ) );
+        compoundCommand.setDescription( ErfObjectsEditorPlugin.INSTANCE.getString( "_UI_DeleteSpecObject_description" ) );
 
+        // delete SpecHierarachy
+        Command deleteSpecHierarachyCommand = new DeleteCommand( editingDomain, new StructuredSelection(
+            specObject.getSpecHierarchy() ).toList() );
+        compoundCommand.append( deleteSpecHierarachyCommand );
+
+        // delete SpecObject
+        Command deleteSpecObjectCommand = new DeleteCommand(
+            editingDomain,
+            new StructuredSelection( specObject ).toList() );
+        compoundCommand.append( deleteSpecObjectCommand );
+
+        editingDomain.getCommandStack().execute( compoundCommand );
     }
 
     /** Add a new SpecObject */
@@ -384,12 +407,30 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
         SpecObject newSpecObject = ErfFactory.eINSTANCE.createSpecObject();
         newSpecObject.setType( specType );
 
-        Command cmd = AddCommand.create( editingDomain,
-                                         erfModel.getCoreContent(),
-                                         ErfPackage.CONTENT__SPEC_OBJECTS,
-                                         newSpecObject );
+        CompoundCommand compoundCommand = new CompoundCommand();
+        compoundCommand.setLabel( ErfObjectsEditorPlugin.INSTANCE.getString( "_UI_AddSpecObject_label" ) );
+        compoundCommand.setDescription( ErfObjectsEditorPlugin.INSTANCE.getString( "_UI_AddSpecObject_description" ) );
+
+        // command for creating a SpecObject
+        Command addSpecObjectCommand = AddCommand.create( editingDomain,
+                                                          erfModel.getCoreContent(),
+                                                          ErfPackage.CONTENT__SPEC_OBJECTS,
+                                                          newSpecObject );
+        compoundCommand.append( addSpecObjectCommand );
+
+        // command for creating a SpecHierarchy
+        // TODO: create new element in the specific hierarchy level (currently: only on top level)
+        SpecHierarchy newSpecHierarchy = ErfFactory.eINSTANCE.createSpecHierarchy();
+        newSpecHierarchy.setObject( newSpecObject );
+        Command addSpecHierarchyCommand = AddCommand.create( editingDomain,
+                                                             erfModel.getCoreContent().getSpecifications().get( 0 ),
+                                                             ErfPackage.SPECIFICATION__CHILDREN,
+                                                             newSpecHierarchy );
+        compoundCommand.append( addSpecHierarchyCommand );
+
+        // execute compoundCommand
         CommandStack commandStack = editingDomain.getCommandStack();
-        commandStack.execute( cmd );
+        commandStack.execute( compoundCommand );
     }
 
     @Override
@@ -434,7 +475,7 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
 
         // set selectedSpecObject to given one
         for( SpecObject specObject : ((List<SpecObject>)((StructuredSelection)selection).toList()) ) {
-            int specOjectOffset = erfModel.getCoreContent().getSpecObjects().indexOf( specObject );
+            int specOjectOffset = specObjectProvider.getSpecObjectList().indexOf( specObject );
             if( selectedSpecOjectOffset == null ) {
                 selectedSpecOjectOffset = specOjectOffset;
             }
@@ -494,7 +535,7 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
         public void refresh( CompositeTable sender, final int currentObjectOffset, Control rowControl ) {
 
             final SpecObjectViewerRow currentRow = (SpecObjectViewerRow)rowControl;
-            final SpecObject currentSpecObject = erfModel.getCoreContent().getSpecObjects().get( currentObjectOffset );
+            final SpecObject currentSpecObject = specObjectProvider.getSpecObjectList().get( currentObjectOffset );
 
             // remove previous listener if nay
             if( deleteListenerMap.get( currentRow ) != null ) {
@@ -539,9 +580,8 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
                         int objectEndOffset = Math.max( currentObjectOffset, selectedSpecObjectOffset );
                         while (objectOffset <= objectEndOffset) {
                             SpecObjectCompositeViewer.this.selectedSpecObjectMap.put( objectOffset,
-                                                                                      erfModel.getCoreContent()
-                                                                                              .getSpecObjects()
-                                                                                              .get( objectOffset ) );
+                                                                                      specObjectProvider.getSpecObjectList()
+                                                                                                        .get( objectOffset ) );
                             objectOffset++;
                         }
                     }

@@ -56,9 +56,8 @@ public interface DatatypeDefinitionInteger extends DatatypeDefinitionSimple {
     void unsetMax();
 
     /**
-     * Returns whether the value of the '{@link era.foss.erf.DatatypeDefinitionInteger#getMax <em>Max</em>}' attribute
-     * is set. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns whether the value of the '{@link era.foss.erf.DatatypeDefinitionInteger#getMax <em>Max</em>}' attribute is set.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @return whether the value of the '<em>Max</em>' attribute is set.
      * @see #unsetMax()
      * @see #getMax()
@@ -99,9 +98,8 @@ public interface DatatypeDefinitionInteger extends DatatypeDefinitionSimple {
     void unsetMin();
 
     /**
-     * Returns whether the value of the '{@link era.foss.erf.DatatypeDefinitionInteger#getMin <em>Min</em>}' attribute
-     * is set. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns whether the value of the '{@link era.foss.erf.DatatypeDefinitionInteger#getMin <em>Min</em>}' attribute is set.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @return whether the value of the '<em>Min</em>' attribute is set.
      * @see #unsetMin()
      * @see #getMin()

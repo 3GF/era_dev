@@ -25,9 +25,8 @@ public interface Specification extends SpecElementWithUserDefinedAttributes {
     public Content getCoreContent();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.Specification#getCoreContent <em>Core Content</em>}' container
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link era.foss.erf.Specification#getCoreContent <em>Core Content</em>}' container reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @param value the new value of the '<em>Core Content</em>' container reference.
      * @see #getCoreContent()
      * @generated

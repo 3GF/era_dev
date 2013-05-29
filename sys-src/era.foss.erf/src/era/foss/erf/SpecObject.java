@@ -42,4 +42,22 @@ public interface SpecObject extends SpecElementWithUserDefinedAttributes {
      */
     public EList<SpecRelation> getTargets();
 
+    /**
+     * Gets the targets.
+     * 
+     * @return the targets
+     * @model kind="reference" opposite="object" required="false"
+     */
+    public SpecHierarchy getSpecHierarchy();
+
+    /**
+     * Sets the value of the '{@link era.foss.erf.SpecObject#getSpecHierarchy <em>Spec Hierarchy</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Spec Hierarchy</em>' reference.
+     * @see #getSpecHierarchy()
+     * @generated
+     */
+    void setSpecHierarchy( SpecHierarchy value );
+
 }

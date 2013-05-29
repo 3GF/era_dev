@@ -396,6 +396,15 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSpecObject_SpecHierarchy() {
+        return (EReference)specObjectEClass.getEStructuralFeatures().get( 2 );
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->.
      *
      * @return the spec type
@@ -1200,6 +1209,7 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
         specObjectEClass = createEClass( SPEC_OBJECT );
         createEReference( specObjectEClass, SPEC_OBJECT__SOURCES );
         createEReference( specObjectEClass, SPEC_OBJECT__TARGETS );
+        createEReference( specObjectEClass, SPEC_OBJECT__SPEC_HIERARCHY );
 
         specTypeEClass = createEClass( SPEC_TYPE );
         createEReference( specTypeEClass, SPEC_TYPE__SPEC_ATTRIBUTES );
@@ -1547,6 +1557,23 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         null,
                         0,
                         -1,
+                        SpecObject.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_COMPOSITE,
+                        IS_RESOLVE_PROXIES,
+                        !IS_UNSETTABLE,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
+        initEReference( getSpecObject_SpecHierarchy(),
+                        this.getSpecHierarchy(),
+                        this.getSpecHierarchy_Object(),
+                        "specHierarchy",
+                        null,
+                        0,
+                        1,
                         SpecObject.class,
                         !IS_TRANSIENT,
                         !IS_VOLATILE,
@@ -2012,8 +2039,8 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         !IS_TRANSIENT,
                         !IS_VOLATILE,
                         IS_CHANGEABLE,
-                        !IS_COMPOSITE,
-                        IS_RESOLVE_PROXIES,
+                        IS_COMPOSITE,
+                        !IS_RESOLVE_PROXIES,
                         !IS_UNSETTABLE,
                         IS_UNIQUE,
                         !IS_DERIVED,
@@ -2393,7 +2420,7 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         IS_ORDERED );
         initEReference( getSpecHierarchy_Object(),
                         this.getSpecObject(),
-                        null,
+                        this.getSpecObject_SpecHierarchy(),
                         "object",
                         null,
                         1,

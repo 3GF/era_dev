@@ -53,7 +53,6 @@ public interface EnumValue extends Identifiable {
     /**
      * Sets the value of the '{@link era.foss.erf.EnumValue#getProperties <em>Properties</em>}' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @param value the new value of the '<em>Properties</em>' containment reference.
      * @see #getProperties()
      * @generated

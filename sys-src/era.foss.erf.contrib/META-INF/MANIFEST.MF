@@ -10,5 +10,6 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: era.foss.erf.contrib
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.edit.ui
+ org.eclipse.emf.edit.ui,
+ era.foss.erf
 Bundle-ActivationPolicy: lazy

@@ -176,15 +176,46 @@ public class SpecHierarchyImpl extends AccessControlledElementImpl implements Sp
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setObject( SpecObject newObject ) {
+    public NotificationChain basicSetObject( SpecObject newObject, NotificationChain msgs ) {
         SpecObject oldObject = object;
         object = newObject;
-        if( eNotificationRequired() ) eNotify( new ENotificationImpl(
+        if( eNotificationRequired() ) {
+            ENotificationImpl notification = new ENotificationImpl(
+                this,
+                Notification.SET,
+                ErfPackage.SPEC_HIERARCHY__OBJECT,
+                oldObject,
+                newObject );
+            if( msgs == null ) msgs = notification;
+            else msgs.add( notification );
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setObject( SpecObject newObject ) {
+        if( newObject != object ) {
+            NotificationChain msgs = null;
+            if( object != null ) msgs = ((InternalEObject)object).eInverseRemove( this,
+                                                                                  ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY,
+                                                                                  SpecObject.class,
+                                                                                  msgs );
+            if( newObject != null ) msgs = ((InternalEObject)newObject).eInverseAdd( this,
+                                                                                     ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY,
+                                                                                     SpecObject.class,
+                                                                                     msgs );
+            msgs = basicSetObject( newObject, msgs );
+            if( msgs != null ) msgs.dispatch();
+        } else if( eNotificationRequired() ) eNotify( new ENotificationImpl(
             this,
             Notification.SET,
             ErfPackage.SPEC_HIERARCHY__OBJECT,
-            oldObject,
-            object ) );
+            newObject,
+            newObject ) );
     }
 
     /**
@@ -290,6 +321,12 @@ public class SpecHierarchyImpl extends AccessControlledElementImpl implements Sp
         switch (featureID) {
         case ErfPackage.SPEC_HIERARCHY__CHILDREN:
             return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildren()).basicAdd( otherEnd, msgs );
+        case ErfPackage.SPEC_HIERARCHY__OBJECT:
+            if( object != null ) msgs = ((InternalEObject)object).eInverseRemove( this,
+                                                                                  ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY,
+                                                                                  SpecObject.class,
+                                                                                  msgs );
+            return basicSetObject( (SpecObject)otherEnd, msgs );
         case ErfPackage.SPEC_HIERARCHY__PARENT:
             if( eInternalContainer() != null ) msgs = eBasicRemoveFromContainer( msgs );
             return basicSetParent( (SpecHierarchy)otherEnd, msgs );
@@ -310,6 +347,8 @@ public class SpecHierarchyImpl extends AccessControlledElementImpl implements Sp
         switch (featureID) {
         case ErfPackage.SPEC_HIERARCHY__CHILDREN:
             return ((InternalEList<?>)getChildren()).basicRemove( otherEnd, msgs );
+        case ErfPackage.SPEC_HIERARCHY__OBJECT:
+            return basicSetObject( null, msgs );
         case ErfPackage.SPEC_HIERARCHY__PARENT:
             return basicSetParent( null, msgs );
         case ErfPackage.SPEC_HIERARCHY__ROOT:

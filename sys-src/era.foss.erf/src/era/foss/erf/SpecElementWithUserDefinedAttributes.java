@@ -43,9 +43,8 @@ public interface SpecElementWithUserDefinedAttributes extends Identifiable {
     public SpecType getType();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.SpecElementWithUserDefinedAttributes#getType <em>Type</em>}'
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Sets the value of the '{@link era.foss.erf.SpecElementWithUserDefinedAttributes#getType <em>Type</em>}' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @param value the new value of the '<em>Type</em>' reference.
      * @see #getType()
      * @generated
