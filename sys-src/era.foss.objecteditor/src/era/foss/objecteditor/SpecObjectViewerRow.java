@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.objecteditor;
 
 import java.util.ArrayList;
@@ -25,15 +25,16 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.databinding.viewers.IViewerObservableValue;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
-import org.eclipse.swt.events.MouseTrackAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -41,8 +42,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.PlatformUI;
 
 import era.foss.erf.AttributeDefinition;
 import era.foss.erf.AttributeValue;
@@ -61,9 +60,6 @@ import era.foss.util.types.Tuple;
  */
 class SpecObjectViewerRow extends Composite {
 
-    /** Delete button. */
-    private Label deleteButton;
-
     /** Master observable for the chosen view. */
     static private IViewerObservableValue viewMaster;
 
@@ -74,7 +70,7 @@ class SpecObjectViewerRow extends Composite {
     private static ERF erfModel;
 
     /** The composite holding the all the controls according to the chosen view. */
-    PageBookMax viewComposite;
+    PageBookMax pageBook;
 
     /** List of Composites holding the graphical representation of a single AttributeDefinition. */
     private final List<AbstractAttributeDefinitionComposite> attributeDefintionCompositeList = new ArrayList<AbstractAttributeDefinitionComposite>();
@@ -91,7 +87,7 @@ class SpecObjectViewerRow extends Composite {
     /** The page map. */
     private HashMap<SpecType, Composite> pageMap = new HashMap<SpecType, Composite>();
 
-    /** listner for adding and removing AttributeValue of SpecObjects*/
+    /** listner for adding and removing AttributeValue of SpecObjects */
     private AttributeValueAddRemoveListener attributeValueAddRemoveListener;
 
     /**
@@ -134,7 +130,7 @@ class SpecObjectViewerRow extends Composite {
 
     /**
      * Constructor of the Row Composite.
-     *
+     * 
      * @param parent the parent
      * @param style the style
      */
@@ -146,21 +142,65 @@ class SpecObjectViewerRow extends Composite {
         this.setLayout( new GridLayout( 2, false ) );
         createDeleteButton( this );
 
-        viewComposite = new PageBookMax( this, SWT.NONE );
-        viewComposite.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+        // Use PageBook as a top level composite for the row
+        // A PageBook can show different pages for different SpecObjectTypes
+        pageBook = new PageBookMax( this, SWT.NONE );
+        pageBook.setLayoutData( new GridData( SWT.FILL, SWT.FILL, true, true ) );
+
         // viewComposite.setLayout( new StackLayout() );
         // create the controls for each SpecType
         for( SpecType specType : erfModel.getCoreContent().getSpecTypes() ) {
-            createSpecObjectControls( viewComposite, specType );
+            createSpecObjectControls( pageBook, specType );
         }
 
-        createSelectionListener();
+        // add menu for all elements
+        createContextMenu();
 
+        createSelectionListener();
+    }
+
+    /**
+     * Creates the context menu for a SpecObject
+     * 
+     * This function registers menu for all gui elements the in the row. Reason: There are different cascaded controls
+     * which are should react on a mouse click.
+     */
+    protected void createContextMenu() {
+
+        MenuManager menuMgr = new MenuManager();
+        menuMgr.setRemoveAllWhenShown( true );
+        menuMgr.addMenuListener( new IMenuListener() {
+            public void menuAboutToShow( IMenuManager manager ) {
+                SpecObjectHandler.createCommonMenuItems( manager, editingDomain, specObject );
+            }
+        } );
+
+        // register menu for all gui elements the in row
+        this.createContextMenuComposite( menuMgr, this );
+    }
+
+    /**
+     * Create the context menu for one composite and iterate over its children
+     * 
+     * @param menuMgr
+     * @param control
+     */
+    private void createContextMenuComposite( MenuManager menuMgr, Control control ) {
+        if( (control.getMenu() == null) ) {
+            control.setMenu( menuMgr.createContextMenu( control ) );
+        }
+
+        // add menu to all children
+        if( control instanceof Composite ) {
+            for( Control childControl : ((Composite)control).getChildren() ) {
+                this.createContextMenuComposite( menuMgr, childControl );
+            }
+        }
     }
 
     /**
      * Set the master of the view to observe.
-     *
+     * 
      * @param viewMaster master observable
      */
     public static void setViewMaster( IViewerObservableValue viewMaster ) {
@@ -169,7 +209,7 @@ class SpecObjectViewerRow extends Composite {
 
     /**
      * Set the editing domain used for operations on an AttributeValue of the associated SpecObject.
-     *
+     * 
      * @param editingDomain the new editing domain
      */
     public static void setEditingDomain( EditingDomain editingDomain ) {
@@ -178,7 +218,7 @@ class SpecObjectViewerRow extends Composite {
 
     /**
      * Set the editing domain used for operations on an AttributeValue of the associated SpecObject.
-     *
+     * 
      * @param erfModel the new erf model
      */
     public static void setErfModel( ERF erfModel ) {
@@ -242,33 +282,6 @@ class SpecObjectViewerRow extends Composite {
      * create the delete button for the row
      */
     private void createDeleteButton( Composite parent ) {
-        // create delete button
-        Composite buttonComposite = new Composite( parent, SWT.BORDER );
-        buttonComposite.setLayoutData( new GridData( SWT.LEFT, SWT.CENTER, false, false ) );
-        buttonComposite.setLayout( new FillLayout() );
-
-        deleteButton = new Label( buttonComposite, SWT.NONE );
-        deleteButton.addMouseTrackListener( new MouseTrackAdapter() {
-
-            @Override
-            public void mouseEnter( MouseEvent e ) {
-                ((Label)(e.widget)).setImage( PlatformUI.getWorkbench()
-                                                        .getSharedImages()
-                                                        .getImage( ISharedImages.IMG_TOOL_DELETE ) );
-            }
-
-            @Override
-            public void mouseExit( MouseEvent e ) {
-                ((Label)(e.widget)).setImage( PlatformUI.getWorkbench()
-                                                        .getSharedImages()
-                                                        .getImage( ISharedImages.IMG_TOOL_DELETE_DISABLED ) );
-            }
-
-        } );
-
-        deleteButton.setImage( PlatformUI.getWorkbench()
-                                         .getSharedImages()
-                                         .getImage( ISharedImages.IMG_TOOL_DELETE_DISABLED ) );
 
     }
 
@@ -411,7 +424,7 @@ class SpecObjectViewerRow extends Composite {
 
     /**
      * Binds the current SpecObject.
-     *
+     * 
      * @param specObject the spec object
      */
     public void bind( SpecObject specObject ) {
@@ -440,17 +453,8 @@ class SpecObjectViewerRow extends Composite {
     }
 
     /**
-     * Get the delete button of this row.
-     *
-     * @return the delete Button of this row
-     */
-    public Label getDeleteButton() {
-        return deleteButton;
-    }
-
-    /**
      * Set the selection status of this row. Alter the background when the row gets selected.
-     *
+     * 
      * @param isSelected if true the row is displayed as selected
      * @param setFocus the set focus
      */
@@ -485,7 +489,7 @@ class SpecObjectViewerRow extends Composite {
 
     /**
      * Add a selection listener to this row.
-     *
+     * 
      * @param listener the listener
      */
     public void addSelectionListener( SelectionListener listener ) {
@@ -494,7 +498,7 @@ class SpecObjectViewerRow extends Composite {
 
     /**
      * Remove a selection listener.
-     *
+     * 
      * @param listener the listener
      */
     public void removeSelectionListener( SelectionListener listener ) {
@@ -544,14 +548,14 @@ class SpecObjectViewerRow extends Composite {
         if( specObject != null && specObject.getType() != null ) {
             Composite page = pageMap.get( specObject.getType() );
             if( page != null ) {
-                viewComposite.showPage( page );
+                pageBook.showPage( page );
             }
         }
     }
 
     /**
      * get the offset of the SpecObject associated with this row.
-     *
+     * 
      * @return the offset of the SpecObject
      */
     public int getSpecObjectOffset() {

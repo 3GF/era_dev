@@ -32,13 +32,8 @@ import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.observable.value.IValueChangeListener;
 import org.eclipse.core.databinding.observable.value.ValueChangeEvent;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.emf.databinding.IEMFListProperty;
-import org.eclipse.emf.edit.command.AddCommand;
-import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.databinding.viewers.IViewerObservableValue;
@@ -72,9 +67,7 @@ import org.eclipse.ui.PlatformUI;
 
 import era.foss.erf.ERF;
 import era.foss.erf.EraToolExtension;
-import era.foss.erf.ErfFactory;
 import era.foss.erf.ErfPackage;
-import era.foss.erf.SpecHierarchy;
 import era.foss.erf.SpecObject;
 import era.foss.erf.SpecType;
 import era.foss.erf.ToolExtension;
@@ -355,7 +348,10 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
         addButton.addSelectionListener( new SelectionAdapter() {
             @Override
             public void widgetSelected( SelectionEvent e ) {
-                SpecObjectCompositeViewer.this.createNewSpecObject( (SpecType)SpecObjectCompositeViewer.this.specTypeMaster.getValue() );
+                SpecObjectHandler.createNewSpecObject( editingDomain,
+                                                       erfModel,
+                                                       (SpecType)SpecObjectCompositeViewer.this.specTypeMaster.getValue(),
+                                                       erfModel.getCoreContent().getSpecifications().get( 0 ) );
             }
         } );
 
@@ -380,57 +376,6 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
                        new UpdateValueStrategy() );
 
         compositeTable.addRowContentProvider( new SpecObjectRowContentProvider() );
-    }
-
-    /** Delete a SpecObject */
-    private void deleteSpecObject( SpecObject specObject ) {
-        CompoundCommand compoundCommand = new CompoundCommand();
-        compoundCommand.setLabel( ErfObjectsEditorPlugin.INSTANCE.getString( "_UI_DeleteSpecObject_label" ) );
-        compoundCommand.setDescription( ErfObjectsEditorPlugin.INSTANCE.getString( "_UI_DeleteSpecObject_description" ) );
-
-        // delete SpecHierarachy
-        Command deleteSpecHierarachyCommand = new DeleteCommand( editingDomain, new StructuredSelection(
-            specObject.getSpecHierarchy() ).toList() );
-        compoundCommand.append( deleteSpecHierarachyCommand );
-
-        // delete SpecObject
-        Command deleteSpecObjectCommand = new DeleteCommand(
-            editingDomain,
-            new StructuredSelection( specObject ).toList() );
-        compoundCommand.append( deleteSpecObjectCommand );
-
-        editingDomain.getCommandStack().execute( compoundCommand );
-    }
-
-    /** Add a new SpecObject */
-    private void createNewSpecObject( SpecType specType ) {
-        SpecObject newSpecObject = ErfFactory.eINSTANCE.createSpecObject();
-        newSpecObject.setType( specType );
-
-        CompoundCommand compoundCommand = new CompoundCommand();
-        compoundCommand.setLabel( ErfObjectsEditorPlugin.INSTANCE.getString( "_UI_AddSpecObject_label" ) );
-        compoundCommand.setDescription( ErfObjectsEditorPlugin.INSTANCE.getString( "_UI_AddSpecObject_description" ) );
-
-        // command for creating a SpecObject
-        Command addSpecObjectCommand = AddCommand.create( editingDomain,
-                                                          erfModel.getCoreContent(),
-                                                          ErfPackage.CONTENT__SPEC_OBJECTS,
-                                                          newSpecObject );
-        compoundCommand.append( addSpecObjectCommand );
-
-        // command for creating a SpecHierarchy
-        // TODO: create new element in the specific hierarchy level (currently: only on top level)
-        SpecHierarchy newSpecHierarchy = ErfFactory.eINSTANCE.createSpecHierarchy();
-        newSpecHierarchy.setObject( newSpecObject );
-        Command addSpecHierarchyCommand = AddCommand.create( editingDomain,
-                                                             erfModel.getCoreContent().getSpecifications().get( 0 ),
-                                                             ErfPackage.SPECIFICATION__CHILDREN,
-                                                             newSpecHierarchy );
-        compoundCommand.append( addSpecHierarchyCommand );
-
-        // execute compoundCommand
-        CommandStack commandStack = editingDomain.getCommandStack();
-        commandStack.execute( compoundCommand );
     }
 
     @Override
@@ -537,12 +482,6 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
             final SpecObjectViewerRow currentRow = (SpecObjectViewerRow)rowControl;
             final SpecObject currentSpecObject = specObjectProvider.getSpecObjectList().get( currentObjectOffset );
 
-            // remove previous listener if nay
-            if( deleteListenerMap.get( currentRow ) != null ) {
-                currentRow.getDeleteButton().removeMouseListener( deleteListenerMap.get( currentRow ) );
-                currentRow.removeSelectionListener( selectionListenerMap.get( currentRow ) );
-            }
-
             // set offset of the current specObject
             currentRow.setSpecObject( currentSpecObject, currentObjectOffset );
 
@@ -556,7 +495,7 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
             MouseListener deleteListener = new MouseAdapter() {
                 @Override
                 public void mouseDown( MouseEvent e ) {
-                    SpecObjectCompositeViewer.this.deleteSpecObject( currentSpecObject );
+                    SpecObjectHandler.deleteSpecObject( editingDomain, currentSpecObject );
                 }
             };
 
@@ -595,7 +534,6 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
             };
 
             // add listener to row
-            currentRow.getDeleteButton().addMouseListener( deleteListener );
             currentRow.addSelectionListener( selectionListener );
 
             // keep a reference to the listeners to be able to remove it
