@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.objecteditor;
 
 import org.eclipse.core.databinding.Binding;
@@ -82,7 +82,7 @@ public abstract class AbstractAttributeDefinitionComposite extends Composite {
 
     /**
      * Instantiates a new abstract attribute definition composite.
-     *
+     * 
      * @param parent the parent
      * @param viewElement the view element
      */
@@ -115,14 +115,14 @@ public abstract class AbstractAttributeDefinitionComposite extends Composite {
 
     /**
      * Create the control according to the respective AttributeDefinition.
-     *
+     * 
      * @return the control
      */
     abstract public Control createControl();
 
     /**
      * Get the control actually representing the AttributeDefinition.
-     *
+     * 
      * @return the control
      */
     public abstract Control getControl();
@@ -138,7 +138,7 @@ public abstract class AbstractAttributeDefinitionComposite extends Composite {
 
     /**
      * Return the view element associated with this GUI element.
-     *
+     * 
      * @return the view element associated with this GUI element
      */
     public ViewElement getViewElement() {
@@ -149,7 +149,7 @@ public abstract class AbstractAttributeDefinitionComposite extends Composite {
      * Bind the GUI element to the model element. This has to be implemented be subclasses.
      * 
      * <strong>Subclasses have to to call this method in case the ovveride it.</strong>
-     *
+     * 
      * @param specObject the spec object
      * @param attributeValue the attribute value
      * @param editingDomain the editing domain
@@ -257,6 +257,8 @@ public abstract class AbstractAttributeDefinitionComposite extends Composite {
              * @see org.eclipse.jface.action.IMenuListener#menuAboutToShow(org.eclipse.jface.action.IMenuManager)
              */
             public void menuAboutToShow( IMenuManager manager ) {
+                SpecObjectHandler.createCommonMenuItems( manager, editingDomain, specObject );
+                manager.add( new Separator() );
                 AbstractAttributeDefinitionComposite.this.menuAboutToShow( manager );
                 manager.add( new Separator() );
                 if( attributeValue != null ) {
@@ -273,11 +275,10 @@ public abstract class AbstractAttributeDefinitionComposite extends Composite {
 
     /**
      * Menu about to show.
-     *
+     * 
      * @param manager the manager
      */
     protected void menuAboutToShow( IMenuManager manager ) {
-
     }
 
 }

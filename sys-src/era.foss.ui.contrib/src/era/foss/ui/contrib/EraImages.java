@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.ui.contrib;
 
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class EraImages {
 
     /**
      * Gets the image.
-     *
+     * 
      * @param imageName the image name
      * @return the image
      */
@@ -72,7 +72,7 @@ public class EraImages {
 
     /**
      * Gets the image descriptor.
-     *
+     * 
      * @param imageName the image name
      * @return the image descriptor
      */
