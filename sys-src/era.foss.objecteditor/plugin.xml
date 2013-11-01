@@ -17,7 +17,7 @@
       <wizard
             canFinishEarly="true"
             category="era.foss.objecteditor.category.ID"
-            class="era.foss.objecteditor.ErfModelWizard"
+            class="era.foss.objecteditor.wizard.ErfModelWizard"
             descriptionImage="icons/full/wizban/NewEraFile.gif"
             hasPages="true"
             icon="icons/full/obj16/EraFile.gif"

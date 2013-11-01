@@ -15,7 +15,7 @@
  * limitations under the License.
  **************************************************************************
  */
-package era.foss.objecteditor;
+package era.foss.objecteditor.contrib;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -34,6 +34,8 @@ import era.foss.erf.SpecHierarchy;
 import era.foss.erf.SpecObject;
 import era.foss.erf.SpecType;
 import era.foss.erf.Specification;
+import era.foss.objecteditor.ErfObjectsEditorPlugin;
+import era.foss.objecteditor.specobject.RemoveSpecObjectAction;
 
 /**
  * This class holds methods for a handling {@link SpecObject}s like

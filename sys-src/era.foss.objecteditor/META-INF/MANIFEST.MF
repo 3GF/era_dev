@@ -10,6 +10,9 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: era.foss.objecteditor,
+ era.foss.objecteditor.contrib,
+ era.foss.objecteditor.specobject,
+ era.foss.objecteditor.wizard,
  org.eclipse.swt.nebula.widgets.compositetable,
  org.eclipse.swt.nebula.widgets.compositetable.day,
  org.eclipse.swt.nebula.widgets.compositetable.day.internal,

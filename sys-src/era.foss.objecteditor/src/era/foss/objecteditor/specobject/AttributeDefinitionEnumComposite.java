@@ -15,7 +15,7 @@
  * limitations under the License.
  **************************************************************************
  */
-package era.foss.objecteditor;
+package era.foss.objecteditor.specobject;
 
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.emf.common.command.Command;

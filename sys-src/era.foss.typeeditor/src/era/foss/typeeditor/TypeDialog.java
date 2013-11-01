@@ -45,7 +45,7 @@ import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecType;
 import era.foss.erf.ToolExtension;
 import era.foss.objecteditor.EraCommandStack;
-import era.foss.objecteditor.IAllowViewerSchemaChange;
+import era.foss.objecteditor.contrib.IAllowViewerSchemaChange;
 import era.foss.typeeditor.datatype.DatatypeDefinitionsForm;
 import era.foss.typeeditor.spectype.SpecTypeForm;
 import era.foss.typeeditor.view.ViewForm;

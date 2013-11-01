@@ -15,7 +15,7 @@
  * limitations under the License.
  **************************************************************************
  */
-package era.foss.objecteditor;
+package era.foss.objecteditor.specobject;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.Action;
@@ -23,6 +23,8 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
 import era.foss.erf.SpecObject;
+import era.foss.objecteditor.ErfObjectsEditorPlugin;
+import era.foss.objecteditor.contrib.SpecObjectHandler;
 
 /**
  * Action for removing a SpecObject

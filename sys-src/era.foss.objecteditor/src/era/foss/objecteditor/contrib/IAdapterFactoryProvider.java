@@ -15,7 +15,7 @@
  * limitations under the License.
  **************************************************************************
 */
-package era.foss.objecteditor;
+package era.foss.objecteditor.contrib;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 

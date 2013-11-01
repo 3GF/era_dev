@@ -134,7 +134,7 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 
 import era.foss.erf.ERF;
 import era.foss.erf.provider.ErfItemProviderAdapterFactory;
-import era.foss.objecteditor.SpecObjectCompositeViewer;
+import era.foss.objecteditor.specobject.SpecObjectCompositeViewer;
 
 /**
  * This is an example of a Erf model editor.

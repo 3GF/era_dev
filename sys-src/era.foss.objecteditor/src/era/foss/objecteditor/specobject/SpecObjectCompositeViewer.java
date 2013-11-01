@@ -15,7 +15,7 @@
  * limitations under the License.
  **************************************************************************
  */
-package era.foss.objecteditor;
+package era.foss.objecteditor.specobject;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -72,6 +72,8 @@ import era.foss.erf.SpecObject;
 import era.foss.erf.SpecType;
 import era.foss.erf.ToolExtension;
 import era.foss.erf.contrib.HierachicalSpecObjectProvider;
+import era.foss.objecteditor.contrib.IAllowViewerSchemaChange;
+import era.foss.objecteditor.contrib.SpecObjectHandler;
 import era.foss.ui.contrib.NotifyingListSizeProperty;
 
 /**

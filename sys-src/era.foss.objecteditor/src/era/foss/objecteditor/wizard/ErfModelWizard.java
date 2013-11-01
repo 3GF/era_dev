@@ -15,7 +15,7 @@
  * limitations under the License.
  **************************************************************************
 */
-package era.foss.objecteditor;
+package era.foss.objecteditor.wizard;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,6 +74,7 @@ import era.foss.erf.ERF;
 import era.foss.erf.ErfFactory;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.provider.ErfEditPlugin;
+import era.foss.objecteditor.ErfObjectsEditorPlugin;
 
 /**
  * This is a simple wizard for creating a new model file. <!-- begin-user-doc --> <!-- end-user-doc -->

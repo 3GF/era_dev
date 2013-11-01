@@ -15,7 +15,7 @@
  * limitations under the License.
  **************************************************************************
  */
-package era.foss.objecteditor;
+package era.foss.objecteditor.specobject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +52,7 @@ import era.foss.erf.SpecObject;
 import era.foss.erf.SpecType;
 import era.foss.erf.View;
 import era.foss.erf.ViewElement;
+import era.foss.objecteditor.contrib.SpecObjectHandler;
 import era.foss.ui.contrib.PageBookMax;
 import era.foss.util.types.Tuple;
 

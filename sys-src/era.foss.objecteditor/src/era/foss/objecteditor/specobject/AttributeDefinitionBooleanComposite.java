@@ -15,90 +15,80 @@
  * limitations under the License.
  **************************************************************************
 */
-package era.foss.objecteditor;
+package era.foss.objecteditor.specobject;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.databinding.edit.EMFEditProperties;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.jface.action.IMenuManager;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
+import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Text;
 
-import era.foss.erf.AttributeDefinitionSimple;
+import era.foss.erf.AttributeDefinitionBoolean;
 import era.foss.erf.AttributeValue;
-import era.foss.erf.AttributeValueSimple;
+import era.foss.erf.AttributeValueBoolean;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecObject;
 import era.foss.erf.ViewElement;
 import era.foss.erf.impl.ErfFactoryImpl;
-import era.foss.ui.contrib.TextAction;
 
 /**
- * The Class AttributeDefinitionStringComposite.
+ * The Class AttributeDefinitionBooleanComposite.
  */
-public class AttributeDefinitionStringComposite extends AbstractAttributeDefinitionComposite {
+public class AttributeDefinitionBooleanComposite extends AbstractAttributeDefinitionComposite {
 
-    /** The text control. */
-    Text textControl;
+    /** The GUI element representing a AttributeDefinitionBoolean. */
+    Button checkBox;
 
     /** The default value modify listener. */
     private DefaultModifyListener defaultValueModifyListener;
 
     /**
-     * Instantiates a new attribute definition string composite.
+     * Instantiates a new attribute definition boolean composite.
      *
      * @param parent the parent
      * @param viewElement the view element
      * @param specObject the spec object
      */
-    public AttributeDefinitionStringComposite( Composite parent, ViewElement viewElement, SpecObject specObject ) {
+    public AttributeDefinitionBooleanComposite( Composite parent, ViewElement viewElement, SpecObject specObject ) {
         super( parent, viewElement );
 
     }
 
     public Control createControl() {
-        int style = SWT.BORDER;
-        if( viewElement.getEditorRowSpan() > 1 ) {
-            style |= SWT.MULTI | SWT.WRAP | SWT.V_SCROLL | SWT.H_SCROLL;
-        }
-        textControl = new Text( this, style );
-        return textControl;
+        this.checkBox = new Button( this, SWT.CHECK );
+        return checkBox;
     }
 
     @Override
     public void doBind( SpecObject specObject, AttributeValue attributeValue, EditingDomain editingDomain ) {
-        AttributeDefinitionSimple attributeDefinition = (AttributeDefinitionSimple)viewElement.getAttributeDefinition();
+        AttributeDefinitionBoolean attributeDefinition = (AttributeDefinitionBoolean)viewElement.getAttributeDefinition();
 
         if( attributeValue == null ) {
-            for( Listener listener : textControl.getListeners( SWT.Modify ) ) {
-                textControl.removeListener( SWT.Modify, listener );
-            }
 
             if( attributeDefinition.getDefaultValue() != null ) {
-                textControl.setText( attributeDefinition.getDefaultValue().getTheValue() );
-                textControl.setBackground( Display.getDefault().getSystemColor( COLOR_DEFAULT_VALUE ) );
+                checkBox.setSelection( attributeDefinition.getDefaultValue().getTheValue() );
+                checkBox.setBackground( Display.getDefault().getSystemColor( COLOR_DEFAULT_VALUE ) );
             } else {
-                textControl.setText( "" );
-                textControl.setBackground( Display.getDefault().getSystemColor( SWT.COLOR_WHITE ) );
+                checkBox.setText( "" );
+                checkBox.setSelection( false );
+                checkBox.setBackground( Display.getDefault().getSystemColor( SWT.COLOR_WIDGET_BACKGROUND ) );
             }
             defaultValueModifyListener = new DefaultModifyListener( specObject, editingDomain );
-            textControl.addModifyListener( defaultValueModifyListener );
+            checkBox.addSelectionListener( defaultValueModifyListener );
 
         } else {
-            this.binding = dbc.bindValue( WidgetProperties.text( SWT.Modify ).observeDelayed( 400, textControl ),
+            this.binding = dbc.bindValue( SWTObservables.observeSelection( checkBox ),
                                           EMFEditProperties.value( editingDomain,
-                                                                   ErfPackage.Literals.ATTRIBUTE_VALUE_SIMPLE__THE_VALUE )
+                                                                   ErfPackage.Literals.ATTRIBUTE_VALUE_BOOLEAN__THE_VALUE )
                                                            .observe( attributeValue ) );
-
-            textControl.setBackground( Display.getDefault().getSystemColor( SWT.COLOR_WHITE ) );
+            checkBox.setBackground( Display.getDefault().getSystemColor( SWT.COLOR_WIDGET_BACKGROUND ) );
         }
     }
 
@@ -106,17 +96,17 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
     public void unbind() {
 
         if( defaultValueModifyListener != null ) {
-            textControl.removeModifyListener( defaultValueModifyListener );
+            checkBox.removeSelectionListener( defaultValueModifyListener );
         }
         super.unbind();
     }
 
     /**
-     * Listener whichs adds a AttributeValue to a SpecObject in case no.
+     * Listener which adds a AttributeValue to a SpecObject in case no.
      *
      * @see DefaultModifyEvent
      */
-    private class DefaultModifyListener implements ModifyListener {
+    private class DefaultModifyListener implements SelectionListener {
 
         /** Spec Object for which a AttributeValue has to be created in case the content of the Text control is changed. */
         SpecObject specObject;
@@ -131,20 +121,20 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
         }
 
         @Override
-        public void modifyText( ModifyEvent e ) {
-            AttributeDefinitionSimple attributeDefinition = (AttributeDefinitionSimple)viewElement.getAttributeDefinition();
-            Text textControl = ((Text)e.widget);
+        public void widgetSelected( SelectionEvent e ) {
+            AttributeDefinitionBoolean attributeDefinition = (AttributeDefinitionBoolean)viewElement.getAttributeDefinition();
+            Button checkBox = ((Button)e.widget);
 
             // as now a value is entered this listener is obsolete
-            textControl.removeModifyListener( this );
+            checkBox.removeSelectionListener( this );
 
             // create an Attribute Value
-            AttributeValueSimple attributeValue = ErfFactoryImpl.eINSTANCE.createAttributeValueSimple();
+            AttributeValueBoolean attributeValue = ErfFactoryImpl.eINSTANCE.createAttributeValueBoolean();
 
             // set reference to the respective Attribute Definition
             attributeValue.setDefinition( attributeDefinition );
             // set value of attribute definition
-            attributeValue.setTheValue( textControl.getText() );
+            attributeValue.setTheValue( checkBox.getSelection() );
 
             // create new Attribute value in the model
             Command cmd = AddCommand.create( editingDomain,
@@ -153,6 +143,12 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
                                              attributeValue );
             editingDomain.getCommandStack().execute( cmd );
         }
+
+        @Override
+        public void widgetDefaultSelected( SelectionEvent e ) {
+            // TODO Auto-generated method stub
+
+        }
     }
 
     /* (non-Javadoc)
@@ -160,14 +156,7 @@ public class AttributeDefinitionStringComposite extends AbstractAttributeDefinit
      */
     @Override
     public Control getControl() {
-        return textControl;
+        return checkBox;
     }
 
-    @Override
-    protected void menuAboutToShow( IMenuManager manager ) {
-        super.menuAboutToShow( manager );
-        manager.add( new TextAction( textControl, TextAction.TextActionType.COPY ) );
-        manager.add( new TextAction( textControl, TextAction.TextActionType.CUT ) );
-        manager.add( new TextAction( textControl, TextAction.TextActionType.PASTE ) );
-    }
 }

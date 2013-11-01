@@ -17,7 +17,7 @@
       <wizard
             id="era.foss.erf.presentation.ErfModelWizardID"
             name="%_UI_ErfModelWizard_label"
-            class="era.foss.objecteditor.ErfModelWizard"
+            class="era.foss.objecteditor.wizard.ErfModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/ErfModelFile.gif">
          <description>%_UI_ErfModelWizard_description</description>
