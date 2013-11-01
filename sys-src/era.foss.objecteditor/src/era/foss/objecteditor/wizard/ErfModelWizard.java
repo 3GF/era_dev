@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.objecteditor.wizard;
 
 import java.util.ArrayList;
@@ -199,6 +199,9 @@ public class ErfModelWizard extends Wizard implements INewWizard {
 
         // The core content has to be created in any case
         erfModel.setCoreContent( erfFactory.createContent() );
+
+        // create a specification
+        erfModel.getCoreContent().getSpecifications().add( erfFactory.createSpecification() );
 
         // create element for era tool extension
         erfModel.getToolExtensions().add( erfFactory.createEraToolExtension() );
