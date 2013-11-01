@@ -31,7 +31,7 @@ public interface Content extends EObject {
      * Gets the spec objects.
      * 
      * @return the spec objects
-     * @model containment="true"
+     * @model containment="true" opposite="coreContent"
      */
     public EList<SpecObject> getSpecObjects();
 

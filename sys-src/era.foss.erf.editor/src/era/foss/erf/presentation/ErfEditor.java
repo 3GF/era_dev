@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **************************************************************************
-*/
+ */
 package era.foss.erf.presentation;
 
 import java.io.IOException;
@@ -144,9 +144,9 @@ import era.foss.objecteditor.specobject.SpecObjectCompositeViewer;
 public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProvider, ISelectionProvider,
         IMenuListener, IViewerProvider, IGotoMarker {
     /**
-     * This keeps track of the editing domain that is used to track all changes to the model. <!-- begin-user-doc -->
+     * This keeps track of the editing domain that is used to track all changes to the model.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected AdapterFactoryEditingDomain editingDomain;
@@ -196,9 +196,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     protected TreeViewer selectionViewer;
 
     /**
-     * This inverts the roll of parent and child in the content provider and show parents as a tree. <!-- begin-user-doc
+     * This inverts the roll of parent and child in the content provider and show parents as a tree.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected TreeViewer parentViewer;
@@ -219,9 +219,10 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     protected ListViewer listViewer;
 
     /**
-     * This shows how a table view works. A table can be used as a list with icons. <!-- begin-user-doc --> <!--
+     * This shows how a table view works.
+     * A table can be used as a list with icons.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     protected TableViewer tableViewer;
@@ -356,9 +357,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     protected boolean updateProblemIndication = true;
 
     /**
-     * Adapter used to update the problem indication when resources are demanded loaded. <!-- begin-user-doc --> <!--
+     * Adapter used to update the problem indication when resources are demanded loaded.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
@@ -546,9 +547,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * Updates the problems indication with the information described in the specified diagnostic. <!-- begin-user-doc
+     * Updates the problems indication with the information described in the specified diagnostic.
+     * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected void updateProblemIndication() {
@@ -638,8 +639,7 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
         //
         BasicCommandStack commandStack = new BasicCommandStack();
 
-        // Add a listener to set the most recent command's affected objects to be the selection of the viewer with
-        // focus.
+        // Add a listener to set the most recent command's affected objects to be the selection of the viewer with focus.
         //
         commandStack.addCommandStackListener( new CommandStackListener() {
             public void commandStackChanged( final EventObject event ) {
@@ -832,9 +832,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * This returns the viewer as required by the {@link IViewerProvider} interface. <!-- begin-user-doc --> <!--
+     * This returns the viewer as required by the {@link IViewerProvider} interface.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     public Viewer getViewer() {
@@ -871,7 +871,7 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     public void createModel() {
         URI resourceURI = EditUIUtil.getURI( getEditorInput() );
         Exception exception = null;
-
+        Resource resource = null;
         try {
             // Load the resource through the editing domain.
             //
@@ -1134,28 +1134,6 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
                 setPageText( pageIndex, getString( "_UI_TreeWithColumnsPage_label" ) );
             }
 
-            // Create a page for Erf Object viewer
-            //
-            {
-                ViewerPane viewerPane = new ViewerPane( getSite().getPage(), ErfEditor.this ) {
-                    @Override
-                    public Viewer createViewer( Composite composite ) {
-                        ERF erfModel = (ERF)resource.getContents().get( 0 );
-                        return new SpecObjectCompositeViewer( composite, editingDomain, erfModel );
-                    }
-
-                    @Override
-                    public void requestActivation() {
-                        super.requestActivation();
-                        setCurrentViewerPane( this );
-                    }
-                };
-                viewerPane.createControl( getContainer() );
-                int pageIndex = addPage( viewerPane.getControl() );
-                setPageText( pageIndex, "ERA SpecObj Viewer" );
-                this.setCurrentViewerPane( viewerPane );
-            }
-
             getSite().getShell().getDisplay().asyncExec( new Runnable() {
                 public void run() {
                     setActivePage( 0 );
@@ -1165,6 +1143,7 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
 
         // Ensures that this editor will only display the page's tab
         // area if there are more than one page
+        //
         getContainer().addControlListener( new ControlAdapter() {
             boolean guard = false;
 
@@ -1338,7 +1317,6 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
                     getActionBarContributor().shareGlobalActions( this, actionBars );
                 }
             };
-            // propertySheetPage.setPropertySourceProvider( new AdapterFactoryContentProvider( adapterFactory ) );
             propertySheetPage.setPropertySourceProvider( new AdapterFactoryContentProvider( adapterFactory ) );
         }
 
@@ -1346,9 +1324,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * This deals with how we want selection in the outliner to affect the other views. <!-- begin-user-doc --> <!--
+     * This deals with how we want selection in the outliner to affect the other views.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     public void handleContentOutlineSelection( ISelection selection ) {
@@ -1384,9 +1362,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * This is for implementing {@link IEditorPart} and simply tests the command stack. <!-- begin-user-doc --> <!--
+     * This is for implementing {@link IEditorPart} and simply tests the command stack.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -1395,9 +1373,9 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * This is for implementing {@link IEditorPart} and simply saves the model file. <!-- begin-user-doc --> <!--
+     * This is for implementing {@link IEditorPart} and simply saves the model file.
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -1455,10 +1433,10 @@ public class ErfEditor extends MultiPageEditorPart implements IEditingDomainProv
     }
 
     /**
-     * This returns whether something has been persisted to the URI of the specified resource. The implementation uses
-     * the URI converter from the editor's resource set to try to open an input stream. <!-- begin-user-doc --> <!--
+     * This returns whether something has been persisted to the URI of the specified resource.
+     * The implementation uses the URI converter from the editor's resource set to try to open an input stream. 
+     * <!-- begin-user-doc --> <!--
      * end-user-doc -->
-     * 
      * @generated
      */
     protected boolean isPersisted( Resource resource ) {

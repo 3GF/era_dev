@@ -73,7 +73,6 @@ import era.foss.erf.SpecType;
 import era.foss.erf.ToolExtension;
 import era.foss.erf.contrib.HierachicalSpecObjectProvider;
 import era.foss.objecteditor.contrib.IAllowViewerSchemaChange;
-import era.foss.objecteditor.contrib.SpecObjectHandler;
 import era.foss.ui.contrib.NotifyingListSizeProperty;
 
 /**
@@ -136,15 +135,14 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
         }
         assert (this.toolExtension != null);
 
+        // TODO: don't rely on the existence of a specification
         specObjectProvider = new HierachicalSpecObjectProvider( this.erfModel.getCoreContent()
                                                                              .getSpecifications()
                                                                              .get( 0 ) );
-
         doLayout( parent );
 
         // binding the UI with the model
         binding();
-
     }
 
     /**
@@ -351,7 +349,7 @@ public class SpecObjectCompositeViewer extends Viewer implements IInputSelection
             @Override
             public void widgetSelected( SelectionEvent e ) {
                 SpecObjectHandler.createNewSpecObject( editingDomain,
-                                                       erfModel,
+                                                       erfModel.getCoreContent(),
                                                        (SpecType)SpecObjectCompositeViewer.this.specTypeMaster.getValue(),
                                                        erfModel.getCoreContent().getSpecifications().get( 0 ) );
             }

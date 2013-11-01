@@ -17,6 +17,7 @@
  */
 package era.foss.erf.impl;
 
+import era.foss.erf.Content;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecHierarchy;
 import era.foss.erf.SpecObject;
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -42,6 +44,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link era.foss.erf.impl.SpecObjectImpl#getSources <em>Sources</em>}</li>
  *   <li>{@link era.foss.erf.impl.SpecObjectImpl#getTargets <em>Targets</em>}</li>
  *   <li>{@link era.foss.erf.impl.SpecObjectImpl#getSpecHierarchy <em>Spec Hierarchy</em>}</li>
+ *   <li>{@link era.foss.erf.impl.SpecObjectImpl#getCoreContent <em>Core Content</em>}</li>
  * </ul>
  * </p>
  *
@@ -215,6 +218,52 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
      * <!-- end-user-doc -->
      * @generated
      */
+    public Content getCoreContent() {
+        if( eContainerFeatureID() != ErfPackage.SPEC_OBJECT__CORE_CONTENT ) return null;
+        return (Content)eContainer();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NotificationChain basicSetCoreContent( Content newCoreContent, NotificationChain msgs ) {
+        msgs = eBasicSetContainer( (InternalEObject)newCoreContent, ErfPackage.SPEC_OBJECT__CORE_CONTENT, msgs );
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setCoreContent( Content newCoreContent ) {
+        if( newCoreContent != eInternalContainer()
+            || (eContainerFeatureID() != ErfPackage.SPEC_OBJECT__CORE_CONTENT && newCoreContent != null) ) {
+            if( EcoreUtil.isAncestor( this, newCoreContent ) ) throw new IllegalArgumentException(
+                "Recursive containment not allowed for " + toString() );
+            NotificationChain msgs = null;
+            if( eInternalContainer() != null ) msgs = eBasicRemoveFromContainer( msgs );
+            if( newCoreContent != null ) msgs = ((InternalEObject)newCoreContent).eInverseAdd( this,
+                                                                                               ErfPackage.CONTENT__SPEC_OBJECTS,
+                                                                                               Content.class,
+                                                                                               msgs );
+            msgs = basicSetCoreContent( newCoreContent, msgs );
+            if( msgs != null ) msgs.dispatch();
+        } else if( eNotificationRequired() ) eNotify( new ENotificationImpl(
+            this,
+            Notification.SET,
+            ErfPackage.SPEC_OBJECT__CORE_CONTENT,
+            newCoreContent,
+            newCoreContent ) );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @SuppressWarnings("unchecked")
     @Override
     public NotificationChain eInverseAdd( InternalEObject otherEnd, int featureID, NotificationChain msgs ) {
@@ -229,6 +278,9 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
                                                                                                 SpecHierarchy.class,
                                                                                                 msgs );
             return basicSetSpecHierarchy( (SpecHierarchy)otherEnd, msgs );
+        case ErfPackage.SPEC_OBJECT__CORE_CONTENT:
+            if( eInternalContainer() != null ) msgs = eBasicRemoveFromContainer( msgs );
+            return basicSetCoreContent( (Content)otherEnd, msgs );
         }
         return super.eInverseAdd( otherEnd, featureID, msgs );
     }
@@ -247,8 +299,24 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
             return ((InternalEList<?>)getTargets()).basicRemove( otherEnd, msgs );
         case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
             return basicSetSpecHierarchy( null, msgs );
+        case ErfPackage.SPEC_OBJECT__CORE_CONTENT:
+            return basicSetCoreContent( null, msgs );
         }
         return super.eInverseRemove( otherEnd, featureID, msgs );
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public NotificationChain eBasicRemoveFromContainerFeature( NotificationChain msgs ) {
+        switch (eContainerFeatureID()) {
+        case ErfPackage.SPEC_OBJECT__CORE_CONTENT:
+            return eInternalContainer().eInverseRemove( this, ErfPackage.CONTENT__SPEC_OBJECTS, Content.class, msgs );
+        }
+        return super.eBasicRemoveFromContainerFeature( msgs );
     }
 
     /**
@@ -266,6 +334,8 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
         case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
             if( resolve ) return getSpecHierarchy();
             return basicGetSpecHierarchy();
+        case ErfPackage.SPEC_OBJECT__CORE_CONTENT:
+            return getCoreContent();
         }
         return super.eGet( featureID, resolve, coreType );
     }
@@ -290,6 +360,9 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
         case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
             setSpecHierarchy( (SpecHierarchy)newValue );
             return;
+        case ErfPackage.SPEC_OBJECT__CORE_CONTENT:
+            setCoreContent( (Content)newValue );
+            return;
         }
         super.eSet( featureID, newValue );
     }
@@ -311,6 +384,9 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
         case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
             setSpecHierarchy( (SpecHierarchy)null );
             return;
+        case ErfPackage.SPEC_OBJECT__CORE_CONTENT:
+            setCoreContent( (Content)null );
+            return;
         }
         super.eUnset( featureID );
     }
@@ -329,6 +405,8 @@ public class SpecObjectImpl extends SpecElementWithUserDefinedAttributesImpl imp
             return targets != null && !targets.isEmpty();
         case ErfPackage.SPEC_OBJECT__SPEC_HIERARCHY:
             return specHierarchy != null;
+        case ErfPackage.SPEC_OBJECT__CORE_CONTENT:
+            return getCoreContent() != null;
         }
         return super.eIsSet( featureID );
     }

@@ -43,6 +43,24 @@ public interface SpecObject extends SpecElementWithUserDefinedAttributes {
     public EList<SpecRelation> getTargets();
 
     /**
+     * Gets the the owning ReqIFContent element.
+     * 
+     * @return the core content of the specification
+     * @model required="true"
+     */
+    public Content getCoreContent();
+
+    /**
+     * Sets the value of the '{@link era.foss.erf.SpecObject#getCoreContent <em>Core Content</em>}' container reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Core Content</em>' container reference.
+     * @see #getCoreContent()
+     * @generated
+     */
+    void setCoreContent( Content value );
+
+    /**
      * Gets the targets.
      * 
      * @return the targets
@@ -51,9 +69,9 @@ public interface SpecObject extends SpecElementWithUserDefinedAttributes {
     public SpecHierarchy getSpecHierarchy();
 
     /**
-     * Sets the value of the '{@link era.foss.erf.SpecObject#getSpecHierarchy <em>Spec Hierarchy</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Sets the value of the '{@link era.foss.erf.SpecObject#getSpecHierarchy <em>Spec Hierarchy</em>}' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @param value the new value of the '<em>Spec Hierarchy</em>' reference.
      * @see #getSpecHierarchy()
      * @generated

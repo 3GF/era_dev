@@ -24,7 +24,6 @@ import org.eclipse.ui.PlatformUI;
 
 import era.foss.erf.SpecObject;
 import era.foss.objecteditor.ErfObjectsEditorPlugin;
-import era.foss.objecteditor.contrib.SpecObjectHandler;
 
 /**
  * Action for removing a SpecObject

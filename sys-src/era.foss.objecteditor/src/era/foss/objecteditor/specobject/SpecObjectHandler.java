@@ -15,7 +15,7 @@
  * limitations under the License.
  **************************************************************************
  */
-package era.foss.objecteditor.contrib;
+package era.foss.objecteditor.specobject;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
@@ -24,10 +24,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.StructuredSelection;
 
-import era.foss.erf.ERF;
+import era.foss.erf.Content;
 import era.foss.erf.ErfFactory;
 import era.foss.erf.ErfPackage;
 import era.foss.erf.SpecHierarchy;
@@ -35,7 +36,6 @@ import era.foss.erf.SpecObject;
 import era.foss.erf.SpecType;
 import era.foss.erf.Specification;
 import era.foss.objecteditor.ErfObjectsEditorPlugin;
-import era.foss.objecteditor.specobject.RemoveSpecObjectAction;
 
 /**
  * This class holds methods for a handling {@link SpecObject}s like
@@ -85,14 +85,10 @@ public class SpecObjectHandler {
      * @param specType the type of the SpecObject to create
      */
     public static void createNewSpecObject( EditingDomain editingDomain,
-                                            ERF erfModel,
+                                            Content content,
                                             SpecType specType,
-                                            Specification specHierarchyParent ) {
-        createNewSpecObject( editingDomain,
-                             erfModel,
-                             specType,
-                             specHierarchyParent,
-                             ErfPackage.SPECIFICATION__CHILDREN );
+                                            Specification specification ) {
+        createNewSpecObject( editingDomain, content, specType, specification, ErfPackage.SPECIFICATION__CHILDREN );
     }
 
     /**
@@ -103,11 +99,11 @@ public class SpecObjectHandler {
      * @param specType the type of the SpecObject to create
      */
     public static void createNewSpecObject( EditingDomain editingDomain,
-                                            ERF erfModel,
+                                            Content content,
                                             SpecType specType,
                                             SpecHierarchy specHierarchyParent ) {
         createNewSpecObject( editingDomain,
-                             erfModel,
+                             content,
                              specType,
                              specHierarchyParent,
                              ErfPackage.SPEC_HIERARCHY__CHILDREN );
@@ -121,7 +117,7 @@ public class SpecObjectHandler {
      * @param specType the type of the SpecObject to create
      */
     private static void createNewSpecObject( EditingDomain editingDomain,
-                                             ERF erfModel,
+                                             Content content,
                                              SpecType specType,
                                              EObject specHierachyParent,
                                              Object feature ) {
@@ -134,7 +130,7 @@ public class SpecObjectHandler {
 
         // command for creating a SpecObject
         Command addSpecObjectCommand = AddCommand.create( editingDomain,
-                                                          erfModel.getCoreContent(),
+                                                          content,
                                                           ErfPackage.CONTENT__SPEC_OBJECTS,
                                                           newSpecObject );
         compoundCommand.append( addSpecObjectCommand );
@@ -155,8 +151,21 @@ public class SpecObjectHandler {
     }
 
     public static void createCommonMenuItems( IMenuManager manager, EditingDomain editingDomain, SpecObject specObject ) {
+        // menu entries for adding a specObject
+        Action addAction = new AddSpecObjectAction( editingDomain, specObject, true );
+        Action addBelowAction = new AddSpecObjectAction( editingDomain, specObject, false );
+
         // Add menu entry for removal of SpecObject
-        manager.add( new RemoveSpecObjectAction( editingDomain, specObject ) );
+        Action removeAction = new RemoveSpecObjectAction( editingDomain, specObject );
+        if( specObject == null ) {
+            addAction.setEnabled( false );
+            addBelowAction.setEnabled( false );
+            removeAction.setEnabled( false );
+        }
+        manager.add( addAction );
+        manager.add( addBelowAction );
+        manager.add( removeAction );
+
     }
 
 }

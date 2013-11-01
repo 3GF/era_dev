@@ -137,10 +137,11 @@ public class ContentImpl extends EObjectImpl implements Content {
      */
     public EList<SpecObject> getSpecObjects() {
         if( specObjects == null ) {
-            specObjects = new EObjectContainmentEList<SpecObject>(
+            specObjects = new EObjectContainmentWithInverseEList<SpecObject>(
                 SpecObject.class,
                 this,
-                ErfPackage.CONTENT__SPEC_OBJECTS );
+                ErfPackage.CONTENT__SPEC_OBJECTS,
+                ErfPackage.SPEC_OBJECT__CORE_CONTENT );
         }
         return specObjects;
     }
@@ -218,6 +219,8 @@ public class ContentImpl extends EObjectImpl implements Content {
     @Override
     public NotificationChain eInverseAdd( InternalEObject otherEnd, int featureID, NotificationChain msgs ) {
         switch (featureID) {
+        case ErfPackage.CONTENT__SPEC_OBJECTS:
+            return ((InternalEList<InternalEObject>)(InternalEList<?>)getSpecObjects()).basicAdd( otherEnd, msgs );
         case ErfPackage.CONTENT__SPECIFICATIONS:
             return ((InternalEList<InternalEObject>)(InternalEList<?>)getSpecifications()).basicAdd( otherEnd, msgs );
         }

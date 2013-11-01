@@ -478,13 +478,22 @@ public interface ErfPackage extends EPackage {
     int SPEC_OBJECT__SPEC_HIERARCHY = SPEC_ELEMENT_WITH_USER_DEFINED_ATTRIBUTES_FEATURE_COUNT + 2;
 
     /**
+     * The feature id for the '<em><b>Core Content</b></em>' container reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SPEC_OBJECT__CORE_CONTENT = SPEC_ELEMENT_WITH_USER_DEFINED_ATTRIBUTES_FEATURE_COUNT + 3;
+
+    /**
      * The number of structural features of the '<em>Spec Object</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      * 
      * @generated
      * @ordered
      */
-    int SPEC_OBJECT_FEATURE_COUNT = SPEC_ELEMENT_WITH_USER_DEFINED_ATTRIBUTES_FEATURE_COUNT + 3;
+    int SPEC_OBJECT_FEATURE_COUNT = SPEC_ELEMENT_WITH_USER_DEFINED_ATTRIBUTES_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -2098,6 +2107,17 @@ public interface ErfPackage extends EPackage {
     EReference getSpecObject_SpecHierarchy();
 
     /**
+     * Returns the meta object for the container reference '{@link era.foss.erf.SpecObject#getCoreContent <em>Core Content</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the container reference '<em>Core Content</em>'.
+     * @see era.foss.erf.SpecObject#getCoreContent()
+     * @see #getSpecObject()
+     * @generated
+     */
+    EReference getSpecObject_CoreContent();
+
+    /**
      * Returns the meta object for class '{@link era.foss.erf.SpecType <em>Spec Type</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2990,6 +3010,13 @@ public interface ErfPackage extends EPackage {
          * @generated
          */
         EReference SPEC_OBJECT__SPEC_HIERARCHY = eINSTANCE.getSpecObject_SpecHierarchy();
+        /**
+         * The meta object literal for the '<em><b>Core Content</b></em>' container reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SPEC_OBJECT__CORE_CONTENT = eINSTANCE.getSpecObject_CoreContent();
         /**
          * The meta object literal for the '{@link era.foss.erf.impl.SpecTypeImpl <em>Spec Type</em>}' class. <!--
          * begin-user-doc --> <!-- end-user-doc -->

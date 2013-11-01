@@ -405,6 +405,15 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
     }
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getSpecObject_CoreContent() {
+        return (EReference)specObjectEClass.getEStructuralFeatures().get( 3 );
+    }
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->.
      *
      * @return the spec type
@@ -1210,6 +1219,7 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
         createEReference( specObjectEClass, SPEC_OBJECT__SOURCES );
         createEReference( specObjectEClass, SPEC_OBJECT__TARGETS );
         createEReference( specObjectEClass, SPEC_OBJECT__SPEC_HIERARCHY );
+        createEReference( specObjectEClass, SPEC_OBJECT__CORE_CONTENT );
 
         specTypeEClass = createEClass( SPEC_TYPE );
         createEReference( specTypeEClass, SPEC_TYPE__SPEC_ATTRIBUTES );
@@ -1584,6 +1594,23 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
                         IS_UNIQUE,
                         !IS_DERIVED,
                         IS_ORDERED );
+        initEReference( getSpecObject_CoreContent(),
+                        this.getContent(),
+                        this.getContent_SpecObjects(),
+                        "coreContent",
+                        null,
+                        1,
+                        1,
+                        SpecObject.class,
+                        !IS_TRANSIENT,
+                        !IS_VOLATILE,
+                        IS_CHANGEABLE,
+                        !IS_COMPOSITE,
+                        !IS_RESOLVE_PROXIES,
+                        !IS_UNSETTABLE,
+                        IS_UNIQUE,
+                        !IS_DERIVED,
+                        IS_ORDERED );
 
         initEClass( specTypeEClass,
                     SpecType.class,
@@ -1819,7 +1846,7 @@ public class ErfPackageImpl extends EPackageImpl implements ErfPackage {
         initEClass( contentEClass, Content.class, "Content", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS );
         initEReference( getContent_SpecObjects(),
                         this.getSpecObject(),
-                        null,
+                        this.getSpecObject_CoreContent(),
                         "specObjects",
                         null,
                         0,

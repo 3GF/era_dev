@@ -43,7 +43,6 @@ import org.eclipse.swt.widgets.Control;
 import era.foss.erf.AttributeValue;
 import era.foss.erf.SpecObject;
 import era.foss.erf.ViewElement;
-import era.foss.objecteditor.contrib.SpecObjectHandler;
 import era.foss.ui.contrib.EraImages;
 
 /**

@@ -36,10 +36,10 @@ import era.foss.erf.ErfPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link era.foss.erf.impl.DatatypeDefinitionEnumerationImpl#getSpecifiedValues <em>Specified Values</em>}</li>
+ *   <li>{@link era.foss.erf.impl.DatatypeDefinitionEnumerationImpl#getSpecifiedValues <em>Specified Values</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl implements
@@ -56,7 +56,6 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected DatatypeDefinitionEnumerationImpl() {
@@ -65,7 +64,6 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -91,7 +89,6 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -105,7 +102,6 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -119,7 +115,6 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @SuppressWarnings("unchecked")
@@ -136,7 +131,6 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -151,7 +145,6 @@ public class DatatypeDefinitionEnumerationImpl extends DatatypeDefinitionImpl im
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override

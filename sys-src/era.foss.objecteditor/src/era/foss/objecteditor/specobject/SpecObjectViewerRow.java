@@ -52,7 +52,6 @@ import era.foss.erf.SpecObject;
 import era.foss.erf.SpecType;
 import era.foss.erf.View;
 import era.foss.erf.ViewElement;
-import era.foss.objecteditor.contrib.SpecObjectHandler;
 import era.foss.ui.contrib.PageBookMax;
 import era.foss.util.types.Tuple;
 
